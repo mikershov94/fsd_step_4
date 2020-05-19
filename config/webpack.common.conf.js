@@ -71,7 +71,37 @@ module.exports = {
                     }
                 ]
             },
+            {
+                test: /\.(png|gif|jpe?g)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: { name: 'img/[name]-[hash:7].[ext]' }
+                    }
+                ]
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'url-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.(woff|woff2|ttf|otf|eot)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: { name: 'fonts/[name].[ext]' }
+                    }
+                ]
+            }
 
         ]
-    }
+    },
+
+    plugins: [
+        
+    ]
 }
