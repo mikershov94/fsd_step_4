@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.conf.js",
-    "build": "webpack --config config/webpack.build.conf.js"
+    "build": "webpack --config config/webpack.build.conf.js",
+    "test": "webpack --config config/webpack.test.conf.js && mocha test-dist/app-test.js"
   },
   "author": "Michael E Ershov",
   "license": "ISC",
@@ -14,12 +15,14 @@
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.0.1",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "mocha": "^7.1.2",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
     "pug": "^2.0.4",
