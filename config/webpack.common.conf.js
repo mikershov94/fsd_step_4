@@ -1,13 +1,18 @@
 const path = require('path');
 const fs = require('fs');
+const webpack = require('webpack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
     src: path.join(__dirname, '../src'),
     dist: path.join(__dirname, '../dist'),
     test: path.join(__dirname, '../test'),
-    testDist: path.join(__dirname, '../test-dist')
+    testDist: path.join(__dirname, '../test-dist'),
+    public: path.join(__dirname, './public')
 };
 
 const PAGE_DIR = `${PATHS.src}/pages`;
@@ -102,6 +107,19 @@ module.exports = {
     },
 
     plugins: [
-        
+        new CleanWebpackPlugin(),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
+        ...PAGES.map(page => new HtmlWebpackPlugin({
+            template: `${PAGE_DIR}/${page}`,
+            filename: `./${page.replace(/\.pug/, '.html')}`
+        })),
+        new CopyWebpackPlugin([
+            { from: `${PATHS.public}/img`, to: `${PATHS.dist}/img` },
+            { from: `${PATHS.public}/icons`, to: `${PATHS.dist}/icons` },
+            { from: `${PATHS.public}/fonts`, to: `${PATHS.dist}/fonts` },
+        ])
     ]
 }
