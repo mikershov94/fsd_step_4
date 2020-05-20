@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.conf.js",
     "build": "webpack --config config/webpack.build.conf.js",
-    "test": "webpack --config config/webpack.test.conf.js && mocha test-dist/app-test.js"
+    "test": "webpack --config config/webpack.test.conf.js && mocha tests-dist/app-test.js"
   },
   "author": "Michael E Ershov",
   "license": "ISC",
