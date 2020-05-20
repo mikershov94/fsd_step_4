@@ -15,7 +15,7 @@ module.exports = merge(commonWebpackConf, {
     mode: 'development',
 
     entry: {
-        app: PATHS.test + '/index.test.js'
+        app: PATHS.test + '/index.test.ts'
     },
     output: {
         filename: 'app-test.js',

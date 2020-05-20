@@ -21,7 +21,7 @@ const PAGES = fs.readdirSync(PAGE_DIR).filter(page => page.endsWith('.pug'));
 module.exports = {
 
     entry: {
-        app: PATHS.src + '/index.js'
+        app: PATHS.src + '/index.ts'
     },
     output: {
         filename: 'js/app-[hash:7].js',
@@ -30,6 +30,13 @@ module.exports = {
 
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: [
+                    { loader: 'ts-loader' }
+                ],
+                exclude: /node_modules/
+            },
 
             {
                 test: /\.pug$/,
