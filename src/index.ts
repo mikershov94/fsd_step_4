@@ -1,3 +1,3 @@
-import { hello } from './lib.js';
+import { hello } from './lib';
 
 hello();

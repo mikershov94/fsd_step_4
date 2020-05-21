@@ -4,8 +4,6 @@ const webpack = require('webpack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
     src: path.join(__dirname, '../src'),
@@ -14,9 +12,6 @@ const PATHS = {
     testDist: path.join(__dirname, '../tests-dist'),
     public: path.join(__dirname, './public')
 };
-
-const PAGE_DIR = `${PATHS.src}/pages`;
-const PAGES = fs.readdirSync(PAGE_DIR).filter(page => page.endsWith('.pug'));
 
 module.exports = {
 
@@ -113,20 +108,7 @@ module.exports = {
         ]
     },
 
-    plugins: [
-        new CleanWebpackPlugin(),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery'
-        }),
-        ...PAGES.map(page => new HtmlWebpackPlugin({
-            template: `${PAGE_DIR}/${page}`,
-            filename: `./${page.replace(/\.pug/, '.html')}`
-        })),
-        //new CopyWebpackPlugin([
-            //{ from: `${PATHS.public}/img`, to: `${PATHS.dist}/img` },
-            //{ from: `${PATHS.public}/icons`, to: `${PATHS.dist}/icons` },
-            //{ from: `${PATHS.public}/fonts`, to: `${PATHS.dist}/fonts` },
-        //])
-    ]
+    resolve: {
+        extensions: ['.tsx', '.ts', 'js'],
+    }
 }

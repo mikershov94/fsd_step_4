@@ -1,6 +1,10 @@
+const webpack = require('webpack')
 const merge = require('webpack-merge');
 const commonWebpackConf = require('./webpack.common.conf');
 const path = require('path');
+
+const { CleanWebpackPlugin }= require('clean-webpack-plugin');
+
 
 const PATHS = {
     src: path.join(__dirname, '../src'),
@@ -22,7 +26,15 @@ module.exports = merge(commonWebpackConf, {
         path: PATHS.testDist
     },
 
-    devtool: 'source-map'
+    devtool: 'source-map',
+
+    plugins: [
+        new CleanWebpackPlugin(),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
+    ]
 
 
 
