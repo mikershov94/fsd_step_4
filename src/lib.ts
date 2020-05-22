@@ -1,7 +1,6 @@
-function hello(): void {
-    console.log(<string>'Hello world!');
-}
+function hello(): number {
+    console.log('Hello world!');
+    return 9;
+};
 
-export {
-    hello
-}
+export {hello}
