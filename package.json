@@ -11,6 +11,7 @@
   "author": "Michael E Ershov",
   "license": "ISC",
   "dependencies": {
+    "strip-ansi": "^6.0.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },

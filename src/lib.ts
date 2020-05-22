@@ -1,5 +1,5 @@
 function hello(): number {
-    console.log('Hello world!');
+    console.log(<string>'Hello world!');
     return 9;
 };
 

@@ -1,8 +1,12 @@
+const fs = require('fs');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const commonWebpackConf = require('./webpack.common.conf');
+const PATHS = require('./webpack.paths');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const PAGE_DIR = `${PATHS.src}/pages`;
 const PAGES = fs.readdirSync(PAGE_DIR).filter(page => page.endsWith('.pug'));

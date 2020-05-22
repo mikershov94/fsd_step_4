@@ -1,22 +1,13 @@
 const path = require('path');
-const fs = require('fs');
-const webpack = require('webpack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const PATHS = {
-    src: path.join(__dirname, '../src'),
-    dist: path.join(__dirname, '../dist'),
-    test: path.join(__dirname, '../tests'),
-    testDist: path.join(__dirname, '../tests-dist'),
-    public: path.join(__dirname, './public')
-};
+const PATHS = require('./webpack.paths');
 
 module.exports = {
 
     entry: {
-        app: PATHS.src + '/index.ts'
+        app: PATHS.src + '/index.js'
     },
     output: {
         filename: 'js/app-[hash:7].js',
@@ -109,6 +100,6 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.tsx', '.ts', 'js'],
+        extensions: ['.tsx', '.ts', '.js'],
     }
 }
