@@ -13,3 +13,19 @@ class Rail {
     
     }
 }
+
+class Slider {
+    position: number;
+
+    constructor(value: number = 0) {
+        this.position = value;
+    }
+
+    moveUp(step): number {
+        return this.position + step;
+    }
+
+    moveDown(step): number {
+        return this.position - step;
+    }
+}
