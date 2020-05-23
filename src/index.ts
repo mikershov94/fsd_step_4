@@ -21,11 +21,16 @@ class Slider {
         this.position = value;
     }
 
-    moveUp(step): number {
+    moveUp(step: number): number {
         return this.position + step;
     }
 
-    moveDown(step): number {
+    moveDown(step: number): number {
         return this.position - step;
     }
+}
+
+export {
+    Rail,
+    Slider
 }
