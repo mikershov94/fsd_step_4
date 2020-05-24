@@ -29,5 +29,16 @@ describe('Testing model props', () => {
         expect(slider.maxLimit).toBe(50);
         slider.maxLimit = 200;
         expect(slider.maxLimit).toBe(200);
+    });
+    test('should be defined prop step', () => {
+        expect(slider.step).toBe(0);
+        slider.step = 1;
+        expect(slider.step).toBe(1);
+        slider.step = 5;
+        expect(slider.step).toBe(5);
+        slider.step = -2;
+        expect(slider.step).toBeInstanceOf(Error);
+        slider.step = -5;
+        expect(slider.step).toBeInstanceOf(Error);
     })
 })
