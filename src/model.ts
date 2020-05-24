@@ -3,10 +3,10 @@ class Slider {
     public maxLimit: number;
     public position: number;
 
-    protected step: number;
-    set step(value) {
+    protected _step: number;
+    set step(value: number) {
         if (value < 0) throw new Error("Property can't be less than zero");
-        this.step = value;
+        this._step = value;
     }
 
     constructor(min: number = 0,
