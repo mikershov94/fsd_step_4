@@ -8,6 +8,9 @@ class Slider {
         if (value < 0) throw new Error("Property can't be less than zero");
         this._step = value;
     }
+    get step() {
+        return this._step;
+    }
 
     constructor(min: number = 0,
                 max: number = 100,
