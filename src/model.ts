@@ -1,3 +1,13 @@
-class Model {};
+class Slider {
+    constructor(min: number = 0,
+                max: number = 100,
+                step: number = 0) {
 
-export default Model;
+        this.minLimit = min;
+        this.maxLimit = max;
+        this.step = step;
+
+    }
+};
+
+export default Slider;
