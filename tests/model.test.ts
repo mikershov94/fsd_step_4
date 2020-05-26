@@ -1,16 +1,27 @@
 import Slider from '../src/model';
 
-describe('Testing model props', () => {
-    class Slideric extends Slider {
-        getProtectedStep(): number {
-            return this._step;
-        }
-        setProtectedStep(value: number): number {
-            this._step = value;
-            return this._step;
-        }
-    }
+describe('Testing model constructor', () => {
+    test('constructor should be take minLimit, maxLimit and step', () => {
+        expect(new Slider()).toEqual({
+            minLimit: 0,
+            maxLimit: 100,
+            _step: 0,
+            _position: 50
+        });
+        expect(new Slider(50, 150, 2)).toEqual({
+            minLimit: 50,
+            maxLimit: 150,
+            _step: 2,
+            _position: 100
+        })
+    });
+    
 
+});
+
+describe('Testing model props', () => {
+
+    //тестирование записи свойства в объект
     function setProp(value: number, obj: any, propName: string) {
         try {
             obj[propName] = value;
@@ -19,6 +30,8 @@ describe('Testing model props', () => {
             return error;
         }
     };
+
+    //тестирование чтения свойства из объекта
     function getProp(obj: any, propName: string): number | any {
         try {
             return obj[propName];
@@ -34,31 +47,26 @@ describe('Testing model props', () => {
         expect(setProp(25, slider, 'position')).toBe(25);
         expect(setProp(0, slider, 'position')).toBe(0);
         expect(setProp(100, slider, 'position')).toBe(100);
+    });
+    test('prop position should be more than min limit', () =>{
+        const slider = new Slider();
+
         expect(setProp(-10, slider, 'position')).toBeInstanceOf(Error);
+    });
+    test('prop position should be less than max limit', () => {
+        const slider = new Slider();
+
         expect(setProp(200, slider, 'position')).toBeInstanceOf(Error);
     });
-    test('should be defined prop minimal limit', () => {
+    test('should be defined prop step', () => {
         const slider = new Slider();
-
-        expect(getProp(slider, 'minLimit')).toBe(0);
-        expect(setProp(25, slider, 'minLimit')).toBe(25);
-        expect(setProp(-50, slider, 'minLimit')).toBe(-50);
+        
+        expect(getProp(slider, 'step')).toBeGreaterThanOrEqual(0);
+        expect(setProp(1, slider, 'step')).toBe(1);
     });
-    test('should be defined prop maximum limit', () => {
+    test('prop step should be more than zero', () => {
         const slider = new Slider();
-
-        expect(getProp(slider, 'maxLimit')).toBe(100);
-        expect(setProp(200, slider, 'maxLimit')).toBe(200);
-        expect(setProp(-10, slider, 'maxLimit')).toBe(-10);
+        
+        expect(setProp(-1, slider, 'step')).toBeInstanceOf(Error);
     });
-    test('should be defined protected prop step', () => {
-        const slider = new Slider();
-        const slideric = new Slideric();
-
-
-        expect(getProp(slider, 'step')).toBeFalsy();
-        expect(setProp(1, slider, 'step')).toBeInstanceOf(Error);
-        expect(slideric.getProtectedStep()).toBeTruthy;
-        expect(slideric.setProtectedStep(5)).toBe(5);
-    })
 })

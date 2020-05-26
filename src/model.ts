@@ -21,10 +21,11 @@ class Slider {
         return this._step;
     }
     public set step(value: number) {
-        if (this instanceof Slider) {
+        if (value >= 0) {
             this._step = value;
+            return
         };
-        throw new Error('Write is denied. Step is protected prop');
+        throw new Error("Prop step can't be less than zero");
     }
 
 
@@ -35,7 +36,7 @@ class Slider {
         this.minLimit = min;
         this.maxLimit = max;
         this._step = step;
-        this._position = max / 2;
+        this._position = (min + max) / 2;
 
     }
 };
