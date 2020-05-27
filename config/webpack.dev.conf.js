@@ -26,7 +26,7 @@ module.exports = merge(commonWebpackConf, {
         open: true,
         overlay: true,
         stats: 'errors-only',
-        port: 3000
+        port: 3001
     },
 
     optimization: {
