@@ -7,6 +7,8 @@ const PATHS = require('./webpack.paths');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 const PAGE_DIR = `${PATHS.src}/pages`;
 const PAGES = fs.readdirSync(PAGE_DIR).filter(page => page.endsWith('.pug'));
@@ -39,6 +41,9 @@ module.exports = merge(commonWebpackConf, {
             template: `${PAGE_DIR}/${page}`,
             filename: `./${page.replace(/\.pug/, '.html')}`
         })),
+        new MiniCssExtractPlugin({
+            filename: 'css/main-[hash:7].css'
+        }),
         //new CopyWebpackPlugin([
             //{ from: `${PATHS.public}/img`, to: `${PATHS.dist}/img` },
             //{ from: `${PATHS.public}/icons`, to: `${PATHS.dist}/icons` },

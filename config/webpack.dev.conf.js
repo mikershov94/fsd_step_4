@@ -7,6 +7,8 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 const PATHS = require('./webpack.paths');
 
@@ -38,6 +40,9 @@ module.exports = merge(commonWebpackConf, {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'css/main-[hash:7].css'
         }),
         ...PAGES.map(page => new HtmlWebpackPlugin({
             template: `${PAGE_DIR}/${page}`,

@@ -7,7 +7,7 @@ const PATHS = require('./webpack.paths');
 module.exports = {
 
     entry: {
-        app: PATHS.src + '/index.js'
+        app: PATHS.src + '/index.ts'
     },
     output: {
         filename: 'js/app-[hash:7].js',
@@ -101,5 +101,5 @@ module.exports = {
 
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-    }
+    },
 }
