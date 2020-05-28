@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1590647166933" clover="3.2.0">
-  <project timestamp="1590647166933" name="All files">
+<coverage generated="1590647725024" clover="3.2.0">
+  <project timestamp="1590647725025" name="All files">
     <metrics statements="29" coveredstatements="29" conditionals="12" coveredconditionals="12" methods="8" coveredmethods="8" elements="49" coveredelements="49" complexity="0" loc="29" ncloc="29" packages="1" files="2" classes="2"/>
     <file name="model.ts" path="/home/michael/web-dev/fsd_step_4/src/model.ts">
       <metrics statements="23" coveredstatements="23" conditionals="12" coveredconditionals="12" methods="6" coveredmethods="6"/>
@@ -33,7 +33,7 @@
       <line num="1" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
-      <line num="6" count="1" type="stmt"/>
+      <line num="6" count="2" type="stmt"/>
       <line num="12" count="1" type="stmt"/>
       <line num="14" count="1" type="stmt"/>
     </file>
