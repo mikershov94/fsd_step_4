@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1590647725024" clover="3.2.0">
-  <project timestamp="1590647725025" name="All files">
-    <metrics statements="29" coveredstatements="29" conditionals="12" coveredconditionals="12" methods="8" coveredmethods="8" elements="49" coveredelements="49" complexity="0" loc="29" ncloc="29" packages="1" files="2" classes="2"/>
+<coverage generated="1590652395948" clover="3.2.0">
+  <project timestamp="1590652395948" name="All files">
+    <metrics statements="32" coveredstatements="32" conditionals="12" coveredconditionals="12" methods="10" coveredmethods="10" elements="54" coveredelements="54" complexity="0" loc="32" ncloc="32" packages="1" files="2" classes="2"/>
     <file name="model.ts" path="/home/michael/web-dev/fsd_step_4/src/model.ts">
       <metrics statements="23" coveredstatements="23" conditionals="12" coveredconditionals="12" methods="6" coveredmethods="6"/>
       <line num="1" count="1" type="stmt"/>
@@ -29,13 +29,16 @@
       <line num="44" count="1" type="stmt"/>
     </file>
     <file name="view.ts" path="/home/michael/web-dev/fsd_step_4/src/view.ts">
-      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
       <line num="1" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
-      <line num="5" count="1" type="stmt"/>
-      <line num="6" count="2" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="14" count="1" type="stmt"/>
+      <line num="7" count="2" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

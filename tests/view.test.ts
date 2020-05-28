@@ -26,7 +26,14 @@ describe('Testing view.render()', () => {
 
     test('view should update slider position in HTML', () => {
         const testTemplate = document;
-        testTemplate.body.innerHTML = '<div id="fsd-slider"></div>';
+        testTemplate.body.innerHTML = '<div id="fsd-slider">' +
+                                            '<div class="wrapper">' +
+                                                '<div class="rail">' +
+                                                    '<div class="slider" data-position="50">' +
+                                                    '</div>' +
+                                                '</div>' +
+                                            '</div>'
+                                      '</div>';
 
         const testView = new SliderView();
         const sourceTemplate = '<div class="wrapper">' +
