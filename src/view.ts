@@ -1,7 +1,13 @@
+import $ from 'jquery';
+
 class SliderView {
 
-    render() {
-
+    render(position: number) {
+        $('#fsd-slider').append(`<div class="wrapper">` +
+                                    `<div class="rail">` +
+                                        `<div class="slider" data-position=${position}></div>` +
+                                    `</div>` +
+                                `</div>`);
     }
 }
 

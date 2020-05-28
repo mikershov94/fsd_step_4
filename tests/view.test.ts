@@ -2,18 +2,24 @@ import SliderView from '../src/view';
 
 
 describe('Testing view.render()', () => {
-    const testView = new SliderView();
-;
-    test('method render should be defined', () => {
-        expect(testView.render()).toBeDefined();
-    });
-    test('method render should be call with arg position', () => {
-        expect(testView.render()).toHaveBeenCalledWith(position)
-    })
-    test('method render should return HTML-template', () => {
-        const $ = require('jquery');
-        const template = '<div class="wrapper"><div class="rail"><div class="slider"></div></div></div>'
+    const testTemplate = document;
+    testTemplate.body.innerHTML = '<div id="fsd-slider"></div>';
 
-        expect($('fsd-slider').text()).toEqual(template)
+    test('method render should set HTML-template to div#fsd-slider', () => {
+        const testView = new SliderView();
+        //создаем ожидаемую HTML-разметку
+        const resultTemplate = '<div class="wrapper">' +
+                                   '<div class="rail">' +
+                                       '<div class="slider" data-position="50">' +
+                                       '</div>' +
+                                    '</div>' +
+                               '</div>'
+        
+
+        //вызываем тестируемый метод
+        testView.render(50);
+
+        //проверяем результат его работы
+        expect(testTemplate.body.children[0].innerHTML).toEqual(resultTemplate);
     });
 })
