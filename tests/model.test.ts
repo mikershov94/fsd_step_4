@@ -21,52 +21,59 @@ describe('Testing model constructor', () => {
 
 describe('Testing model props', () => {
 
-    //тестирование записи свойства в объект
-    function setProp(value: number, obj: any, propName: string) {
-        try {
-            obj[propName] = value;
-            return obj[propName];
-        } catch (error) {
-            return error;
-        }
-    };
-
-    //тестирование чтения свойства из объекта
-    function getProp(obj: any, propName: string): number | any {
-        try {
-            return obj[propName];
-        } catch (error) {
-            throw error;
-        }
-    };
 
     test('should be defined prop position of slider', () => {
-        const slider = new Slider();
+        const model = new Slider();
 
-        expect(getProp(slider, 'position')).toBeTruthy();
-        expect(setProp(25, slider, 'position')).toBe(25);
-        expect(setProp(0, slider, 'position')).toBe(0);
-        expect(setProp(100, slider, 'position')).toBe(100);
+        expect(model.getPosition()).toBeTruthy();
+        model.setPosition(25);
+        expect(model.getPosition()).toBe(25);
+        model.setPosition(0);
+        expect(model.getPosition()).toBe(0);
+        model.setPosition(100);
+        expect(model.getPosition()).toBe(100);
     });
     test('prop position should be more than min limit', () =>{
-        const slider = new Slider();
+        const model = new Slider();
+        const callSetPosition = (value: number) => {
+            try {
+                model.setPosition(value);
+            } catch (error) {
+                return error
+            }
+        }
 
-        expect(setProp(-10, slider, 'position')).toBeInstanceOf(Error);
+        expect(callSetPosition(-100)).toBeInstanceOf(Error);
     });
     test('prop position should be less than max limit', () => {
-        const slider = new Slider();
+        const model = new Slider();
+        const callSetPosition = (value: number) => {
+            try {
+                model.setPosition(value);
+            } catch (error) {
+                return error
+            }
+        }
 
-        expect(setProp(200, slider, 'position')).toBeInstanceOf(Error);
+        expect(callSetPosition(200)).toBeInstanceOf(Error);
     });
     test('should be defined prop step', () => {
-        const slider = new Slider();
+        const model = new Slider();
         
-        expect(getProp(slider, 'step')).toBeGreaterThanOrEqual(0);
-        expect(setProp(1, slider, 'step')).toBe(1);
+        expect(model.getStep()).toBeGreaterThanOrEqual(0);
+        model.setStep(1)
+        expect(model.getStep()).toBe(1);
     });
     test('prop step should be more than zero', () => {
-        const slider = new Slider();
+        const model = new Slider();
+        const callSetStep = (value: number) => {
+            try {
+                model.setStep(value);
+            } catch (error) {
+                return error
+            }
+        }
         
-        expect(setProp(-1, slider, 'step')).toBeInstanceOf(Error);
+        expect(callSetStep(-1)).toBeInstanceOf(Error);
     });
 })
