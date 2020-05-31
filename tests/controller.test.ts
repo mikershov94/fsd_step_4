@@ -5,26 +5,47 @@ import SliderView from '../src/view';
 describe('Test controller', () => {
     
     const model = new SliderModel();
-    const view  = new SliderView()
-    const controller = new SliderController(model, view);
+    const view  = new SliderView();
+
     const mouseDown = new Event('mousedown');
     const mouseMove = new Event('mousemove');
     const mouseUp = new Event('mouseup');
+    
+    test('constructor should call method bindHandlerDown in view', () => {
+        const mockBindHandlerMouseDown = jest.spyOn(view, 'bindHandlerDown');
+        const controller = new SliderController(model, view);
+
+        expect(mockBindHandlerMouseDown).toHaveBeenCalled();
+    })
 
     test('controller should has handler mousedown on slider', () => {
+        const controller = new SliderController(model, view);
         const mockBindHandlerMove = jest.spyOn(view, 'bindHandlerMove');
 
         controller.onMouseDownSlider(mouseDown)
         expect(mockBindHandlerMove).toHaveBeenCalled();
     });
 
-    test('controller should has handler move on document after slider-click', () => {
+    describe('controller should has handler mousemove-event', () =>{
+        const mockGetRailPosition = jest.spyOn(view, 'getRailPosition');
+        const mockGetSliderPosition = jest.spyOn(view, 'getSliderPosition');
         const mockSetPosition = jest.spyOn(model, 'setPosition');
+        const controller = new SliderController(model, view);
+        controller.onMoveSlider(mouseMove)
         
-        controller.onMoveSlider(mouseMove);
-        expect(mockSetPosition).toHaveBeenCalled()
+        test('handler should call view-method getRailPosition', () => {
+            expect(mockGetRailPosition).toHaveBeenCalled();
+        });
+        test('handler should call view-method getSliderPosition', () => {
+            expect(mockGetSliderPosition).toHaveBeenCalled();
+        });
+        test('handler should call model-method setPosition', () => {
+            expect(mockSetPosition).toHaveBeenCalled();
+        });
     });
+
     test('controller should has handler mouseup on document after slider-move', () => {
+        const controller = new SliderController(model, view);
         const mockBindHandlerMouseUp = jest.spyOn(view, 'unbindHandlerUp');
 
         controller.onMouseUpSlider(mouseUp)

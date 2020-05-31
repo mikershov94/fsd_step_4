@@ -6,12 +6,10 @@ class SliderController {
         this.model = model;
         this.view = view;
 
-        //this.view.bindHandlerDown(this.onMouseDownSlider)
-        
+        this.view.bindHandlerDown(this.onMouseDownSlider);
     }
 
     onMouseDownSlider(e: object): void {
-        
         this.view.bindHandlerMove(this.onMoveSlider);
     }
 

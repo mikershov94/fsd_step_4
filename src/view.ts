@@ -29,6 +29,14 @@ class SliderView {
             this.document.unbind('mousemove')
         });
     }
+
+    getRailPosition() {
+        console.log('')
+    }
+
+    getSliderPosition() {
+        console.log('')
+    }
     
     updatePosition(newPosition: number) {
         this.wrapper.find('.slider').attr('data-position', newPosition);
