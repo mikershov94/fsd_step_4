@@ -14,6 +14,10 @@ class SliderController {
     }
 
     onMoveSlider(e: object): void {
+        const railPosition = this.view.getRailPosition();
+        const sliderPosition = this.view.getSliderPosition();
+        const sliderRelativeRail = sliderPosition - railPosition;
+
         this.model.setPosition(25);
     }
 

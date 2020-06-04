@@ -11,8 +11,8 @@ class SliderView {
     constructor() {
         this.document = $(document);
         this.wrapper = $('#fsd-slider');
-        this.rail = this.wrapper.find('.rail')
-        this.slider = this.wrapper.find('.slider');
+        this.rail = this.wrapper.find('.rail');
+        this.slider = this.rail.find('.slider');
 
     }
 
@@ -30,8 +30,9 @@ class SliderView {
         });
     }
 
-    getRailPosition() {
-        console.log('')
+    getRailPosition(): number {
+        
+        return 100
     }
 
     getSliderPosition() {
@@ -42,8 +43,7 @@ class SliderView {
         this.wrapper.find('.slider').attr('data-position', newPosition);
     }
 
-    render(position: number): void {
-        
+    render(position: number = 50): void {
         this.wrapper.append(`<div class="wrapper">` +
                                     `<div class="rail">` +
                                         `<div class="slider" data-position=${position}></div>` +

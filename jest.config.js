@@ -1,4 +1,5 @@
 module.exports = {
     preset: 'ts-jest',
-    collectCoverage: false
+    collectCoverage: false,
+    verbose: true,
 }
