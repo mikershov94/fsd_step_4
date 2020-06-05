@@ -6,11 +6,11 @@ class SliderController {
         this.model = model;
         this.view = view;
 
-        this.view.bindHandlerDown(this.onMouseDownSlider);
+        this.view.subscribeOnMouseDown(this.onMouseDownSlider);
     }
 
     onMouseDownSlider(e: object): void {
-        this.view.bindHandlerMove(this.onMoveSlider);
+        this.view.subscribeOnMouseMove(this.onMoveSlider);
     }
 
     onMoveSlider(e: object): void {
@@ -22,7 +22,7 @@ class SliderController {
     }
 
     onMouseUpSlider(e: object): void {
-        this.view.unbindHandlerUp()
+        this.view.subscribeOnMouseUp(this.onMoveSlider);
     }
 
 

@@ -1,38 +1,35 @@
 import $ from 'jquery';
 
 class SliderView {
-    public document: any;
+    public plugin: any;
     public wrapper: any;
     public rail: any;
     public slider: any;
 
-    public oldSliderPosition: number;
-
     constructor() {
-        this.document = $(document);
-        this.wrapper = $('#fsd-slider');
-        this.rail = this.wrapper.find('.rail');
-        this.slider = this.rail.find('.slider');
+        this.plugin = document.querySelector('#fsd-slider')
 
     }
 
-    bindHandlerDown(callback: any): void {
-        this.slider.on('mousedown', callback);
+    subscribeOnMouseDown(callback: any): void {
+        this.slider.addEventListener('mousedown', callback);
     }
 
-    bindHandlerMove(callback: any): void {
-        this.document.bind('mousemove', callback)
+    subscribeOnMouseMove(callback: any): void {
+        document.addEventListener('mousemove', callback)
     }
     
-    unbindHandlerUp(): void {
-        this.document.on('mouseup', () => {
-            this.document.unbind('mousemove')
-        });
+    subscribeOnMouseUp(callback: any): void {
+        document.addEventListener('mouseup', callback);
+    }
+
+    unsubscribeFromMouseMove(callback: any): void {
+        document.removeEventListener('mousemove', callback);
     }
 
     getRailPosition(): number {
-        
-        return 100
+        console.log(this.wrapper)
+        return 100;
     }
 
     getSliderPosition() {
@@ -44,11 +41,20 @@ class SliderView {
     }
 
     render(position: number = 50): void {
-        this.wrapper.append(`<div class="wrapper">` +
-                                    `<div class="rail">` +
-                                        `<div class="slider" data-position=${position}></div>` +
-                                    `</div>` +
-                                `</div>`);
+        this.wrapper = document.createElement('div');
+        this.rail = document.createElement('div');
+        this.slider = document.createElement('div');
+
+        this.wrapper.className = 'wrapper';
+        this.rail.className = 'rail';
+        this.slider.className = 'slider';
+
+        this.slider.dataset.position = position;
+        
+        this.plugin.appendChild(this.wrapper);
+        this.wrapper.appendChild(this.rail);
+        this.rail.appendChild(this.slider);
+
     }
 }
 
