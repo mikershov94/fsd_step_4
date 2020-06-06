@@ -7,29 +7,28 @@ class SliderView {
     public slider: any;
 
     constructor() {
-        this.plugin = document.querySelector('#fsd-slider')
+        this.plugin = $(document).find('#fsd-slider');
 
     }
 
     subscribeOnMouseDown(callback: any): void {
-        this.slider.addEventListener('mousedown', callback);
+        this.slider.on('mousedown', callback);
     }
 
     subscribeOnMouseMove(callback: any): void {
-        document.addEventListener('mousemove', callback)
+        $(document).on('mousemove', callback)
     }
     
     subscribeOnMouseUp(callback: any): void {
-        document.addEventListener('mouseup', callback);
+        $(document).on('mouseup', callback);
     }
 
     unsubscribeFromMouseMove(callback: any): void {
-        document.removeEventListener('mousemove', callback);
+        $(document).unbind('mousemove', callback);
     }
 
     getRailPosition(): number {
-        console.log(this.wrapper)
-        return 100;
+        return this.rail.offset().left;
     }
 
     getSliderPosition() {
@@ -41,20 +40,20 @@ class SliderView {
     }
 
     render(position: number = 50): void {
-        this.wrapper = document.createElement('div');
-        this.rail = document.createElement('div');
-        this.slider = document.createElement('div');
+        $('<div>',  {
+                class: 'wrapper',
+                append: $('<div>', {
+                                class: 'rail',
+                                append: $('<div>', {
+                                                class: 'slider',
+                                })
+                        .attr('data-position', position)
+                })
+        }).appendTo(this.plugin);
 
-        this.wrapper.className = 'wrapper';
-        this.rail.className = 'rail';
-        this.slider.className = 'slider';
-
-        this.slider.dataset.position = position;
-        
-        this.plugin.appendChild(this.wrapper);
-        this.wrapper.appendChild(this.rail);
-        this.rail.appendChild(this.slider);
-
+        this.wrapper = $('.wrapper');
+        this.rail = $('.rail');
+        this.slider = $('.slider');
     }
 }
 
