@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import SliderController from '../src/controller';
 import SliderModel from '../src/model';
 import SliderView from '../src/view';

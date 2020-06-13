@@ -27,11 +27,11 @@ class SliderView {
         $(document).unbind('mousemove', callback);
     }
 
-    getRailPosition(): number {
-        return this.rail.offset().left;
+    getRailPosition(): void {
+        console.log('')
     }
 
-    getSliderPosition() {
+    getSliderPosition(): void {
         console.log('')
     }
     
