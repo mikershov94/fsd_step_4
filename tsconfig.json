@@ -1,17 +1,14 @@
 {
     "compilerOptions": {
-        "outDir": "./dist",
-        "noImplicitAny": true,
         "module": "ES6",
-        "target": "ES5",
-        "jsx": "react",
-        "allowJs": true,
+        "target": "ES6",
         "esModuleInterop": true,
-
-        "types": [
-            "jquery",
-        ]
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "outDir": "./dist",
     },
-    
-    "exclude": ["node_modules"]
+
+    "exclude": [
+        "./node_modules",
+    ]
 }
