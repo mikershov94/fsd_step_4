@@ -9,15 +9,9 @@
         "esModuleInterop": true,
 
         "types": [
-            "jest",
             "jquery",
-            "puppeteer",
-            "jest-environment-puppeteer",
-            "expect-puppeteer"
         ]
     },
-    "include": [
-        "tests/*.test.ts"
-    ],
+    
     "exclude": ["node_modules"]
 }

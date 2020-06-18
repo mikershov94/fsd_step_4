@@ -1,10 +1,10 @@
 import $ from 'jquery';
 
 class SliderView {
-    public plugin: any;
-    public wrapper: any;
-    public rail: any;
-    public slider: any;
+    public plugin: JQuery;
+    public wrapper: JQuery;
+    public rail: JQuery;
+    public slider: JQuery;
 
     constructor() {
         this.plugin = $(document).find('#fsd-slider');
@@ -40,20 +40,9 @@ class SliderView {
     }
 
     render(position: number = 50): void {
-        $('<div>',  {
-                class: 'wrapper',
-                append: $('<div>', {
-                                class: 'rail',
-                                append: $('<div>', {
-                                                class: 'slider',
-                                })
-                        .attr('data-position', position)
-                })
-        }).appendTo(this.plugin);
-
-        this.wrapper = $('.wrapper');
-        this.rail = $('.rail');
-        this.slider = $('.slider');
+        this.wrapper = $('<div class="wrapper"></div>').appendTo(this.plugin);
+        this.rail = $('<div class="rail"></div>').appendTo(this.wrapper);
+        this.slider = $(`<div class="slider" data-position="${position}"></div>`).appendTo(this.rail);
     }
 }
 
