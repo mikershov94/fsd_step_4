@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.conf.js",
-    "build": "webpack --config config/webpack.build.conf.js"
+    "build": "webpack --config config/webpack.build.conf.js",
+    "test": "jasmine-ts --config=jasmine.json"
   },
   "author": "Michael E Ershov",
   "license": "ISC",
