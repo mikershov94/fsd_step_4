@@ -1,4 +1,3 @@
-import $ from 'jquery';
 
 class SliderView {
     public plugin: JQuery;

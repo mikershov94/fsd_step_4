@@ -6,6 +6,10 @@
         "noImplicitAny": true,
         "moduleResolution": "node",
         "outDir": "./dist",
+        "types": [
+            "jasmine",
+            "jquery"
+        ]
     },
 
     "include": [
