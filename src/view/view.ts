@@ -1,5 +1,7 @@
+import $ from 'jquery'
 
 class SliderView {
+    /*
     public plugin: JQuery;
     public wrapper: JQuery;
     public rail: JQuery;
@@ -37,11 +39,9 @@ class SliderView {
     updatePosition(newPosition: number) {
         this.wrapper.find('.slider').attr('data-position', newPosition);
     }
-
-    render(position: number = 50): void {
-        this.wrapper = $('<div class="wrapper"></div>').appendTo(this.plugin);
-        this.rail = $('<div class="rail"></div>').appendTo(this.wrapper);
-        this.slider = $(`<div class="slider" data-position="${position}"></div>`).appendTo(this.rail);
+    */
+    render(position: number = 50): JQuery {
+        return $('<div></div>').appendTo('#fsd-slider')
     }
 }
 
