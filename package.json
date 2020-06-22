@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.conf.js",
     "build": "webpack --config config/webpack.build.conf.js",
-    "test": "karma start"
+    "test": "jest"
   },
   "author": "Michael E Ershov",
   "license": "ISC",
