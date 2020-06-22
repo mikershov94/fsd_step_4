@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
-const slider = (): JQuery => {
-    return $('<div class="slider"></div>');
+const slider = (position: number = 50): JQuery => {
+    return $(`<div class="slider" data-position="${position}"></div>`);
 }
 
 export default slider;

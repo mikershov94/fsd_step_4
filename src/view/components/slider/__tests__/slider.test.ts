@@ -6,7 +6,7 @@ describe('UI-component slider', () => {
         expect(slider()).toBeInstanceOf(Object);
     })
     it('Jquery object contain HTML-template', () => {
-        const template: string = '<div class="slider"></div>';
+        const template: string = '<div class="slider" data-position="50"></div>';
         expect(slider()[0].outerHTML).toBe(template);
     })
 

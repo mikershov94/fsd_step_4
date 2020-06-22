@@ -1,7 +1,10 @@
 import $ from 'jquery'
 
+import rail from './components/rail';
+import slider from './components/slider';
+
 class SliderView {
-    /*
+    
     public plugin: JQuery;
     public wrapper: JQuery;
     public rail: JQuery;
@@ -9,9 +12,11 @@ class SliderView {
 
     constructor() {
         this.plugin = $(document).find('#fsd-slider');
+        this.rail = rail();
+        this.slider = slider();
 
     }
-
+/*
     subscribeOnMouseDown(callback: any): void {
         this.slider.on('mousedown', callback);
     }
@@ -41,7 +46,10 @@ class SliderView {
     }
     */
     render(position: number = 50): JQuery {
-        return $('<div></div>').appendTo('#fsd-slider')
+        this.wrapper = $('<div class="wrapper"></div>').appendTo('#fsd-slider');
+        this.rail.appendTo(this.wrapper);
+        this.slider.appendTo(this.rail);
+        return this.plugin;
     }
 }
 
