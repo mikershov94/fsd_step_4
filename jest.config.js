@@ -1,5 +1,6 @@
 module.exports = {
   preset: "ts-jest",
+  verbose: true,
   clearMocks: true,
   collectCoverage: true,
   roots: [
