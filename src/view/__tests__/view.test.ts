@@ -1,6 +1,6 @@
 import SliderView from '../view';
 
-describe('Testing view', () => {
+describe('Plugin should has module which works with DOM', () => {
 
     describe('view should has view.render()', () => {
         const html = document
@@ -46,6 +46,37 @@ describe('Testing view', () => {
         it('view.getSliderPosition() should return natural number', () => {
             expect(result).toBeGreaterThanOrEqual(0);
         })
+    })
+
+    describe('view should bind callback on events', () => {
+        const view = new SliderView();
+
+        const testCallback = (): void => { let b = 2 + 3 };
+1
+        it('subscribeOnMouseDown take callback', () => {
+            const spy = jest.spyOn(view, 'subscribeOnMouseDown');
+            view.subscribeOnMouseDown(testCallback);
+            expect(spy).toHaveBeenCalledWith(testCallback);
+        })
+
+        it('subscribeOnMouseMove take callback', () => {
+            const spy = jest.spyOn(view, 'subscribeOnMouseMove');
+            view.subscribeOnMouseMove(testCallback);
+            expect(spy).toHaveBeenCalledWith(testCallback);
+        })
+
+        it('subscribeOnMouseUp take callback', () => {
+            const spy = jest.spyOn(view, 'subscribeOnMouseUp');
+            view.subscribeOnMouseUp(testCallback);
+            expect(spy).toHaveBeenCalledWith(testCallback);
+        })
+
+        it('unsubscribeFromMouseMove take callback', () => {
+            const spy = jest.spyOn(view, 'unsubscribeFromMouseMove');
+            view.unsubscribeFromMouseMove(testCallback);
+            expect(spy).toHaveBeenCalledWith(testCallback);
+        })
+      
     })
 
 })

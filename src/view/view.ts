@@ -12,27 +12,27 @@ class SliderView {
 
     constructor() {
         this.plugin = $(document).find('#fsd-slider');
+        this.wrapper = $('<div class="wrapper"></div>');
         this.rail = rail();
         this.slider = slider();
 
     }
-/*
-    subscribeOnMouseDown(callback: any): void {
+
+    subscribeOnMouseDown(callback: VoidFunction): void {
         this.slider.on('mousedown', callback);
     }
 
-    subscribeOnMouseMove(callback: any): void {
+    subscribeOnMouseMove(callback: VoidFunction): void {
         $(document).on('mousemove', callback)
     }
     
-    subscribeOnMouseUp(callback: any): void {
+    subscribeOnMouseUp(callback: VoidFunction): void {
         $(document).on('mouseup', callback);
     }
 
-    unsubscribeFromMouseMove(callback: any): void {
+    unsubscribeFromMouseMove(callback: VoidFunction): void {
         $(document).unbind('mousemove', callback);
     }
-*/
     getRailPosition(): number {
         return this.rail[0].getBoundingClientRect().left;
     }
@@ -40,13 +40,9 @@ class SliderView {
     getSliderPosition(): number {
         return this.slider[0].getBoundingClientRect().left;
     }
-/*    
-    updatePosition(newPosition: number) {
-        this.wrapper.find('.slider').attr('data-position', newPosition);
-    }
-    */
+
     render(position: number = 50): JQuery {
-        this.wrapper = $('<div class="wrapper"></div>').appendTo('#fsd-slider');
+        this.wrapper.appendTo('#fsd-slider');
         this.rail.appendTo(this.wrapper);
         this.slider.appendTo(this.rail);
         return this.plugin;

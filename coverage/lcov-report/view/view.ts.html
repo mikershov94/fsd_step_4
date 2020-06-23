@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -108,11 +108,7 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -125,25 +121,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,7 +137,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,27 +173,27 @@ class SliderView {
 &nbsp;
     constructor() {
         this.plugin = $(document).find('#fsd-slider');
+        this.wrapper = $('&lt;div class="wrapper"&gt;&lt;/div&gt;');
         this.rail = rail();
         this.slider = slider();
 &nbsp;
     }
-/*
-    subscribeOnMouseDown(callback: any): void {
+&nbsp;
+    subscribeOnMouseDown(callback: VoidFunction): void {
         this.slider.on('mousedown', callback);
     }
 &nbsp;
-    subscribeOnMouseMove(callback: any): void {
+    subscribeOnMouseMove(callback: VoidFunction): void {
         $(document).on('mousemove', callback)
     }
     
-    subscribeOnMouseUp(callback: any): void {
+    subscribeOnMouseUp(callback: VoidFunction): void {
         $(document).on('mouseup', callback);
     }
 &nbsp;
-    unsubscribeFromMouseMove(callback: any): void {
+    unsubscribeFromMouseMove(callback: VoidFunction): void {
         $(document).unbind('mousemove', callback);
     }
-*/
     getRailPosition(): number {
         return this.rail[0].getBoundingClientRect().left;
     }
@@ -209,13 +201,9 @@ class SliderView {
     getSliderPosition(): number {
         return this.slider[0].getBoundingClientRect().left;
     }
-/*    
-    updatePosition(newPosition: number) {
-        this.wrapper.find('.slider').attr('data-position', newPosition);
-    }
-    */
+&nbsp;
     render(position: number = 50): JQuery {
-        this.wrapper = $('&lt;div class="wrapper"&gt;&lt;/div&gt;').appendTo('#fsd-slider');
+        this.wrapper.appendTo('#fsd-slider');
         this.rail.appendTo(this.wrapper);
         this.slider.appendTo(this.rail);
         return this.plugin;
@@ -229,7 +217,7 @@ export default SliderView;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jun 23 2020 12:43:04 GMT+0800 (Иркутск, стандартное время)
+                at Tue Jun 23 2020 17:46:03 GMT+0800 (Иркутск, стандартное время)
             </div>
         </div>
         <script src="../prettify.js"></script>
