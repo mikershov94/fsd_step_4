@@ -32,15 +32,15 @@ class SliderView {
     unsubscribeFromMouseMove(callback: any): void {
         $(document).unbind('mousemove', callback);
     }
-
-    getRailPosition(): void {
-        console.log('')
+*/
+    getRailPosition(): number {
+        return this.rail[0].getBoundingClientRect().left;
     }
 
-    getSliderPosition(): void {
-        console.log('')
+    getSliderPosition(): number {
+        return this.slider[0].getBoundingClientRect().left;
     }
-    
+/*    
     updatePosition(newPosition: number) {
         this.wrapper.find('.slider').attr('data-position', newPosition);
     }

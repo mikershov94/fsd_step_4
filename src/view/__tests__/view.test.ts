@@ -29,4 +29,23 @@ describe('Testing view', () => {
 
     })
 
+    describe('view should get position of rail', () => {
+        const view = new SliderView();
+        const result = view.getRailPosition();
+
+        it('view.getRailPosition() should return natural number', () => {
+            expect(result).toBeGreaterThanOrEqual(0);
+        })
+
+    })
+
+    describe('view should get position of slider', () => {
+        const view = new SliderView();
+        const result = view.getSliderPosition();
+
+        it('view.getSliderPosition() should return natural number', () => {
+            expect(result).toBeGreaterThanOrEqual(0);
+        })
+    })
+
 })
