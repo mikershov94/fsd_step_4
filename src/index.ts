@@ -1,3 +1,11 @@
-import './main.sass';
+interface JQuery {
+    fsdSlider(): void    
+}
 
-console.log($(document))
+(function($) {
+
+    $.fn.fsdSlider = function() {
+        console.log('плагин подключен и робит')
+    }
+
+})(jQuery)

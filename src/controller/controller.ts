@@ -10,22 +10,18 @@ class SliderController {
     }
 
     onMouseDownSlider(e: object): void {
+       // this.view.slider.left = e.pageX + 'px'        
+
         this.view.subscribeOnMouseMove(this.onMoveSlider);
     }
 
     onMoveSlider(e: object): void {
-        const railPosition = this.view.getRailPosition();
-        const sliderPosition = this.view.getSliderPosition();
-        const sliderRelativeRail = sliderPosition - railPosition;
-
-        this.model.setPosition(25);
+        
     }
 
     onMouseUpSlider(e: object): void {
         this.view.subscribeOnMouseUp(this.onMoveSlider);
     }
-
-
 
 };
 

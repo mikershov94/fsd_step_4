@@ -6,14 +6,6 @@ const PATHS = require('./webpack.paths');
 
 module.exports = {
 
-    entry: {
-        app: PATHS.src + '/index.ts'
-    },
-    output: {
-        filename: 'js/app-[hash:7].js',
-        path: PATHS.dist
-    },
-
     module: {
         rules: [
             {

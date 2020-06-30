@@ -14,12 +14,22 @@ const PAGE_DIR = `${PATHS.src}/pages`;
 const PAGES = fs.readdirSync(PAGE_DIR).filter(page => page.endsWith('.pug'));
 
 module.exports = merge(commonWebpackConf, {
+    entry: {
+        fsdSlider: PATHS.src + '/index.ts'
+    },
+    output: {
+        filename: 'fsd-slider-plugin.js',
+        path: PATHS.dist
+    },
+
+    externals: {
+        jquery: 'jQuery'
+    },
 
     mode: 'production',
-
+/*
     optimization: {
         moduleIds: 'hashed',
-        runtimeChunk: 'single',
         splitChunks: {
             cacheGroups: {
                 vendor: {
@@ -30,17 +40,13 @@ module.exports = merge(commonWebpackConf, {
             }
         }
     },
-
+*/
     plugins: [
         new CleanWebpackPlugin(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
         }),
-        ...PAGES.map(page => new HtmlWebpackPlugin({
-            template: `${PAGE_DIR}/${page}`,
-            filename: `./${page.replace(/\.pug/, '.html')}`
-        })),
         new MiniCssExtractPlugin({
             filename: 'css/main-[hash:7].css'
         }),
