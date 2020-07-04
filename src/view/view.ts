@@ -25,10 +25,15 @@ class SliderView {
 
     }
 
-    private moveSlider(pageX: number): void {
+    moveSlider(pageX: number): void {
         const offset = this.wrapper.offset().left;
         const offsetWidth = this.slider.outerWidth();
-        const left = pageX - offsetWidth / 2 - offset;
+        const wrapperWidth = this.wrapper.outerWidth();
+
+        let left = pageX - offsetWidth / 2 - offset;
+
+        if (left < 0) left = 0
+        if (left > wrapperWidth) left = wrapperWidth - offsetWidth;
 
         this.slider.css('left', `${left}px`)
     }

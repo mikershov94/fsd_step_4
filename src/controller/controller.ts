@@ -8,22 +8,17 @@ class SliderController {
 
     }
 
-    onMouseDown = (e: JQueryEventObject): void => {
-        // this.view.slider.left = e.pageX + 'px'        
-        console.log('down')
+    onMouseDown = (e: JQueryEventObject): void => {       
         this.view.subscribeOnMouseMove();
         this.view.subscribeOnMouseUp();
     }
  
     onMouseMove = (e: JQueryEventObject): void => {
-        //this.view.moveSlider(e.pageX);
-        console.log('move')
+        this.view.moveSlider(e.pageX);
     }
  
-    onMouseUp = (e: MouseEvent): void => {
+    onMouseUp = (e: JQueryEventObject): void => {
         this.view.unsubscribeMouseMove();
- 
-        console.log('up')
     }
 
     runPlugin(): void {
