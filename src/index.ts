@@ -11,6 +11,7 @@ import SliderView from './view';
         const model = new SliderModel();
         const view = new SliderView();
         const controller = new SliderController(model, view);
+        controller.testOutput();
 
         return this;
     }

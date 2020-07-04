@@ -17,8 +17,8 @@ const PAGES = fs.readdirSync(PAGE_DIR).filter(page => page.endsWith('.pug'));
 
 module.exports = merge(commonWebpackConf, {
     entry: {
-        app: PATHS.src + '/page-script.ts',
         fsdSlider: PATHS.src + '/index.ts',
+        app: PATHS.src + '/page-script.ts',
     },
     output: {
         filename: 'js/[name]-[hash:7].js',
