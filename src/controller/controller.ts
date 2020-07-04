@@ -9,8 +9,8 @@ class SliderController {
         this.view.subscribeOnMouseDown(this.onMouseDownSlider);
     }
 
-    testOutput(): void {
-        console.log('плагин подключен и робит');
+    runPlugin(): void {
+        this.view.render()
     }
 
     onMouseDownSlider(e: object): void {
