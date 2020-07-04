@@ -3,8 +3,9 @@ import $ from 'jquery'
 import rail from './components/rail';
 import slider from './components/slider';
 
+
 class SliderView {
-    
+        
     public plugin: JQuery;
     public container: JQuery;
     public wrapper: JQuery;
@@ -27,7 +28,7 @@ class SliderView {
     subscribeOnMouseMove(callback: VoidFunction): void {
         $(document).on('mousemove', callback)
     }
-    
+        
     subscribeOnMouseUp(callback: VoidFunction): void {
         $(document).on('mouseup', callback);
     }
@@ -44,5 +45,4 @@ class SliderView {
         return this.plugin;
     }
 }
-
 export default SliderView;

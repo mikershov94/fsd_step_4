@@ -1,0 +1,3 @@
+interface JQuery {
+    fsdSlider(): JQuery
+}

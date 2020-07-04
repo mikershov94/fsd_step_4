@@ -1,4 +1,4 @@
-class Slider {
+class SliderModel {
     public minLimit: number;
     public maxLimit: number;
 
@@ -41,4 +41,4 @@ class Slider {
     }
 };
 
-export default Slider;
+export default SliderModel;

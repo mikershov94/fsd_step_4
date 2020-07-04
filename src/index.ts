@@ -1,11 +1,18 @@
-interface JQuery {
-    fsdSlider(): void    
-}
+/// <reference path="index.d.ts" />
+
+import SliderModel from './model';
+import SliderController from './controller';
+import SliderView from './view';
 
 (function($) {
 
     $.fn.fsdSlider = function() {
-        console.log('плагин подключен и робит')
+
+        const model = new SliderModel();
+        const view = new SliderView();
+        const controller = new SliderController(model, view);
+
+        return this;
     }
 
 })(jQuery)
