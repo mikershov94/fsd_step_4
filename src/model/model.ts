@@ -30,7 +30,7 @@ class SliderModel {
 
 
     constructor(min: number = 0,
-                max: number = 100,
+                max: number = 1000,
                 step: number = 0) {
 
         this.minLimit = min;
