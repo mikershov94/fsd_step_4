@@ -6,25 +6,32 @@ class SliderController {
         this.model = model;
         this.view = view;
 
-        this.view.subscribeOnMouseDown(this.onMouseDownSlider);
+    }
+
+    onMouseDown = (e: JQueryEventObject): void => {
+        // this.view.slider.left = e.pageX + 'px'        
+        console.log('down')
+        this.view.subscribeOnMouseMove();
+        this.view.subscribeOnMouseUp();
+    }
+ 
+    onMouseMove = (e: JQueryEventObject): void => {
+        //this.view.moveSlider(e.pageX);
+        console.log('move')
+    }
+ 
+    onMouseUp = (e: MouseEvent): void => {
+        this.view.unsubscribeMouseMove();
+ 
+        console.log('up')
     }
 
     runPlugin(): void {
         this.view.render()
-    }
-
-    onMouseDownSlider(e: object): void {
-       // this.view.slider.left = e.pageX + 'px'        
-
-        this.view.subscribeOnMouseMove(this.onMoveSlider);
-    }
-
-    onMoveSlider(e: object): void {
-        
-    }
-
-    onMouseUpSlider(e: object): void {
-        this.view.subscribeOnMouseUp(this.onMoveSlider);
+        this.view.initObserver(
+                                  this.onMouseDown,
+                                  this.onMouseMove,
+                                  this.onMouseUp);
     }
 
 };

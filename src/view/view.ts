@@ -12,6 +12,10 @@ class SliderView {
     public rail: JQuery;
     public slider: JQuery;
 
+    public callbackDown: VoidFunction;
+    public callbackMove: VoidFunction;
+    public callbackUp: VoidFunction;
+
     constructor() {
         this.plugin = $(document).find('#fsd-slider');
         this.container = $('<div class="container"></div>');
@@ -21,20 +25,36 @@ class SliderView {
 
     }
 
-    subscribeOnMouseDown(callback: VoidFunction): void {
-        this.slider.on('mousedown', callback);
+    private moveSlider(pageX: number): void {
+        const offset = this.wrapper.offset().left;
+        const offsetWidth = this.slider.outerWidth();
+        const left = pageX - offsetWidth / 2 - offset;
+
+        this.slider.css('left', `${left}px`)
     }
 
-    subscribeOnMouseMove(callback: VoidFunction): void {
-        $(document).on('mousemove', callback)
-    }
-        
-    subscribeOnMouseUp(callback: VoidFunction): void {
-        $(document).on('mouseup', callback);
+    initObserver(
+                    callbackDown: VoidFunction,
+                    callbackMove: VoidFunction,
+                    callbackUp: VoidFunction
+                    ): void {
+        this.callbackDown = callbackDown;
+        this.callbackMove = callbackMove;
+        this.callbackUp = callbackUp;
+
+        this.slider.on('mousedown', this.callbackDown);
     }
 
-    unsubscribeFromMouseMove(callback: VoidFunction): void {
-        $(document).unbind('mousemove', callback);
+    subscribeOnMouseMove(): void {
+        $(document).on('mousemove', this.callbackMove);
+    }
+
+    subscribeOnMouseUp(): void {
+        $(document).on('mouseup', this.callbackUp);
+    }
+
+    unsubscribeMouseMove(): void {
+        $(document).unbind('mousemove');
     }
 
     render(position: number = 50): JQuery {
