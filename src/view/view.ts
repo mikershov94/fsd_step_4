@@ -2,6 +2,7 @@ import $ from 'jquery'
 
 import rail from './components/rail';
 import slider from './components/slider';
+import outputField from './components/output-field';
 
 
 class SliderView {
@@ -11,6 +12,7 @@ class SliderView {
     public wrapper: JQuery;
     public rail: JQuery;
     public slider: JQuery;
+    public outputField: JQuery;
 
     public callbackDown: VoidFunction;
     public callbackMove: VoidFunction;
@@ -22,6 +24,7 @@ class SliderView {
         this.wrapper = $('<div class="wrapper"></div>');
         this.rail = rail();
         this.slider = slider();
+        this.outputField = outputField();
 
     }
 
@@ -61,11 +64,12 @@ class SliderView {
         $(document).unbind('mousemove');
     }
 
-    render(position: number = 50): JQuery {
+    render(): JQuery {
         this.container.appendTo('#fsd-slider');
         this.wrapper.appendTo(this.container);
         this.wrapper.append(this.rail);
         this.wrapper.append(this.slider);
+        this.container.append(this.outputField);
         return this.plugin;
     }
 }

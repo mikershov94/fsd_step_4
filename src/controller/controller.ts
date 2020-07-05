@@ -15,8 +15,8 @@ class SliderController {
  
     onMouseMove = (e: JQueryEventObject): void => {
         let position = this.view.moveSlider(e.pageX, this.model.minLimit, this.model.maxLimit);
-        this.model.setPosition(position);
-        console.log(this.model.getPosition())
+        this.model.setPosition(Math.floor(position));
+        this.view.outputField[0].value = this.model.getPosition();
     }
  
     onMouseUp = (e: JQueryEventObject): void => {
