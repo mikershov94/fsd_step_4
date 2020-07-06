@@ -1,3 +1,5 @@
+/// <reference path="view.d.ts" />
+
 import $ from 'jquery'
 
 import rail from './components/rail';
@@ -5,7 +7,7 @@ import slider from './components/slider';
 import outputField from './components/output-field';
 
 
-class SliderView {
+class SliderView implements ISliderView {
         
     public plugin: JQuery;
     public container: JQuery;

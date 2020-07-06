@@ -1,4 +1,4 @@
-interface SliderModelInterface {
+interface ISliderModel {
     minLimit: number;
     maxLimit: number;
 
