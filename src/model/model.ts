@@ -1,12 +1,15 @@
-class SliderModel {
+/// <reference path="model.d.ts" />
+
+class SliderModel implements SliderModelInterface{
     public minLimit: number;
     public maxLimit: number;
 
     protected _position: number;
+
     public getPosition(): number {
         return this._position;
     }
-    public setPosition(value: number) {
+    public setPosition(value: number): void {
         if (value < this.minLimit) {
             throw new Error("Position can't be less than minimum limit");
         } else if (value > this.maxLimit) {
@@ -20,7 +23,7 @@ class SliderModel {
     public getStep(): number {
         return this._step;
     }
-    public setStep(value: number) {
+    public setStep(value: number): void {
         if (value >= 0) {
             this._step = value;
             return
