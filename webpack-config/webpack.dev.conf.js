@@ -7,6 +7,8 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 const PATHS = require('./webpack.paths');
 
@@ -14,6 +16,14 @@ const PAGE_DIR = `${PATHS.src}/pages`;
 const PAGES = fs.readdirSync(PAGE_DIR).filter(page => page.endsWith('.pug'));
 
 module.exports = merge(commonWebpackConf, {
+    entry: {
+        fsdSlider: PATHS.src + '/index.ts',
+        app: PATHS.src + '/page-script.ts',
+    },
+    output: {
+        filename: 'js/[name]-[hash:7].js',
+        path: PATHS.dist
+    },
 
     mode: 'development',
 
@@ -24,7 +34,7 @@ module.exports = merge(commonWebpackConf, {
         open: true,
         overlay: true,
         stats: 'errors-only',
-        port: 3000
+        port: 3001
     },
 
     optimization: {
@@ -38,6 +48,9 @@ module.exports = merge(commonWebpackConf, {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'css/main-[hash:7].css'
         }),
         ...PAGES.map(page => new HtmlWebpackPlugin({
             template: `${PAGE_DIR}/${page}`,
