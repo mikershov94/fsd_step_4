@@ -1,8 +1,10 @@
-class SliderController {
-    public model: any;
-    public view: any;
+/// <reference path="controller.d.ts" />
 
-    constructor(model: any, view: any) {
+class SliderController implements ISliderController{
+    public model: ISliderModel;
+    public view: ISliderView;
+
+    constructor(model: ISliderModel, view: ISliderView) {
         this.model = model;
         this.view = view;
 
