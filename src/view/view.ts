@@ -16,9 +16,9 @@ class SliderView implements ISliderView {
     public slider: JQuery;
     public outputField: JQuery;
 
-    public callbackDown: VoidFunction;
-    public callbackMove: VoidFunction;
-    public callbackUp: VoidFunction;
+    public callbackDown: (e: JQuery.MouseDownEvent) => void;
+    public callbackMove: void;
+    public callbackUp: void;
 
     constructor() {
         this.plugin = $(document).find('#fsd-slider');
@@ -42,18 +42,16 @@ class SliderView implements ISliderView {
         return left;
     }
 
-    initObserver(
-                    callbackDown: VoidFunction,
-                    callbackMove: VoidFunction,
-                    callbackUp: VoidFunction
-                    ): void {
+    initObserver(callbackDown: (e: JQuery.MouseDownEvent) => void): void {
+        
         this.callbackDown = callbackDown;
+        /*
         this.callbackMove = callbackMove;
         this.callbackUp = callbackUp;
-
+*/
         this.slider.on('mousedown', this.callbackDown);
     }
-
+/*
     subscribeOnMouseMove(): void {
         $(document).on('mousemove', this.callbackMove);
     }
@@ -65,7 +63,7 @@ class SliderView implements ISliderView {
     unsubscribeMouseMove(): void {
         $(document).unbind('mousemove');
     }
-
+*/
     render(): JQuery {
         this.container.appendTo('#fsd-slider');
         this.wrapper.appendTo(this.container);

@@ -6,23 +6,20 @@ interface ISliderView {
     slider: JQuery;
     outputField: JQuery;
 
-    callbackDown: VoidFunction;
-    callbackMove: VoidFunction;
-    callbackUp: VoidFunction;
+    callbackDown: (e: JQuery.MouseDownEvent) => void;
+    callbackMove: void;
+    callbackUp: void;
 
     moveSlider(pageX: number,
                minLimit: number,
                maxLimit: number
               ): number;
 
-    initObserver(callbackDown: VoidFunction,
-                 callbackMove: VoidFunction,
-                 callbackUp: VoidFunction
-                ): void;
-
+    initObserver(callbackDown: (e: JQuery.MouseDownEvent) => void): void;
+/*
     subscribeOnMouseMove(): void;
     subscribeOnMouseUp(): void;
     unsubscribeMouseMove(): void;
-
+*/
     render(): JQuery;
 }

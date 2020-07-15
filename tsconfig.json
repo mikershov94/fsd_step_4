@@ -9,7 +9,7 @@
         "types": [
             "jest",
             "jquery"
-        ]
+        ],
     },
 
     "include": [
