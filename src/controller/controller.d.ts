@@ -18,9 +18,8 @@ interface ISliderController {
     view: ISliderView;
 
     onMouseDown: IDownHandler;
-/*
     onMouseMove: IMoveHandler;
     onMouseUp: IUpHandler;
-*/    
+   
     runPlugin(): void;
 }

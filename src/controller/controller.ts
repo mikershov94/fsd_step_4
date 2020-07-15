@@ -6,7 +6,9 @@ class SliderController implements ISliderController{
     public model: ISliderModel;
     public view: ISliderView;
 
-    public onMouseDown: (e: JQuery.MouseDownEvent) => void
+    public onMouseDown: IDownHandler;
+    public onMouseMove: IMoveHandler;
+    public onMouseUp: IUpHandler;
 
     constructor(model: ISliderModel, view: ISliderView) {
         this.model = model;
@@ -14,26 +16,27 @@ class SliderController implements ISliderController{
 
         this.onMouseDown = (e: JQuery.MouseDownEvent) => { 
             console.log('щёлк')      
-            //this.view.subscribeOnMouseMove();
-            //this.view.subscribeOnMouseUp();
+            this.view.subscribeOnMouseMove();
+            this.view.subscribeOnMouseUp();
+        }
+
+        this.onMouseMove = (e: JQuery.MouseMoveEvent) => {
+            console.log('двиг')
+            //let position = this.view.moveSlider(e.pageX, this.model.minLimit, this.model.maxLimit);
+            //this.model.setPosition(Math.floor(position));
+            //this.view.outputField.val(this.model.getPosition());
+        }
+    
+        this.onMouseUp = (e: JQuery.MouseUpEvent) => {
+            console.log('ап')
+            //this.view.unsubscribeMouseMove();
         }
 
     }
 
- /*
-    onMouseMove = (e: JQuery.MouseMoveEvent) => {
-        let position = this.view.moveSlider(e.pageX, this.model.minLimit, this.model.maxLimit);
-        this.model.setPosition(Math.floor(position));
-        this.view.outputField.val(this.model.getPosition());
-    }
- 
-    onMouseUp = (e: JQuery.MouseUpEvent) => {
-        this.view.unsubscribeMouseMove();
-    }
-*/
     runPlugin(): void {
         this.view.render()
-        this.view.initObserver(this.onMouseDown);
+        this.view.initObserver(this.onMouseDown, this.onMouseMove, this.onMouseUp);
     }
 
 };
