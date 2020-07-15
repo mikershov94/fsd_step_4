@@ -14,22 +14,19 @@ class SliderController implements ISliderController{
         this.model = model;
         this.view = view;
 
-        this.onMouseDown = (e: JQuery.MouseDownEvent) => { 
-            console.log('щёлк')      
+        this.onMouseDown = (e: JQuery.MouseDownEvent) => {      
             this.view.subscribeOnMouseMove();
             this.view.subscribeOnMouseUp();
         }
 
         this.onMouseMove = (e: JQuery.MouseMoveEvent) => {
-            console.log('двиг')
-            //let position = this.view.moveSlider(e.pageX, this.model.minLimit, this.model.maxLimit);
-            //this.model.setPosition(Math.floor(position));
-            //this.view.outputField.val(this.model.getPosition());
+            let position = this.view.moveSlider(e.pageX, this.model.minLimit, this.model.maxLimit);
+            this.model.setPosition(Math.floor(position));
+            this.view.outputField.val(this.model.getPosition());
         }
     
         this.onMouseUp = (e: JQuery.MouseUpEvent) => {
-            console.log('ап')
-            //this.view.unsubscribeMouseMove();
+            this.view.unsubscribeMouseMove();
         }
 
     }

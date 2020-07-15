@@ -64,6 +64,7 @@ class SliderView implements ISliderView {
     unsubscribeMouseMove(): void {
         $(document).off('mousemove');
     }
+    
     render(): JQuery {
         this.container.appendTo('#fsd-slider');
         this.wrapper.appendTo(this.container);
