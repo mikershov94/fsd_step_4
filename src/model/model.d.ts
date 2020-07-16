@@ -1,4 +1,4 @@
-interface ISliderModel {
+interface IAloneSliderModel {
     minLimit: number;
     maxLimit: number;
 
@@ -7,4 +7,16 @@ interface ISliderModel {
 
     getStep(): number;
     setStep(value: number): void;
+}
+
+interface IRangeSliderModel {
+    
+    minLimit: number;
+    maxLimit: number;
+
+    getPositionA(): number;
+    getPositionB(): number;
+    setPositionA(value: number): void;
+    setPositionB(value: number): void;
+
 }

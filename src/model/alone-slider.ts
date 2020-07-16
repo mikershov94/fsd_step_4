@@ -1,6 +1,6 @@
 /// <reference path="model.d.ts" />
 
-class SliderModel implements ISliderModel{
+class SliderModel implements IAloneSliderModel{
     public minLimit: number;
     public maxLimit: number;
 
