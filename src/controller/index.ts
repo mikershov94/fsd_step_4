@@ -1,2 +1,3 @@
-import SliderController from './controller';
-export default SliderController;
+import AloneSliderController from './alone-slider';
+import RangeSliderController from './range-slider';
+export { AloneSliderController, RangeSliderController };

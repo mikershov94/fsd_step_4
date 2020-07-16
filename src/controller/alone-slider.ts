@@ -2,15 +2,15 @@
 /// <reference path="../view/view.d.ts" />
 /// <reference path="../model/model.d.ts" />
 
-class SliderController implements ISliderController{
-    public model: ISliderModel;
+class SliderController implements IAloneSliderController{
+    public model: IAloneSliderModel;
     public view: ISliderView;
 
     public onMouseDown: IDownHandler;
     public onMouseMove: IMoveHandler;
     public onMouseUp: IUpHandler;
 
-    constructor(model: ISliderModel, view: ISliderView) {
+    constructor(model: IAloneSliderModel, view: ISliderView) {
         this.model = model;
         this.view = view;
 
