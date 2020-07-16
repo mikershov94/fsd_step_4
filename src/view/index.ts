@@ -1,2 +1,3 @@
-import SliderView from './view';
-export default SliderView;
+import AloneSliderView from './alone-slider';
+import RangeSliderView from './range-slider';
+export { AloneSliderView, RangeSliderView };

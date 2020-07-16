@@ -1,3 +1,3 @@
 interface JQuery {
-    fsdSlider(): JQuery
+    fsdSlider(options: object): JQuery
 }

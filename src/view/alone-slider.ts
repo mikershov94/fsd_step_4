@@ -7,7 +7,7 @@ import slider from './components/slider';
 import outputField from './components/output-field';
 
 
-class SliderView implements ISliderView {
+class AloneSliderView implements ISliderView {
         
     public plugin: JQuery;
     public container: JQuery;
@@ -74,4 +74,4 @@ class SliderView implements ISliderView {
         return this.plugin;
     }
 }
-export default SliderView;
+export default AloneSliderView;
