@@ -25,3 +25,18 @@ interface ISliderView {
 
     render(): JQuery;
 }
+
+interface IRangeSliderView {
+    plugin: JQuery;
+    container: JQuery;
+    wrapper: JQuery;
+    rail: JQuery;
+    sliderBefore: JQuery;
+    sliderAfter: JQuery;
+    outputFieldBefore: JQuery;
+    outputFieldAfter: JQuery;
+
+    initObserver(): void;
+
+    render(): void;
+}

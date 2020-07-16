@@ -6,7 +6,7 @@ import rail from './components/rail';
 import slider from './components/slider';
 import outputField from './components/output-field';
 
-class RangeSliderView {
+class RangeSliderView implements IRangeSliderView {
 
     public plugin: JQuery;
     public container: JQuery;
@@ -16,11 +16,11 @@ class RangeSliderView {
     public sliderAfter: JQuery;
     public outputFieldBefore: JQuery;
     public outputFieldAfter: JQuery;
-
+/*
     public callbackDown: IDownHandler;
     public callbackMove: IMoveHandler;
     public callbackUp: IUpHandler;
-
+*/
     constructor() {
         this.plugin = $(document).find('#fsd-slider');
         this.container = $('<div class="container"></div>');
@@ -31,6 +31,14 @@ class RangeSliderView {
         this.outputFieldBefore = outputField();
         this.outputFieldAfter = outputField();
 
+    }
+
+    initObserver(): void {
+        console.log('инит обсервер');
+    }
+
+    render(): void {
+        console.log('рендер')
     }
 }
 

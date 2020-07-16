@@ -1,4 +1,6 @@
 import './main.sass';
 import '../src/index';
 
-$('#fsd-slider').fsdSlider();
+$('#fsd-slider').fsdSlider({
+    rangeSlider: true
+});

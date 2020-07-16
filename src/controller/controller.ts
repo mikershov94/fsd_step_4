@@ -32,7 +32,7 @@ class SliderController implements ISliderController{
     }
 
     runPlugin(): void {
-        this.view.render()
+        this.view.render();
         this.view.initObserver(this.onMouseDown, this.onMouseMove, this.onMouseUp);
     }
 

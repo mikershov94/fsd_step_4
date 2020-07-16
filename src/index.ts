@@ -3,7 +3,7 @@
 
 import SliderModel from './model';
 import SliderController from './controller';
-import { AloneSliderView } from './view';
+import { AloneSliderView, RangeSliderView } from './view';
 
 (function($) {
 
@@ -24,8 +24,14 @@ import { AloneSliderView } from './view';
         
         return this.each(function() {
 
+            let view;
+
+            if (config.rangeSlider) {
+                view = new RangeSliderView();
+            } else {
+                view = new AloneSliderView();
+            }
             const model = new SliderModel();
-            const view = new AloneSliderView();
             const controller = new SliderController(model, view);
 
             controller.runPlugin();
