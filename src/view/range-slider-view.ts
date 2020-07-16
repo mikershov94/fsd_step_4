@@ -12,8 +12,8 @@ class RangeSliderView implements IRangeSliderView {
     public container: JQuery;
     public wrapper: JQuery;
     public rail: JQuery;
-    public sliderBefore: JQuery;
-    public sliderAfter: JQuery;
+    public sliderA: JQuery;
+    public sliderB: JQuery;
     public outputFieldBefore: JQuery;
     public outputFieldAfter: JQuery;
 /*
@@ -26,19 +26,34 @@ class RangeSliderView implements IRangeSliderView {
         this.container = $('<div class="container"></div>');
         this.wrapper = $('<div class="wrapper"></div>');
         this.rail = rail();
-        this.sliderBefore = slider();
-        this.sliderAfter = slider();
+        this.sliderA = slider();
+        this.sliderB = slider();
         this.outputFieldBefore = outputField();
         this.outputFieldAfter = outputField();
 
+    }
+
+    private setADefaultPosition(value: number): void {
+        this.sliderA.css('left', `${value}px`);
+    }
+
+    private setBDefaultPosition(value: number): void {
+        this.sliderB.css('left', `${value}px`);
     }
 
     initObserver(): void {
         console.log('инит обсервер');
     }
 
-    render(): void {
-        console.log('рендер')
+    render(): JQuery {
+        this.container.appendTo('#fsd-slider');
+        this.wrapper.appendTo(this.container);
+        this.wrapper.append(this.rail);
+        this.wrapper.append(this.sliderA);
+        this.setADefaultPosition(125);
+        this.wrapper.append(this.sliderB);
+        this.setBDefaultPosition(375);
+        return this.plugin;
     }
 }
 

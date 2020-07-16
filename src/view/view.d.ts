@@ -31,8 +31,8 @@ interface IRangeSliderView {
     container: JQuery;
     wrapper: JQuery;
     rail: JQuery;
-    sliderBefore: JQuery;
-    sliderAfter: JQuery;
+    sliderA: JQuery;
+    sliderB: JQuery;
     outputFieldBefore: JQuery;
     outputFieldAfter: JQuery;
 
