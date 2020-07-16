@@ -1,8 +1,8 @@
 /// <reference path="../node_modules/@types/jquery/index.d.ts" />
 /// <reference path="index.d.ts" />
 
-import SliderModel from './model';
-import SliderController from './controller';
+import { AloneSliderModel, RangeSliderModel } from './model';
+import { AloneSliderController, RangeSliderController } from './controller';
 import { AloneSliderView, RangeSliderView } from './view';
 
 (function($) {
@@ -24,15 +24,19 @@ import { AloneSliderView, RangeSliderView } from './view';
         
         return this.each(function() {
 
+            let model;
             let view;
+            let controller;
 
             if (config.rangeSlider) {
+                model = new RangeSliderModel();
                 view = new RangeSliderView();
+                controller = new RangeSliderController(model, view);
             } else {
+                model = new AloneSliderModel();
                 view = new AloneSliderView();
+                controller = new AloneSliderController(model, view);
             }
-            const model = new SliderModel();
-            const controller = new SliderController(model, view);
 
             controller.runPlugin();
         })

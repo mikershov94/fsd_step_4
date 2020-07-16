@@ -6,6 +6,11 @@ class RangeSliderController implements IRangeSliderController {
     public model: IRangeSliderModel;
     public view: IRangeSliderView;
 
+    constructor(model: IRangeSliderModel, view: IRangeSliderView) {
+        this.model = model;
+        this.view = view;
+    }
+
     runPlugin(): void {
         this.view.render();
         this.view.initObserver();
