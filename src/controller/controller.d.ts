@@ -28,5 +28,9 @@ interface IRangeSliderController {
     model: IRangeSliderModel;
     view: IRangeSliderView;
 
+    onMouseDown: IDownHandler;
+    onMouseMove: IMoveHandler;
+    onMouseUp: IUpHandler;
+
     runPlugin(defaultValues: any): void;
 }
