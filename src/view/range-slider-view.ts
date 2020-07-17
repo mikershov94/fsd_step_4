@@ -17,11 +17,11 @@ class RangeSliderView implements IRangeSliderView {
     public output: JQuery;
     public outputFieldA: JQuery;
     public outputFieldB: JQuery;
-/*
+
     public callbackDown: IDownHandler;
     public callbackMove: IMoveHandler;
     public callbackUp: IUpHandler;
-*/
+
     constructor(rootElement: JQuery) {
         this.plugin = rootElement;
         this.container = $('<div class="container"></div>');
@@ -43,8 +43,28 @@ class RangeSliderView implements IRangeSliderView {
         this.sliderB.css('left', `${value}px`);
     }
 
-    initObserver(): void {
-        console.log('инит обсервер');
+    initObserver(callbackDown: IDownHandler, 
+                 callbackMove: IMoveHandler,
+                 callbackUp: IUpHandler): void {
+        
+        this.callbackDown = callbackDown;
+        this.callbackMove = callbackMove;
+        this.callbackUp = callbackUp;
+
+        this.sliderA.on('mousedown', this.callbackDown);
+        this.sliderB.on('mousedown', this.callbackDown);
+    }
+
+    subscribeOnMouseMove(): void {
+        $(document).on('mousemove', this.callbackMove);
+    }
+
+    subscribeOnMouseUp(): void {
+        $(document).on('mouseup', this.callbackUp);
+    }
+
+    unsubscribeMouseMove(): void {
+        $(document).off('mousemove');
     }
 
     render(defaultPosA: number, defaultPosB: number): JQuery {

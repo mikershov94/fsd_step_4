@@ -36,7 +36,17 @@ interface IRangeSliderView {
     outputFieldA: JQuery;
     outputFieldB: JQuery;
 
-    initObserver(): void;
+    callbackDown: IDownHandler;
+    callbackMove: IMoveHandler;
+    callbackUp: IUpHandler;
+
+    initObserver(callbackDown: IDownHandler,
+                 callbackMove: IMoveHandler,
+                 callbackUp: IUpHandler): void;
+
+    subscribeOnMouseMove(): void;
+    subscribeOnMouseUp(): void;
+    unsubscribeMouseMove(): void;
 
     render(defaultPosA: number, defaultPosB: number): void;
 }
