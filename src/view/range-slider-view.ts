@@ -21,8 +21,8 @@ class RangeSliderView implements IRangeSliderView {
     public callbackMove: IMoveHandler;
     public callbackUp: IUpHandler;
 */
-    constructor() {
-        this.plugin = $(document).find('#fsd-slider');
+    constructor(rootElement: JQuery) {
+        this.plugin = rootElement;
         this.container = $('<div class="container"></div>');
         this.wrapper = $('<div class="wrapper"></div>');
         this.rail = rail();
@@ -46,7 +46,7 @@ class RangeSliderView implements IRangeSliderView {
     }
 
     render(): JQuery {
-        this.container.appendTo('#fsd-slider');
+        this.container.appendTo(this.plugin);
         this.wrapper.appendTo(this.container);
         this.wrapper.append(this.rail);
         this.wrapper.append(this.sliderA);

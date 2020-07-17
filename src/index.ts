@@ -30,11 +30,11 @@ import { AloneSliderView, RangeSliderView } from './view';
 
             if (config.rangeSlider) {
                 model = new RangeSliderModel();
-                view = new RangeSliderView();
+                view = new RangeSliderView($(this));
                 controller = new RangeSliderController(model, view);
             } else {
                 model = new AloneSliderModel();
-                view = new AloneSliderView();
+                view = new AloneSliderView($(this));
                 controller = new AloneSliderController(model, view);
             }
 
