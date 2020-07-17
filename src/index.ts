@@ -15,6 +15,8 @@ import { AloneSliderView, RangeSliderView } from './view';
             max: 500,
             step: 1,
             defaultPosition: 250,
+            defaultPositionA: 125,
+            defaultPositionB: 375,
             rangeSlider: false,
             verticalView: false,
             discreteScale: false,
@@ -38,7 +40,7 @@ import { AloneSliderView, RangeSliderView } from './view';
                 controller = new AloneSliderController(model, view);
             }
 
-            controller.runPlugin({ position: config.defaultPosition });
+            controller.runPlugin(config);
         })
 
     }

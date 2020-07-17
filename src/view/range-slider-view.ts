@@ -14,8 +14,9 @@ class RangeSliderView implements IRangeSliderView {
     public rail: JQuery;
     public sliderA: JQuery;
     public sliderB: JQuery;
-    public outputFieldBefore: JQuery;
-    public outputFieldAfter: JQuery;
+    public output: JQuery;
+    public outputFieldA: JQuery;
+    public outputFieldB: JQuery;
 /*
     public callbackDown: IDownHandler;
     public callbackMove: IMoveHandler;
@@ -28,8 +29,9 @@ class RangeSliderView implements IRangeSliderView {
         this.rail = rail();
         this.sliderA = slider();
         this.sliderB = slider();
-        this.outputFieldBefore = outputField();
-        this.outputFieldAfter = outputField();
+        this.output = $('<div class="wrapper"></div>');
+        this.outputFieldA = outputField();
+        this.outputFieldB = outputField();
 
     }
 
@@ -45,14 +47,19 @@ class RangeSliderView implements IRangeSliderView {
         console.log('инит обсервер');
     }
 
-    render(): JQuery {
+    render(defaultPosA: number, defaultPosB: number): JQuery {
         this.container.appendTo(this.plugin);
         this.wrapper.appendTo(this.container);
+        this.output.appendTo(this.container);
         this.wrapper.append(this.rail);
         this.wrapper.append(this.sliderA);
-        this.setADefaultPosition(125);
+        this.setADefaultPosition(defaultPosA);
         this.wrapper.append(this.sliderB);
-        this.setBDefaultPosition(375);
+        this.setBDefaultPosition(defaultPosB);
+        this.output.append(this.outputFieldA);
+        this.outputFieldA.val(defaultPosA);
+        this.output.append(this.outputFieldB);
+        this.outputFieldB.val(defaultPosB);
         return this.plugin;
     }
 }

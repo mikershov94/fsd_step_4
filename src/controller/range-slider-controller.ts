@@ -11,8 +11,8 @@ class RangeSliderController implements IRangeSliderController {
         this.view = view;
     }
 
-    runPlugin(): void {
-        this.view.render();
+    runPlugin(defaultValues: any): void {
+        this.view.render(defaultValues.defaultPositionA, defaultValues.defaultPositionB);
         this.view.initObserver();
     }
 }

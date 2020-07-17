@@ -33,10 +33,10 @@ interface IRangeSliderView {
     rail: JQuery;
     sliderA: JQuery;
     sliderB: JQuery;
-    outputFieldBefore: JQuery;
-    outputFieldAfter: JQuery;
+    outputFieldA: JQuery;
+    outputFieldB: JQuery;
 
     initObserver(): void;
 
-    render(): void;
+    render(defaultPosA: number, defaultPosB: number): void;
 }

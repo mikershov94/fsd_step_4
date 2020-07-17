@@ -28,5 +28,5 @@ interface IRangeSliderController {
     model: IRangeSliderModel;
     view: IRangeSliderView;
 
-    runPlugin(): void;
+    runPlugin(defaultValues: any): void;
 }
