@@ -31,8 +31,9 @@ class SliderController implements IAloneSliderController{
 
     }
 
-    runPlugin(): void {
-        this.view.render();
+    runPlugin(defaultValues: any): void {
+        this.model.setPosition(defaultValues.position)
+        this.view.render(this.model.getPosition());
         this.view.initObserver(this.onMouseDown, this.onMouseMove, this.onMouseUp);
     }
 

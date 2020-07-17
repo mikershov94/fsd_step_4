@@ -21,7 +21,7 @@ interface IAloneSliderController {
     onMouseMove: IMoveHandler;
     onMouseUp: IUpHandler;
    
-    runPlugin(): void;
+    runPlugin(defaultValues: any): void;
 }
 
 interface IRangeSliderController {

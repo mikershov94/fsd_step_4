@@ -23,7 +23,7 @@ interface ISliderView {
     subscribeOnMouseUp(): void;
     unsubscribeMouseMove(): void;
 
-    render(): JQuery;
+    render(defaultPosition: number): JQuery;
 }
 
 interface IRangeSliderView {

@@ -30,6 +30,10 @@ class AloneSliderView implements ISliderView {
 
     }
 
+    private setSliderDefaultPosition(value: number): void {
+        this.slider.css('left', `${value}px`);
+    }
+
     moveSlider(pageX: number, minLimit: number, maxLimit: number): number {
         const offset = this.wrapper.offset().left;
         const offsetWidth = this.slider.outerWidth();
@@ -65,12 +69,14 @@ class AloneSliderView implements ISliderView {
         $(document).off('mousemove');
     }
     
-    render(): JQuery {
+    render(defaultPosition: number): JQuery {
         this.container.appendTo(this.plugin);
         this.wrapper.appendTo(this.container);
         this.wrapper.append(this.rail);
         this.wrapper.append(this.slider);
+        this.setSliderDefaultPosition(defaultPosition);
         this.container.append(this.outputField);
+        this.outputField.val(defaultPosition);
         return this.plugin;
     }
 }

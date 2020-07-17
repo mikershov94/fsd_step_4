@@ -38,7 +38,7 @@ import { AloneSliderView, RangeSliderView } from './view';
                 controller = new AloneSliderController(model, view);
             }
 
-            controller.runPlugin();
+            controller.runPlugin({ position: config.defaultPosition });
         })
 
     }

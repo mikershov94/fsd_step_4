@@ -2,7 +2,8 @@ import './main.sass';
 import '../src/index';
 
 $('#alone').fsdSlider({
-    rangeSlider: false
+    rangeSlider: false,
+    defaultPosition: 250
 });
 
 $('#range').fsdSlider({
