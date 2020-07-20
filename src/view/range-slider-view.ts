@@ -18,8 +18,10 @@ class RangeSliderView implements IRangeSliderView {
     public outputFieldA: JQuery;
     public outputFieldB: JQuery;
 
-    public callbackDown: IDownHandler;
-    public callbackMove: IMoveHandler;
+    public callbackDownA: IDownHandler;
+    public callbackDownB: IDownHandler;
+    public callbackMoveA: IMoveHandler;
+    public callbackMoveB: IMoveHandler;
     public callbackUp: IUpHandler;
 
     constructor(rootElement: JQuery) {
@@ -43,20 +45,53 @@ class RangeSliderView implements IRangeSliderView {
         this.sliderB.css('left', `${value}px`);
     }
 
-    initObserver(callbackDown: IDownHandler, 
-                 callbackMove: IMoveHandler,
-                 callbackUp: IUpHandler): void {
+    moveSliderA(pageX: number, min: number, posB: number): number {
+        console.log(`${pageX}  ${min}  ${posB}`);
+        const offset = this.wrapper.offset().left;
+        const offsetWidth = this.sliderA.outerWidth();
         
-        this.callbackDown = callbackDown;
-        this.callbackMove = callbackMove;
-        this.callbackUp = callbackUp;
+        let left = pageX - offsetWidth / 2 - offset;
+        if (left < min) left = min;
+        if (left > posB) left = posB;
 
-        this.sliderA.on('mousedown', this.callbackDown);
-        this.sliderB.on('mousedown', this.callbackDown);
+        this.sliderA.css('left', `${left}px`);
+        return left;
     }
 
-    subscribeOnMouseMove(): void {
-        $(document).on('mousemove', this.callbackMove);
+    moveSliderB(pageX: number, max: number, posA: number): number {
+        const offset = this.wrapper.offset().left;
+        const offsetWidth = this.sliderB.outerWidth();
+
+        let left = pageX - offsetWidth / 2 - offset;
+        if (left < posA) left = posA;
+        if (left > max) left = max;
+
+        this.sliderB.css('left', `${left}px`);
+        return left;
+    }
+
+    initObserver(callbackDownA: IDownHandler,
+                 callbackDownB: IDownHandler, 
+                 callbackMoveA: IMoveHandler,
+                 callbackMoveB: IMoveHandler,
+                 callbackUp: IUpHandler): void {
+        
+        this.callbackDownA = callbackDownA;
+        this.callbackDownB = callbackDownB;
+        this.callbackMoveA = callbackMoveA;
+        this.callbackMoveB = callbackMoveB;
+        this.callbackUp = callbackUp;
+
+        this.sliderA.on('mousedown', this.callbackDownA);
+        this.sliderB.on('mousedown', this.callbackDownB);
+    }
+
+    subscribeOnMoveA(): void {
+        $(document).on('mousemove', this.callbackMoveA);
+    }
+
+    subscribeOnMoveB(): void {
+        $(document).on('mousemove', this.callbackMoveB);
     }
 
     subscribeOnMouseUp(): void {
