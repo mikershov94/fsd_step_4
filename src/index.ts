@@ -31,7 +31,15 @@ import { AloneSliderView, RangeSliderView } from './view';
             let controller;
 
             if (config.rangeSlider) {
-                model = new RangeSliderModel();
+                let defaultState = {
+                    min: config.min,
+                    max: config.max,
+                    step: config.step,
+                    defaultPositionA: config.defaultPositionA,
+                    defaultPositionB: config.defaultPositionB,
+                };
+
+                model = new RangeSliderModel(defaultState);
                 view = new RangeSliderView($(this));
                 controller = new RangeSliderController(model, view);
             } else {

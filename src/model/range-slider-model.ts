@@ -8,6 +8,14 @@ class RangeSliderModel implements IRangeSliderModel {
     protected _positionA: number;
     protected _positionB: number;
 
+    constructor(state: any) {
+
+        this.minLimit = state.min;
+        this.maxLimit = state.max;
+        this.setPositionA(state.defaultPositionA);
+        this.setPositionB(state.defaultPositionB);
+    }
+
     getPositionA(): number {
         return this._positionA;
     }
