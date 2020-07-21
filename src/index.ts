@@ -9,7 +9,7 @@ import { AloneSliderView, RangeSliderView } from './view';
 
     $.fn.fsdSlider = function(options: object) {
 
-        const config = $.extend({
+        const config: IConfigPlugin = $.extend({
 
             min: 0,
             max: 500,
@@ -26,12 +26,12 @@ import { AloneSliderView, RangeSliderView } from './view';
         
         return this.each(function() {
 
-            let model;
-            let view;
-            let controller;
+            let model: IAloneSliderModel | IRangeSliderModel;
+            let view: IAloneSliderView | IRangeSliderView;
+            let controller: IAloneSliderController | IRangeSliderController;
 
             if (config.rangeSlider) {
-                let defaultState = {
+                let defaultState: IRangeModelState = {
                     min: config.min,
                     max: config.max,
                     step: config.step,

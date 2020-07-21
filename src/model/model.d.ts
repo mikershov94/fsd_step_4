@@ -20,3 +20,11 @@ interface IRangeSliderModel {
     setPositionB(value: number): void;
 
 }
+
+interface IRangeModelState {
+    min: number,
+    max: number,
+    step: number,
+    defaultPositionA: number,
+    defaultPositionB: number
+}

@@ -8,7 +8,7 @@ class RangeSliderModel implements IRangeSliderModel {
     protected _positionA: number;
     protected _positionB: number;
 
-    constructor(state: any) {
+    constructor(state: IRangeModelState) {
 
         this.minLimit = state.min;
         this.maxLimit = state.max;

@@ -49,7 +49,7 @@ class RangeSliderController implements IRangeSliderController {
         }
     }
 
-    runPlugin(defaultValues: any): void {
+    runPlugin(defaultValues: IConfigPlugin): void {
         this.view.render(defaultValues.defaultPositionA, defaultValues.defaultPositionB);
         this.view.initObserver(this.onMouseDownA,
                                this.onMouseDownB,
