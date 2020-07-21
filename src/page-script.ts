@@ -1,4 +1,3 @@
-import './main.sass';
 import '../src/index';
 
 $('#alone').fsdSlider({

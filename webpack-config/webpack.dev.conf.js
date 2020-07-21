@@ -50,7 +50,7 @@ module.exports = merge(commonWebpackConf, {
             jQuery: 'jquery'
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/main-[hash:7].css'
+            filename: 'main-[hash:7].css'
         }),
         ...PAGES.map(page => new HtmlWebpackPlugin({
             template: `${PAGE_DIR}/${page}`,

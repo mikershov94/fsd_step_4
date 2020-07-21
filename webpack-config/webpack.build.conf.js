@@ -48,7 +48,7 @@ module.exports = merge(commonWebpackConf, {
             jQuery: 'jquery'
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/main-[hash:7].css'
+            filename: 'fsd-slider-style.css'
         }),
         //new CopyWebpackPlugin([
             //{ from: `${PATHS.public}/img`, to: `${PATHS.dist}/img` },

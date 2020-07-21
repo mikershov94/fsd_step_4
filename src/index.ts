@@ -5,6 +5,8 @@ import { AloneSliderModel, RangeSliderModel } from './model';
 import { AloneSliderController, RangeSliderController } from './controller';
 import { AloneSliderView, RangeSliderView } from './view';
 
+import './main.sass';
+
 (function($) {
 
     $.fn.fsdSlider = function(options: object) {
