@@ -73,14 +73,14 @@ class RangeSliderView implements IRangeSliderView {
         return left;
     }
 
-    moveFillLeft(left: number): void {
-        this.filling.css('left', `${left}px`);
-
-        const width = this.filling.outerWidth() + left;
-        this.filling.css('width', `${width}px`);
+    moveFillA(posA: number, posB: number): void {
+        this.filling.css('left', `${posA}px`);
+        const width = posB - posA;
+        this.filling.css('width', `${width}px`);     
     }
 
-    moveFillRight(width: number): void {
+    moveFillB(posA: number, posB: number): void {
+        const width = posB - posA;
         this.filling.css('width', `${width}px`);
     }
 
@@ -126,8 +126,8 @@ class RangeSliderView implements IRangeSliderView {
         this.wrapper.append(this.sliderB);
         this.setBDefaultPosition(defaultPosB);
         this.wrapper.append(this.filling);
-        this.moveFillLeft(defaultPosA);
-        this.moveFillRight(defaultPosB - defaultPosA);
+        this.moveFillA(defaultPosA, defaultPosB);
+        this.moveFillB(defaultPosA, defaultPosB);
         this.output.append(this.outputFieldA);
         this.outputFieldA.val(defaultPosA);
         this.output.append(this.outputFieldB);

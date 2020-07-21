@@ -29,6 +29,7 @@ class RangeSliderController implements IRangeSliderController {
         this.onMouseMoveA = (e: JQuery.MouseMoveEvent) => {
             const posB: number = this.model.getPositionB();
             let position: number = this.view.moveSliderA(e.pageX, this.model.minLimit, posB);
+            this.view.moveFillA(position, posB);
             
             this.model.setPositionA(Math.floor(position));
             this.view.outputFieldA.val(this.model.getPositionA());
@@ -37,6 +38,7 @@ class RangeSliderController implements IRangeSliderController {
         this.onMouseMoveB = (e: JQuery.MouseMoveEvent) => {
             const posA: number = this.model.getPositionA();
             let position: number = this.view.moveSliderB(e.pageX, this.model.maxLimit, posA);
+            this.view.moveFillB(posA, position);
             
             this.model.setPositionB(Math.floor(position));
             this.view.outputFieldB.val(this.model.getPositionB());

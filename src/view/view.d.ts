@@ -45,6 +45,8 @@ interface IRangeSliderView {
 
     moveSliderA(pageX: number, min: number, posB: number): number;
     moveSliderB(pageX: number, max: number, posA: number): number;
+    moveFillA(posA: number, posB: number): void;
+    moveFillB(posA: number, posB: number): void;
 
     initObserver(callbackDownA: IDownHandler,
                  callbackDownB: IDownHandler,
