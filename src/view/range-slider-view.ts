@@ -17,6 +17,7 @@ class RangeSliderView implements IRangeSliderView {
     public output: JQuery;
     public outputFieldA: JQuery;
     public outputFieldB: JQuery;
+    public filling: JQuery;
 
     public callbackDownA: IDownHandler;
     public callbackDownB: IDownHandler;
@@ -34,6 +35,7 @@ class RangeSliderView implements IRangeSliderView {
         this.output = $('<div class="wrapper"></div>');
         this.outputFieldA = outputField();
         this.outputFieldB = outputField();
+        
 
     }
 

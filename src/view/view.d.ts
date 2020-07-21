@@ -35,6 +35,7 @@ interface IRangeSliderView {
     sliderB: JQuery;
     outputFieldA: JQuery;
     outputFieldB: JQuery;
+    filling: JQuery;
 
     callbackDownA: IDownHandler;
     callbackDownB: IDownHandler;
