@@ -5,6 +5,7 @@ import $ from 'jquery'
 import rail from './components/rail';
 import slider from './components/slider';
 import outputField from './components/output-field';
+import filling from './components/filling';
 
 class RangeSliderView implements IRangeSliderView {
 
@@ -35,7 +36,7 @@ class RangeSliderView implements IRangeSliderView {
         this.output = $('<div class="wrapper"></div>');
         this.outputFieldA = outputField();
         this.outputFieldB = outputField();
-        
+        this.filling = filling();
 
     }
 
@@ -70,6 +71,17 @@ class RangeSliderView implements IRangeSliderView {
 
         this.sliderB.css('left', `${left}px`);
         return left;
+    }
+
+    moveFillLeft(left: number): void {
+        this.filling.css('left', `${left}px`);
+
+        const width = this.filling.outerWidth() + left;
+        this.filling.css('width', `${width}px`);
+    }
+
+    moveFillRight(width: number): void {
+        this.filling.css('width', `${width}px`);
     }
 
     initObserver(callbackDownA: IDownHandler,
@@ -113,6 +125,9 @@ class RangeSliderView implements IRangeSliderView {
         this.setADefaultPosition(defaultPosA);
         this.wrapper.append(this.sliderB);
         this.setBDefaultPosition(defaultPosB);
+        this.wrapper.append(this.filling);
+        this.moveFillLeft(defaultPosA);
+        this.moveFillRight(defaultPosB - defaultPosA);
         this.output.append(this.outputFieldA);
         this.outputFieldA.val(defaultPosA);
         this.output.append(this.outputFieldB);
