@@ -5,9 +5,10 @@ import $ from 'jquery'
 import rail from './components/rail';
 import slider from './components/slider';
 import outputField from './components/output-field';
+import filling from './components/filling';
 
 
-class AloneSliderView implements ISliderView {
+class AloneSliderView implements IAloneSliderView {
         
     public plugin: JQuery;
     public container: JQuery;
@@ -15,6 +16,7 @@ class AloneSliderView implements ISliderView {
     public rail: JQuery;
     public slider: JQuery;
     public outputField: JQuery;
+    public filling: JQuery;
 
     public callbackDown: IDownHandler;
     public callbackMove: IMoveHandler;
@@ -27,11 +29,16 @@ class AloneSliderView implements ISliderView {
         this.rail = rail();
         this.slider = slider();
         this.outputField = outputField();
-
+        this.filling = filling();
     }
 
     private setSliderDefaultPosition(value: number): void {
         this.slider.css('left', `${value}px`);
+    }
+
+    moveFill(position: number): void {
+        this.filling.css('left', `0px`);
+        this.filling.css('width', `${position}px`);
     }
 
     moveSlider(pageX: number, minLimit: number, maxLimit: number): number {
@@ -75,6 +82,8 @@ class AloneSliderView implements ISliderView {
         this.wrapper.append(this.rail);
         this.wrapper.append(this.slider);
         this.setSliderDefaultPosition(defaultPosition);
+        this.wrapper.append(this.filling);
+        this.moveFill(defaultPosition);
         this.container.append(this.outputField);
         this.outputField.val(defaultPosition);
         return this.plugin;

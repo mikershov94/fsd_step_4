@@ -1,15 +1,17 @@
-interface ISliderView {
+interface IAloneSliderView {
     plugin: JQuery;
     container: JQuery;
     wrapper: JQuery;
     rail: JQuery;
     slider: JQuery;
     outputField: JQuery;
+    filling: JQuery;
 
     callbackDown: IDownHandler;
     callbackMove: IMoveHandler;
     callbackUp: IUpHandler;
 
+    moveFill(position: number): void;
     moveSlider(pageX: number,
                minLimit: number,
                maxLimit: number

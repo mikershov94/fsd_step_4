@@ -4,13 +4,13 @@
 
 class SliderController implements IAloneSliderController{
     public model: IAloneSliderModel;
-    public view: ISliderView;
+    public view: IAloneSliderView;
 
     public onMouseDown: IDownHandler;
     public onMouseMove: IMoveHandler;
     public onMouseUp: IUpHandler;
 
-    constructor(model: IAloneSliderModel, view: ISliderView) {
+    constructor(model: IAloneSliderModel, view: IAloneSliderView) {
         this.model = model;
         this.view = view;
 
@@ -21,6 +21,7 @@ class SliderController implements IAloneSliderController{
 
         this.onMouseMove = (e: JQuery.MouseMoveEvent) => {
             let position = this.view.moveSlider(e.pageX, this.model.minLimit, this.model.maxLimit);
+            this.view.moveFill(position);
             this.model.setPosition(Math.floor(position));
             this.view.outputField.val(this.model.getPosition());
         }
