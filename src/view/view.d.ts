@@ -50,11 +50,7 @@ interface IRangeSliderView {
     moveFillA(posA: number, posB: number): void;
     moveFillB(posA: number, posB: number): void;
 
-    initObserver(callbackDownA: IDownHandler,
-                 callbackDownB: IDownHandler,
-                 callbackMoveA: IMoveHandler,
-                 callbackMoveB: IMoveHandler,
-                 callbackUp: IUpHandler): void;
+    initObserver(actions: IRangeActions): void;
 
     subscribeOnMoveA(): void;
     subscribeOnMoveB(): void;

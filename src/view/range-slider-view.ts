@@ -84,17 +84,13 @@ class RangeSliderView implements IRangeSliderView {
         this.filling.css('width', `${width}px`);
     }
 
-    initObserver(callbackDownA: IDownHandler,
-                 callbackDownB: IDownHandler, 
-                 callbackMoveA: IMoveHandler,
-                 callbackMoveB: IMoveHandler,
-                 callbackUp: IUpHandler): void {
+    initObserver(actions: IRangeActions): void {
         
-        this.callbackDownA = callbackDownA;
-        this.callbackDownB = callbackDownB;
-        this.callbackMoveA = callbackMoveA;
-        this.callbackMoveB = callbackMoveB;
-        this.callbackUp = callbackUp;
+        this.callbackDownA = actions.onMouseDownA;
+        this.callbackDownB = actions.onMouseDownB;
+        this.callbackMoveA = actions.onMouseMoveA;
+        this.callbackMoveB = actions.onMouseMoveB;
+        this.callbackUp = actions.onMouseUp;
 
         this.sliderA.on('mousedown', this.callbackDownA);
         this.sliderB.on('mousedown', this.callbackDownB);
