@@ -13,26 +13,34 @@ interface IUpHandler {
     (e: JQuery.MouseUpEvent): void;
 }
 
-interface IAloneSliderController {
-    model: IAloneSliderModel;
-    view: ISliderView;
-
+interface IAloneActions {
     onMouseDown: IDownHandler;
     onMouseMove: IMoveHandler;
     onMouseUp: IUpHandler;
+}
+
+interface IRangeActions {
+    onMouseDownA: IDownHandler;
+    onMouseDownB: IDownHandler;
+    onMouseMoveA: IMoveHandler;
+    onMouseMoveB: IMoveHandler;
+    onMouseUp: IUpHandler;
+}
+
+interface IAloneSliderController {
+    model: IAloneSliderModel;
+    view: IRangeSliderView;
+
+    actions: IAloneActions;
    
-    runPlugin(defaultValues: any): void;
+    runPlugin(defaultValues: IConfigPlugin): void;
 }
 
 interface IRangeSliderController {
     model: IRangeSliderModel;
     view: IRangeSliderView;
 
-    onMouseDownA: IDownHandler;
-    onMouseDownB: IDownHandler;
-    onMouseMoveA: IMoveHandler;
-    onMouseMoveB: IMoveHandler;
-    onMouseUp: IUpHandler;
+    actions: IRangeActions;
 
-    runPlugin(defaultValues: any): void;
+    runPlugin(defaultValues: IConfigPlugin): void;
 }
