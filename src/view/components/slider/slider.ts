@@ -1,7 +1,11 @@
 import $ from 'jquery';
 
-const slider = (): JQuery => {
-    return $(`<div class="slider"></div>`);
+class Slider {
+
+    render(): JQuery {
+        return $(`<div class="slider"></div>`);
+    }
+
 }
 
-export default slider;
+export default Slider;

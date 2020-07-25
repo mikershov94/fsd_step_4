@@ -5,7 +5,7 @@ import $ from 'jquery'
 import rail from './components/rail';
 import slider from './components/slider';
 import outputField from './components/output-field';
-import filling from './components/filling';
+import filling from './components/progress-bar';
 
 
 class AloneSliderView implements IAloneSliderView {

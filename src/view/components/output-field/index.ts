@@ -1,2 +1,2 @@
-import outputField from './output-field';
-export default outputField;
+import OutputField from './output-field';
+export default OutputField;
