@@ -15,13 +15,13 @@ class RangeSliderController implements IRangeSliderController {
         this.actions = {
             
             onMouseDownA: (e: JQuery.MouseDownEvent) => {
-                this.view.subscribeOnMoveA();
-                this.view.subscribeOnMouseUp();
+                this.view.page.on('mousemove', this.actions.onMouseMoveA);
+                this.view.page.on('mouseup', this.actions.onMouseUp);
             },
 
             onMouseDownB: (e: JQuery.MouseDownEvent) => {
-                this.view.subscribeOnMoveB();
-                this.view.subscribeOnMouseUp();
+                this.view.page.on('mousemove', this.actions.onMouseMoveB);
+                this.view.page.on('mouseup', this.actions.onMouseUp);
             },
 
             onMouseMoveA: (e: JQuery.MouseMoveEvent) => {
@@ -43,7 +43,7 @@ class RangeSliderController implements IRangeSliderController {
             },
 
             onMouseUp: (e: JQuery.MouseUpEvent) => {
-                this.view.unsubscribeMouseMove();
+                this.view.page.off('mousemove');
             }
         }
 
@@ -51,11 +51,8 @@ class RangeSliderController implements IRangeSliderController {
 
     runPlugin(defaultValues: IConfigPlugin): void {
         this.view.render(defaultValues.defaultPositionA, defaultValues.defaultPositionB);
-        this.view.initObserver(this.actions.onMouseDownA,
-                               this.actions.onMouseDownB,
-                               this.actions.onMouseMoveA,
-                               this.actions.onMouseMoveB,
-                               this.actions.onMouseUp);
+        this.view.sliderA.on('mousedown', this.actions.onMouseDownA);
+        this.view.sliderB.on('mousedown', this.actions.onMouseDownB);
     }
 }
 

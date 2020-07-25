@@ -29,6 +29,7 @@ interface IAloneSliderView {
 }
 
 interface IRangeSliderView {
+    page: JQuery<Document>;
     plugin: JQuery;
     container: JQuery;
     wrapper: JQuery;
@@ -39,23 +40,12 @@ interface IRangeSliderView {
     outputFieldB: JQuery;
     filling: JQuery;
 
-    callbackDownA: IDownHandler;
-    callbackDownB: IDownHandler;
-    callbackMoveA: IMoveHandler;
-    callbackMoveB: IMoveHandler;
-    callbackUp: IUpHandler;
+    actions: IRangeActions;
 
     moveSliderA(pageX: number, min: number, posB: number): number;
     moveSliderB(pageX: number, max: number, posA: number): number;
     moveFillA(posA: number, posB: number): void;
     moveFillB(posA: number, posB: number): void;
-
-    initObserver(actions: IRangeActions): void;
-
-    subscribeOnMoveA(): void;
-    subscribeOnMoveB(): void;
-    subscribeOnMouseUp(): void;
-    unsubscribeMouseMove(): void;
 
     render(defaultPosA: number, defaultPosB: number): void;
 }

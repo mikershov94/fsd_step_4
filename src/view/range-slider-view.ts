@@ -9,6 +9,7 @@ import filling from './components/filling';
 
 class RangeSliderView implements IRangeSliderView {
 
+    public page: JQuery<Document>;
     public plugin: JQuery;
     public container: JQuery;
     public wrapper: JQuery;
@@ -20,13 +21,10 @@ class RangeSliderView implements IRangeSliderView {
     public outputFieldB: JQuery;
     public filling: JQuery;
 
-    public callbackDownA: IDownHandler;
-    public callbackDownB: IDownHandler;
-    public callbackMoveA: IMoveHandler;
-    public callbackMoveB: IMoveHandler;
-    public callbackUp: IUpHandler;
+    public actions: IRangeActions;
 
     constructor(rootElement: JQuery) {
+        this.page = $(document);
         this.plugin = rootElement;
         this.container = $('<div class="container"></div>');
         this.wrapper = $('<div class="wrapper"></div>');
@@ -82,34 +80,6 @@ class RangeSliderView implements IRangeSliderView {
     moveFillB(posA: number, posB: number): void {
         const width = posB - posA;
         this.filling.css('width', `${width}px`);
-    }
-
-    initObserver(actions: IRangeActions): void {
-        
-        this.callbackDownA = actions.onMouseDownA;
-        this.callbackDownB = actions.onMouseDownB;
-        this.callbackMoveA = actions.onMouseMoveA;
-        this.callbackMoveB = actions.onMouseMoveB;
-        this.callbackUp = actions.onMouseUp;
-
-        this.sliderA.on('mousedown', this.callbackDownA);
-        this.sliderB.on('mousedown', this.callbackDownB);
-    }
-
-    subscribeOnMoveA(): void {
-        $(document).on('mousemove', this.callbackMoveA);
-    }
-
-    subscribeOnMoveB(): void {
-        $(document).on('mousemove', this.callbackMoveB);
-    }
-
-    subscribeOnMouseUp(): void {
-        $(document).on('mouseup', this.callbackUp);
-    }
-
-    unsubscribeMouseMove(): void {
-        $(document).off('mousemove');
     }
 
     render(defaultPosA: number, defaultPosB: number): JQuery {
