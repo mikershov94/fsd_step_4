@@ -1,8 +1,9 @@
 /// <reference path="controller.d.ts" />
 /// <reference path="../model/model.d.ts" />
 /// <reference path="../view/view.d.ts" />
+/// <reference path="../interfaces/app.d.ts" />
 
-class RangeSliderController implements IRangeSliderController {
+class RangeSliderController {
     public model: IRangeSliderModel;
     public view: IRangeSliderView;
 
@@ -50,7 +51,19 @@ class RangeSliderController implements IRangeSliderController {
     }
 
     runPlugin(defaultValues: IConfigPlugin): void {
-        this.view.render(defaultValues.defaultPositionA, defaultValues.defaultPositionB);
+        let plugin: TAppContainer;
+        plugin.range = false;
+        plugin.scale = false;
+
+        if (defaultValues.rangeSlider) {
+            plugin.range = true;
+        }
+
+        if (defaultValues.discreteScale) {
+            plugin.scale = true;
+        }
+
+        this.view.mount(plugin);
         this.view.sliderA.on('mousedown', this.actions.onMouseDownA);
         this.view.sliderB.on('mousedown', this.actions.onMouseDownB);
     }

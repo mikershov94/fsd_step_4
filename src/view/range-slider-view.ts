@@ -2,42 +2,18 @@
 
 import $ from 'jquery'
 
-import rail from './components/rail';
-import slider from './components/slider';
-import outputField from './components/output-field';
-import filling from './components/progress-bar';
-
-class RangeSliderView implements IRangeSliderView {
+class RangeSliderView {
 
     public page: JQuery<Document>;
-    public plugin: JQuery;
-    public container: JQuery;
-    public wrapper: JQuery;
-    public rail: JQuery;
-    public sliderA: JQuery;
-    public sliderB: JQuery;
-    public output: JQuery;
-    public outputFieldA: JQuery;
-    public outputFieldB: JQuery;
-    public filling: JQuery;
-
-    public actions: IRangeActions;
+    
+    private rootElement: JQuery;
 
     constructor(rootElement: JQuery) {
         this.page = $(document);
-        this.plugin = rootElement;
-        this.container = $('<div class="container"></div>');
-        this.wrapper = $('<div class="wrapper"></div>');
-        this.rail = rail();
-        this.sliderA = slider();
-        this.sliderB = slider();
-        this.output = $('<div class="wrapper"></div>');
-        this.outputFieldA = outputField();
-        this.outputFieldB = outputField();
-        this.filling = filling();
+        this.rootElement = rootElement;
 
     }
-
+/*
     private setADefaultPosition(value: number): void {
         this.sliderA.css('left', `${value}px`);
     }
@@ -81,9 +57,13 @@ class RangeSliderView implements IRangeSliderView {
         const width = posB - posA;
         this.filling.css('width', `${width}px`);
     }
+*/
+    mount(plugin: TAppContainer): JQuery {
+        
+    }
 
-    render(defaultPosA: number, defaultPosB: number): JQuery {
-        this.container.appendTo(this.plugin);
+    render(): JQuery {
+        this.container.appendTo(this.rootElement);
         this.wrapper.appendTo(this.container);
         this.output.appendTo(this.container);
         this.wrapper.append(this.rail);
