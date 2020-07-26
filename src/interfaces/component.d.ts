@@ -1,3 +1,3 @@
-interface Component {
+interface IComponent {
     mount(): JQuery;
 }

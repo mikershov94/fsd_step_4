@@ -1,15 +1,12 @@
 import $ from 'jquery';
 
-class Slider {
-    
-    private element: JQuery;
+import Component from '../index';
+
+class Slider extends Component {
 
     constructor() {
+        super();
         this.element = $(`<div class="slider"></div>`);
-    }
-
-    mount(): JQuery {
-        return this.element;
     }
 
 }

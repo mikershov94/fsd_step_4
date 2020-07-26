@@ -1,15 +1,12 @@
 import $ from 'jquery';
 
-class OutputField {
+import Component from '../index';
 
-    private element: JQuery;
+class OutputField extends Component {
 
     constructor(pos: number) {
+        super();
         this.element = $(`<input value="${pos}" />`)
-    }
-    
-    mount(): JQuery {
-        return this.element;
     }
 
 }

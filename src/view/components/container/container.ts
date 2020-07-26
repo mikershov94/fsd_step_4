@@ -1,15 +1,11 @@
 import $ from 'jquery';
+import Component from '../index';
 
-class Container {
-
-    private element: JQuery;
+class Container extends Component {
 
     constructor() {
+        super();
         this.element = $('<div class="container"></div>');
-    }
-
-    mount(): JQuery {
-        return this.element;
     }
 
 }

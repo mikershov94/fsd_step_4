@@ -1,15 +1,12 @@
 import $ from 'jquery';
 
-class Wrapper {
+import Component from '../index';
 
-    private element: JQuery;
+class Wrapper extends Component {
 
     constructor() {
-        this.element = $('<div class="wrapper"></div>')
-    }
-
-    mount(): JQuery {
-        return this.element;
+        super();
+        this.element = $('<div class="wrapper"></div>');
     }
 
 }

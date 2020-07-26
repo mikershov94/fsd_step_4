@@ -1,15 +1,12 @@
 import $ from 'jquery';
 
-class Rail {
+import Component from '../index';
 
-    private element: JQuery;
+class Rail extends Component {
 
     constructor() {
+        super();
         this.element = $('<div class="rail"></div>')
-    }
-
-    mount(): JQuery {
-        return this.element;
     }
 
 }

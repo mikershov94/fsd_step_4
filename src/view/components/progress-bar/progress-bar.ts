@@ -1,15 +1,12 @@
 import $ from 'jquery';
 
-class ProgressBar {
+import Component from '../index';
 
-    private element: JQuery;
+class ProgressBar extends Component {
 
     constructor() {
+        super();
         this.element = $('<div class="progress-bar"></div>')
-    }
-
-    mount(): JQuery {
-        return this.element;
     }
 
 }

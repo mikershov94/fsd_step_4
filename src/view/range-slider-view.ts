@@ -1,7 +1,7 @@
 /// <reference path="view.d.ts" />
 /// <reference path="../interfaces/sliders.d.ts" />
 
-import $ from 'jquery'
+import $ from 'jquery';
 
 import Container from './components/container';
 import Wrapper from './components/wrapper';
