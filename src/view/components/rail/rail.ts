@@ -2,8 +2,14 @@ import $ from 'jquery';
 
 class Rail {
 
-    render(): JQuery {
-        return $('<div class="rail"></div>');
+    private element: JQuery;
+
+    constructor() {
+        this.element = $('<div class="rail"></div>')
+    }
+
+    mount(): JQuery {
+        return this.element;
     }
 
 }

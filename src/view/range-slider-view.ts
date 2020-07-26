@@ -1,12 +1,21 @@
 /// <reference path="view.d.ts" />
+/// <reference path="../interfaces/sliders.d.ts" />
 
 import $ from 'jquery'
+
+import Container from './components/container';
+import Wrapper from './components/wrapper';
+import Rail from './components/rail';
+import Slider from './components/slider';
+import ProgressBar from './components/progress-bar';
+import OutputField from './components/output-field';
 
 class RangeSliderView {
 
     public page: JQuery<Document>;
     
     private rootElement: JQuery;
+    private sliderApp: JQuery;
 
     constructor(rootElement: JQuery) {
         this.page = $(document);
@@ -58,8 +67,23 @@ class RangeSliderView {
         this.filling.css('width', `${width}px`);
     }
 */
-    mount(plugin: TAppContainer): JQuery {
-        
+    private createSlider(): JQuery {
+        let slider = {
+            container: new Container(),
+            wrapper: new Wrapper(),
+            rail: new Rail(),
+            sliderA: new Slider(),
+            sliderB: new Slider(),
+            progressBar: new ProgressBar(),
+            outputFieldA: new OutputField(),
+            outputFieldB: new OutputField()
+        }
+
+        return slider;
+    }
+
+    mount(): void {
+        this.sliderApp = this.createSlider();
     }
 
     render(): JQuery {

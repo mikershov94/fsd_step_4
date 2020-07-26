@@ -2,8 +2,14 @@ import $ from 'jquery';
 
 class ProgressBar {
 
-    render(): JQuery {
-        return $('<div class="progress-bar"></div>')
+    private element: JQuery;
+
+    constructor() {
+        this.element = $('<div class="progress-bar"></div>')
+    }
+
+    mount(): JQuery {
+        return this.element;
     }
 
 }

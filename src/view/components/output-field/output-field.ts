@@ -1,9 +1,15 @@
 import $ from 'jquery';
 
 class OutputField {
+
+    private element: JQuery;
+
+    constructor(pos: number) {
+        this.element = $(`<input value="${pos}" />`)
+    }
     
-    render(pos: number): JQuery {
-        return $(`<input value="${pos}" />`);
+    mount(): JQuery {
+        return this.element;
     }
 
 }

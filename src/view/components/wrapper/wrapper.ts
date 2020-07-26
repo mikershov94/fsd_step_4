@@ -2,8 +2,14 @@ import $ from 'jquery';
 
 class Wrapper {
 
-    render(): JQuery {
-        return $('<div class="wrapper"></div>');
+    private element: JQuery;
+
+    constructor() {
+        this.element = $('<div class="wrapper"></div>')
+    }
+
+    mount(): JQuery {
+        return this.element;
     }
 
 }

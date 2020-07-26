@@ -2,8 +2,14 @@ import $ from 'jquery';
 
 class Container {
 
-    render(): JQuery {
-        return $('<div class="container"></div>');
+    private element: JQuery;
+
+    constructor() {
+        this.element = $('<div class="container"></div>');
+    }
+
+    mount(): JQuery {
+        return this.element;
     }
 
 }
