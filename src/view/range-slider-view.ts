@@ -15,7 +15,7 @@ class RangeSliderView {
     public page: JQuery<Document>;
     
     private rootElement: JQuery;
-    private sliderApp: JQuery;
+    private sliderApp: TRangeSlider;
 
     constructor(rootElement: JQuery) {
         this.page = $(document);
@@ -67,19 +67,8 @@ class RangeSliderView {
         this.filling.css('width', `${width}px`);
     }
 */
-    private createSlider(): JQuery {
-        let slider = {
-            container: new Container(),
-            wrapper: new Wrapper(),
-            rail: new Rail(),
-            sliderA: new Slider(),
-            sliderB: new Slider(),
-            progressBar: new ProgressBar(),
-            outputFieldA: new OutputField(),
-            outputFieldB: new OutputField()
-        }
-
-        return slider;
+    private createSlider(): TRangeSlider {
+        return;
     }
 
     mount(): void {
