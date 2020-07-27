@@ -3,35 +3,9 @@
 
 import $ from 'jquery';
 
-import Container from './components/container';
-import Wrapper from './components/wrapper';
-import Rail from './components/rail';
-import Slider from './components/slider';
-import ProgressBar from './components/progress-bar';
-import OutputField from './components/output-field';
+import View from './view';
 
-class RangeSliderView {
-
-    public page: JQuery<Document>;
-    
-    private rootElement: JQuery;
-    private sliderApp: JQuery;
-
-    private components: TComponentList;
-
-    constructor(rootElement: JQuery) {
-        this.page = $(document);
-        this.rootElement = rootElement;
-
-        this.components = {
-            container: new Container(),
-            wrapper: new Wrapper(),
-            rail: new Rail(),
-            slider: new Slider(),
-            progressBar: new ProgressBar(),
-            outputField: new OutputField(),
-        }
-    }
+class RangeSliderView extends View {
 /*
     private setADefaultPosition(value: number): void {
         this.sliderA.css('left', `${value}px`);
@@ -77,7 +51,7 @@ class RangeSliderView {
         this.filling.css('width', `${width}px`);
     }
 */
-    private createSlider(): JQuery {
+    protected createSlider(): JQuery {
         const sliderA = this.components.slider.mount();
         const sliderB = this.components.slider.mount();
         const progressBar = this.components.progressBar.mount();
@@ -102,15 +76,6 @@ class RangeSliderView {
         container.append(output);
 
         return container;
-    }
-
-    mount(): void {
-        this.sliderApp = this.createSlider();
-    }
-
-    render(): JQuery {
-        this.sliderApp.appendTo(this.rootElement);
-        return this.sliderApp;
     }
 }
 

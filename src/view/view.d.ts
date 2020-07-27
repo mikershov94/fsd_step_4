@@ -49,3 +49,8 @@ interface IRangeSliderView {
 
     render(defaultPosA: number, defaultPosB: number): void;
 }
+
+interface IView {
+    mount(): void;
+    render(): JQuery;
+}
