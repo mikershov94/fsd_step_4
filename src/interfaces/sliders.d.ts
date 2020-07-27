@@ -1,19 +1,19 @@
-interface TAloneSlider {
-    container: JQuery;
-    wrapper: JQuery;
-    rail: JQuery;
-    slider: JQuery;
-    progressBar: JQuery;
-    outputField: JQuery;
+interface TAloneSlider extends IComponent {
+    container: IComponent;
+    wrapper: IComponent;
+    rail: IComponent;
+    slider: IComponent;
+    progressBar: IComponent;
+    outputField: IComponent;
 }
 
-interface TRangeSlider {
-    container: JQuery;
-    wrapper: JQuery;
-    rail: JQuery;
-    sliderA: JQuery;
-    sliderB: JQuery;
-    progressBar: JQuery;
-    outputFieldA: JQuery;
-    outputFieldB: JQuery;
+interface TRangeSlider extends IComponent {
+    container: IComponent;
+    wrapper: IComponent;
+    rail: IComponent;
+    sliderA: IComponent;
+    sliderB: IComponent;
+    progressBar: IComponent;
+    outputFieldA: IComponent;
+    outputFieldB: IComponent;
 }

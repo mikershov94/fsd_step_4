@@ -15,12 +15,22 @@ class RangeSliderView {
     public page: JQuery<Document>;
     
     private rootElement: JQuery;
-    private sliderApp: TRangeSlider;
+    private sliderApp: JQuery;
+
+    private components: TComponentList;
 
     constructor(rootElement: JQuery) {
         this.page = $(document);
         this.rootElement = rootElement;
 
+        this.components = {
+            container: new Container(),
+            wrapper: new Wrapper(),
+            rail: new Rail(),
+            slider: new Slider(),
+            progressBar: new ProgressBar(),
+            outputField: new OutputField(),
+        }
     }
 /*
     private setADefaultPosition(value: number): void {
@@ -67,8 +77,31 @@ class RangeSliderView {
         this.filling.css('width', `${width}px`);
     }
 */
-    private createSlider(): TRangeSlider {
-        return;
+    private createSlider(): JQuery {
+        const sliderA = this.components.slider.mount();
+        const sliderB = this.components.slider.mount();
+        const progressBar = this.components.progressBar.mount();
+        const rail = this.components.rail.mount();
+
+        rail.append(sliderA);
+        rail.append(sliderB);
+        rail.append(progressBar);
+
+        const wrapper = this.components.wrapper.mount();
+        wrapper.append(rail);
+
+        const outputFieldA = this.components.outputField.mount();
+        const outputFieldB = this.components.outputField.mount();
+
+        const output = this.components.wrapper.mount();
+        output.append(outputFieldA);
+        output.append(outputFieldB);
+
+        const container = this.components.container.mount();
+        container.append(wrapper);
+        container.append(output);
+
+        return container;
     }
 
     mount(): void {
@@ -76,22 +109,8 @@ class RangeSliderView {
     }
 
     render(): JQuery {
-        this.container.appendTo(this.rootElement);
-        this.wrapper.appendTo(this.container);
-        this.output.appendTo(this.container);
-        this.wrapper.append(this.rail);
-        this.wrapper.append(this.sliderA);
-        this.setADefaultPosition(defaultPosA);
-        this.wrapper.append(this.sliderB);
-        this.setBDefaultPosition(defaultPosB);
-        this.wrapper.append(this.filling);
-        this.moveFillA(defaultPosA, defaultPosB);
-        this.moveFillB(defaultPosA, defaultPosB);
-        this.output.append(this.outputFieldA);
-        this.outputFieldA.val(defaultPosA);
-        this.output.append(this.outputFieldB);
-        this.outputFieldB.val(defaultPosB);
-        return this.plugin;
+        this.sliderApp.appendTo(this.rootElement);
+        return this.sliderApp;
     }
 }
 
