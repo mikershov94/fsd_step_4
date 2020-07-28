@@ -6,15 +6,17 @@ import $ from 'jquery';
 import View from './view';
 
 class RangeSliderView extends View {
+
+    private application: IRangeSlider;
+
+    private setDefaultPositionA(value: number): void {
+        this.application.sliderA.css('left', `${value}px`);
+    }
+
+    private setDefaultPositionB(value: number): void {
+        this.application.sliderB.css('left', `${value}px`);
+    }
 /*
-    private setADefaultPosition(value: number): void {
-        this.sliderA.css('left', `${value}px`);
-    }
-
-    private setBDefaultPosition(value: number): void {
-        this.sliderB.css('left', `${value}px`);
-    }
-
     moveSliderA(pageX: number, min: number, posB: number): number {
         console.log(`${pageX}  ${min}  ${posB}`);
         const offset = this.wrapper.offset().left;
@@ -51,31 +53,31 @@ class RangeSliderView extends View {
         this.filling.css('width', `${width}px`);
     }
 */
-    protected createSlider(): JQuery {
-        const sliderA = this.components.slider.mount();
-        const sliderB = this.components.slider.mount();
-        const progressBar = this.components.progressBar.mount();
-        const rail = this.components.rail.mount();
+    protected createSlider(): void {
+        this.application.sliderA = this.components.slider.mount();
+        this.setDefaultPositionA(125);
+        this.application.sliderB = this.components.slider.mount();
+        this.setDefaultPositionB(375);
+        this.application.progressBar = this.components.progressBar.mount();
+        this.application.rail = this.components.rail.mount();
 
-        rail.append(sliderA);
-        rail.append(sliderB);
-        rail.append(progressBar);
+        this.application.rail.append(this.application.sliderA);
+        this.application.rail.append(this.application.sliderB);
+        this.application.rail.append(this.application.progressBar);
 
-        const wrapper = this.components.wrapper.mount();
-        wrapper.append(rail);
+        this.application.wrapper = this.components.wrapper.mount();
+        this.application.wrapper.append(this.application.rail);
 
-        const outputFieldA = this.components.outputField.mount();
-        const outputFieldB = this.components.outputField.mount();
+        this.application.outputFieldA = this.components.outputField.mount();
+        this.application.outputFieldB = this.components.outputField.mount();
 
-        const output = this.components.wrapper.mount();
-        output.append(outputFieldA);
-        output.append(outputFieldB);
+        this.application.output = this.components.wrapper.mount();
+        this.application.output.append(this.application.outputFieldA);
+        this.application.output.append(this.application.outputFieldB);
 
-        const container = this.components.container.mount();
-        container.append(wrapper);
-        container.append(output);
-
-        return container;
+        this.application.container = this.components.container.mount();
+        this.application.container.append(this.application.wrapper);
+        this.application.container.append(this.application.output);
     }
 }
 

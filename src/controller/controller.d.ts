@@ -38,7 +38,7 @@ interface IAloneSliderController {
 
 interface IRangeSliderController {
     model: IRangeSliderModel;
-    view: IRangeSliderView;
+    view: IView;
 
     actions: IRangeActions;
 

@@ -29,8 +29,8 @@ import './main.sass';
         return this.each(function() {
 
             let model: IAloneSliderModel | IRangeSliderModel;
-            let view: IAloneSliderView | IRangeSliderView;
-            let controller: IAloneSliderController | IRangeSliderController;
+            let view: IView;
+            let controller: IRangeSliderController;
 
             if (config.rangeSlider) {
                 let defaultState: IRangeModelState = {
@@ -45,9 +45,11 @@ import './main.sass';
                 view = new RangeSliderView($(this));
                 controller = new RangeSliderController(model, view);
             } else {
+                /*
                 model = new AloneSliderModel();
                 view = new AloneSliderView($(this));
                 controller = new AloneSliderController(model, view);
+                */
             }
 
             controller.runPlugin(config);

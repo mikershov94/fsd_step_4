@@ -9,7 +9,7 @@ abstract class View implements IView {
     protected page: JQuery<Document>;
 
     protected rootElement: JQuery;
-    protected sliderApp: JQuery;
+    protected mainContainer: JQuery;
 
     protected components: TComponentList;
 
@@ -27,17 +27,15 @@ abstract class View implements IView {
         }
     }
 
-    protected createSlider(): JQuery {
-        return $('<div></div>');
-    }
+    protected createSlider(): void {}
 
-    mount(): void {
-        this.sliderApp = this.createSlider();
+    mount(plugin: TAppContainer): void {
+        this.createSlider();
     }
 
     render(): JQuery {
-        this.sliderApp.appendTo(this.rootElement);
-        return this.sliderApp;
+        this.mainContainer.appendTo(this.rootElement);
+        return this.mainContainer
     }
 }
 

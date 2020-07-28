@@ -3,16 +3,16 @@
 /// <reference path="../view/view.d.ts" />
 /// <reference path="../interfaces/app.d.ts" />
 
-class RangeSliderController {
+class RangeSliderController implements IRangeSliderController{
     public model: IRangeSliderModel;
-    public view: IRangeSliderView;
+    public view: IView;
 
     public actions: IRangeActions;
 
-    constructor(model: IRangeSliderModel, view: IRangeSliderView) {
+    constructor(model: IRangeSliderModel, view: IView) {
         this.model = model;
         this.view = view;
-
+/*
         this.actions = {
             
             onMouseDownA: (e: JQuery.MouseDownEvent) => {
@@ -47,7 +47,7 @@ class RangeSliderController {
                 this.view.page.off('mousemove');
             }
         }
-
+*/
     }
 
     runPlugin(defaultValues: IConfigPlugin): void {
@@ -64,8 +64,8 @@ class RangeSliderController {
         }
 
         this.view.mount(plugin);
-        this.view.sliderA.on('mousedown', this.actions.onMouseDownA);
-        this.view.sliderB.on('mousedown', this.actions.onMouseDownB);
+        //this.view.sliderA.on('mousedown', this.actions.onMouseDownA);
+        //this.view.sliderB.on('mousedown', this.actions.onMouseDownB);
     }
 }
 
