@@ -3,6 +3,16 @@ interface TAppContainer {
     scale: boolean;
 }
 
+interface IAloneSlider {
+    container: JQuery;
+    wrapper: JQuery;
+    output: JQuery;
+    rail: JQuery;
+    slider: JQuery;
+    progressBar: JQuery;
+    outputField: JQuery;
+}
+
 interface IRangeSlider {
     container: JQuery;
     wrapper: JQuery;

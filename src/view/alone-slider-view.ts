@@ -1,41 +1,15 @@
 /// <reference path="view.d.ts" />
 
-import $ from 'jquery'
+import View from './view';
 
-import rail from './components/rail';
-import slider from './components/slider';
-import outputField from './components/output-field';
-import filling from './components/progress-bar';
+class AloneSliderView extends View {
 
-
-class AloneSliderView implements IAloneSliderView {
-        
-    public plugin: JQuery;
-    public container: JQuery;
-    public wrapper: JQuery;
-    public rail: JQuery;
-    public slider: JQuery;
-    public outputField: JQuery;
-    public filling: JQuery;
-
-    public callbackDown: IDownHandler;
-    public callbackMove: IMoveHandler;
-    public callbackUp: IUpHandler;
-
-    constructor(rootElement: JQuery) {
-        this.plugin = rootElement;
-        this.container = $('<div class="container"></div>');
-        this.wrapper = $('<div class="wrapper"></div>');
-        this.rail = rail();
-        this.slider = slider();
-        this.outputField = outputField();
-        this.filling = filling();
-    }
+    private application: IAloneSlider;
 
     private setSliderDefaultPosition(value: number): void {
-        this.slider.css('left', `${value}px`);
+        this.application.slider.css('left', `${value}px`);
     }
-
+/*
     moveFill(position: number): void {
         this.filling.css('left', `0px`);
         this.filling.css('width', `${position}px`);
@@ -52,41 +26,26 @@ class AloneSliderView implements IAloneSliderView {
         this.slider.css('left', `${left}px`);
         return left;
     }
+*/
 
-    initObserver(callbackDown: IDownHandler,
-                 callbackMove: IMoveHandler,
-                 callbackUp: IUpHandler): void {
+    protected createSlider(): void {
+        this.application.slider = this.components.slider.mount();
+        this.setSliderDefaultPosition(250);
+        this.application.progressBar = this.components.slider.mount();
+        this.application.rail = this.components.rail.mount();
         
-        this.callbackDown = callbackDown;
-        this.callbackMove = callbackMove;
-        this.callbackUp = callbackUp;
+        this.application.rail.append(this.application.slider);
+        this.application.rail.append(this.application.progressBar);
 
-        this.slider.on('mousedown', this.callbackDown);
-    }
+        this.application.outputField = this.components.outputField.mount();
+        this.application.output = this.components.wrapper.mount();
 
-    subscribeOnMouseMove(): void {
-        $(document).on('mousemove', this.callbackMove);
-    }
+        this.application.output.append(this.application.outputField);
 
-    subscribeOnMouseUp(): void {
-        $(document).on('mouseup', this.callbackUp);
-    }
-
-    unsubscribeMouseMove(): void {
-        $(document).off('mousemove');
+        this.application.container = this.components.container.mount();
+        this.application.container.append(this.application.wrapper);
+        this.application.container.append(this.application.output);
     }
     
-    render(defaultPosition: number): JQuery {
-        this.container.appendTo(this.plugin);
-        this.wrapper.appendTo(this.container);
-        this.wrapper.append(this.rail);
-        this.wrapper.append(this.slider);
-        this.setSliderDefaultPosition(defaultPosition);
-        this.wrapper.append(this.filling);
-        this.moveFill(defaultPosition);
-        this.container.append(this.outputField);
-        this.outputField.val(defaultPosition);
-        return this.plugin;
-    }
 }
 export default AloneSliderView;

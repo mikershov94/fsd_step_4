@@ -2,9 +2,9 @@
 /// <reference path="../view/view.d.ts" />
 /// <reference path="../model/model.d.ts" />
 
-class SliderController implements IAloneSliderController{
+class SliderController {
     public model: IAloneSliderModel;
-    public view: IAloneSliderView;
+    public view: any;
 
     public onMouseDown: IDownHandler;
     public onMouseMove: IMoveHandler;
