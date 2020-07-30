@@ -1,13 +1,30 @@
 /// <reference path="view.d.ts" />
 /// <reference path="../interfaces/sliders.d.ts" />
 
-import $ from 'jquery';
-
 import View from './view';
 
 class RangeSliderView extends View {
 
     private application: IRangeSlider;
+
+    constructor(rootElement: JQuery) {
+        super(rootElement);
+        this.initApplication();
+    }
+
+    private initApplication() {
+        this.application = {
+            container: null,
+            wrapper: null,
+            output: null,
+            rail: null,
+            sliderA: null,
+            sliderB: null,
+            progressBar: null,
+            outputFieldA: null,
+            outputFieldB: null
+        }
+    }
 
     private setDefaultPositionA(value: number): void {
         this.application.sliderA.css('left', `${value}px`);
@@ -78,6 +95,8 @@ class RangeSliderView extends View {
         this.application.container = this.components.container.mount();
         this.application.container.append(this.application.wrapper);
         this.application.container.append(this.application.output);
+
+        this.mainContainer = this.application.container;
     }
 }
 

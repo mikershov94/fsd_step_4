@@ -4,9 +4,8 @@ import Component from '../index';
 
 class ProgressBar extends Component {
 
-    constructor() {
-        super();
-        this.element = $('<div class="progress-bar"></div>')
+    mount(): JQuery {
+        return $('<div class="progress-bar></div>');
     }
 
 }

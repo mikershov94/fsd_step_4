@@ -3,9 +3,8 @@ import Component from '../index';
 
 class Container extends Component {
 
-    constructor() {
-        super();
-        this.element = $('<div class="container"></div>');
+    mount(): JQuery {
+        return $('<div class="container"></div>');
     }
 
 }

@@ -4,9 +4,8 @@ import Component from '../index';
 
 class Wrapper extends Component {
 
-    constructor() {
-        super();
-        this.element = $('<div class="wrapper"></div>');
+    mount(): JQuery {
+        return $('<div class="wrapper"></div>')
     }
 
 }

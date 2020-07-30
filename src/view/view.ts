@@ -34,6 +34,7 @@ abstract class View implements IView {
     }
 
     render(): JQuery {
+        console.log(this.mainContainer)
         this.mainContainer.appendTo(this.rootElement);
         return this.mainContainer
     }

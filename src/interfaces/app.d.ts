@@ -4,23 +4,23 @@ interface TAppContainer {
 }
 
 interface IAloneSlider {
-    container: JQuery;
-    wrapper: JQuery;
-    output: JQuery;
-    rail: JQuery;
-    slider: JQuery;
-    progressBar: JQuery;
-    outputField: JQuery;
+    container: JQuery | undefined;
+    wrapper: JQuery | undefined;
+    output: JQuery | undefined;
+    rail: JQuery| undefined;
+    slider: JQuery | undefined;
+    progressBar: JQuery | undefined;
+    outputField: JQuery | undefined;
 }
 
 interface IRangeSlider {
-    container: JQuery;
-    wrapper: JQuery;
-    output: JQuery;
-    rail: JQuery;
-    sliderA: JQuery;
-    sliderB: JQuery;
-    progressBar: JQuery;
-    outputFieldA: JQuery;
-    outputFieldB: JQuery;
+    container:    JQuery | null;
+    wrapper:      JQuery | null;
+    output:       JQuery | null;
+    rail:         JQuery | null;
+    sliderA:      JQuery | null;
+    sliderB:      JQuery | null;
+    progressBar:  JQuery | null;
+    outputFieldA: JQuery | null;
+    outputFieldB: JQuery | null;
 }

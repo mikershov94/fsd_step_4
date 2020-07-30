@@ -45,6 +45,8 @@ class AloneSliderView extends View {
         this.application.container = this.components.container.mount();
         this.application.container.append(this.application.wrapper);
         this.application.container.append(this.application.output);
+
+        this.mainContainer = this.application.container;
     }
     
 }

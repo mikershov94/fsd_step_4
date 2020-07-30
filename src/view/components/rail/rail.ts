@@ -4,9 +4,8 @@ import Component from '../index';
 
 class Rail extends Component {
 
-    constructor() {
-        super();
-        this.element = $('<div class="rail"></div>')
+    mount(): JQuery {
+        return $('<div class="rail"></div>');
     }
 
 }

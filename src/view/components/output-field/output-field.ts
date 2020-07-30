@@ -4,9 +4,8 @@ import Component from '../index';
 
 class OutputField extends Component {
 
-    constructor(pos: number = 250) {
-        super();
-        this.element = $(`<input value="${pos}" />`)
+    mount(): JQuery {
+        return $('<input class="output-field" value="250" />')
     }
 
 }

@@ -51,9 +51,10 @@ class RangeSliderController implements IRangeSliderController{
     }
 
     runPlugin(defaultValues: IConfigPlugin): void {
-        let plugin: TAppContainer;
-        plugin.range = false;
-        plugin.scale = false;
+        let plugin: TAppContainer = {
+            range: false,
+            scale: false
+        };
 
         if (defaultValues.rangeSlider) {
             plugin.range = true;
@@ -63,7 +64,9 @@ class RangeSliderController implements IRangeSliderController{
             plugin.scale = true;
         }
 
+        console.log(this.view);
         this.view.mount(plugin);
+        this.view.render();
         //this.view.sliderA.on('mousedown', this.actions.onMouseDownA);
         //this.view.sliderB.on('mousedown', this.actions.onMouseDownB);
     }
