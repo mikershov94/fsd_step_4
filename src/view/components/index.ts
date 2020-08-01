@@ -6,6 +6,7 @@ abstract class Component implements IComponent{
     protected template: string; //обязательное
 
     constructor(props: any) {
+        //остальные свойства берутся из свойств
         this.template = this.setTemplate();
     }
 

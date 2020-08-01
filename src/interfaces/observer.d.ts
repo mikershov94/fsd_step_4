@@ -1,13 +1,13 @@
 interface ISubscriber {
 
-    update(publisher: IPublisher): void;
+    update(): void;
 
 }
 
 interface IPublisher {
     
-    subscribe(subscriber: ISubscriber): void;
-    unsubscribe(subscriber: ISubscriber): void;
+    subscribe(subscriber: ISubscriber): ISubscriber[];
+    unsubscribe(subscriber: ISubscriber): ISubscriber[];
     notify(): void;
 
 }

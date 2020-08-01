@@ -5,38 +5,40 @@ import Slider from './components/slider';
 import ProgressBar from './components/progress-bar';
 import OutputField from './components/output-field';
 
-abstract class View implements IView {
-    protected page: JQuery<Document>;
+abstract class View implements IView, IPublisher, ISubscriber {
+    public page: JQuery<Document>;
+    protected rootContainer: JQuery;
+    protected rootComponent: IComponent;
 
-    protected rootElement: JQuery;
-    protected mainContainer: JQuery;
+    private subsribers: ISubscriber[] = [];
 
-    protected components: TComponentList;
-
-    constructor(rootElement: JQuery) {
+    constructor(rootContainer: JQuery) {
         this.page = $(document);
-        this.rootElement = rootElement;
-
-        this.components = {
-            container: new Container(),
-            wrapper: new Wrapper(),
-            rail: new Rail(),
-            slider: new Slider(),
-            progressBar: new ProgressBar(),
-            outputField: new OutputField(),
-        }
+        this.rootContainer = rootContainer
+        this.rootComponent = new Container({});
     }
 
-    protected createSlider(): void {}
+    subscribe(subscriber: ISubscriber): ISubscriber[] {
+        this.subsribers.push(subscriber);
+        return this.subsribers;
+    }
 
-    mount(plugin: TAppContainer): void {
-        this.createSlider();
+    unsubscribe(subscriber: ISubscriber): ISubscriber[] {
+        const arrEl = this.subsribers.indexOf(subscriber);
+        this.subsribers.splice(arrEl, 1);
+        return this.subsribers;
+    }
+
+    notify(): void {
+        this.subsribers.forEach((el: ISubscriber) => el.update())
+    }
+
+    update(): void {
+        this.rootComponent.update();
     }
 
     render(): JQuery {
-        console.log(this.mainContainer)
-        this.mainContainer.appendTo(this.rootElement);
-        return this.mainContainer
+        return this.rootComponent.render(); 
     }
 }
 

@@ -8,24 +8,10 @@ class RangeSliderView extends View {
     private application: IRangeSlider;
 
     constructor(rootElement: JQuery) {
-        super(rootElement);
-        this.initApplication();
+        
     }
 
-    private initApplication() {
-        this.application = {
-            container: null,
-            wrapper: null,
-            output: null,
-            rail: null,
-            sliderA: null,
-            sliderB: null,
-            progressBar: null,
-            outputFieldA: null,
-            outputFieldB: null
-        }
-    }
-
+/*
     private setDefaultPositionA(value: number): void {
         this.application.sliderA.css('left', `${value}px`);
     }
@@ -70,6 +56,7 @@ class RangeSliderView extends View {
         this.filling.css('width', `${width}px`);
     }
 */
+/*
     protected createSlider(): void {
         this.application.sliderA = this.components.slider.mount();
         this.setDefaultPositionA(125);
@@ -98,6 +85,7 @@ class RangeSliderView extends View {
 
         this.mainContainer = this.application.container;
     }
+*/
 }
 
 export default RangeSliderView;

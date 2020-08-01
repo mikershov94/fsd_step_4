@@ -51,6 +51,6 @@ interface IRangeSliderView {
 }
 
 interface IView {
-    mount(plugin: TAppContainer): void;
+    page: JQuery<Document>;
     render(): JQuery;
 }

@@ -6,9 +6,9 @@ interface TState {
 }
 
 interface TProps {
-    state: TState;
-    parent: any;
-    
+    state?: TState;
+    parent?: any;
+    children?: any;
 }
 
 interface IComponent {
