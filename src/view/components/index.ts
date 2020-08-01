@@ -1,8 +1,6 @@
-abstract class Component implements IComponent {
+abstract class Component {
 
-    mount(): JQuery {
-        return;
-    }
+    protected state: TState;
 
 }
 
