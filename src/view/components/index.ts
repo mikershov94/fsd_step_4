@@ -1,9 +1,12 @@
-abstract class Component implements IComponent, ISubscriber{
+abstract class Component implements IComponent {
 
+    //модель компонента
     protected state: TState;
     protected parent: any;
     protected children: any; //это массив
     protected template: string; //обязательное
+    protected dataToParent: any;
+    protected dataToChildren: any;
 
     constructor(props: any) {
         //остальные свойства берутся из свойств
@@ -12,7 +15,25 @@ abstract class Component implements IComponent, ISubscriber{
     //методы модели компонента
 
     //методы контроллера компонента
-    update(): void {}
+    updateDataToParent(value: any): void {
+
+    }
+
+    updateDataToChildren(value: any): void {
+
+    }
+
+    protected sendDataToParent(): void {
+        this.parent.updateDataToParent(this.dataToParent);
+        this.dataToParent = null;
+    }
+
+    protected sendDataToChildren(): void {
+        this.children.forEach((child: any) => {
+            child.updateDataToChildren();
+        });
+        this.dataToChildren = null;
+    }
 
     //методы представления компонента
     protected setTemplate(): string {

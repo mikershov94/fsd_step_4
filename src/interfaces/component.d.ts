@@ -12,7 +12,7 @@ interface TProps {
 }
 
 interface IComponent {
-    updateDataToParent(): void;
-    updateDataToParent(): void;
+    updateDataToParent(value: any): void;
+    updateDataToParent(value: any): void;
     render(): JQuery;
 }
