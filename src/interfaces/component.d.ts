@@ -11,6 +11,10 @@ interface TProps {
     children?: any;
 }
 
+interface TDataComponent {
+    [index: string]: object;
+}
+
 interface IComponent {
     updateDataToParent(value: any): void;
     updateDataToParent(value: any): void;
