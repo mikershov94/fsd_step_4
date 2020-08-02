@@ -1,4 +1,4 @@
-abstract class Component implements IComponent{
+abstract class Component implements IComponent, ISubscriber{
 
     protected state: TState;
     protected parent: any;
@@ -9,7 +9,12 @@ abstract class Component implements IComponent{
         //остальные свойства берутся из свойств
         this.template = this.setTemplate();
     }
+    //методы модели компонента
 
+    //методы контроллера компонента
+    update(): void {}
+
+    //методы представления компонента
     protected setTemplate(): string {
         return '<div></div>';
     }
