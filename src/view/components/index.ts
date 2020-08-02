@@ -5,8 +5,9 @@ abstract class Component implements IComponent {
     protected parent: any;
     protected children: any; //это массив
     protected template: string; //обязательное
-    protected dataToParent: TDataComponent | null;
+    protected dataToParent: TDataComponent[] | null;
     protected dataToChildren: TDataComponent | null;
+    protected nameComponent: string;
 
     constructor(props: any) {
         //остальные свойства берутся из свойств
@@ -15,8 +16,13 @@ abstract class Component implements IComponent {
     //методы модели компонента
 
     //методы контроллера компонента
-    updateDataToParent(value: TDataComponent): void {
+    updateDataToParent(value: TDataComponent[]): void {
         this.dataToParent = value;
+        this.dataToParent.forEach((data: object, index: string) => {
+            if (index === this.nameComponent) {
+                this.state = data //это все примерно. должна быть функция setState()
+            }
+        });
         this.sendDataToParent();
     }
 
