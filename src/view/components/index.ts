@@ -2,9 +2,9 @@ abstract class Component implements IComponent {
 
     //========== модель компонента ===============
     protected state:           TState;
-    protected parent:          any;
-    protected children:        any; //это массив
-    protected template:        string; //обязательное
+    protected parent:          IComponent | IView;
+    protected children:        IComponent[];
+    protected template:        string;
     protected dataForParent:   TDataComponent | null;
     protected dataForChildren: TDataComponent | null;
     protected componentId:     string;
@@ -30,14 +30,14 @@ abstract class Component implements IComponent {
 
     //============контроллер компонента===========
     //============================================
-    updateDataToParent(value: TDataComponent): void {
+    updateDataForParent(value: TDataComponent): void {
         this.dataForParent = value;
         this.checkDataToParent();
         this.sendDataToParent();
         this.dataForParent = null;
     }
 
-    updateDataToChildren(value: TDataComponent): void {
+    updateDataForChildren(value: TDataComponent): void {
         this.dataForChildren = value;
         this.checkDataToChildren();
         this.sendDataToChildren();
@@ -45,13 +45,13 @@ abstract class Component implements IComponent {
     }
 
     protected sendDataToParent(): void {
-        this.parent.updateDataToParent(this.dataForParent);
+        this.parent.updateDataForParent(this.dataForParent);
         this.dataForParent = null;
     }
 
     protected sendDataToChildren(): void {
         this.children.forEach((child: any) => {
-            child.updateDataToChildren();
+            child.updateDataForChildren();
         });
         this.dataForChildren = null;
     }

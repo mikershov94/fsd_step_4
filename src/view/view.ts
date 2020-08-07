@@ -18,6 +18,14 @@ abstract class View implements IView, IPublisher, ISubscriber {
         this.rootComponent = new Container({});
     }
 
+    updateDataForParent(value: any): void {
+        this.notify(value);
+    }
+
+    updateDataForChildren(value: any): void {
+        this.rootComponent.updateDataForChildren(value);
+    }
+
     subscribe(subscriber: ISubscriber): ISubscriber[] {
         this.subsribers.push(subscriber);
         return this.subsribers;
@@ -29,12 +37,12 @@ abstract class View implements IView, IPublisher, ISubscriber {
         return this.subsribers;
     }
 
-    notify(): void {
-        this.subsribers.forEach((el: ISubscriber) => el.update())
+    notify(value: any): void {
+        this.subsribers.forEach((el: ISubscriber) => el.update(value))
     }
 
-    update(): void {
-        this.rootComponent.update();
+    update(value: any): void {
+        this.rootComponent.updateDataForChildren(value);
     }
 
     render(): JQuery {

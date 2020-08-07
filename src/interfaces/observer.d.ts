@@ -1,6 +1,6 @@
 interface ISubscriber {
 
-    update(): void;
+    update(value: any): void;
 
 }
 
@@ -8,6 +8,6 @@ interface IPublisher {
     
     subscribe(subscriber: ISubscriber): ISubscriber[];
     unsubscribe(subscriber: ISubscriber): ISubscriber[];
-    notify(): void;
+    notify(value: any): void;
 
 }

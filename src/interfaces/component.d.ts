@@ -14,7 +14,7 @@ interface TProps {
 type TDataComponent = Record<string, TState>;
 
 interface IComponent {
-    updateDataToParent(value: any): void;
-    updateDataToParent(value: any): void;
+    updateDataForParent(value: any): void;
+    updateDataForChildren(value: any): void;
     render(): JQuery;
 }
