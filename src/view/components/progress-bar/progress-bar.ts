@@ -4,10 +4,14 @@ import Component from '../index';
 
 class ProgressBar extends Component {
 
-    mount(): JQuery {
-        return $('<div class="progress-bar></div>');
+    constructor(props: any) {
+        super(props);
+        this.nameComponent = 'progress-bar';
     }
 
+    protected setTemplate(): string {
+        return '<div class="progress-bar"></div>';
+    }
 }
 
 export default ProgressBar;

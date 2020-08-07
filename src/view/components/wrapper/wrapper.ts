@@ -4,8 +4,13 @@ import Component from '../index';
 
 class Wrapper extends Component {
 
-    mount(): JQuery {
-        return $('<div class="wrapper"></div>')
+    constructor(props: any) {
+        super(props);
+        this.nameComponent = 'wrapper';
+    }
+
+    protected setTemplate(): string {
+        return '<div class="wrapper"></div>';
     }
 
 }

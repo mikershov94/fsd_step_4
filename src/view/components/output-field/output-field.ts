@@ -4,8 +4,13 @@ import Component from '../index';
 
 class OutputField extends Component {
 
-    mount(): JQuery {
-        return $('<input class="output-field" value="250" />')
+    constructor(props: any) {
+        super(props);
+        this.nameComponent = 'output-field' //уникальность где???
+    }
+
+    protected setTemplate(): string {
+        return `<input class="output-field" value=${500} />`
     }
 
 }

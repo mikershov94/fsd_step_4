@@ -4,8 +4,13 @@ import Component from '../index';
 
 class Slider extends Component {
 
-    mount(): JQuery {
-        return $('<div class="slider"></div>')
+    constructor(props: any) {
+        super(props);
+        this.nameComponent = 'slider';
+    }
+
+    protected setTemplate(): string {
+        return '<div class="slider"></div>'
     }
 }
 

@@ -3,8 +3,13 @@ import Component from '../index';
 
 class Container extends Component {
 
-    mount(): JQuery {
-        return $('<div class="container"></div>');
+    constructor(props: any) {
+        super(props);
+        this.nameComponent = 'container';
+    }
+
+    protected setTemplate(): string {
+        return '<div class="container></div>'
     }
 
 }

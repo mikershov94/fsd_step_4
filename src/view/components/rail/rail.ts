@@ -4,8 +4,13 @@ import Component from '../index';
 
 class Rail extends Component {
 
-    mount(): JQuery {
-        return $('<div class="rail"></div>');
+    constructor(props: any) {
+        super(props);
+        this.nameComponent = 'rail';
+    }
+
+    protected setTemplate(): string {
+        return '<div class="rail"></div>';
     }
 
 }

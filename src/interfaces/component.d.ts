@@ -11,9 +11,7 @@ interface TProps {
     children?: any;
 }
 
-interface TDataComponent {
-    [index: string]: object;
-}
+type TDataComponent = Record<string, TState>;
 
 interface IComponent {
     updateDataToParent(value: any): void;
