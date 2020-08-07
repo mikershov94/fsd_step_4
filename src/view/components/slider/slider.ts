@@ -6,7 +6,6 @@ class Slider extends Component {
 
     constructor(props: any) {
         super(props);
-        this.nameComponent = 'slider';
     }
 
     protected setTemplate(): string {

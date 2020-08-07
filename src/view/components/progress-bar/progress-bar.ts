@@ -6,7 +6,6 @@ class ProgressBar extends Component {
 
     constructor(props: any) {
         super(props);
-        this.nameComponent = 'progress-bar';
     }
 
     protected setTemplate(): string {

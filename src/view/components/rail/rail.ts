@@ -6,7 +6,6 @@ class Rail extends Component {
 
     constructor(props: any) {
         super(props);
-        this.nameComponent = 'rail';
     }
 
     protected setTemplate(): string {

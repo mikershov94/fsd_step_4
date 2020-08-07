@@ -6,7 +6,6 @@ class Wrapper extends Component {
 
     constructor(props: any) {
         super(props);
-        this.nameComponent = 'wrapper';
     }
 
     protected setTemplate(): string {

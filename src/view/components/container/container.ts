@@ -5,7 +5,6 @@ class Container extends Component {
 
     constructor(props: any) {
         super(props);
-        this.nameComponent = 'container';
     }
 
     protected setTemplate(): string {

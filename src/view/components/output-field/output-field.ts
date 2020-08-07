@@ -6,7 +6,6 @@ class OutputField extends Component {
 
     constructor(props: any) {
         super(props);
-        this.nameComponent = 'output-field' //уникальность где???
     }
 
     protected setTemplate(): string {
