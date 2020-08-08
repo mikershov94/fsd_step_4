@@ -34,14 +34,14 @@ abstract class Component implements IComponent {
     //============================================
     updateDataForParent(value: TDataComponent): void {
         this.dataForParent = value;
-        this.checkDataToParent();
+        this.checkDataForParent();
         this.sendDataToParent();
         this.dataForParent = null;
     }
 
     updateDataForChildren(value: TDataComponent): void {
         this.dataForChildren = value;
-        this.checkDataToChildren();
+        this.checkDataForChildren();
         this.sendDataToChildren();
         this.dataForChildren = null
     }
@@ -70,7 +70,7 @@ abstract class Component implements IComponent {
         this.dataForChildren = null;
     }
 
-    protected checkDataToParent(): void {
+    protected checkDataForParent(): void {
         let prop: string;
         for (prop in this.dataForParent) {
             if (prop == this.componentId) {
@@ -81,7 +81,7 @@ abstract class Component implements IComponent {
         }
     }
 
-    protected checkDataToChildren(): void {
+    protected checkDataForChildren(): void {
         let prop: string;
         for (prop in this.dataForChildren) {
             if (prop == this.componentId) {

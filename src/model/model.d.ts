@@ -28,3 +28,42 @@ interface IRangeModelState {
     defaultPositionA: number,
     defaultPositionB: number
 }
+
+interface TDataModel {
+    min?: number;
+    max?: number;
+    step?: number;
+}
+
+interface TAloneDataModel extends TDataModel {
+    position?: number;
+}
+
+interface TRangeDataModel extends TDataModel {
+    positionA?: number;
+    positionB?: number;    
+}
+
+type DataModel = TAloneDataModel | TRangeDataModel;
+
+interface TGlobalState {
+    min: number;
+    max: number;
+    step: number;
+}
+
+interface TAloneGlobalState extends TGlobalState {
+    position: number;
+}
+
+interface TRangeGlobalState extends TGlobalState {
+    positionA: number;
+    positionB: number;
+}
+
+type ModelState = TAloneGlobalState | TRangeGlobalState;
+
+interface IModel {
+    getState(): DataModel;
+    setState(data: DataModel): void;
+}
