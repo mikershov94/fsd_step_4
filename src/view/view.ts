@@ -1,28 +1,25 @@
-import Container from './components/container';
-import Wrapper from './components/wrapper';
-import Rail from './components/rail';
-import Slider from './components/slider';
-import ProgressBar from './components/progress-bar';
-import OutputField from './components/output-field';
-
 abstract class View implements IView, IPublisher, ISubscriber {
     public page: JQuery<Document>;
     protected rootContainer: JQuery;
     protected rootComponent: IComponent;
 
-    private subsribers: ISubscriber[] = [];
+    private subsribers: ISubscriber[];
 
     constructor(rootContainer: JQuery) {
         this.page = $(document);
         this.rootContainer = rootContainer
-        this.rootComponent = new Container({});
+        this.mountApplication();
     }
 
-    updateDataForParent(value: any): void {
+    protected mountApplication(): void {
+        return
+    }
+
+    updateDataForParent(value: TDataComponent): void {
         this.notify(value);
     }
 
-    updateDataForChildren(value: any): void {
+    updateDataForChildren(value: TDataComponent): void {
         this.rootComponent.updateDataForChildren(value);
     }
 
@@ -37,16 +34,18 @@ abstract class View implements IView, IPublisher, ISubscriber {
         return this.subsribers;
     }
 
-    notify(value: any): void {
+    notify(value: TDataComponent): void {
         this.subsribers.forEach((el: ISubscriber) => el.update(value))
     }
 
-    update(value: any): void {
+    update(value: TDataComponent): void {
         this.rootComponent.updateDataForChildren(value);
     }
 
     render(): JQuery {
-        return this.rootComponent.render(); 
+        let application = this.rootComponent.render();
+        application.appendTo(this.rootContainer);
+        return application;
     }
 }
 

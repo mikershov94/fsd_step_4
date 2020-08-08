@@ -50,6 +50,9 @@ interface IRangeSliderView {
     render(defaultPosA: number, defaultPosB: number): void;
 }
 
-interface IView extends IComponent{
+interface IView {
     page: JQuery<Document>;
+    updateDataForParent(value: any): void;
+    updateDataForChildren(value: any): void;
+    render(): JQuery;
 }

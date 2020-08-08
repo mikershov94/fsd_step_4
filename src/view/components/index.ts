@@ -5,13 +5,15 @@ abstract class Component implements IComponent {
     protected parent:          IComponent | IView;
     protected children:        IComponent[];
     protected template:        string;
+    protected jQueryElement:   JQuery;
     protected dataForParent:   TDataComponent | null;
     protected dataForChildren: TDataComponent | null;
     protected componentId:     string;
     //============================================
 
-    constructor(props: any) {
-        //остальные свойства берутся из свойств
+    constructor(props: any = { state: {} }) {
+        this.state = props.state;
+        this.children = [];
         this.template = this.setTemplate();
         this.componentId = this.generateId();
     }
@@ -44,14 +46,26 @@ abstract class Component implements IComponent {
         this.dataForChildren = null
     }
 
+    setParent(component: IComponent): IComponent {
+        this.parent = component;
+        return this.parent;
+    }
+
+    adopt(child: IComponent): IComponent[] {
+        let newChild: IComponent = child;
+        newChild.setParent(this);
+        this.children.push(newChild);
+        return this.children;
+    }
+
     protected sendDataToParent(): void {
         this.parent.updateDataForParent(this.dataForParent);
         this.dataForParent = null;
     }
 
     protected sendDataToChildren(): void {
-        this.children.forEach((child: any) => {
-            child.updateDataForChildren();
+        this.children.forEach((child: IComponent) => {
+            child.updateDataForChildren(this.dataForChildren);
         });
         this.dataForChildren = null;
     }
@@ -87,7 +101,12 @@ abstract class Component implements IComponent {
     }
 
     render(): JQuery {
-        return $(this.template);
+        let template: JQuery = $(this.template)
+        this.children.forEach((child: IComponent) => {
+            template.append(child.render());
+        })
+        this.jQueryElement = template;
+        return template;
     }
     //==================================================
 

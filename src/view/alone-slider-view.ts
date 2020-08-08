@@ -1,14 +1,22 @@
 /// <reference path="view.d.ts" />
 
 import View from './view';
+import Slider from './components/slider';
+import ProgressBar from './components/progress-bar';
+import Rail from './components/rail';
+import OutputField from './components/output-field';
+import Wrapper from './components/wrapper';
 
 class AloneSliderView extends View {
 
-    private application: IAloneSlider;
-
+    constructor(rootElement: JQuery) {
+        super(rootElement);
+    }
+/*
     private setSliderDefaultPosition(value: number): void {
         this.application.slider.css('left', `${value}px`);
     }
+    */
 /*
     moveFill(position: number): void {
         this.filling.css('left', `0px`);
@@ -28,25 +36,22 @@ class AloneSliderView extends View {
     }
 */
 
-    protected createSlider(): void {
-        this.application.slider = this.components.slider.mount();
-        this.setSliderDefaultPosition(250);
-        this.application.progressBar = this.components.slider.mount();
-        this.application.rail = this.components.rail.mount();
+    protected mountApplication(): void {
+        let slider = new Slider({});
+        let progressBar = new ProgressBar({});
+        let rail = new Rail({});
+        rail.adopt(slider);
+        rail.adopt(progressBar);
+
+        let outputField = new OutputField({});
         
-        this.application.rail.append(this.application.slider);
-        this.application.rail.append(this.application.progressBar);
+        let wrapper = new Wrapper({});
+        wrapper.adopt(rail);
+        let output = new Wrapper({});
+        output.adopt(outputField);
 
-        this.application.outputField = this.components.outputField.mount();
-        this.application.output = this.components.wrapper.mount();
-
-        this.application.output.append(this.application.outputField);
-
-        this.application.container = this.components.container.mount();
-        this.application.container.append(this.application.wrapper);
-        this.application.container.append(this.application.output);
-
-        this.mainContainer = this.application.container;
+        this.rootComponent.adopt(wrapper);
+        this.rootComponent.adopt(output);
     }
     
 }

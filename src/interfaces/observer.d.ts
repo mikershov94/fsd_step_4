@@ -1,6 +1,6 @@
 interface ISubscriber {
 
-    update(value: any): void;
+    update(value: TDataComponent): void;
 
 }
 
@@ -8,6 +8,6 @@ interface IPublisher {
     
     subscribe(subscriber: ISubscriber): ISubscriber[];
     unsubscribe(subscriber: ISubscriber): ISubscriber[];
-    notify(value: any): void;
+    notify(value: TDataComponent): void;
 
 }

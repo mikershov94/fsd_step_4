@@ -64,11 +64,7 @@ class RangeSliderController implements IRangeSliderController{
             plugin.scale = true;
         }
 
-        console.log(this.view);
-        this.view.mount(plugin);
         this.view.render();
-        //this.view.sliderA.on('mousedown', this.actions.onMouseDownA);
-        //this.view.sliderB.on('mousedown', this.actions.onMouseDownB);
     }
 }
 

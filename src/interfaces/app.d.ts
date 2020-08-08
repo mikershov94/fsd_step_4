@@ -14,13 +14,13 @@ interface IAloneSlider {
 }
 
 interface IRangeSlider {
-    container:    JQuery | null;
-    wrapper:      JQuery | null;
-    output:       JQuery | null;
-    rail:         JQuery | null;
-    sliderA:      JQuery | null;
-    sliderB:      JQuery | null;
-    progressBar:  JQuery | null;
-    outputFieldA: JQuery | null;
-    outputFieldB: JQuery | null;
+    container?:    JQuery;
+    wrapper?:      JQuery;
+    output?:       JQuery;
+    rail?:         JQuery;
+    sliderA?:      JQuery;
+    sliderB?:      JQuery;
+    progressBar?:  JQuery;
+    outputFieldA?: JQuery;
+    outputFieldB?: JQuery;
 }

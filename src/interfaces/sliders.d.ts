@@ -8,12 +8,12 @@ interface TAloneSlider extends IComponent {
 }
 
 interface TRangeSlider extends IComponent {
-    container: IComponent;
-    wrapper: IComponent;
-    rail: IComponent;
-    sliderA: IComponent;
-    sliderB: IComponent;
-    progressBar: IComponent;
-    outputFieldA: IComponent;
-    outputFieldB: IComponent;
+    //container: IComponent;
+    wrapper?: IComponent;
+    rail?: IComponent;
+    sliderA?: IComponent;
+    sliderB?: IComponent;
+    progressBar?: IComponent;
+    outputFieldA?: IComponent;
+    outputFieldB?: IComponent;
 }

@@ -3,12 +3,17 @@
 
 import View from './view';
 
+import Container from './components/container';
+import Wrapper from './components/wrapper';
+import Rail from './components/rail';
+import Slider from './components/slider';
+import ProgressBar from './components/progress-bar';
+import OutputField from './components/output-field';
+
 class RangeSliderView extends View {
 
-    private application: IRangeSlider;
-
     constructor(rootElement: JQuery) {
-        
+        super(rootElement);
     }
 
 /*
@@ -56,36 +61,33 @@ class RangeSliderView extends View {
         this.filling.css('width', `${width}px`);
     }
 */
-/*
-    protected createSlider(): void {
-        this.application.sliderA = this.components.slider.mount();
-        this.setDefaultPositionA(125);
-        this.application.sliderB = this.components.slider.mount();
-        this.setDefaultPositionB(375);
-        this.application.progressBar = this.components.progressBar.mount();
-        this.application.rail = this.components.rail.mount();
+    protected mountApplication(): void {
+        let sliderA = new Slider({});
+        let sliderB = new Slider({});
+        let progressBar = new ProgressBar({});
+        let rail = new Rail({});
+        rail.adopt(sliderA);
+        rail.adopt(sliderB);
+        rail.adopt(progressBar);
 
-        this.application.rail.append(this.application.sliderA);
-        this.application.rail.append(this.application.sliderB);
-        this.application.rail.append(this.application.progressBar);
+        let outputFieldA = new OutputField({});
+        let outputFieldB = new OutputField({});
 
-        this.application.wrapper = this.components.wrapper.mount();
-        this.application.wrapper.append(this.application.rail);
+        let wrapper = new Wrapper({});
+        wrapper.adopt(rail);
+        let output = new Wrapper({});
+        output.adopt(outputFieldA);
+        output.adopt(outputFieldB);
 
-        this.application.outputFieldA = this.components.outputField.mount();
-        this.application.outputFieldB = this.components.outputField.mount();
+        let container = new Container({
+            state: {},
+            parent: this
+        })
+        container.adopt(wrapper);
+        container.adopt(output);
 
-        this.application.output = this.components.wrapper.mount();
-        this.application.output.append(this.application.outputFieldA);
-        this.application.output.append(this.application.outputFieldB);
-
-        this.application.container = this.components.container.mount();
-        this.application.container.append(this.application.wrapper);
-        this.application.container.append(this.application.output);
-
-        this.mainContainer = this.application.container;
+        this.rootComponent = container
     }
-*/
 }
 
 export default RangeSliderView;
