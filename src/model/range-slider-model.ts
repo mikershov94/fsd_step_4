@@ -1,35 +1,13 @@
-/// <reference path="model.d.ts" />
+import Model from './model';
 
-class RangeSliderModel implements IRangeSliderModel {
+class RangeSliderModel extends Model {
 
-    public minLimit: number;
-    public maxLimit: number;
+    protected data: TRangeGlobalState;
 
-    protected _positionA: number;
-    protected _positionB: number;
-
-    constructor(state: IRangeModelState) {
-
-        this.minLimit = state.min;
-        this.maxLimit = state.max;
-        this.setPositionA(state.defaultPositionA);
-        this.setPositionB(state.defaultPositionB);
-    }
-
-    getPositionA(): number {
-        return this._positionA;
-    }
-
-    getPositionB(): number {
-        return this._positionB;
-    }
-
-    setPositionA(value: number): void {
-        this._positionA = value;
-    }
-
-    setPositionB(value: number): void {
-        this._positionB = value;
+    constructor(state: any) {
+        super(state);
+        this.data.positionA = state.defaultPositionA;
+        this.data.positionB = state.defaultPositionB;
     }
 
 }
