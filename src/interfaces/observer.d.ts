@@ -1,6 +1,8 @@
+type Publisher = IModel | IView | undefined;
+
 interface ISubscriber {
 
-    update(value: TDataComponent): void;
+    update(value: TDataComponent, publisher: Publisher): void;
 
 }
 

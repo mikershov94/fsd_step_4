@@ -51,19 +51,7 @@ class RangeSliderController implements IRangeSliderController{
     }
 
     runPlugin(defaultValues: IConfigPlugin): void {
-        let plugin: TAppContainer = {
-            range: false,
-            scale: false
-        };
-
-        if (defaultValues.rangeSlider) {
-            plugin.range = true;
-        }
-
-        if (defaultValues.discreteScale) {
-            plugin.scale = true;
-        }
-
+        
         this.view.render();
     }
 }

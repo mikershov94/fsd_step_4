@@ -44,3 +44,9 @@ interface IRangeSliderController {
 
     runPlugin(defaultValues: IConfigPlugin): void;
 }
+
+interface IController {
+    runPlugin(): void;
+}
+
+type PublisherData = DataModel | TDataComponent;
