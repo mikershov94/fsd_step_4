@@ -6,8 +6,8 @@ abstract class Component implements IComponent {
     protected children:        IComponent[];
     protected template:        string;
     protected jQueryElement:   JQuery;
-    protected dataForParent:   TDataComponent | null;
-    protected dataForChildren: TDataComponent | null;
+    protected dataForParent:   TMessage | null;
+    protected dataForChildren: TMessage | null;
     protected componentId:     string;
     //============================================
 
@@ -32,14 +32,14 @@ abstract class Component implements IComponent {
 
     //============контроллер компонента===========
     //============================================
-    updateDataForParent(value: TDataComponent): void {
+    updateDataForParent(value: TMessage): void {
         this.dataForParent = value;
         this.checkDataForParent();
         this.sendDataToParent();
         this.dataForParent = null;
     }
 
-    updateDataForChildren(value: TDataComponent): void {
+    updateDataForChildren(value: TMessage): void {
         this.dataForChildren = value;
         this.checkDataForChildren();
         this.sendDataToChildren();
@@ -72,23 +72,37 @@ abstract class Component implements IComponent {
 
     protected checkDataForParent(): void {
         let prop: string;
-        for (prop in this.dataForParent) {
-            if (prop == this.componentId) {
-                this.setState(this.dataForParent[prop]);
-                delete this.dataForParent[prop];
-                return
+        for (prop in this.state) {
+
+            let key: string;
+            for (key in this.dataForParent) {
+
+                if (key === prop) {
+                    this.state[prop] = this.dataForParent[key];
+                    delete this.dataForParent[key];
+                    break;
+                }
+
             }
+
         }
     }
 
     protected checkDataForChildren(): void {
         let prop: string;
-        for (prop in this.dataForChildren) {
-            if (prop == this.componentId) {
-                this.setState(this.dataForChildren[prop]);
-                delete this.dataForChildren[prop]
-                return
+        for (prop in this.state) {
+
+            let key: string;
+            for (key in this.dataForChildren) {
+
+                if (key === prop) {
+                    this.state[prop] = this.dataForChildren[key];
+                    delete this.dataForChildren[key];
+                    break;
+                }
+
             }
+
         }
     }
     //================================================
