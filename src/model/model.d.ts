@@ -29,23 +29,6 @@ interface IRangeModelState {
     defaultPositionB: number
 }
 
-interface TDataModel {
-    min?: number;
-    max?: number;
-    step?: number;
-}
-
-interface TAloneDataModel extends TDataModel {
-    position?: number;
-}
-
-interface TRangeDataModel extends TDataModel {
-    positionA?: number;
-    positionB?: number;    
-}
-
-type DataModel = TAloneDataModel | TRangeDataModel;
-
 interface TGlobalState {
     min: number;
     max: number;

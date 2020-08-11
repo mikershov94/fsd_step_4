@@ -9,12 +9,14 @@ abstract class Model implements IModel, IPublisher {
         this.data.step = state.step;
     }
     
-    getState(): DataModel {
-        return this.data;
+    getState(): TMessage {
+        let message: TMessage = {};
+        Object.assign(message, this.data);
+        return message;
     }
 
-    setState(data: DataModel): void {
-        Object.assign(this.data, data);
+    setState(message: TMessage): void {
+        Object.assign(this.data, message);
     }
 
     subscribe(subscriber: ISubscriber): ISubscriber[] {

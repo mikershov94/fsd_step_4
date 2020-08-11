@@ -13,8 +13,8 @@ class Controller implements IController, ISubscriber {
         this.view = view;
     }
 
-    private sendDataToModel(data: TDataComponent): DataModel {
-        let dataForModel: DataModel = {};
+    private sendDataToModel(data: TMessage): TMessage {
+        let dataForModel: TMessage = {};
         let prop: string;
         for (prop in data) {
             Object.assign(dataForModel, data[prop]);
@@ -23,9 +23,14 @@ class Controller implements IController, ISubscriber {
         return dataForModel;
     }
 
-    private sendDataToView(data: DataModel): TDataComponent {
-        let dataForView: TDataComponent = {};
-        
+    private sendDataToView(data: TMessage): TMessage {
+        let dataForView: TMessage = {};
+        let prop: string;
+        for (prop in data) {
+            Object.assign(dataForView, data[prop]);
+        }
+        this.view.updateDataForChildren(dataForView);
+        return dataForView;
     }
 
     update(data: any, publisher: Publisher = undefined): void {
