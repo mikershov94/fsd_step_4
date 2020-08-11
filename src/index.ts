@@ -2,7 +2,7 @@
 /// <reference path="index.d.ts" />
 
 import { AloneSliderModel, RangeSliderModel } from './model';
-import { AloneSliderController, RangeSliderController } from './controller';
+import Controller from './controller';
 import { AloneSliderView, RangeSliderView } from './view';
 
 import './main.sass';
@@ -28,9 +28,9 @@ import './main.sass';
         
         return this.each(function() {
 
-            let model: IAloneSliderModel | IRangeSliderModel;
-            let view: IView;
-            let controller: IRangeSliderController;
+            let model:      IModel;
+            let view:       IView;
+            let controller: IController;
 
             if (config.rangeSlider) {
                 let defaultState: IRangeModelState = {
@@ -43,7 +43,7 @@ import './main.sass';
 
                 model = new RangeSliderModel(defaultState);
                 view = new RangeSliderView($(this));
-                controller = new RangeSliderController(model, view);
+                controller = new Controller(model, view);
             } else {
                 /*
                 model = new AloneSliderModel();
@@ -52,7 +52,7 @@ import './main.sass';
                 */
             }
 
-            controller.runPlugin(config);
+            controller.runPlugin();
         })
 
     }
