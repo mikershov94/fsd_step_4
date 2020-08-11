@@ -15,7 +15,8 @@ type TDataComponent = Record<string, TState>;
 interface IComponent {
     updateDataForParent(value: any): void;
     updateDataForChildren(value: any): void;
-    setParent(component: IComponent): void;
+    setParent(parent: IComponent): IComponent;
+    setRoot(view: IView): IView;
     adopt(child: IComponent): IComponent[];
     render(): JQuery;
 }

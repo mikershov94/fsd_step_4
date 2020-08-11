@@ -15,6 +15,12 @@ abstract class View implements IView, IPublisher, ISubscriber {
         return
     }
 
+    adopt(container: IComponent): IComponent {
+        container.setRoot(this);
+        this.rootComponent = container;
+        return this.rootComponent;
+    }
+
     updateDataForParent(value: TMessage): void {
         this.notify(value);
     }

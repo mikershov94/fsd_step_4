@@ -15,7 +15,6 @@ abstract class Component implements IComponent {
         this.state = {};
         this.children = [];
         this.template = this.setTemplate();
-        this.componentId = this.generateId();
     }
 
     //===========методы модели компонента=========
@@ -23,10 +22,6 @@ abstract class Component implements IComponent {
         return Object.assign(this.state, state);
     }
 
-    protected generateId(): string {
-        let id: number = Math.floor((Math.random() * 100000));
-        return id.toString(16);       
-    }
     //============================================
 
 
@@ -44,6 +39,11 @@ abstract class Component implements IComponent {
         this.checkDataForChildren();
         this.sendDataToChildren();
         this.dataForChildren = null
+    }
+
+    setRoot(view: IView): IView {
+        this.parent = view;
+        return this.parent;
     }
 
     setParent(component: IComponent): IComponent {

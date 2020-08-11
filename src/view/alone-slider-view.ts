@@ -6,6 +6,7 @@ import ProgressBar from './components/progress-bar';
 import Rail from './components/rail';
 import OutputField from './components/output-field';
 import Wrapper from './components/wrapper';
+import Container from './components/container';
 
 class AloneSliderView extends View {
 
@@ -37,21 +38,24 @@ class AloneSliderView extends View {
 */
 
     protected mountApplication(): void {
-        let slider = new Slider({});
-        let progressBar = new ProgressBar({});
-        let rail = new Rail({});
+        let slider = new Slider();
+        let progressBar = new ProgressBar();
+        let rail = new Rail();
         rail.adopt(slider);
         rail.adopt(progressBar);
 
-        let outputField = new OutputField({});
+        let outputField = new OutputField();
         
-        let wrapper = new Wrapper({});
+        let wrapper = new Wrapper();
         wrapper.adopt(rail);
-        let output = new Wrapper({});
+        let output = new Wrapper();
         output.adopt(outputField);
 
-        this.rootComponent.adopt(wrapper);
-        this.rootComponent.adopt(output);
+        let container = new Container();
+        container.adopt(wrapper);
+        container.adopt(output);
+
+        this.adopt(container);
     }
     
 }

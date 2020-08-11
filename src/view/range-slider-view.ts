@@ -83,7 +83,7 @@ class RangeSliderView extends View {
         container.adopt(wrapper);
         container.adopt(output);
 
-        this.rootComponent = container
+        this.adopt(container);
     }
 }
 
