@@ -62,27 +62,24 @@ class RangeSliderView extends View {
     }
 */
     protected mountApplication(): void {
-        let sliderA = new Slider({});
-        let sliderB = new Slider({});
-        let progressBar = new ProgressBar({});
-        let rail = new Rail({});
+        let sliderA = new Slider();
+        let sliderB = new Slider();
+        let progressBar = new ProgressBar();
+        let rail = new Rail();
         rail.adopt(sliderA);
         rail.adopt(sliderB);
         rail.adopt(progressBar);
 
-        let outputFieldA = new OutputField({});
-        let outputFieldB = new OutputField({});
+        let outputFieldA = new OutputField();
+        let outputFieldB = new OutputField();
 
-        let wrapper = new Wrapper({});
+        let wrapper = new Wrapper();
         wrapper.adopt(rail);
-        let output = new Wrapper({});
+        let output = new Wrapper();
         output.adopt(outputFieldA);
         output.adopt(outputFieldB);
 
-        let container = new Container({
-            state: {},
-            parent: this
-        })
+        let container = new Container()
         container.adopt(wrapper);
         container.adopt(output);
 

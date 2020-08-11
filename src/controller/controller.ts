@@ -14,23 +14,13 @@ class Controller implements IController, ISubscriber {
     }
 
     private sendDataToModel(data: TMessage): TMessage {
-        let dataForModel: TMessage = {};
-        let prop: string;
-        for (prop in data) {
-            Object.assign(dataForModel, data[prop]);
-        }
-        this.model.setState(dataForModel);
-        return dataForModel;
+        this.model.setState(data);
+        return data;
     }
 
     private sendDataToView(data: TMessage): TMessage {
-        let dataForView: TMessage = {};
-        let prop: string;
-        for (prop in data) {
-            Object.assign(dataForView, data[prop]);
-        }
-        this.view.updateDataForChildren(dataForView);
-        return dataForView;
+        this.view.updateDataForChildren(data);
+        return data;
     }
 
     update(data: any, publisher: Publisher = undefined): void {
@@ -49,6 +39,7 @@ class Controller implements IController, ISubscriber {
 
     runPlugin(): void {
         let message: TMessage = this.model.getState();
+        console.log(message)
         this.sendDataToView(message);
         this.view.render();
     }

@@ -3,8 +3,8 @@ import Component from '../index';
 
 class Container extends Component {
 
-    constructor(props: any) {
-        super(props);
+    constructor() {
+        super();
     }
 
     protected setTemplate(): string {

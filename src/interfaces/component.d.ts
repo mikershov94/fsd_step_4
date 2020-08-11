@@ -1,5 +1,7 @@
+type ValueState = number | boolean;
+
 interface TState {
-    [index: string]: number;
+    [index: string]: ValueState;
 }
 
 interface TProps {

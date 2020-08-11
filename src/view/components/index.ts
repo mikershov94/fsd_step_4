@@ -11,8 +11,8 @@ abstract class Component implements IComponent {
     protected componentId:     string;
     //============================================
 
-    constructor(props: any = { state: {} }) {
-        this.state = props.state;
+    constructor() {
+        this.state = {};
         this.children = [];
         this.template = this.setTemplate();
         this.componentId = this.generateId();
@@ -90,12 +90,13 @@ abstract class Component implements IComponent {
 
     protected checkDataForChildren(): void {
         let prop: string;
+        console.log(Object.keys(this.state))
         for (prop in this.state) {
 
             let key: string;
             for (key in this.dataForChildren) {
 
-                if (key === prop) {
+                if (key == prop) {
                     this.state[prop] = this.dataForChildren[key];
                     delete this.dataForChildren[key];
                     break;
@@ -120,6 +121,7 @@ abstract class Component implements IComponent {
             template.append(child.render());
         })
         this.jQueryElement = template;
+        console.log(this)
         return template;
     }
     //==================================================
