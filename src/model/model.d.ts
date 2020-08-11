@@ -44,9 +44,9 @@ interface TRangeGlobalState extends TGlobalState {
     positionB: number;
 }
 
-type ModelState = TAloneGlobalState | TRangeGlobalState;
+type ModelState = TGlobalState | TAloneGlobalState | TRangeGlobalState;
 
 interface IModel {
-    getState(): DataModel;
-    setState(data: DataModel): void;
+    getState(): TMessage;
+    setState(data: TMessage): void;
 }

@@ -4,9 +4,11 @@ abstract class Model implements IModel, IPublisher {
     protected subscribers: ISubscriber[];
 
     constructor(state: any) {
-        this.data.max = state.max;
-        this.data.min = state.min;
-        this.data.step = state.step;
+        this.data = {
+            min:  state.min,
+            max:  state.max,
+            step: state.step
+        }
     }
     
     getState(): TMessage {
