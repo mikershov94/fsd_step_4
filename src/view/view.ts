@@ -15,11 +15,11 @@ abstract class View implements IView, IPublisher, ISubscriber {
         return
     }
 
-    updateDataForParent(value: TDataComponent): void {
+    updateDataForParent(value: TMessage): void {
         this.notify(value);
     }
 
-    updateDataForChildren(value: TDataComponent): void {
+    updateDataForChildren(value: TMessage): void {
         this.rootComponent.updateDataForChildren(value);
     }
 
@@ -34,11 +34,11 @@ abstract class View implements IView, IPublisher, ISubscriber {
         return this.subsribers;
     }
 
-    notify(value: TDataComponent): void {
-        this.subsribers.forEach((el: ISubscriber) => el.update(value))
+    notify(value: TMessage): void {
+        this.subsribers.forEach((el: ISubscriber) => el.update(value, this))
     }
 
-    update(value: TDataComponent): void {
+    update(value: TMessage): void {
         this.rootComponent.updateDataForChildren(value);
     }
 

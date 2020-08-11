@@ -2,7 +2,7 @@ type Publisher = IModel | IView | undefined;
 
 interface ISubscriber {
 
-    update(value: TDataComponent, publisher: Publisher): void;
+    update(value: TMessage, publisher: Publisher): void;
 
 }
 
@@ -10,6 +10,6 @@ interface IPublisher {
     
     subscribe(subscriber: ISubscriber): ISubscriber[];
     unsubscribe(subscriber: ISubscriber): ISubscriber[];
-    notify(value: TDataComponent): void;
+    notify(value: TMessage): void;
 
 }
