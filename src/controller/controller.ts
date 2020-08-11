@@ -48,6 +48,8 @@ class Controller implements IController, ISubscriber {
     }
 
     runPlugin(): void {
+        let message: TMessage = this.model.getState();
+        this.sendDataToView(message);
         this.view.render();
     }
 
