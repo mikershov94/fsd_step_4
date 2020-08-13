@@ -1,4 +1,4 @@
-type ValueState = number | boolean;
+type ValueState = number | boolean | null;
 
 interface TState {
     [index: string]: ValueState;
