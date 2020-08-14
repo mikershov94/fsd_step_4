@@ -53,7 +53,6 @@ interface IRangeSliderView {
 interface IView {
     page: JQuery<Document>;
     adopt(container: IComponent): IComponent;
-    updateDataForParent(value: any): void;
-    updateDataForChildren(value: any): void;
+    updateComponents(props: TMessage): void;
     render(): JQuery;
 }

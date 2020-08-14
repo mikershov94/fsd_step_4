@@ -21,13 +21,8 @@ abstract class View implements IView, IPublisher, ISubscriber {
         return this.rootComponent;
     }
 
-    updateDataForParent(value: TMessage): void {
-        this.notify(value);
-    }
-
-    updateDataForChildren(value: TMessage): void {
-        console.log(value)
-        this.rootComponent.updateDataForChildren(value);
+    updateComponents(props: TMessage): void {
+        this.rootComponent.updateState(props);
     }
 
     subscribe(subscriber: ISubscriber): ISubscriber[] {

@@ -6,7 +6,7 @@ abstract class Component implements IComponent {
     protected children:        IComponent[];
     protected template:        string;
     protected jQueryElement:   JQuery;
-    
+    protected props:           TMessage;
     
     //============================================
 
@@ -22,23 +22,20 @@ abstract class Component implements IComponent {
         return Object.assign(this.state, state);
     }
 
+    protected setProps(props: TMessage): void {
+        return
+    }
+
     //============================================
 
 
     //============контроллер компонента===========
     //============================================
-    updateDataForParent(value: TMessage): void {
-        this.dataForParent = value;
-        this.checkDataForParent();
-        this.sendDataToParent();
-        this.dataForParent = null;
-    }
-
-    updateDataForChildren(value: TMessage): void {
-        this.dataForChildren = value;
-        this.checkDataForChildren();
-        this.sendDataToChildren();
-        this.dataForChildren = null
+    updateState(props: TMessage): void {
+        this.setState(props);
+        this.children.forEach(child => {
+            child.updateState(this.props);
+        })
     }
 
     setRoot(view: IView): IView {
