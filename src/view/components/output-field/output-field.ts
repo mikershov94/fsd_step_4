@@ -4,8 +4,8 @@ import Component from '../index';
 
 class OutputField extends Component {
 
-    constructor() {
-        super();
+    constructor(props: TMessage) {
+        super(props);
     }
 
     protected setTemplate(): string {

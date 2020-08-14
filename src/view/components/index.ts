@@ -6,19 +6,19 @@ abstract class Component implements IComponent {
     protected children:        IComponent[];
     protected template:        string;
     protected jQueryElement:   JQuery;
-    protected dataForParent:   TMessage | null;
-    protected dataForChildren: TMessage | null;
-    protected componentId:     string;
+    
+    
     //============================================
 
-    constructor() {
+    constructor(props: TMessage) {
         this.state = {};
         this.children = [];
+        this.setState(props);
         this.template = this.setTemplate();
     }
 
     //===========методы модели компонента=========
-    protected setState(state: TState) {
+    protected setState(state: TMessage) {
         return Object.assign(this.state, state);
     }
 

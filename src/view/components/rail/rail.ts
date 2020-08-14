@@ -4,8 +4,8 @@ import Component from '../index';
 
 class Rail extends Component {
 
-    constructor() {
-        super();
+    constructor(props: TMessage) {
+        super(props);
     }
 
     protected setTemplate(): string {
