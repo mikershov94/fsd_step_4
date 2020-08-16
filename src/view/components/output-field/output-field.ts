@@ -4,8 +4,14 @@ import Component from '../index';
 
 class OutputField extends Component {
 
-    constructor(props: TMessage) {
-        super(props);
+    constructor() {
+        super();
+    }
+
+    afterMount(): void {
+        this.state = {
+            value: this.props.value,
+        }
     }
 
     protected setTemplate(): string {

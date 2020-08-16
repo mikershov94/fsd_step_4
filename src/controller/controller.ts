@@ -40,7 +40,9 @@ class Controller implements IController, ISubscriber {
     runPlugin(): void {
         let message: TMessage = this.model.getState();
         console.log(message)
-        this.sendDataToView(message);
+        
+        this.view.mountApplication(message)
+
         this.view.render();
     }
 

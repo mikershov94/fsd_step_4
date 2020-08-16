@@ -2,10 +2,17 @@ import $ from 'jquery';
 
 import Component from '../index';
 
+import Slider from '../slider';
+import ProgressBar from '../progress-bar';
+
 class Rail extends Component {
 
-    constructor(props: TMessage) {
-        super(props);
+    afterMount(): void {
+        this.state = {
+            min: this.props.min,
+            max: this.props.max
+        }
+
     }
 
     protected setTemplate(): string {

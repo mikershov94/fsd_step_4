@@ -10,11 +10,11 @@ abstract class Component implements IComponent {
     
     //============================================
 
-    constructor(props: TMessage) {
+    constructor() {
         this.state = {};
         this.children = [];
-        this.setState(props);
-        this.template = this.setTemplate();
+        this.props = {};
+        this.template = '';
     }
 
     //===========методы модели компонента=========
@@ -31,78 +31,30 @@ abstract class Component implements IComponent {
 
     //============контроллер компонента===========
     //============================================
-    updateState(props: TMessage): void {
-        this.setState(props);
-        this.children.forEach(child => {
-            child.updateState(this.props);
-        })
+    
+    update(props: TMessage): void {
+        this.props = props;
+        
+        this.render();
     }
 
-    setRoot(view: IView): IView {
-        this.parent = view;
-        return this.parent;
-    }
-
-    setParent(component: IComponent): IComponent {
-        this.parent = component;
-        return this.parent;
-    }
-
-    adopt(child: IComponent): IComponent[] {
-        let newChild: IComponent = child;
-        newChild.setParent(this);
-        this.children.push(newChild);
+    adopt(component: IComponent): IComponent[] {
+        this.children.push(component);
         return this.children;
     }
 
-    protected sendDataToParent(): void {
-        this.parent.updateDataForParent(this.dataForParent);
-        this.dataForParent = null;
+    mount(props: TMessage): void {
+        this.props = props;
+        this.template = this.setTemplate();
+
+        this.afterMount();
     }
 
-    protected sendDataToChildren(): void {
-        this.children.forEach((child: IComponent) => {
-            child.updateDataForChildren(this.dataForChildren);
-        });
-        this.dataForChildren = null;
+    protected afterMount(): void {
+        return;
     }
 
-    protected checkDataForParent(): void {
-        let prop: string;
-        for (prop in this.state) {
-
-            let key: string;
-            for (key in this.dataForParent) {
-
-                if (key === prop) {
-                    this.state[prop] = this.dataForParent[key];
-                    delete this.dataForParent[key];
-                    break;
-                }
-
-            }
-
-        }
-    }
-
-    protected checkDataForChildren(): void {
-        let prop: string;
-        console.log(Object.keys(this.state))
-        for (prop in this.state) {
-
-            let key: string;
-            for (key in this.dataForChildren) {
-
-                if (key == prop) {
-                    this.state[prop] = this.dataForChildren[key];
-                    delete this.dataForChildren[key];
-                    break;
-                }
-
-            }
-
-        }
-    }
+    
     //================================================
     //================================================
 
@@ -118,7 +70,6 @@ abstract class Component implements IComponent {
             template.append(child.render());
         })
         this.jQueryElement = template;
-        console.log(this)
         return template;
     }
     //==================================================

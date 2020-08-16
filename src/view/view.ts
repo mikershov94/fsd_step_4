@@ -8,10 +8,14 @@ abstract class View implements IView, IPublisher, ISubscriber {
     constructor(rootContainer: JQuery) {
         this.page = $(document);
         this.rootContainer = rootContainer
-        this.mountApplication();
+        this.createApplication();
     }
 
-    protected mountApplication(): void {
+    protected createApplication(): void {
+        return
+    }
+
+    mountApplication(props: TMessage): void {
         return
     }
 

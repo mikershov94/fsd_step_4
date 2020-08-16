@@ -4,8 +4,10 @@ import Component from '../index';
 
 class ProgressBar extends Component {
 
-    constructor(props: TMessage) {
-        super(props);
+    afterMount(): void {
+        this.state = {
+            position: this.props.position,
+        }
     }
 
     protected setTemplate(): string {

@@ -4,10 +4,12 @@ import Component from '../index';
 
 class Slider extends Component {
 
-    constructor(props: TMessage) {
-        super(props);
+    protected afterMount(): void {
+        this.state = {
+            position: this.props.position,
+        }
     }
-
+    
     protected setTemplate(): string {
         return '<div class="slider"></div>'
     }

@@ -61,29 +61,50 @@ class RangeSliderView extends View {
         this.filling.css('width', `${width}px`);
     }
 */
-    protected mountApplication(): void {
-        let sliderA = new Slider();
-        let sliderB = new Slider();
-        let progressBar = new ProgressBar();
-        let rail = new Rail();
+    mountApplication(props: TMessage): void {
+        const rail = new Rail();
+        const progressBar = new ProgressBar();
+        const sliderA = new Slider();
+        const sliderB = new Slider();
         rail.adopt(sliderA);
-        rail.adopt(sliderB);
         rail.adopt(progressBar);
+        rail.adopt(sliderB);
 
-        let outputFieldA = new OutputField();
-        let outputFieldB = new OutputField();
+        const outputFieldA = new OutputField();
+        const outputFieldB = new OutputField();
 
-        let wrapper = new Wrapper();
+        const wrapper = new Wrapper();
+        const output = new Wrapper();
         wrapper.adopt(rail);
-        let output = new Wrapper();
         output.adopt(outputFieldA);
         output.adopt(outputFieldB);
 
-        let container = new Container()
+        const container = new Container();
         container.adopt(wrapper);
         container.adopt(output);
 
-        this.adopt(container);
+        this.rootComponent = container;
+
+        container.mount(props);
+        wrapper.mount(props);
+        output.mount(props);
+        rail.mount(props);
+        progressBar.mount({
+            positionA: props.positionA,
+            positionB: props.positionB
+        })
+        sliderA.mount({
+            position: props.positionA,
+        });
+        sliderB.mount({
+            position: props.positionB,
+        })
+        outputFieldA.mount({
+            value: props.positionA,
+        })
+        outputFieldB.mount({
+            value: props.positionB
+        })
     }
 }
 

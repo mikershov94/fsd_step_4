@@ -13,9 +13,7 @@ interface TProps {
 type TDataComponent = Record<string, TState>;
 
 interface IComponent {
-    updateState(props: TMessage): void;
-    setParent(parent: IComponent): IComponent;
-    setRoot(view: IView): IView;
-    adopt(child: IComponent): IComponent[];
+    mount(props: TMessage): void;
     render(): JQuery;
+    update(props: TMessage): void;
 }
