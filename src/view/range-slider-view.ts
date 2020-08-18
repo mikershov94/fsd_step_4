@@ -61,50 +61,58 @@ class RangeSliderView extends View {
         this.filling.css('width', `${width}px`);
     }
 */
+    private createElement(Component: new() => IComponent,
+                          props: TMessage = {},
+                          children: IComponent[] = []): IComponent {
+
+        let element: IComponent = new Component();
+        element.mount(props);
+        children.forEach(child => {
+            element.adopt(child);
+        })
+        
+        return element;
+    }
+
     mountApplication(props: TMessage): void {
-        const rail = new Rail();
-        const progressBar = new ProgressBar();
-        const sliderA = new Slider();
-        const sliderB = new Slider();
-        rail.adopt(sliderA);
-        rail.adopt(progressBar);
-        rail.adopt(sliderB);
-
-        const outputFieldA = new OutputField();
-        const outputFieldB = new OutputField();
-
-        const wrapper = new Wrapper();
-        const output = new Wrapper();
-        wrapper.adopt(rail);
-        output.adopt(outputFieldA);
-        output.adopt(outputFieldB);
-
-        const container = new Container();
-        container.adopt(wrapper);
-        container.adopt(output);
-
-        this.rootComponent = container;
-
-        container.mount(props);
-        wrapper.mount(props);
-        output.mount(props);
-        rail.mount(props);
-        progressBar.mount({
+        const sliderA = this.createElement(Slider, {
+            position: props.positionA
+        });
+        const sliderB = this.createElement(Slider, {
+            position: props.positionB
+        });
+        const progressBar = this.createElement(ProgressBar, {
             positionA: props.positionA,
             positionB: props.positionB
         })
-        sliderA.mount({
-            position: props.positionA,
+
+        const outputFieldA = this.createElement(OutputField, {
+            value: props.positionA
         });
-        sliderB.mount({
-            position: props.positionB,
-        })
-        outputFieldA.mount({
-            value: props.positionA,
-        })
-        outputFieldB.mount({
+        const outputFieldB = this.createElement(OutputField, {
             value: props.positionB
-        })
+        });
+
+        const rail = this.createElement(Rail, {}, [
+            sliderA,
+            progressBar,
+            sliderB
+        ]);
+
+        const wrapper = this.createElement(Wrapper, {}, [
+            rail
+        ]);
+        const output = this.createElement(Wrapper, {}, [
+            outputFieldA,
+            outputFieldB
+        ]);
+        
+        const container = this.createElement(Container, {}, [
+            wrapper,
+            output
+        ]);
+
+        this.rootComponent = container;
     }
 }
 
