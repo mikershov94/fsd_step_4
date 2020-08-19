@@ -19,7 +19,7 @@ class Controller implements IController, ISubscriber {
     }
 
     private sendDataToView(data: TMessage): TMessage {
-        this.view.updateDataForChildren(data);
+        this.view.updateComponents(data);
         return data;
     }
 

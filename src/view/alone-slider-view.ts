@@ -37,23 +37,38 @@ class AloneSliderView extends View {
     }
 */
 
-    protected mountApplication(): void {
-        let slider = new Slider();
-        let progressBar = new ProgressBar();
-        let rail = new Rail();
-        rail.adopt(slider);
-        rail.adopt(progressBar);
+    mountApplication(props: TMessage): void {
+        const slider = this.createElement(Slider, {
+            position: props.position,
+        });
+        const progressBar = this.createElement(ProgressBar, {
+            positionA: 0,
+            positionB: props.position
+        });
 
-        let outputField = new OutputField();
-        
-        let wrapper = new Wrapper();
-        wrapper.adopt(rail);
-        let output = new Wrapper();
-        output.adopt(outputField);
+        const rail = this.createElement(Rail, {
+            min: props.min,
+            max: props.max
+        }, [
+            slider,
+            progressBar
+        ]);
 
-        let container = new Container();
-        container.adopt(wrapper);
-        container.adopt(output);
+        const outputField = this.createElement(OutputField, {
+            value: props.position,
+        });
+
+        const wrapper = this.createElement(Wrapper, {}, [
+            rail
+        ]);
+        const output = this.createElement(Wrapper, {}, [
+            outputField
+        ]);
+
+        const container = this.createElement(Container, {}, [
+            wrapper,
+            output
+        ]);
 
         this.adopt(container);
     }

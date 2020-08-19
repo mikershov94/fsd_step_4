@@ -33,14 +33,16 @@ abstract class Component implements IComponent {
     //============================================
     
     update(props: TMessage): void {
-        this.props = props;
-        
-        this.render();
+        console.log('обновление')
     }
 
     adopt(component: IComponent): IComponent[] {
         this.children.push(component);
         return this.children;
+    }
+
+    setParent(element: IComponent | IView): void {
+        this.parent = element;
     }
 
     mount(props: TMessage): void {

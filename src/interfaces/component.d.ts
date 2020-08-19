@@ -18,4 +18,5 @@ interface IComponent {
     update(props: TMessage): void;
 
     adopt(element: IComponent): IComponent[];
+    setParent(element: IComponent | IView): void;
 }

@@ -61,18 +61,6 @@ class RangeSliderView extends View {
         this.filling.css('width', `${width}px`);
     }
 */
-    private createElement(Component: new() => IComponent,
-                          props: TMessage = {},
-                          children: IComponent[] = []): IComponent {
-
-        let element: IComponent = new Component();
-        element.mount(props);
-        children.forEach(child => {
-            element.adopt(child);
-        })
-        
-        return element;
-    }
 
     mountApplication(props: TMessage): void {
         const sliderA = this.createElement(Slider, {
@@ -112,7 +100,7 @@ class RangeSliderView extends View {
             output
         ]);
 
-        this.rootComponent = container;
+        this.adopt(container);
     }
 }
 

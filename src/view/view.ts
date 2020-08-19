@@ -8,25 +8,38 @@ abstract class View implements IView, IPublisher, ISubscriber {
     constructor(rootContainer: JQuery) {
         this.page = $(document);
         this.rootContainer = rootContainer
-        this.createApplication();
+        
+    }
+
+    protected createElement(Component: new() => IComponent,
+                          props: TMessage = {},
+                          children: IComponent[] = []): IComponent {
+
+        let element: IComponent = new Component();
+        element.mount(props);
+        children.forEach(child => {
+            element.adopt(child);
+        })
+        
+        return element;
     }
 
     protected createApplication(): void {
         return
     }
 
+    adopt(component: IComponent): IComponent {
+        this.rootComponent = component;
+        this.rootComponent.setParent(this);
+        return this.rootComponent;
+    }
+ 
     mountApplication(props: TMessage): void {
         return
     }
 
-    adopt(container: IComponent): IComponent {
-        container.setRoot(this);
-        this.rootComponent = container;
-        return this.rootComponent;
-    }
-
     updateComponents(props: TMessage): void {
-        this.rootComponent.updateState(props);
+        this.rootComponent.update(props);
     }
 
     subscribe(subscriber: ISubscriber): ISubscriber[] {
@@ -45,7 +58,7 @@ abstract class View implements IView, IPublisher, ISubscriber {
     }
 
     update(value: TMessage): void {
-        this.rootComponent.updateDataForChildren(value);
+        this.rootComponent.update(value);
     }
 
     render(): JQuery {
