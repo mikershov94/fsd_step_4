@@ -50,6 +50,7 @@ abstract class Component implements IComponent {
         this.template = this.setTemplate();
 
         this.afterMount();
+        this.props = null;
     }
 
     protected afterMount(): void {
@@ -66,13 +67,18 @@ abstract class Component implements IComponent {
         return '<div></div>';
     }
 
+    protected setParameters(): void {
+        return
+    }
+
     render(): JQuery {
         let template: JQuery = $(this.template)
-        this.children.forEach((child: IComponent) => {
-            template.append(child.render());
-        })
         this.jQueryElement = template;
-        return template;
+        this.setParameters();
+        this.children.forEach((child: IComponent) => {
+            this.jQueryElement.append(child.render());
+        })
+        return this.jQueryElement;
     }
     //==================================================
 

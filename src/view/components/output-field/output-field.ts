@@ -2,11 +2,13 @@ import $ from 'jquery';
 
 import Component from '../index';
 
+interface TOutputFieldState extends TState {
+    value: number;
+}
+
 class OutputField extends Component {
 
-    constructor() {
-        super();
-    }
+    protected state: TOutputFieldState;
 
     afterMount(): void {
         this.state = {
@@ -14,8 +16,12 @@ class OutputField extends Component {
         }
     }
 
+    protected setParameters(): void {
+        this.jQueryElement.val(this.state.value);
+    }
+
     protected setTemplate(): string {
-        return `<input class="output-field" value=${500} />`
+        return `<input class="output-field" />`
     }
 
 }
