@@ -45,11 +45,17 @@ import './main.sass';
                 view = new RangeSliderView($(this));
                 controller = new Controller(model, view);
             } else {
-                /*
-                model = new AloneSliderModel();
+                let defaultState: IAloneModelState = {
+                    min: config.min,
+                    max: config.max,
+                    step: config.step,
+                    defaultPosition: config.defaultPosition
+                };
+
+                model = new AloneSliderModel(defaultState);
                 view = new AloneSliderView($(this));
-                controller = new AloneSliderController(model, view);
-                */
+                controller = new Controller(model, view);
+
             }
 
             controller.runPlugin();

@@ -21,6 +21,13 @@ interface IRangeSliderModel {
 
 }
 
+interface IAloneModelState {
+    min: number,
+    max: number,
+    step: number,
+    defaultPosition: number,
+}
+
 interface IRangeModelState {
     min: number,
     max: number,
