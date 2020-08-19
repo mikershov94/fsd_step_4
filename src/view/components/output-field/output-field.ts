@@ -16,7 +16,7 @@ class OutputField extends Component {
         }
     }
 
-    protected setParameters(): void {
+    protected doingRender(): void {
         this.jQueryElement.val(this.state.value);
     }
 

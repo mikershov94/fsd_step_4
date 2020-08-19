@@ -16,6 +16,8 @@ abstract class View implements IView, IPublisher, ISubscriber {
                           children: IComponent[] = []): IComponent {
 
         let element: IComponent = new Component();
+        element.setParentView(this);
+        element.setNotifier(this);
         element.mount(props);
         children.forEach(child => {
             element.adopt(child);

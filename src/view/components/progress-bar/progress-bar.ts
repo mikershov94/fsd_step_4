@@ -18,7 +18,7 @@ class ProgressBar extends Component {
         }
     }
 
-    protected setParameters(): void {
+    protected doingRender(): void {
         this.jQueryElement.css('left', `${this.state.positionA}px`);
         
         let width: number = this.state.positionB - this.state.positionA;

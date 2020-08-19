@@ -19,4 +19,8 @@ interface IComponent {
 
     adopt(element: IComponent): IComponent[];
     setParent(element: IComponent | IView): void;
+    setParentView(view: IView): void;
+    setNotifier(notifier: IPublisher): void;
+
+    sendStateToNotifier(): void;
 }

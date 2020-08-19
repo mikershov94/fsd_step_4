@@ -4,6 +4,8 @@ abstract class Component implements IComponent {
     protected state:           TState;
     protected parent:          IComponent | IView;
     protected children:        IComponent[];
+    protected parentView:      IView;
+    protected notifier:        IPublisher;
     protected template:        string;
     protected jQueryElement:   JQuery;
     protected props:           TMessage;
@@ -18,8 +20,15 @@ abstract class Component implements IComponent {
     }
 
     //===========методы модели компонента=========
-    protected setState(state: TMessage) {
-        return Object.assign(this.state, state);
+    protected setState(state: TMessage): TState {
+        Object.assign(this.state, state);
+        return this.state;
+    }
+
+    protected getState(): TMessage {
+        let message: TMessage = {};
+        Object.assign(message, this.state);
+        return message;
     }
 
     protected setProps(props: TMessage): void {
@@ -32,8 +41,16 @@ abstract class Component implements IComponent {
     //============контроллер компонента===========
     //============================================
     
+    sendStateToNotifier(): void {
+        let message = this.getState();
+        this.notifier.notify(message)
+    }
+
     update(props: TMessage): void {
-        console.log('обновление')
+        this.props = props;
+
+        this.updateState();
+        this.props = null;
     }
 
     adopt(component: IComponent): IComponent[] {
@@ -43,6 +60,14 @@ abstract class Component implements IComponent {
 
     setParent(element: IComponent | IView): void {
         this.parent = element;
+    }
+
+    setParentView(view: IView): void {
+        this.parentView = view;
+    }
+
+    setNotifier(notifier: IPublisher): void {
+        this.notifier = notifier;
     }
 
     mount(props: TMessage): void {
@@ -57,6 +82,10 @@ abstract class Component implements IComponent {
         return;
     }
 
+    protected updateState(): void {
+        return;
+    }
+
     
     //================================================
     //================================================
@@ -67,14 +96,19 @@ abstract class Component implements IComponent {
         return '<div></div>';
     }
 
-    protected setParameters(): void {
+    protected doingRender(): void {
+        return
+    }
+
+    protected subscribeOnEvents(): void {
         return
     }
 
     render(): JQuery {
         let template: JQuery = $(this.template)
         this.jQueryElement = template;
-        this.setParameters();
+        this.doingRender();
+        this.subscribeOnEvents();
         this.children.forEach((child: IComponent) => {
             this.jQueryElement.append(child.render());
         })
