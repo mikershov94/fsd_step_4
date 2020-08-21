@@ -1,6 +1,6 @@
 import Model from './model';
 
-class ModelComponent extends Model {
+class ModelComponent extends Model implements IModelComponent {
 
     protected parent:          IComponent | IView;
     protected children:        IComponent[];
@@ -10,11 +10,10 @@ class ModelComponent extends Model {
         super();
         this.children = [];
         this.props = {};
-        this.template = '';
     }
 
-    protected setProps(props: TMessage): void {
-        return
+    setProps(props: TMessage): void {
+        this.props = props;
     }
 
 }
