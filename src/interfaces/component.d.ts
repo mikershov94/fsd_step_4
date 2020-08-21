@@ -1,11 +1,3 @@
-type ValueState = number | boolean | null;
-
-interface TState {
-    [index: string]: ValueState;
-}
-
-
-
 interface IComponent {
     mount(props: TMessage): void;
     render(): JQuery;
