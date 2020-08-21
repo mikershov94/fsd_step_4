@@ -1,7 +1,12 @@
-class ViewComponent implements IView {
+abstract class ViewComponent implements IView {
 
     protected template:        string;
     protected jQueryElement:   JQuery;
+
+    constructor() {
+        this.template = this.setTemplate();
+        this.jQueryElement = $(this.template);
+    }
 
     protected setTemplate(): string {
         return '<div></div>';
@@ -11,15 +16,8 @@ class ViewComponent implements IView {
         return
     }
 
-    protected subscribeOnEvents(): void { //для контроллера
-        return
-    }
-
     render(data: TMessage): JQuery {
-        let template: JQuery = $(this.template)
-        this.jQueryElement = template;
         this.doingRender();
-        
         return this.jQueryElement;
     }
 

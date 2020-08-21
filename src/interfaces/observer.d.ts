@@ -1,15 +1,8 @@
-type Publisher = IModel | IView | undefined;
-
 interface ISubscriber {
-
-    update(value: TMessage, publisher: Publisher): void;
-
+    update(data: TMessage): void;
 }
 
-interface IPublisher {
-    
+interface IPublisher {  
     subscribe(subscriber: ISubscriber): ISubscriber[];
-    unsubscribe(subscriber: ISubscriber): ISubscriber[];
-    notify(value: TMessage): void;
-
+    notify(data: TMessage): void;
 }
