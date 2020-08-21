@@ -2,11 +2,9 @@ import Model from './model';
 
 class RangeSliderModel extends Model {
 
-    protected data: TRangeGlobalState;
-
     constructor(state: any) {
         super();
-        this.data = {
+        this.state = {
             min:  state.min,
             max:  state.max,
             step: state.step,
