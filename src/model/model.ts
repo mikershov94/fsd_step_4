@@ -1,24 +1,20 @@
 abstract class Model implements IModel, IPublisher {
 
-    protected data: ModelState;
+    protected state:       TState;
     protected subscribers: ISubscriber[];
 
-    constructor(state: any) {
-        this.data = {
-            min:  state.min,
-            max:  state.max,
-            step: state.step
-        }
+    constructor() {
+        this.state = {};
     }
     
     getState(): TMessage {
         let message: TMessage = {};
-        Object.assign(message, this.data);
+        Object.assign(message, this.state);
         return message;
     }
 
     setState(message: TMessage): void {
-        Object.assign(this.data, message);
+        Object.assign(this.state, message);
     }
 
     subscribe(subscriber: ISubscriber): ISubscriber[] {

@@ -5,8 +5,13 @@ class AloneSliderModel extends Model {
     protected data: TAloneGlobalState;
 
     constructor(state: any) {
-        super(state);
-        this.data.position = state.defaultPosition;
+        super();
+        this.data = {
+            min:  state.min,
+            max:  state.max,
+            step: state.step,
+            position: state.defaultPosition
+        }
     }
 
 };

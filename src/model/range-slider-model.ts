@@ -5,9 +5,14 @@ class RangeSliderModel extends Model {
     protected data: TRangeGlobalState;
 
     constructor(state: any) {
-        super(state);
-        this.data.positionA = state.defaultPositionA;
-        this.data.positionB = state.defaultPositionB;
+        super();
+        this.data = {
+            min:  state.min,
+            max:  state.max,
+            step: state.step,
+            positionA: state.defaultPositionA,
+            positionB: state.defaultPositionB
+        }
     }
 
 }
