@@ -1,4 +1,4 @@
-/// <reference path="../model/model.d.ts" />
+/// <reference path="../interfaces/model.d.ts" />
 /// <reference path="../view/view.d.ts" />
 
 interface IDownHandler {

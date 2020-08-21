@@ -1,7 +1,6 @@
 /// <reference path="controller.d.ts" />
-/// <reference path="../model/model.d.ts" />
+/// <reference path="../interfaces/model.d.ts" />
 /// <reference path="../view/view.d.ts" />
-/// <reference path="../interfaces/app.d.ts" />
 
 class RangeSliderController implements IRangeSliderController{
     public model: IRangeSliderModel;
