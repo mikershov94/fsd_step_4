@@ -1,12 +1,12 @@
 /// <reference path="view.d.ts" />
 
 import View from './view';
-import Slider from './components/slider';
-import ProgressBar from './components/progress-bar';
-import Rail from './components/rail';
-import OutputField from './components/output-field';
-import Wrapper from './components/wrapper';
-import Container from './components/container';
+import Slider from '../components/slider';
+import ProgressBar from '../components/progress-bar';
+import Rail from '../components/rail';
+import OutputField from '../components/output-field';
+import Wrapper from '../components/wrapper';
+import Container from '../components/container';
 
 class AloneSliderView extends View {
 

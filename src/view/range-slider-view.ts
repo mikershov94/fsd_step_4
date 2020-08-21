@@ -3,12 +3,12 @@
 
 import View from './view';
 
-import Container from './components/container';
-import Wrapper from './components/wrapper';
-import Rail from './components/rail';
-import Slider from './components/slider';
-import ProgressBar from './components/progress-bar';
-import OutputField from './components/output-field';
+import Container from '../components/container';
+import Wrapper from '../components/wrapper';
+import Rail from '../components/rail';
+import Slider from '../components/slider';
+import ProgressBar from '../components/progress-bar';
+import OutputField from '../components/output-field';
 
 class RangeSliderView extends View {
 
