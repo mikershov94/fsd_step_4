@@ -1,6 +1,5 @@
 interface IView {
-    update(message: TMessage): void;
-    render(): JQuery;
+    render(data: TMessage, children: IComponent[]): JQuery;
 }
 
 interface IMainView extends IView {

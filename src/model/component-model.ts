@@ -4,8 +4,6 @@ class ModelComponent extends Model {
 
     protected parent:          IComponent | IView;
     protected children:        IComponent[];
-    protected template:        string;
-    protected jQueryElement:   JQuery;
     protected props:           TMessage;
 
     constructor() {

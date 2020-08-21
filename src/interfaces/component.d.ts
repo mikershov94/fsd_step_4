@@ -1,5 +1,6 @@
 interface IComponent {
-    controller: IController;
+    render(data: TMessage): void;
+    update(data: TMessage): void;
 }
 
 
