@@ -1,4 +1,4 @@
-abstract class View implements IView, IPublisher, ISubscriber {
+abstract class View implements IMainView, IPublisher, ISubscriber {
     public page: JQuery<Document>;
     protected rootContainer: JQuery;
     protected rootComponent: IComponent;

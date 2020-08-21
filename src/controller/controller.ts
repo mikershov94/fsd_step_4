@@ -1,14 +1,14 @@
 import Model from "../model/model";
 import View from "../view/view";
 
-class Controller implements IController, ISubscriber {
+class Controller implements IMainController, ISubscriber {
 
     private model: IModel;
-    private view: IView;
+    private view: IMainView;
 
     private subscribers: ISubscriber[];
 
-    constructor(model: IModel, view: IView) {
+    constructor(model: IModel, view: IMainView) {
         this.model = model;
         this.view = view;
     }
