@@ -1,5 +1,21 @@
 abstract class Component implements IComponent {
 
+    protected model:    IModel;
+    protected view:     IView;
+    public controller:  IController;
+
+    constructor() {
+
+        
+
+    }
+
+}
+
+
+/*
+abstract class Component implements IComponent {
+
     //========== модель компонента ===============
     protected state:           TState;
     protected parent:          IComponent | IView;
@@ -117,5 +133,6 @@ abstract class Component implements IComponent {
     //==================================================
 
 }
+*/
 
 export default Component;
