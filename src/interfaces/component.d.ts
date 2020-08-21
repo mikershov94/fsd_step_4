@@ -1,4 +1,10 @@
 interface IComponent {
+    controller: IController;
+}
+
+
+/*
+interface IComponent {
     mount(props: TMessage): void;
     render(): JQuery;
     update(props: TMessage): void;
@@ -10,3 +16,5 @@ interface IComponent {
 
     sendStateToNotifier(): void;
 }
+
+*/

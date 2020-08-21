@@ -11,5 +11,9 @@ interface IUpHandler {
 }
 
 interface IController {
+    update(message: TMessage): void;
+}
+
+interface IMainController extends IController {
     runPlugin(): void;
 }
