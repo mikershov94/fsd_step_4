@@ -12,3 +12,5 @@ interface TRangeGlobalState extends TGlobalState {
     positionA: number;
     positionB: number;
 }
+
+type ModelState = TGlobalState | TAloneGlobalState | TRangeGlobalState;
