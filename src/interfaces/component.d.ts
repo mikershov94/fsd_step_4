@@ -4,12 +4,6 @@ interface TState {
     [index: string]: ValueState;
 }
 
-interface TProps {
-    state?: TState;
-    parent?: any;
-    children?: any;
-}
-
 type TDataComponent = Record<string, TState>;
 
 interface IComponent {
