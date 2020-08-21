@@ -10,10 +10,10 @@ interface IUpHandler {
     (e: JQuery.MouseUpEvent): void;
 }
 
-interface IComponentController {
-    mount(data: TMessage): void;
+interface IController {
+    init(): void;
 }
 
-interface IMainController {
-    runPlugin(): void;
+interface IComponentController extends IController {
+    mount(data: TMessage): void;
 }
