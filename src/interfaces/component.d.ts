@@ -4,7 +4,7 @@ interface TState {
     [index: string]: ValueState;
 }
 
-type TDataComponent = Record<string, TState>;
+
 
 interface IComponent {
     mount(props: TMessage): void;
