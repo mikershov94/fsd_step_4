@@ -1,6 +1,3 @@
-/// <reference path="../interfaces/model.d.ts" />
-/// <reference path="../view/view.d.ts" />
-
 interface IDownHandler {
     (e: JQuery.MouseDownEvent): void;
 }
