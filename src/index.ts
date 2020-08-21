@@ -2,7 +2,7 @@
 /// <reference path="index.d.ts" />
 
 import { AloneSliderModel, RangeSliderModel } from './model';
-import Controller from './controller';
+import { Controller } from './controller';
 import { AloneSliderView, RangeSliderView } from './view';
 
 import './main.sass';

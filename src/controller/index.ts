@@ -1,2 +1,3 @@
 import Controller from './controller';
-export default Controller;
+import ComponentController from './component-controller';
+export { Controller, ComponentController };

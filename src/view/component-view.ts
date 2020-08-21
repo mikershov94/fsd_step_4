@@ -11,18 +11,15 @@ class ViewComponent implements IView {
         return
     }
 
-    protected subscribeOnEvents(): void {
+    protected subscribeOnEvents(): void { //для контроллера
         return
     }
 
-    render(data: any, children: IComponent[]): JQuery {
+    render(data: TMessage): JQuery {
         let template: JQuery = $(this.template)
         this.jQueryElement = template;
         this.doingRender();
-        this.subscribeOnEvents();
-        this.children.forEach((child: IComponent) => {
-            this.jQueryElement.append(child.render());
-        })
+        
         return this.jQueryElement;
     }
 

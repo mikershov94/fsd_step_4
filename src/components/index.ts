@@ -10,16 +10,16 @@ abstract class Component implements IComponent {
 
     }
 
-    protected renderChildren(data: TMessage): void {
+    render(data: TMessage): JQuery {
+        
         let children: IComponent[] = this.controller.getChildren();
-        children.forEach((child: IComponent) => {
-            child.render(data);
-        })
-    }
+        let element: JQuery = this.controller.mount(data);
 
-    render(data: TMessage): void {
-        this.renderChildren(data);
-        this.controller.mount(data);
+        children.forEach((child: IComponent) => {
+            element.append(child.render(data));
+        })
+        
+        return element;
     }
 
     update(data: TMessage): void {
