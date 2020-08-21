@@ -24,26 +24,6 @@ interface IRangeActions {
     onMouseUp: IUpHandler;
 }
 
-interface IAloneSliderController {
-    model: IAloneSliderModel;
-    view: IRangeSliderView;
-
-    actions: IAloneActions;
-   
-    runPlugin(defaultValues: IConfigPlugin): void;
-}
-
-interface IRangeSliderController {
-    model: IRangeSliderModel;
-    view: IView;
-
-    actions: IRangeActions;
-
-    runPlugin(defaultValues: IConfigPlugin): void;
-}
-
 interface IController {
     runPlugin(): void;
 }
-
-type PublisherData = DataModel | TDataComponent;
