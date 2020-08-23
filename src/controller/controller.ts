@@ -1,7 +1,7 @@
 import Model from "../model/model";
 import View from "../view/view";
 
-class Controller implements IMainController, ISubscriber {
+class Controller implements IController, ISubscriber {
 
     private model: IModel;
     private view: IMainView;
@@ -37,7 +37,7 @@ class Controller implements IMainController, ISubscriber {
         return;
     }
 
-    runPlugin(): void {
+    init(): void {
         let message: TMessage = this.model.getState();
         
         this.view.mountApplication(message)

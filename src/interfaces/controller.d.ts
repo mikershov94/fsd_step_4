@@ -15,5 +15,6 @@ interface IController {
 }
 
 interface IComponentController extends IController {
+    init(): JQuery;
     mount(data: TMessage): void;
 }

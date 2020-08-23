@@ -2,28 +2,14 @@ abstract class Component implements IComponent {
 
     protected model:        IModel;
     protected view:         IView;
-    protected controller:   IController;
+    protected controller:   IComponentController;
 
-    constructor() {
-
-        
-
-    }
-
-    render(data: TMessage): JQuery {
-        
-        let children: IComponent[] = this.controller.getChildren();
-        let element: JQuery = this.controller.mount(data);
-
-        children.forEach((child: IComponent) => {
-            element.append(child.render(data));
-        })
-        
-        return element;
+    render(): JQuery {
+        return this.controller.init();
     }
 
     update(data: TMessage): void {
-        this.controller.update(data);
+        this.controller.mount(data);
     }
 
 }

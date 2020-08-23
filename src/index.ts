@@ -58,7 +58,7 @@ import './main.sass';
 
             }
 
-            controller.runPlugin();
+            controller.init();
         })
 
     }

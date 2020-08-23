@@ -1,6 +1,6 @@
 interface IComponent {
     render(data: TMessage): JQuery;
-    update(data: TMessage): JQuery;
+    update(data: TMessage): void;
 }
 
 
