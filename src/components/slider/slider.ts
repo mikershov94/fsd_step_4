@@ -11,6 +11,18 @@ class Slider extends Component {
 
     protected state: TSliderState;
 
+    constructor(state: TSliderState, children: IComponent[]) {
+        super(state, children);
+    }
+
+}
+
+/*
+
+class Slider extends Component {
+
+    protected state: TSliderState;
+
     private mouseDownHandler: IDownHandler;
     private mouseMoveHandler: IMoveHandler;
     private mouseUpHandler:   IUpHandler;
@@ -63,5 +75,6 @@ class Slider extends Component {
         return '<div class="slider"></div>'
     }
 }
+*/
 
 export default Slider;

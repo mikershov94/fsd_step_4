@@ -10,14 +10,13 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
         this.rootContainer = rootContainer
         
     }
-
+/*
     protected createElement(Component: new() => IComponent,
                           props: TMessage = {},
                           children: IComponent[] = []): IComponent {
 
         let element: IComponent = new Component();
         element.setParentView(this);
-        element.setNotifier(this);
         element.mount(props);
         children.forEach(child => {
             element.adopt(child);
@@ -25,7 +24,7 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
         
         return element;
     }
-
+*/
     protected createApplication(): void {
         return
     }

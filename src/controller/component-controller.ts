@@ -29,6 +29,10 @@ class ComponentController implements IComponentController, ISubscriber {
         this.view.render(data)
     }
 
+    mountParent(parent: IComponent): void {
+        this.model.setParent(parent);
+    }
+
 }
 
 export default ComponentController;

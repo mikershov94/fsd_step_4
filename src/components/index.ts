@@ -1,8 +1,22 @@
+import ModelComponent from '../model/component-model';
+import ViewComponent from '../view/component-view';
+import ControllerComponent from '../controller/component-controller';
+import { Controller } from '../controller';
+
 abstract class Component implements IComponent {
 
-    protected model:        IModel;
+    protected model:        IModelComponent;
     protected view:         IView;
     protected controller:   IComponentController;
+
+    protected parent:          IComponent | IView;
+    protected children:        IComponent[];
+
+    constructor(state: TState, children: IComponent[] = []) {
+        this.model = new ModelComponent(state, children);
+        this.view = new ViewComponent();
+        this.controller = new ControllerComponent(this.model, this.view);
+    }
 
     render(): JQuery {
         return this.controller.init();
@@ -10,6 +24,11 @@ abstract class Component implements IComponent {
 
     update(data: TMessage): void {
         this.controller.mount(data);
+    }
+
+    adopt(parent: IComponent): void {
+        this.controller.mountParent(parent);
+
     }
 
 }

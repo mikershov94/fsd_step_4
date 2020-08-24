@@ -1,3 +1,4 @@
 import AloneSliderView from './alone-slider-view';
 import RangeSliderView from './range-slider-view';
-export { AloneSliderView, RangeSliderView };
+import ViewComponent from './component-view';
+export { AloneSliderView, RangeSliderView, ViewComponent };

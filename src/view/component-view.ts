@@ -1,4 +1,4 @@
-abstract class ViewComponent implements IView {
+class ViewComponent implements IView {
 
     protected template:        string;
     protected jQueryElement:   JQuery;
@@ -22,3 +22,5 @@ abstract class ViewComponent implements IView {
     }
 
 }
+
+export default ViewComponent;
