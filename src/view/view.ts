@@ -25,9 +25,6 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
         return element;
     }
 */
-    protected createApplication(): void {
-        return
-    }
 
     adopt(component: IComponent): IComponent {
         this.rootComponent = component;
@@ -55,7 +52,7 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
     }
 
     notify(value: TMessage): void {
-        this.subsribers.forEach((el: ISubscriber) => el.update(value, this))
+        this.subsribers.forEach((el: ISubscriber) => el.update(value))
     }
 
     update(value: TMessage): void {

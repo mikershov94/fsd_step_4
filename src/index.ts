@@ -33,7 +33,7 @@ import './main.sass';
             let controller: IController;
 
             if (config.rangeSlider) {
-                let defaultState: IRangeModelState = {
+                let defaultState: TState = {
                     min: config.min,
                     max: config.max,
                     step: config.step,
@@ -45,7 +45,7 @@ import './main.sass';
                 view = new RangeSliderView($(this));
                 controller = new Controller(model, view);
             } else {
-                let defaultState: IAloneModelState = {
+                let defaultState: TState = {
                     min: config.min,
                     max: config.max,
                     step: config.step,

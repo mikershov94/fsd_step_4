@@ -4,11 +4,9 @@ import View from "../view/view";
 class Controller implements IController, ISubscriber {
 
     private model: IModel;
-    private view: IMainView;
+    private view:  IView;
 
-    private subscribers: ISubscriber[];
-
-    constructor(model: IModel, view: IMainView) {
+    constructor(model: IModel, view: IView) {
         this.model = model;
         this.view = view;
     }
@@ -19,21 +17,11 @@ class Controller implements IController, ISubscriber {
     }
 
     private sendDataToView(data: TMessage): TMessage {
-        this.view.updateComponents(data);
+        
         return data;
     }
 
-    update(data: any, publisher: Publisher = undefined): void {
-        if (publisher instanceof Model) {
-            this.sendDataToView(data);
-            return;
-        }
-
-        if (publisher instanceof View) {
-            this.sendDataToModel(data);
-            return;
-        }
-
+    update(data: any): void {
         return;
     }
 

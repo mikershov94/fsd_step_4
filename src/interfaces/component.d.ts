@@ -1,8 +1,8 @@
 interface IComponent {
-    render(data: TMessage): JQuery;
+    render(): JQuery;
     update(data: TMessage): void;
 
-    setParent(parent: IComponent): void;
+    setParent(parent: IComponent | IView): void;
 }
 
 
