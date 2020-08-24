@@ -13,9 +13,18 @@ abstract class Component implements IComponent {
     protected children:        IComponent[];
 
     constructor(state: TState, children: IComponent[] = []) {
-        this.model = new ModelComponent(state, children);
+        this.model = new ModelComponent(state);
         this.view = new ViewComponent();
         this.controller = new ControllerComponent(this.model, this.view);
+
+        this.children = children;
+        this.children.forEach((child: IComponent) => {
+            child.setParent(this);
+        })
+    }
+
+    setParent(parent: IComponent): void {
+        this.parent = parent;
     }
 
     render(): JQuery {
@@ -24,11 +33,6 @@ abstract class Component implements IComponent {
 
     update(data: TMessage): void {
         this.controller.mount(data);
-    }
-
-    adopt(parent: IComponent): void {
-        this.controller.mountParent(parent);
-
     }
 
 }

@@ -2,7 +2,7 @@ interface IComponent {
     render(data: TMessage): JQuery;
     update(data: TMessage): void;
 
-    adopt(parent: IComponent): void;
+    setParent(parent: IComponent): void;
 }
 
 

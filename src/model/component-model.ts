@@ -4,7 +4,7 @@ class ModelComponent extends Model implements IModelComponent {
 
     protected props:           TMessage;
 
-    constructor(state: TState, children: IComponent[]) {
+    constructor(state: TState) {
         super();
         this.state = state;
         this.props = {};
