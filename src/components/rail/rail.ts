@@ -7,12 +7,11 @@ import ProgressBar from '../progress-bar';
 
 class Rail extends Component {
 
-    afterMount(): void {
-        this.state = {
+    protected initStateComponent(): TState {
+        return {
             min: this.props.min,
             max: this.props.max
         }
-
     }
 
     protected setTemplate(): string {

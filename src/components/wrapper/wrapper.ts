@@ -8,20 +8,6 @@ interface TWrapperState extends TState {
 
 class Wrapper extends Component {
 
-    protected state: TWrapperState;
-
-    private calculateOffset(): number {
-        let res = this.jQueryElement.offset().left;
-        return res;
-    }
-
-    protected doingRender(): void {
-        let offset: number = this.calculateOffset();
-        this.update({
-            offset: offset
-        })
-    }
-
     protected setTemplate(): string {
         return '<div class="wrapper"></div>';
     }

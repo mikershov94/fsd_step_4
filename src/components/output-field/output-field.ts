@@ -8,16 +8,10 @@ interface TOutputFieldState extends TState {
 
 class OutputField extends Component {
 
-    protected state: TOutputFieldState;
-
-    afterMount(): void {
-        this.state = {
-            value: this.props.value,
+    protected initStateComponent(): TOutputFieldState {
+        return {
+            value: this.props.value
         }
-    }
-
-    protected doingRender(): void {
-        this.jQueryElement.val(this.state.value);
     }
 
     protected setTemplate(): string {
