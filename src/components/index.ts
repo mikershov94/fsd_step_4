@@ -5,22 +5,37 @@ import { Controller } from '../controller';
 
 abstract class Component implements IComponent {
 
-    protected model:        IModelComponent;
+    protected model:        IModel;
     protected view:         IView;
     protected controller:   IComponentController;
 
-    protected parent:          IComponent | IView;
-    protected children:        IComponent[];
+    protected props:        TMessage;
+    protected parent:       IComponent | IView;
+    protected children:     IComponent[];
 
-    constructor(state: TState, children: IComponent[] = []) {
+    constructor(props: TMessage, children: IComponent[] = []) {
+        this.props = props;
+        
+        const state: TState = this.initStateComponent();
         this.model = new ModelComponent(state);
-        this.view = new ViewComponent();
+
+        const template: string = this.setTemplate();
+        this.view = new ViewComponent(template);
+
         this.controller = new ControllerComponent(this.model, this.view);
 
         this.children = children;
         this.children.forEach((child: IComponent) => {
             child.setParent(this);
         })
+    }
+
+    protected initStateComponent(): TState {
+        return {};
+    }
+
+    protected setTemplate(): string {
+        return '<div></div>';
     }
 
     setParent(parent: IComponent): void {

@@ -1,17 +1,10 @@
 import Model from './model';
 
-class ModelComponent extends Model implements IModelComponent {
-
-    protected props:           TMessage;
+class ModelComponent extends Model {
 
     constructor(state: TState) {
         super();
         this.state = state;
-        this.props = {};
-    }
-
-    setProps(props: TMessage): void {
-        this.props = props;
     }
 }
 

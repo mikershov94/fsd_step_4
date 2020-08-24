@@ -11,8 +11,14 @@ class Slider extends Component {
 
     protected state: TSliderState;
 
-    constructor(state: TSliderState, children: IComponent[]) {
-        super(state, children);
+    protected doingMount(): void {
+        this.state = {
+            position: this.props.position
+        }
+    }
+
+    protected setTemplate(): string {
+        return '<div class="slider"></div>';
     }
 
 }

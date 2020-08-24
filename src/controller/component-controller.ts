@@ -10,10 +10,6 @@ class ComponentController implements IComponentController, ISubscriber {
         this.view = view;
     }
 
-    protected doingMount(): void {
-        return
-    }
-
     init(): JQuery {
         const data: TMessage = this.model.getState();
 
@@ -22,7 +18,7 @@ class ComponentController implements IComponentController, ISubscriber {
 
     mount(data: TMessage): void {
         this.model.setProps(data);
-        this.doingMount();
+        
     }
     
     update(data: TMessage): void {
