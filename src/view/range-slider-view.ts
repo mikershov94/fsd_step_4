@@ -63,39 +63,39 @@ class RangeSliderView extends View {
 */
 
     mountApplication(props: TMessage): void {
-        const sliderA = this.createElement(Slider, {
+        const sliderA = new Slider({
             position: props.positionA
         });
-        const sliderB = this.createElement(Slider, {
+        const sliderB = new Slider({
             position: props.positionB
         });
-        const progressBar = this.createElement(ProgressBar, {
+        const progressBar = new ProgressBar({
             positionA: props.positionA,
             positionB: props.positionB
         })
 
-        const outputFieldA = this.createElement(OutputField, {
+        const outputFieldA = new OutputField({
             value: props.positionA
         });
-        const outputFieldB = this.createElement(OutputField, {
+        const outputFieldB = new OutputField({
             value: props.positionB
         });
 
-        const rail = this.createElement(Rail, {}, [
+        const rail = new Rail({}, [
             sliderA,
             progressBar,
             sliderB
         ]);
 
-        const wrapper = this.createElement(Wrapper, {}, [
+        const wrapper = new Wrapper({}, [
             rail
         ]);
-        const output = this.createElement(Wrapper, {}, [
+        const output = new Wrapper({}, [
             outputFieldA,
             outputFieldB
         ]);
         
-        const container = this.createElement(Container, {}, [
+        const container = new Container({}, [
             wrapper,
             output
         ]);

@@ -9,11 +9,9 @@ interface TSliderState extends TState {
 
 class Slider extends Component {
 
-    protected state: TSliderState;
-
-    protected doingMount(): void {
-        this.state = {
-            position: this.props.position
+    protected initStateComponent(): TSliderState {
+        return {
+            position: this.props.position,
         }
     }
 
