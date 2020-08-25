@@ -6,7 +6,7 @@ abstract class Component implements IComponent {
 
     protected state:         TState;
     protected template:      string;
-    protected jQueryElement: JQuery
+    protected jQueryElement: JQuery;
 
     constructor(props: TMessage, children: IComponent[] = []) {
         this.props = props;
@@ -18,6 +18,7 @@ abstract class Component implements IComponent {
         this.children.forEach((child: IComponent) => {
             child.setParent(this);
         })
+
     }
 
     protected initStateComponent(): TState {
@@ -32,6 +33,10 @@ abstract class Component implements IComponent {
         return
     }
 
+    protected subscribeOnEvent(): void {
+        return
+    }
+
     setParent(parent: IComponent): void {
         this.parent = parent;
     }
@@ -42,6 +47,7 @@ abstract class Component implements IComponent {
         this.children.forEach((child: IComponent) => {
             this.jQueryElement.append(child.render());
         })
+        this.subscribeOnEvent();
         return this.jQueryElement;
     }
 

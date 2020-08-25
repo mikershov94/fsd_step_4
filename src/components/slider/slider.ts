@@ -8,6 +8,17 @@ interface TSliderState extends TState {
 
 class Slider extends Component {
 
+    protected state: TSliderState;
+
+    private onMouseDown: IDownHandler;
+
+    constructor(props: TMessage, children: IComponent[] = []) {
+        super(props, children);
+        this.onMouseDown = (e: JQuery.MouseDownEvent) => {
+            console.log('down')
+        }
+    }
+
     protected initStateComponent(): TSliderState {
         return {
             position: this.props.position,
@@ -20,6 +31,10 @@ class Slider extends Component {
 
     protected doingRender(): void {
         this.jQueryElement.css('left', `${this.state.position}px`);
+    }
+
+    protected subscribeOnEvent(): void {
+        this.jQueryElement.on('mousedown', this.onMouseDown)
     }
 
 }
