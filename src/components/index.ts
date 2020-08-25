@@ -5,22 +5,19 @@ import { Controller } from '../controller';
 
 abstract class Component implements IComponent {
 
-    protected controller:   IComponentController;
+    protected props:         TMessage;
+    protected parent:        IComponent | IView;
+    protected children:      IComponent[];
 
-    protected props:        TMessage;
-    protected parent:       IComponent | IView;
-    protected children:     IComponent[];
+    protected state:         TState;
+    protected template:      string;
+    protected jQueryElement: JQuery
 
     constructor(props: TMessage, children: IComponent[] = []) {
         this.props = props;
         
-        const state: TState = this.initStateComponent();
-        const model: IModel = new ModelComponent(state);
-
-        const template: string = this.setTemplate();
-        const view: IView = new ViewComponent(template);
-
-        this.controller = new ControllerComponent(model, view);
+        this.state = this.initStateComponent();
+        this.template = this.setTemplate();
 
         this.children = children;
         this.children.forEach((child: IComponent) => {
@@ -36,16 +33,21 @@ abstract class Component implements IComponent {
         return '<div></div>';
     }
 
+    protected doingRender(): void {
+        return
+    }
+
     setParent(parent: IComponent): void {
         this.parent = parent;
     }
 
     render(): JQuery {
-        const element: JQuery = this.controller.init();
+        this.jQueryElement = $(this.template);
+        this.doingRender();
         this.children.forEach((child: IComponent) => {
-            element.append(child.render());
+            this.jQueryElement.append(child.render());
         })
-        return element;
+        return this.jQueryElement;
     }
 
     update(data: TMessage): void {
