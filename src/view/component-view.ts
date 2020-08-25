@@ -12,7 +12,7 @@ class ViewComponent implements IView {
         return
     }
 
-    render(data: TMessage): JQuery {
+    render(): JQuery {
         this.doingRender();
         return this.jQueryElement;
     }

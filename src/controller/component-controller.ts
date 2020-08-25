@@ -2,10 +2,10 @@ import Component from "../components";
 
 class ComponentController implements IComponentController, ISubscriber {
 
-    protected model: IModelComponent;
+    protected model: IModel;
     protected view:  IView;
 
-    constructor(model: IModelComponent, view: IView) {
+    constructor(model: IModel, view: IView) {
         this.model = model;
         this.view = view;
     }
@@ -17,16 +17,11 @@ class ComponentController implements IComponentController, ISubscriber {
     }
 
     mount(data: TMessage): void {
-        this.model.setProps(data);
         
     }
     
     update(data: TMessage): void {
         this.view.render(data)
-    }
-
-    mountParent(parent: IComponent): void {
-        this.model.setParent(parent);
     }
 
 }

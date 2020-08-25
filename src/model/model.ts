@@ -29,7 +29,7 @@ abstract class Model implements IModel, IPublisher {
     }
 
     notify(data: any) {
-        this.subscribers.forEach(subscriber => subscriber.update(data, this))
+        this.subscribers.forEach(subscriber => subscriber.update(data))
     }
 
 

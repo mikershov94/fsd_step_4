@@ -1,6 +1,3 @@
-/// <reference path="view.d.ts" />
-/// <reference path="../interfaces/sliders.d.ts" />
-
 import View from './view';
 
 import Container from '../components/container';

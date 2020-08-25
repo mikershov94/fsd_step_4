@@ -43,11 +43,15 @@ abstract class Component implements IComponent {
     }
 
     render(): JQuery {
-        return this.controller.init();
+        const element: JQuery = this.controller.init();
+        this.children.forEach((child: IComponent) => {
+            element.append(child.render());
+        })
+        return element;
     }
 
     update(data: TMessage): void {
-        this.controller.mount(data);
+        this.props = data;
     }
 
 }

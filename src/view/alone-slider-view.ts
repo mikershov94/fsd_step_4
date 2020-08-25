@@ -1,5 +1,3 @@
-/// <reference path="view.d.ts" />
-
 import View from './view';
 import Slider from '../components/slider';
 import ProgressBar from '../components/progress-bar';

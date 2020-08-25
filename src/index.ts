@@ -29,7 +29,7 @@ import './main.sass';
         return this.each(function() {
 
             let model:      IModel;
-            let view:       IView;
+            let view:       IMainView;
             let controller: IController;
 
             if (config.rangeSlider) {

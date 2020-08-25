@@ -4,9 +4,9 @@ import View from "../view/view";
 class Controller implements IController, ISubscriber {
 
     private model: IModel;
-    private view:  IView;
+    private view:  IMainView;
 
-    constructor(model: IModel, view: IView) {
+    constructor(model: IModel, view: IMainView) {
         this.model = model;
         this.view = view;
     }
@@ -27,7 +27,6 @@ class Controller implements IController, ISubscriber {
 
     init(): void {
         let message: TMessage = this.model.getState();
-        
         this.view.mountApplication(message)
 
         this.view.render();
