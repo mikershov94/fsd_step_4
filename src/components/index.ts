@@ -5,8 +5,6 @@ import { Controller } from '../controller';
 
 abstract class Component implements IComponent {
 
-    protected model:        IModel;
-    protected view:         IView;
     protected controller:   IComponentController;
 
     protected props:        TMessage;
@@ -17,12 +15,12 @@ abstract class Component implements IComponent {
         this.props = props;
         
         const state: TState = this.initStateComponent();
-        this.model = new ModelComponent(state);
+        const model: IModel = new ModelComponent(state);
 
         const template: string = this.setTemplate();
-        this.view = new ViewComponent(template);
+        const view: IView = new ViewComponent(template);
 
-        this.controller = new ControllerComponent(this.model, this.view);
+        this.controller = new ControllerComponent(model, view);
 
         this.children = children;
         this.children.forEach((child: IComponent) => {

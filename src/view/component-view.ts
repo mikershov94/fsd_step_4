@@ -8,12 +8,12 @@ class ViewComponent implements IView {
         this.jQueryElement = $(this.template);
     }
 
-    protected doingRender(): void {
+    protected doingRender(data: TMessage): void {
         return
     }
 
-    render(): JQuery {
-        this.doingRender();
+    render(data: TMessage): JQuery {
+        this.doingRender(data);
         return this.jQueryElement;
     }
 
