@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 import Component from '../index';
 
 interface TOutputFieldState extends TState {
@@ -7,6 +5,8 @@ interface TOutputFieldState extends TState {
 }
 
 class OutputField extends Component {
+
+    protected state: TOutputFieldState;
 
     protected initStateComponent(): TOutputFieldState {
         return {
@@ -16,6 +16,10 @@ class OutputField extends Component {
 
     protected setTemplate(): string {
         return `<input class="output-field" />`
+    }
+
+    protected doingRender(): void {
+        this.jQueryElement.val(this.state.value);
     }
 
 }
