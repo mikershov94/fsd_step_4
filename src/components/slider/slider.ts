@@ -1,7 +1,5 @@
 import $ from 'jquery';
-
 import Component from '../index';
-import { ViewComponent } from '../../view';
 
 interface TSliderState extends TState {
     position: number;
@@ -20,12 +18,8 @@ class Slider extends Component {
         return '<div class="slider"></div>';
     }
 
-}
-
-class ViewSlider extends ViewComponent {
-
-    protected doingRender(data: TMessage): void {
-        this.jQueryElement.css('left', `${data.position}px`)
+    protected doingRender(): void {
+        this.jQueryElement.css('left', `${this.state.position}px`);
     }
 
 }
