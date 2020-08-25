@@ -1,8 +1,3 @@
-import ModelComponent from '../model/component-model';
-import ViewComponent from '../view/component-view';
-import ControllerComponent from '../controller/component-controller';
-import { Controller } from '../controller';
-
 abstract class Component implements IComponent {
 
     protected props:         TMessage;
