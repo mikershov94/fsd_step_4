@@ -17,7 +17,7 @@ class Slider extends Component {
 
         this.onMouseDown = (e: JQuery.MouseDownEvent) => {
             console.log('down');
-            
+            this.dispatcher.dispatch('mousedown');
         }
 
     }

@@ -6,6 +6,8 @@ class Controller implements IController, ISubscriber, IDispatcher {
     private model: IModel;
     private view:  IMainView;
 
+    private actions: TActionList;
+
     constructor(model: IModel, view: IMainView) {
         this.model = model;
         this.view = view;
