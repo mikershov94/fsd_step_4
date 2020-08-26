@@ -40,6 +40,10 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
         this.rootComponent.subscribeOnDispatcher(dispatcher);
     }
 
+    subscribeOnGlobalMove(): void {
+        this.page.on('mousemove')
+    }
+
     updateComponents(props: TMessage): void {
         this.rootComponent.update(props);
     }

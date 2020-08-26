@@ -1,3 +1,7 @@
+interface TAction {
+    (): void;
+}
+
 interface TActionList {
-    [index: string]: THandler;
+    [index: string]: TAction;
 }

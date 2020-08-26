@@ -51,6 +51,13 @@ class Controller implements IController, ISubscriber, IDispatcher {
 
     dispatch(action: string): void {
         
+        switch(action) {
+
+            case 'mousedown':
+                this.actions.onMouseDown(e)
+
+        }
+
     }
 
 }
