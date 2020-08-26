@@ -3,6 +3,7 @@ interface IComponent {
     update(data: TMessage): void;
 
     setParent(parent: IComponent | IView): void;
+    subscribeOnDispatcher(dispatcher: IDispatcher): void;
 }
 
 

@@ -1,7 +1,7 @@
 import Model from "../model/model";
 import View from "../view/view";
 
-class Controller implements IController, ISubscriber {
+class Controller implements IController, ISubscriber, IDispatcher {
 
     private model: IModel;
     private view:  IMainView;
@@ -21,15 +21,19 @@ class Controller implements IController, ISubscriber {
         return data;
     }
 
-    update(data: any): void {
-        return;
-    }
-
     init(): void {
         let message: TMessage = this.model.getState();
         this.view.mountApplication(message)
 
         this.view.render();
+    }
+
+    update(data: any): void {
+        return;
+    }
+
+    dispatch(action: string): void {
+        
     }
 
 }

@@ -13,8 +13,3 @@ interface IUpHandler {
 interface IController {
     init(): void;
 }
-
-interface IComponentController extends IController {
-    init(): JQuery;
-    mount(data: TMessage): void;
-}

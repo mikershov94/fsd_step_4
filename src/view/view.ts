@@ -36,6 +36,10 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
         return
     }
 
+    subscribeAppOnDispatcher(dispatcher: IDispatcher): void {
+        this.rootComponent.subscribeOnDispatcher(dispatcher);
+    }
+
     updateComponents(props: TMessage): void {
         this.rootComponent.update(props);
     }

@@ -8,6 +8,8 @@ abstract class Component implements IComponent {
     protected template:      string;
     protected jQueryElement: JQuery;
 
+    protected dispatcher:    IDispatcher;
+
     constructor(props: TMessage, children: IComponent[] = []) {
         this.props = props;
         
@@ -19,6 +21,7 @@ abstract class Component implements IComponent {
             child.setParent(this);
         })
 
+        
     }
 
     protected initStateComponent(): TState {
@@ -39,6 +42,13 @@ abstract class Component implements IComponent {
 
     setParent(parent: IComponent): void {
         this.parent = parent;
+    }
+
+    subscribeOnDispatcher(dispatcher: IDispatcher): void {
+        this.dispatcher = dispatcher;
+        this.children.forEach((child: IComponent) => {
+            child.subscribeOnDispatcher(this.dispatcher);
+        })
     }
 
     render(): JQuery {
