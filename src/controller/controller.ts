@@ -13,16 +13,16 @@ class Controller implements IController, ISubscriber, IDispatcher {
         this.view = view;
 
         this.actions = {
-            onMouseDown: (e: JQuery.MouseDownEvent): void => {
+            subscribeOnMove: (): void => {
                 console.log('down');
                 this.view.subscribeOnGlobalMove();
             },
 
-            onMouseMove: (e: JQuery.MouseMoveEvent): void => {
+            moveSlider: (): void => {
                 console.log('move');
             },
 
-            onMouseUp: (e: JQuery.MouseUpEvent): void => {
+            unsubscribeOfMove: (): void => {
                 console.log('up');
             }
         }
