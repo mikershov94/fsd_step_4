@@ -11,6 +11,21 @@ class Controller implements IController, ISubscriber, IDispatcher {
     constructor(model: IModel, view: IMainView) {
         this.model = model;
         this.view = view;
+
+        this.actions = {
+            onMouseDown: (e: JQuery.MouseDownEvent): void => {
+                console.log('down');
+                this.view.subscribeOnGlobalMove();
+            },
+
+            onMouseMove: (e: JQuery.MouseMoveEvent): void => {
+                console.log('move');
+            },
+
+            onMouseUp: (e: JQuery.MouseUpEvent): void => {
+                console.log('up');
+            }
+        }
     }
 
     private sendDataToModel(data: TMessage): TMessage {
