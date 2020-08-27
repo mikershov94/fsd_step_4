@@ -3,9 +3,6 @@ interface IView {
 }
 
 interface IMainView extends IView {
-    page: JQuery<Document>;
-    subscribeOnGlobalMove(callback: any): void;
-
     adopt(container: IComponent): IComponent;
     mountApplication(props: TMessage): void;
     subscribeAppOnDispatcher(dispatcher: IDispatcher): void;

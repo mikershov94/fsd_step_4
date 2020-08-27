@@ -1,12 +1,11 @@
 abstract class View implements IMainView, IPublisher, ISubscriber {
-    public page: JQuery<Document>;
+    protected page:          IDocument;
     protected rootContainer: JQuery;
     protected rootComponent: IComponent;
 
     private subsribers: ISubscriber[];
 
     constructor(rootContainer: JQuery) {
-        this.page = $(document);
         this.rootContainer = rootContainer
         
     }
@@ -38,11 +37,6 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
 
     subscribeAppOnDispatcher(dispatcher: IDispatcher): void {
         this.rootComponent.subscribeOnDispatcher(dispatcher);
-    }
-
-    subscribeOnGlobalMove(callback: any): void {
-        this.page.on('mousemove', callback);
-        this.page.on('')
     }
 
     updateComponents(props: TMessage): void {
