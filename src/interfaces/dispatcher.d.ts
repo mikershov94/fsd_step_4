@@ -1,3 +1,3 @@
 interface IDispatcher {
-    dispatch(action: string, event: Evt): void;
+    dispatch(action: string, args: TActionArgs): void;
 }

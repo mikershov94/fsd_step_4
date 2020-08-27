@@ -1,5 +1,9 @@
+interface TActionArgs {
+    [index: string]: number;
+}
+
 interface TAction {
-    (args: any): void;
+    (args: TActionArgs): number;
 }
 
 interface TActionList {

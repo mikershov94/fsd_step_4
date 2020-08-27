@@ -6,6 +6,11 @@ interface TSliderState extends TState {
     offset?: number;
 }
 
+interface TOldPosition extends TActionArgs {
+    posPointer: number;
+    posSlider: number;
+}
+
 class Slider extends Component {
 
     protected state: TSliderState;
@@ -17,7 +22,12 @@ class Slider extends Component {
 
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {
             console.log('down');
-            this.dispatcher.dispatch('mousedown', event);
+
+            const oldPosition: TOldPosition = {
+                posPointer: event.pageX,
+                posSlider: this.state.position
+            }
+            this.dispatcher.dispatch('mousedown', oldPosition);
         }
 
     }

@@ -1,11 +1,11 @@
-const fixOldPosition = (posPointer: number, posSlider: number): number => {
+const fixOldPosition = ({posPointer, posSlider}: TActionArgs): number => {
     let offset: number;
     offset = posPointer - posSlider;
 
     return offset;
 }
 
-const moveSlider = (posPointer: number, offsetRail: number, offsetWidth: number): number => {
+const moveSlider = ({posPointer, offsetRail, offsetWidth}: TActionArgs): number => {
     let newPosition: number;
     newPosition = posPointer - offsetRail - (offsetWidth / 2);
 

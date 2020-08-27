@@ -1,6 +1,11 @@
 import Model from "../model/model";
 import View from "../view/view";
 
+import {
+    fixOldPosition,
+    moveSlider
+} from './actions';
+
 class Controller implements IController, ISubscriber, IDispatcher {
 
     private model: IModel;
@@ -13,19 +18,8 @@ class Controller implements IController, ISubscriber, IDispatcher {
         this.view = view;
 
         this.actions = {
-            subscribeOnMove: ({ pageX,  }: any): void => {
-                console.log('down');
-                const sliderPosition = this.model.
-                this.view.subscribeOnGlobalMove(this.actions.moveSlider);
-            },
-
-            moveSlider: (): void => {
-                console.log('move');
-            },
-
-            unsubscribeOfMove: (): void => {
-                console.log('up');
-            }
+            fixOldPosition,
+            moveSlider
         }
     }
 
@@ -50,12 +44,23 @@ class Controller implements IController, ISubscriber, IDispatcher {
         return;
     }
 
-    dispatch(action: string, event: Evt): void {
+    dispatch(action: string, args: TActionArgs): void {
         
         switch(action) {
 
             case 'mousedown':
-                this.actions.onMouseDown(e)
+                let railOffset: number;
+                railOffset = this.actions.fixOldPosition(args);
+
+                let message: TMessage = {
+                    offset: railOffset
+                }
+                this.sendDataToModel(message);
+            
+            case 'mouse'
+
+            default:
+                return;
 
         }
 
