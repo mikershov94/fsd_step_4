@@ -1,3 +1,5 @@
+import Page from '../components/document';
+
 abstract class View implements IMainView, IPublisher, ISubscriber {
     protected page:          IDocument;
     protected rootContainer: JQuery;
@@ -6,6 +8,7 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
     private subsribers: ISubscriber[];
 
     constructor(rootContainer: JQuery) {
+        this.page = new Page();
         this.rootContainer = rootContainer
         
     }
@@ -36,7 +39,12 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
     }
 
     subscribeAppOnDispatcher(dispatcher: IDispatcher): void {
+        this.page.subscribeOnDispatcher(dispatcher);
         this.rootComponent.subscribeOnDispatcher(dispatcher);
+    }
+
+    subscribePageOnMove(callback: TMoveHandler): void {
+        this.page.subscribeOnMove(callback);
     }
 
     updateComponents(props: TMessage): void {
