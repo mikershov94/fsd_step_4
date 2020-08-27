@@ -13,9 +13,10 @@ class Controller implements IController, ISubscriber, IDispatcher {
         this.view = view;
 
         this.actions = {
-            subscribeOnMove: (): void => {
+            subscribeOnMove: ({ pageX,  }: any): void => {
                 console.log('down');
-                this.view.subscribeOnGlobalMove();
+                const sliderPosition = this.model.
+                this.view.subscribeOnGlobalMove(this.actions.moveSlider);
             },
 
             moveSlider: (): void => {
@@ -49,7 +50,7 @@ class Controller implements IController, ISubscriber, IDispatcher {
         return;
     }
 
-    dispatch(action: string): void {
+    dispatch(action: string, event: Evt): void {
         
         switch(action) {
 

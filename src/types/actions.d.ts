@@ -1,5 +1,5 @@
 interface TAction {
-    (): void;
+    (args: any): void;
 }
 
 interface TActionList {

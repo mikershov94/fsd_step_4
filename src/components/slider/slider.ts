@@ -10,14 +10,14 @@ class Slider extends Component {
 
     protected state: TSliderState;
 
-    private onMouseDown: IDownHandler;
+    private onMouseDown: TDownHandler;
 
     constructor(props: TMessage, children: IComponent[] = []) {
         super(props, children);
 
-        this.onMouseDown = (e: JQuery.MouseDownEvent) => {
+        this.onMouseDown = (event: JQuery.MouseDownEvent) => {
             console.log('down');
-            this.dispatcher.dispatch('mousedown');
+            this.dispatcher.dispatch('mousedown', event);
         }
 
     }
