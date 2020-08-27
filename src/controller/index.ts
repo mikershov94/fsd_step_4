@@ -1,2 +1,2 @@
-import Controller from './controller';
-export { Controller };
+import RangeSliderController from './range-slider-controller';
+export { RangeSliderController };

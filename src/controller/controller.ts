@@ -1,36 +1,29 @@
 import Model from "../model/model";
 import View from "../view/view";
 
-import {
-    fixOldPosition,
-    moveSlider
-} from './actions';
+abstract class Controller implements IController {
 
-class Controller implements IController, ISubscriber, IDispatcher {
-
-    private model: IModel;
-    private view:  IMainView;
-
-    private actions: TActionList;
+    protected model: IModel;
+    protected view:  IMainView;
 
     constructor(model: IModel, view: IMainView) {
         this.model = model;
         this.view = view;
 
-        this.actions = {
-            fixOldPosition,
-            moveSlider
-        }
     }
 
-    private sendDataToModel(data: TMessage): TMessage {
+    protected sendDataToModel(data: TMessage): TMessage {
         this.model.setState(data);
         return data;
     }
 
-    private sendDataToView(data: TMessage): TMessage {
+    protected sendDataToView(data: TMessage): TMessage {
         
         return data;
+    }
+
+    protected reduce(action: string, args: TActionArgs): void {
+        return
     }
 
     init(): void {
@@ -45,25 +38,7 @@ class Controller implements IController, ISubscriber, IDispatcher {
     }
 
     dispatch(action: string, args: TActionArgs): void {
-        
-        switch(action) {
-
-            case 'mousedown':
-                let railOffset: number;
-                railOffset = this.actions.fixOldPosition(args);
-
-                let message: TMessage = {
-                    offset: railOffset
-                }
-                this.sendDataToModel(message);
-            
-            case 'mouse'
-
-            default:
-                return;
-
-        }
-
+        this.reduce(action, args);
     }
 
 }

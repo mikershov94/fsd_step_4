@@ -1,3 +1,5 @@
+type MessageValue = number | boolean
+
 interface TMessage {
-    [index: string]: number;
+    [index: string]: MessageValue;
 }

@@ -1,8 +1,5 @@
-/// <reference path="../node_modules/@types/jquery/index.d.ts" />
-/// <reference path="index.d.ts" />
-
 import { AloneSliderModel, RangeSliderModel } from './model';
-import { Controller } from './controller';
+import { RangeSliderController } from './controller';
 import { AloneSliderView, RangeSliderView } from './view';
 
 import './main.sass';
@@ -43,7 +40,7 @@ import './main.sass';
 
                 model = new RangeSliderModel(defaultState);
                 view = new RangeSliderView($(this));
-                controller = new Controller(model, view);
+                controller = new RangeSliderController(model, view);
             } else {
                 let defaultState: TState = {
                     min: config.min,
@@ -54,7 +51,7 @@ import './main.sass';
 
                 model = new AloneSliderModel(defaultState);
                 view = new AloneSliderView($(this));
-                controller = new Controller(model, view);
+                controller = new AloneSliderController(model, view);
 
             }
 

@@ -9,7 +9,9 @@ class RangeSliderModel extends Model {
             max:  state.max,
             step: state.step,
             positionA: state.defaultPositionA,
-            positionB: state.defaultPositionB
+            positionB: state.defaultPositionB,
+            clickSliderA: false,
+            clickSLiderB: false
         }
     }
 
