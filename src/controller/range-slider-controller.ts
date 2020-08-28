@@ -2,7 +2,9 @@ import Controller from './controller';
 
 import {
     fixOldPosition,
-    moveSlider
+    moveSlider,
+    sliderAClicked,
+    sliderBClicked
 } from './actions';
 
 class RangeSliderController extends Controller {
@@ -14,7 +16,9 @@ class RangeSliderController extends Controller {
 
         this.actions = {
             fixOldPosition,
-            moveSlider
+            moveSlider, 
+            sliderAClicked,
+            sliderBClicked
         }
     }
 
@@ -22,7 +26,7 @@ class RangeSliderController extends Controller {
         switch(action) {
 
             case 'wrapperRender':
-                let railOffset: number;
+                let railOffset: TActionResult;
                 railOffset = this.actions.fixOldPosition(args);
 
                 this.sendDataToModel({
@@ -40,10 +44,16 @@ class RangeSliderController extends Controller {
                 });
 
             case 'mouseMove':
-                const clickSliderA: MessageValue = this.model.getState().clickSliderA;
+                if (this.actions.sliderAClicked) {
+                    this.sendDataToModel({
+                        positionA: this.actions.moveSlider(args)
+                    });
+                }
 
-                this.sendDataToModel{
-
+                if (this.actions.sliderBClicked) {
+                    this.sendDataToModel({
+                        positionB: this.actions.moveSlider(args)
+                    })
                 }
 
             case 'mouseUpA':

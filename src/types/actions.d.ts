@@ -1,9 +1,12 @@
+type TActionArgsValues = number | boolean;
+type TActionResult = number | boolean;
+
 interface TActionArgs {
-    [index: string]: number;
+    [index: string]: TActionArgsValues;
 }
 
 interface TAction {
-    (args: TActionArgs): number;
+    (args: any): TActionResult;
 }
 
 interface TActionList {
