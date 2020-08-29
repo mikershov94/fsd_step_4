@@ -1,10 +1,3 @@
-const fixOldPosition = ({posPointer, posSlider}: any): number => {
-    let offset: number;
-    offset = posPointer - posSlider;
-
-    return offset;
-}
-
 const moveSlider = ({posPointer,
                      offsetRail,
                      offsetWidth }: any): number => {
@@ -31,7 +24,6 @@ const sliderBClicked = (state: TMessage): boolean => {
 }
 
 export {
-    fixOldPosition,
     moveSlider,
     sliderAClicked,
     sliderBClicked

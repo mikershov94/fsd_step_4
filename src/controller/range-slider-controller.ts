@@ -1,7 +1,6 @@
 import Controller from './controller';
 
 import {
-    fixOldPosition,
     moveSlider,
     sliderAClicked,
     sliderBClicked
@@ -15,7 +14,6 @@ class RangeSliderController extends Controller {
         super(model, view);
 
         this.actions = {
-            fixOldPosition,
             moveSlider, 
             sliderAClicked,
             sliderBClicked
@@ -26,14 +24,13 @@ class RangeSliderController extends Controller {
         switch(action) {
 
             case 'wrapperRender':
-                let railOffset: TActionResult;
-                railOffset = this.actions.fixOldPosition(args);
-
                 this.sendDataToModel({
-                    offset: railOffset,
+                    offset: args.offset,
                 });
             
             case 'mouseDownA':
+                const messageForPage: TMessage = this.model.getState();
+                this.view.subscribePageOnMove(messageForPage);
                 this.sendDataToModel({
                     clickSliderA: true,
                 });

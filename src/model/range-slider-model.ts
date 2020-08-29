@@ -11,7 +11,7 @@ class RangeSliderModel extends Model {
             positionA: state.defaultPositionA,
             positionB: state.defaultPositionB,
             clickSliderA: false,
-            clickSLiderB: false
+            clickSLiderB: false,
         }
     }
 

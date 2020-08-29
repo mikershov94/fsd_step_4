@@ -9,6 +9,7 @@ interface TSliderState extends TState {
 interface TOldPosition extends TActionArgs {
     posPointer: number;
     posSlider: number;
+    outerWidth: number;
 }
 
 class Slider extends Component {
@@ -25,7 +26,8 @@ class Slider extends Component {
 
             const oldPosition: TOldPosition = {
                 posPointer: event.pageX,
-                posSlider: this.state.position
+                posSlider: this.state.position,
+                outerWidth: this.jQueryElement.outerWidth()
             }
             this.dispatcher.dispatch('mousedown', oldPosition);
         }

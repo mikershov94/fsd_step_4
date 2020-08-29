@@ -8,6 +8,12 @@ interface TWrapperState extends TState {
 
 class Wrapper extends Component {
 
+    protected doingRender(): void {
+        this.dispatcher.dispatch('wrapperRender', {
+            offset: this.jQueryElement.offset().left
+        })
+    }
+
     protected setTemplate(): string {
         return '<div class="wrapper"></div>';
     }
