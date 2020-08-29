@@ -38,6 +38,7 @@ class AloneSliderView extends View {
     mountApplication(props: TMessage): void {
         const slider = new Slider({
             position: props.position,
+            type: 'alone'
         });
         const progressBar = new ProgressBar({
             positionA: 0,

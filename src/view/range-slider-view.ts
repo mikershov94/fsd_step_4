@@ -61,10 +61,12 @@ class RangeSliderView extends View {
 
     mountApplication(props: TMessage): void {
         const sliderA = new Slider({
-            position: props.positionA
+            position: props.positionA,
+            type: 'left'
         });
         const sliderB = new Slider({
-            position: props.positionB
+            position: props.positionB,
+            type: 'right'
         });
         const progressBar = new ProgressBar({
             positionA: props.positionA,

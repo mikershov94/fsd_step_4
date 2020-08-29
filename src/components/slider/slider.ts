@@ -3,7 +3,7 @@ import Component from '../index';
 
 interface TSliderState extends TState {
     position: number;
-    offset?: number;
+    type: string;
 }
 
 interface TOldPosition extends TActionArgs {
@@ -29,7 +29,21 @@ class Slider extends Component {
                 posSlider: this.state.position,
                 outerWidth: this.jQueryElement.outerWidth()
             }
-            this.dispatcher.dispatch('mousedown', oldPosition);
+
+            switch (this.state.type) {
+                case 'left':
+                    this.dispatcher.dispatch('mouseDownA', oldPosition);
+                    return
+
+                case 'right':
+                    this.dispatcher.dispatch('mouseDownB', oldPosition);
+                    return
+
+                default:
+                    this.dispatcher.dispatch('mouseDown', oldPosition);
+                    return
+
+            }
         }
 
     }
@@ -37,6 +51,7 @@ class Slider extends Component {
     protected initStateComponent(): TSliderState {
         return {
             position: this.props.position,
+            type: this.props.type
         }
     }
 
