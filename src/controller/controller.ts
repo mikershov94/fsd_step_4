@@ -10,6 +10,7 @@ abstract class Controller implements IController, ISubscriber{
         this.model = model;
         this.view = view;
 
+        this.model.subscribe(this);
     }
 
     protected sendDataToModel(data: TMessage): TMessage {

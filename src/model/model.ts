@@ -15,11 +15,12 @@ abstract class Model implements IModel {
 
     setState(message: TMessage): void {
         Object.assign(this.state, message);
+        this.notify(message);
     }
 
-    subscribe(subscriber: ISubscriber): IModel {
+    subscribe(subscriber: ISubscriber): void {
         this.subscribers.push(subscriber);
-        return this;
+        return;
     }
 
     unsubscribe(subscriber: ISubscriber): ISubscriber[] {
@@ -28,7 +29,7 @@ abstract class Model implements IModel {
         return this.subscribers;
     }
 
-    notify(data: any) {
+    protected notify(data: TMessage) {
         this.subscribers.forEach(subscriber => subscriber.update(data))
     }
 
