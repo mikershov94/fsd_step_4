@@ -1,4 +1,4 @@
-abstract class Model implements IModel, IPublisher {
+abstract class Model implements IModel {
 
     protected state:       TState;
     protected subscribers: ISubscriber[];
@@ -17,9 +17,9 @@ abstract class Model implements IModel, IPublisher {
         Object.assign(this.state, message);
     }
 
-    subscribe(subscriber: ISubscriber): ISubscriber[] {
+    subscribe(subscriber: ISubscriber): IModel {
         this.subscribers.push(subscriber);
-        return this.subscribers;
+        return this;
     }
 
     unsubscribe(subscriber: ISubscriber): ISubscriber[] {

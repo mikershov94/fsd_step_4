@@ -1,7 +1,7 @@
 import Model from "../model/model";
 import View from "../view/view";
 
-abstract class Controller implements IController {
+abstract class Controller implements IController, ISubscriber{
 
     protected model: IModel;
     protected view:  IView;
