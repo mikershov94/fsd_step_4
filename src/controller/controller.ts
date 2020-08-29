@@ -18,7 +18,7 @@ abstract class Controller implements IController {
     }
 
     protected sendDataToView(data: TMessage): TMessage {
-        
+        this.view.updateComponents(data);
         return data;
     }
 
@@ -28,12 +28,15 @@ abstract class Controller implements IController {
 
     init(): void {
         let message: TMessage = this.model.getState();
-        this.view.mountApplication(message)
+        this.view.mountApplication(message);
+
+        this.view.subscribeAppOnDispatcher(this);
 
         this.view.render();
     }
 
     update(data: any): void {
+        this.sendDataToView(data);
         return;
     }
 

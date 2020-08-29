@@ -1,11 +1,9 @@
 import Page from '../components/document';
 
-abstract class View implements IView, IPublisher, ISubscriber {
+abstract class View implements IView {
     protected page:          IDocument;
     protected rootContainer: JQuery;
     protected rootComponent: IComponent;
-
-    private subsribers: ISubscriber[];
 
     constructor(rootContainer: JQuery) {
         this.page = new Page();
@@ -48,30 +46,11 @@ abstract class View implements IView, IPublisher, ISubscriber {
     }
 
     unsubscribePageOffMove(): void {
-        
+        this.page.unsubscribeOffMove();
     }
 
     updateComponents(props: TMessage): void {
         this.rootComponent.update(props);
-    }
-
-    subscribe(subscriber: ISubscriber): ISubscriber[] {
-        this.subsribers.push(subscriber);
-        return this.subsribers;
-    }
-
-    unsubscribe(subscriber: ISubscriber): ISubscriber[] {
-        const arrEl = this.subsribers.indexOf(subscriber);
-        this.subsribers.splice(arrEl, 1);
-        return this.subsribers;
-    }
-
-    notify(value: TMessage): void {
-        this.subsribers.forEach((el: ISubscriber) => el.update(value))
-    }
-
-    update(value: TMessage): void {
-        this.rootComponent.update(value);
     }
 
     render(): JQuery {
