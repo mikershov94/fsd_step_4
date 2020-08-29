@@ -4,9 +4,9 @@ import View from "../view/view";
 abstract class Controller implements IController {
 
     protected model: IModel;
-    protected view:  IMainView;
+    protected view:  IView;
 
-    constructor(model: IModel, view: IMainView) {
+    constructor(model: IModel, view: IView) {
         this.model = model;
         this.view = view;
 

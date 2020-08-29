@@ -10,7 +10,7 @@ class RangeSliderController extends Controller {
 
     protected actions: TActionList;
 
-    constructor(model: IModel, view: IMainView) {
+    constructor(model: IModel, view: IView) {
         super(model, view);
 
         this.actions = {
@@ -53,16 +53,12 @@ class RangeSliderController extends Controller {
                     })
                 }
 
-            case 'mouseUpA':
+            case 'mouseUp':
                 this.sendDataToModel({
                     clickSliderA: false,
-                });
-
-            case 'mouseUpB':
-                this.sendDataToModel({
                     clickSliderB: false
-                })
-                
+                });
+                this.view.unsubscribePageOffMove();
 
             default:
                 return;

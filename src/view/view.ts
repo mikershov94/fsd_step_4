@@ -1,6 +1,6 @@
 import Page from '../components/document';
 
-abstract class View implements IMainView, IPublisher, ISubscriber {
+abstract class View implements IView, IPublisher, ISubscriber {
     protected page:          IDocument;
     protected rootContainer: JQuery;
     protected rootComponent: IComponent;
@@ -45,7 +45,10 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
 
     subscribePageOnMove(data: TMessage): void {
         this.page.subscribeOnMove(data);
-        this.page.subscribeOnUp();
+    }
+
+    unsubscribePageOffMove(): void {
+        
     }
 
     updateComponents(props: TMessage): void {

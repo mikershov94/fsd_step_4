@@ -35,7 +35,7 @@ class Page implements IDocument {
 
         this.onMouseUp = (event: JQuery.MouseUpEvent) => {
             console.log('up');
-            this.page.off('mousemove');
+            this.dispatcher.dispatch('mouseUp', {});
         }
     }
 
@@ -50,10 +50,11 @@ class Page implements IDocument {
         }
 
         this.page.on('mousemove', this.onMouseMove);
+        this.page.on('mouseup', this.onMouseUp);
     }
 
-    subscribeOnUp(): void {
-        this.page.on('mouseup', this.onMouseUp);
+    unsubscribeOffMove(): void {
+        this.page.off('mousemove');
     }
 
 }

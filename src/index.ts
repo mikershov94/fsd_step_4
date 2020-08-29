@@ -1,5 +1,7 @@
+/// <reference path='./index.d.ts' />
+
 import { AloneSliderModel, RangeSliderModel } from './model';
-import { RangeSliderController } from './controller';
+import { AloneSliderController, RangeSliderController } from './controller';
 import { AloneSliderView, RangeSliderView } from './view';
 
 import './main.sass';
@@ -26,7 +28,7 @@ import './main.sass';
         return this.each(function() {
 
             let model:      IModel;
-            let view:       IMainView;
+            let view:       IView;
             let controller: IController;
 
             if (config.rangeSlider) {
