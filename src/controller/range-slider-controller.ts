@@ -2,8 +2,6 @@ import Controller from './controller';
 
 import {
     moveSlider,
-    sliderAClicked,
-    sliderBClicked
 } from './actions';
 
 class RangeSliderController extends Controller {
@@ -15,13 +13,10 @@ class RangeSliderController extends Controller {
 
         this.actions = {
             moveSlider, 
-            sliderAClicked,
-            sliderBClicked
         }
     }
 
     protected reduce(action: string, args: TActionArgs): void {
-        console.log(this.model.getState())
         switch(action) {
 
             case 'railRender':
@@ -47,13 +42,13 @@ class RangeSliderController extends Controller {
                 return;
 
             case 'mouseMove':
-                if (this.actions.sliderAClicked) {
+                if (this.model.getState().clickSliderA) {
                     this.sendDataToModel({
                         positionA: this.actions.moveSlider(args)
                     });
                 }
 
-                if (this.actions.sliderBClicked) {
+                if (this.model.getState().clickSliderB) {
                     this.sendDataToModel({
                         positionB: this.actions.moveSlider(args)
                     })

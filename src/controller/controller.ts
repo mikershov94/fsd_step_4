@@ -36,7 +36,8 @@ abstract class Controller implements IController, ISubscriber{
         this.view.render();
     }
 
-    update(data: any): void {
+    update(data: TMessage): void {
+        console.log(data)
         this.sendDataToView(data);
         return;
     }

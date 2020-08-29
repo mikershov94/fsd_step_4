@@ -5,6 +5,7 @@ abstract class Model implements IModel {
 
     constructor() {
         this.state = {};
+        this.subscribers = [];
     }
     
     getState(): TMessage {
@@ -15,7 +16,7 @@ abstract class Model implements IModel {
 
     setState(message: TMessage): void {
         Object.assign(this.state, message);
-        this.notify(message);
+        this.notify(this.getState());
     }
 
     subscribe(subscriber: ISubscriber): void {
