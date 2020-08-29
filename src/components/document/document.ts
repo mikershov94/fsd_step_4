@@ -17,6 +17,7 @@ class Page implements IDocument {
     private state: TPageState;
 
     private onMouseMove: TMoveHandler;
+    private onMouseUp:   TUpHandler;
 
     constructor() {
         this.page = $(document);
@@ -30,6 +31,11 @@ class Page implements IDocument {
                 offsetWidth: this.state.offsetWidth
             }
             this.dispatcher.dispatch('mouseMove', newPosition);
+        };
+
+        this.onMouseUp = (event: JQuery.MouseUpEvent) => {
+            console.log('up');
+            this.page.off('mousemove');
         }
     }
 
@@ -44,6 +50,10 @@ class Page implements IDocument {
         }
 
         this.page.on('mousemove', this.onMouseMove);
+    }
+
+    subscribeOnUp(): void {
+        this.page.on('mouseup', this.onMouseUp);
     }
 
 }

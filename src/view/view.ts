@@ -45,6 +45,7 @@ abstract class View implements IMainView, IPublisher, ISubscriber {
 
     subscribePageOnMove(data: TMessage): void {
         this.page.subscribeOnMove(data);
+        this.page.subscribeOnUp();
     }
 
     updateComponents(props: TMessage): void {
