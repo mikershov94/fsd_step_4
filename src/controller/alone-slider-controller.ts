@@ -23,23 +23,27 @@ class AloneSliderController extends Controller {
             case 'wrapperRender':
                 this.sendDataToModel({
                     offset: args.offset,
-                })
+                });
+                return
             
             case 'mouseDown':
                 const messageForPage: TMessage = this.model.getState();
                 this.view.subscribePageOnMove(messageForPage);
+                return;
                 
             case 'mouseMove':
                 this.sendDataToModel({
                     position: this.actions.moveSlider(args)
                 });
+                return;
 
             case 'mouseUp':
                 this.view.unsubscribePageOffMove();
+                return;
 
 
             default:
-                return
+                return;
 
         }
     }

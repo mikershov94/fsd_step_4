@@ -27,6 +27,7 @@ class RangeSliderController extends Controller {
                 this.sendDataToModel({
                     offset: args.offset,
                 });
+                return;
             
             case 'mouseDownA':
                 const messageForPage: TMessage = this.model.getState();
@@ -34,11 +35,13 @@ class RangeSliderController extends Controller {
                 this.sendDataToModel({
                     clickSliderA: true,
                 });
+                return;
                 
             case 'mouseDownB':
                 this.sendDataToModel({
                     clickSliderB: true,
                 });
+                return;
 
             case 'mouseMove':
                 if (this.actions.sliderAClicked) {
@@ -52,6 +55,7 @@ class RangeSliderController extends Controller {
                         positionB: this.actions.moveSlider(args)
                     })
                 }
+                return;
 
             case 'mouseUp':
                 this.sendDataToModel({
@@ -59,6 +63,7 @@ class RangeSliderController extends Controller {
                     clickSliderB: false
                 });
                 this.view.unsubscribePageOffMove();
+                return;
 
             default:
                 return;
