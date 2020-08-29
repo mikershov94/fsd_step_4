@@ -99,8 +99,6 @@ class RangeSliderView extends View {
             output
         ]);
 
-        console.log(sliderA)
-
         this.adopt(container);
     }
 }

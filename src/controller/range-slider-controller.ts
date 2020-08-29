@@ -21,26 +21,29 @@ class RangeSliderController extends Controller {
     }
 
     protected reduce(action: string, args: TActionArgs): void {
+        console.log(this.model.getState())
         switch(action) {
 
-            case 'wrapperRender':
+            case 'railRender':
                 this.sendDataToModel({
-                    offset: args.offset,
+                    offsetRail: args.offset,
                 });
                 return;
             
             case 'mouseDownA':
-                const messageForPage: TMessage = this.model.getState();
-                this.view.subscribePageOnMove(messageForPage);
                 this.sendDataToModel({
                     clickSliderA: true,
+                    offsetWidth: args.outerWidth
                 });
+                this.view.subscribePageOnMove(this.model.getState());
                 return;
                 
             case 'mouseDownB':
                 this.sendDataToModel({
                     clickSliderB: true,
+                    offsetWidth: args.outerWidth
                 });
+                this.view.subscribePageOnMove(this.model.getState());
                 return;
 
             case 'mouseMove':

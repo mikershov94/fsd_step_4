@@ -23,7 +23,7 @@ class Page implements IDocument {
         this.page = $(document);
 
         this.onMouseMove = (event: JQuery.MouseMoveEvent) => {
-            console.log('move');
+            console.log(this.state);
 
             const newPosition: TNewPosition = {
                 posPointer: event.pageX,
@@ -44,6 +44,7 @@ class Page implements IDocument {
     }
 
     subscribeOnMove(data: TMessage): void {
+        console.log(data)
         this.state = {
             offsetRail: data.offsetRail,
             offsetWidth: data.offsetWidth

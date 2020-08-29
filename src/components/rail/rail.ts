@@ -12,6 +12,12 @@ class Rail extends Component {
         }
     }
 
+    protected doingRender(): void {
+        this.dispatcher.dispatch('railRender', {
+            offset: this.jQueryElement.offset().left
+        })
+    }
+
     protected setTemplate(): string {
         return '<div class="rail"></div>';
     }
