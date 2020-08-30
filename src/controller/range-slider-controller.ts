@@ -42,13 +42,27 @@ class RangeSliderController extends Controller {
                 return;
 
             case 'mouseMove':
+                const messageWithLimits: TMessage = this.model.getState();
+
                 if (this.model.getState().clickSliderA) {
+                    //добавляем лимиты движения в аргументы
+                    Object.assign(args, {
+                        minLimit: messageWithLimits.min,
+                        maxLimit: messageWithLimits.positionB
+                    });
+
                     this.sendDataToModel({
                         positionA: this.actions.moveSlider(args)
                     });
                 }
 
                 if (this.model.getState().clickSliderB) {
+                    //добавляем лимиты движения в аргументы
+                    Object.assign(args, {
+                        minLimit: messageWithLimits.positionA,
+                        maxLimit: messageWithLimits.max
+                    })
+
                     this.sendDataToModel({
                         positionB: this.actions.moveSlider(args)
                     })
