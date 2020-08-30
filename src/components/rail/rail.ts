@@ -1,8 +1,5 @@
 import Component from '../index';
 
-import Slider from '../slider';
-import ProgressBar from '../progress-bar';
-
 class Rail extends Component {
 
     protected initStateComponent(): TState {
@@ -10,10 +7,6 @@ class Rail extends Component {
             min: this.props.min,
             max: this.props.max
         }
-    }
-
-    protected doingRender(): void {
-        
     }
 
     protected setTemplate(): string {

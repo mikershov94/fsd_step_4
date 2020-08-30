@@ -71,14 +71,17 @@ class RangeSliderView extends View {
         });
         const progressBar = new ProgressBar({
             positionA: props.positionA,
-            positionB: props.positionB
+            positionB: props.positionB,
+            type: 'range'
         })
 
         const outputFieldA = new OutputField({
-            value: props.positionA
+            value: props.positionA,
+            type: 'start'
         });
         const outputFieldB = new OutputField({
-            value: props.positionB
+            value: props.positionB,
+            type: 'end'
         });
 
         const rail = new Rail({}, [

@@ -23,6 +23,7 @@ class RangeSliderController extends Controller {
                 this.sendDataToModel({
                     offsetRail: args.offset,
                 });
+                console.log(this.model.getState())
                 return;
             
             case 'mouseDownA':

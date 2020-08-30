@@ -10,6 +10,8 @@ class RangeSliderModel extends Model {
             step: state.step,
             positionA: state.defaultPositionA,
             positionB: state.defaultPositionB,
+            offsetRail: 0,
+            offsetWidth: 0,
             clickSliderA: false,
             clickSliderB: false,
         }

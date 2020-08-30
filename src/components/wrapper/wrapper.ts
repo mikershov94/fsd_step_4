@@ -7,7 +7,7 @@ interface TWrapperState extends TState {
 }
 
 class Wrapper extends Component {
-
+    
     protected calculateOffset(): void {
         this.dispatcher.dispatch('calculatedOffset', {
             offset: this.jQueryElement.offset().left
