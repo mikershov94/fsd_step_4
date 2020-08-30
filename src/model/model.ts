@@ -16,7 +16,7 @@ abstract class Model implements IModel {
 
     setState(message: TMessage): void {
         Object.assign(this.state, message);
-        this.notify(this.getState());
+        this.notify();
     }
 
     subscribe(subscriber: ISubscriber): void {
@@ -30,7 +30,8 @@ abstract class Model implements IModel {
         return this.subscribers;
     }
 
-    protected notify(data: TMessage) {
+    protected notify() {
+        const data: TMessage = this.getState();
         this.subscribers.forEach(subscriber => subscriber.update(data))
     }
 

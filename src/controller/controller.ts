@@ -34,10 +34,11 @@ abstract class Controller implements IController, ISubscriber{
         this.view.subscribeAppOnDispatcher(this);
 
         this.view.render();
+
+        this.view.getOffsetApplication();
     }
 
     update(data: TMessage): void {
-        console.log(data)
         this.sendDataToView(data);
         return;
     }

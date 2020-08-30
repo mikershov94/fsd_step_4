@@ -67,6 +67,35 @@ class Slider extends Component {
         this.jQueryElement.on('mousedown', this.onMouseDown)
     }
 
+    protected updateState(): void {
+        console.log(this.props)
+        switch (this.state.type) {
+            
+            case 'left':
+                this.setState({
+                    position: this.props.positionA,
+                })
+                return;
+
+            case 'right':
+                this.setState({
+                    position: this.props.positionB,
+                })
+                return;
+
+            default:
+                this.setState({
+                    position: this.props.position,
+                })
+                return;
+
+        }    
+    }
+
+    protected updateRender(): void {
+        this.jQueryElement.css('left', `${this.state.position}px`)
+    }
+
 }
 
 /*

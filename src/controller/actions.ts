@@ -2,7 +2,7 @@ const moveSlider = ({posPointer,
                      offsetRail,
                      offsetWidth }: any): number => {
     let newPosition: number;
-    newPosition = posPointer - offsetRail - (offsetWidth / 2);
+    newPosition = posPointer    ;
 
     return newPosition;
 }

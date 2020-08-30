@@ -23,7 +23,7 @@ class Page implements IDocument {
         this.page = $(document);
 
         this.onMouseMove = (event: JQuery.MouseMoveEvent) => {
-
+            console.log('move')
             const newPosition: TNewPosition = {
                 posPointer: event.pageX,
                 offsetRail: this.state.offsetRail,

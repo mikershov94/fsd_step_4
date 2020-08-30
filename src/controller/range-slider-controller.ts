@@ -19,7 +19,7 @@ class RangeSliderController extends Controller {
     protected reduce(action: string, args: TActionArgs): void {
         switch(action) {
 
-            case 'railRender':
+            case 'calculatedOffset':
                 this.sendDataToModel({
                     offsetRail: args.offset,
                 });

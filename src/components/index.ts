@@ -24,6 +24,14 @@ abstract class Component implements IComponent {
         
     }
 
+    protected setState(newState: TMessage): void {
+        Object.assign(this.state, newState);
+    }
+
+    protected calculateOffset(): void {
+        return;
+    }
+
     protected initStateComponent(): TState {
         return {};
     }
@@ -40,6 +48,14 @@ abstract class Component implements IComponent {
         return
     }
 
+    protected updateState(): void {
+        return
+    }
+
+    protected updateRender(): void {
+        return
+    }
+
     setParent(parent: IComponent): void {
         this.parent = parent;
     }
@@ -53,16 +69,29 @@ abstract class Component implements IComponent {
 
     render(): JQuery {
         this.jQueryElement = $(this.template);
-        this.doingRender();
         this.children.forEach((child: IComponent) => {
-            this.jQueryElement.append(child.render());
+            const element = child.render();
+            this.jQueryElement.append(element);
         })
+        this.doingRender();
         this.subscribeOnEvent();
         return this.jQueryElement;
     }
 
+    getOffset(): void {
+        this.calculateOffset();
+        this.children.forEach((child: IComponent) => {
+            child.getOffset();
+        })
+    }
+
     update(data: TMessage): void {
         this.props = data;
+        this.updateState();
+        this.updateRender();
+        this.children.forEach((child: IComponent) => {
+            child.update(this.props)
+        })
     }
 
 }

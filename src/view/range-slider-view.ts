@@ -2,6 +2,7 @@ import View from './view';
 
 import Container from '../components/container';
 import Wrapper from '../components/wrapper';
+import Output from '../components/output';
 import Rail from '../components/rail';
 import Slider from '../components/slider';
 import ProgressBar from '../components/progress-bar';
@@ -89,7 +90,7 @@ class RangeSliderView extends View {
         const wrapper = new Wrapper({}, [
             rail
         ]);
-        const output = new Wrapper({}, [
+        const output = new Output({}, [
             outputFieldA,
             outputFieldB
         ]);

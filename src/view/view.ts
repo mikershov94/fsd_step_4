@@ -52,6 +52,10 @@ abstract class View implements IView {
     updateComponents(props: TMessage): void {
         this.rootComponent.update(props);
     }
+    
+    getOffsetApplication(): void {
+        this.rootComponent.getOffset();
+    }
 
     render(): JQuery {
         let application = this.rootComponent.render();
