@@ -8,6 +8,8 @@ class AloneSliderModel extends Model {
             min:  state.min,
             max:  state.max,
             step: state.step,
+            offsetRail: 0,
+            offsetWidth: 0,
             position: state.defaultPosition
         }
     }

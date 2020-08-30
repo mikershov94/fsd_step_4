@@ -7,6 +7,11 @@ abstract class Model implements IModel {
         this.state = {};
         this.subscribers = [];
     }
+
+    protected notify() {
+        const data: TMessage = this.getState();
+        this.subscribers.forEach(subscriber => subscriber.update(data))
+    }
     
     getState(): TMessage {
         let message: TMessage = {};
@@ -29,13 +34,6 @@ abstract class Model implements IModel {
         this.subscribers.splice(idx, 1);
         return this.subscribers;
     }
-
-    protected notify() {
-        const data: TMessage = this.getState();
-        this.subscribers.forEach(subscriber => subscriber.update(data))
-    }
-
-
 
 }
 

@@ -14,52 +14,6 @@ class RangeSliderView extends View {
         super(rootElement);
     }
 
-/*
-    private setDefaultPositionA(value: number): void {
-        this.application.sliderA.css('left', `${value}px`);
-    }
-
-    private setDefaultPositionB(value: number): void {
-        this.application.sliderB.css('left', `${value}px`);
-    }
-/*
-    moveSliderA(pageX: number, min: number, posB: number): number {
-        console.log(`${pageX}  ${min}  ${posB}`);
-        const offset = this.wrapper.offset().left;
-        const offsetWidth = this.sliderA.outerWidth();
-        
-        let left = pageX - offsetWidth / 2 - offset;
-        if (left < min) left = min;
-        if (left > posB) left = posB;
-
-        this.sliderA.css('left', `${left}px`);
-        return left;
-    }
-
-    moveSliderB(pageX: number, max: number, posA: number): number {
-        const offset = this.wrapper.offset().left;
-        const offsetWidth = this.sliderB.outerWidth();
-
-        let left = pageX - offsetWidth / 2 - offset;
-        if (left < posA) left = posA;
-        if (left > max) left = max;
-
-        this.sliderB.css('left', `${left}px`);
-        return left;
-    }
-
-    moveFillA(posA: number, posB: number): void {
-        this.filling.css('left', `${posA}px`);
-        const width = posB - posA;
-        this.filling.css('width', `${width}px`);     
-    }
-
-    moveFillB(posA: number, posB: number): void {
-        const width = posB - posA;
-        this.filling.css('width', `${width}px`);
-    }
-*/
-
     mountApplication(props: TMessage): void {
         const sliderA = new Slider({
             position: props.positionA,

@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 import Component from '../index';
 
 interface TWrapperState extends TState {

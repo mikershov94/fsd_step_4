@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Component from '../index';
 
 class Container extends Component {

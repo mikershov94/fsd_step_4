@@ -10,21 +10,6 @@ abstract class View implements IView {
         this.rootContainer = rootContainer
         
     }
-/*
-    protected createElement(Component: new() => IComponent,
-                          props: TMessage = {},
-                          children: IComponent[] = []): IComponent {
-
-        let element: IComponent = new Component();
-        element.setParentView(this);
-        element.mount(props);
-        children.forEach(child => {
-            element.adopt(child);
-        })
-        
-        return element;
-    }
-*/
 
     adopt(component: IComponent): IComponent {
         this.rootComponent = component;
