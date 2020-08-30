@@ -21,8 +21,6 @@ class Slider extends Component {
         super(props, children);
 
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {
-            console.log('down');
-
             const oldPosition: TOldPosition = {
                 posPointer: event.pageX,
                 posSlider: this.state.position,

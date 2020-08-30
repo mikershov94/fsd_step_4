@@ -6,5 +6,5 @@ $('#alone').fsdSlider({
 });
 */
 $('#range').fsdSlider({
-    rangeSlider: true
+    rangeSlider: false
 })

@@ -20,18 +20,28 @@ class AloneSliderController extends Controller {
     protected reduce(action: string, args: TActionArgs): void {
         switch(action) {
 
-            case 'wrapperRender':
+            case 'calculatedOffset':
                 this.sendDataToModel({
-                    offset: args.offset,
+                    offsetRail: args.offset,
                 });
                 return
             
             case 'mouseDown':
-                const messageForPage: TMessage = this.model.getState();
-                this.view.subscribePageOnMove(messageForPage);
+                this.sendDataToModel({
+                    offsetWidth: args.outerWidth
+                })
+                
+                this.view.subscribePageOnMove(this.model.getState());
                 return;
                 
             case 'mouseMove':
+                const messageWithLimits: TMessage = this.model.getState();
+
+                Object.assign(args, {
+                    minLimit: messageWithLimits.min,
+                    maxLimit: messageWithLimits.max
+                });
+
                 this.sendDataToModel({
                     position: this.actions.moveSlider(args)
                 });
