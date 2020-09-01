@@ -62,7 +62,9 @@ class Slider extends Component {
     }
 
     protected setTemplate(): string {
-        return '<div class="slider slider_vertical"></div>';
+        let style: string = this.setStyle('slider');
+
+        return `<div class="${style}"></div>`;
     }
 
     protected doingRender(): void {

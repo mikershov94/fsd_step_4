@@ -4,6 +4,7 @@ interface TProgressBarState extends TState {
     positionA: number;
     positionB: number;
     type: string;
+    vertical: boolean;
 }
 
 class ProgressBar extends Component {
@@ -14,15 +15,26 @@ class ProgressBar extends Component {
         return {
             positionA: this.props.positionA,
             positionB: this.props.positionB,
-            type: this.props.type
+            type: this.props.type,
+            vertical: this.props.vertical
         }
     }
 
     protected setTemplate(): string {
-        return '<div class="progress-bar progress-bar_vertical"></div>';
+        let style: string = this.setStyle('progress-bar');
+
+        return `<div class="${style}"></div>`;
     }
 
     protected doingRender(): void {
+        if (this.state.vertical) {
+            const height: number = this.state.positionB - this.state.positionA;
+
+            this.jQueryElement.css('top', `${this.state.positionA}px`);
+            this.jQueryElement.css('height', `${height}px`);
+            return
+        }
+
         const width: number = this.state.positionB - this.state.positionA;
 
         this.jQueryElement.css('left', `${this.state.positionA}px`);
@@ -57,6 +69,15 @@ class ProgressBar extends Component {
     }
 
     protected updateRender(): void {
+        if (this.state.vertical) {
+            const height: number = this.state.positionB - this.state.positionA;
+
+            this.jQueryElement.css('top', `${this.state.positionA}px`);
+            this.jQueryElement.css('height', `${height}px`);
+            return
+        }
+
+
         const width: number = this.state.positionB - this.state.positionA;
 
         this.jQueryElement.css('left', `${this.state.positionA}px`);

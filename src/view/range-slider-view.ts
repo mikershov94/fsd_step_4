@@ -28,7 +28,8 @@ class RangeSliderView extends View {
         const progressBar = new ProgressBar({
             positionA: props.positionA,
             positionB: props.positionB,
-            type: 'range'
+            type: 'range',
+            vertical: props.vertical
         })
 
         const outputFieldA = new OutputField({
@@ -40,7 +41,9 @@ class RangeSliderView extends View {
             type: 'end'
         });
 
-        const rail = new Rail({}, [
+        const rail = new Rail({
+            vertical: props.vertical
+        }, [
             sliderA,
             progressBar,
             sliderB
@@ -54,7 +57,9 @@ class RangeSliderView extends View {
             outputFieldB
         ]);
         
-        const container = new Container({}, [
+        const container = new Container({
+            vertical: props.vertical
+        }, [
             wrapper,
             output
         ]);
