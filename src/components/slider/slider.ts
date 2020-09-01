@@ -9,7 +9,7 @@ interface TSliderState extends TState {
 interface TOldPosition extends TActionArgs {
     posPointer: number;
     posSlider: number;
-    outerWidth: number;
+    outerSize: number;
 }
 
 class Slider extends Component {
@@ -22,17 +22,15 @@ class Slider extends Component {
         super(props, children);
 
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {
-            let posPointer: number;
-            if (this.state.vertical) {
-                posPointer = event.pageY
-            } else {
-                posPointer = event.pageX
-            }
+            const posPointer: number = this.state.vertical ? event.pageY : event.pageX; 
+            const outerSize: number = this.state.vertical ?
+                                      this.jQueryElement.outerHeight() :
+                                      this.jQueryElement.outerWidth();
 
             const oldPosition: TOldPosition = {
-                posPointer: posPointer,
+                posPointer,
                 posSlider: this.state.position,
-                outerWidth: this.jQueryElement.outerWidth()
+                outerSize
             }
 
             switch (this.state.type) {

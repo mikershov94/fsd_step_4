@@ -1,15 +1,24 @@
 import Component from '../index';
 
 interface TWrapperState extends TState {
-    offset: number;
+    vertical: number;
 }
 
 class Wrapper extends Component {
+
+    protected state: TWrapperState;
     
     protected calculateOffset(): void {
-        this.dispatcher.dispatch('calculatedOffset', {
-            offset: this.jQueryElement.offset().left
-        })
+        const offset: number = this.state.vertical ? this.jQueryElement.offset().top : 
+                                this.jQueryElement.offset().left;
+
+        this.dispatcher.dispatch('calculatedOffset', { offset })
+    }
+
+    protected initStateComponent(): TWrapperState {
+        return {
+            vertical: this.props.vertical
+        }
     }
 
     protected setTemplate(): string {

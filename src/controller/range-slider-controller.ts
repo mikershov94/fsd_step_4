@@ -29,7 +29,7 @@ class RangeSliderController extends Controller {
             case 'mouseDownA':
                 this.sendDataToModel({
                     clickSliderA: true,
-                    offsetWidth: args.outerWidth
+                    sizeSlider: args.outerSize
                 });
                 this.view.subscribePageOnMove(this.model.getState());
                 return;
@@ -37,7 +37,7 @@ class RangeSliderController extends Controller {
             case 'mouseDownB':
                 this.sendDataToModel({
                     clickSliderB: true,
-                    offsetWidth: args.outerWidth
+                    sizeSlider: args.outerSize
                 });
                 this.view.subscribePageOnMove(this.model.getState());
                 return;

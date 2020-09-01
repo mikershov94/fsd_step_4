@@ -28,7 +28,7 @@ class AloneSliderController extends Controller {
             
             case 'mouseDown':
                 this.sendDataToModel({
-                    offsetWidth: args.outerWidth
+                    sizeSlider: args.outerSize
                 })
                 
                 this.view.subscribePageOnMove(this.model.getState());

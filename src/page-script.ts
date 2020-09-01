@@ -3,10 +3,10 @@ import '../src/index';
 $('#alone').fsdSlider({
     rangeSlider: false,
     defaultPosition: 250,
-    verticalView: true
+    verticalView: false
 });
 
 $('#range').fsdSlider({
     rangeSlider: true,
-    verticalView: true
+    verticalView: false
 })

@@ -1,10 +1,10 @@
 const moveSlider = ({posPointer,
                      offsetRail,
-                     offsetWidth,
+                     sizeSlider,
                      minLimit,
                      maxLimit }: any): number => {
     let newPosition: number;
-    newPosition = posPointer - offsetWidth / 2 - offsetRail;
+    newPosition = posPointer - sizeSlider / 2 - offsetRail;
     
     if (newPosition < minLimit) newPosition = minLimit;
     if (newPosition > maxLimit) newPosition = maxLimit;

@@ -1,12 +1,13 @@
 interface TNewPosition extends TActionArgs {
     posPointer: number;
     offsetRail: number;
-    offsetWidth: number;
+    sizeSlider: number;
 }
 
 interface TPageState extends TState {
+    vertical: boolean;
     offsetRail: number;
-    offsetWidth: number;
+    sizeSlider: number;
 }
 
 class Page implements IDocument {
@@ -23,17 +24,17 @@ class Page implements IDocument {
         this.page = $(document);
 
         this.onMouseMove = (event: JQuery.MouseMoveEvent) => {
-            console.log('move')
+            const posPointer: number = this.state.vertical ? event.pageY : event.pageX;
+
             const newPosition: TNewPosition = {
-                posPointer: event.pageX,
+                posPointer: posPointer,
                 offsetRail: this.state.offsetRail,
-                offsetWidth: this.state.offsetWidth
+                sizeSlider: this.state.sizeSlider
             }
             this.dispatcher.dispatch('mouseMove', newPosition);
         };
 
         this.onMouseUp = (event: JQuery.MouseUpEvent) => {
-            console.log('up');
             this.dispatcher.dispatch('mouseUp', {});
         }
     }
@@ -44,8 +45,9 @@ class Page implements IDocument {
 
     subscribeOnMove(data: TMessage): void {
         this.state = {
+            vertical: data.vertical,
             offsetRail: data.offsetRail,
-            offsetWidth: data.offsetWidth
+            sizeSlider: data.sizeSlider
         }
 
         this.page.on('mousemove', this.onMouseMove);

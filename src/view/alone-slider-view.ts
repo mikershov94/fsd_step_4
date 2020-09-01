@@ -38,7 +38,9 @@ class AloneSliderView extends View {
             value: props.position,
         });
 
-        const wrapper = new Wrapper({}, [
+        const wrapper = new Wrapper({
+            vertical: props.vertical
+        }, [
             rail
         ]);
         const output = new Output({}, [
