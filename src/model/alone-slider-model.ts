@@ -5,6 +5,7 @@ class AloneSliderModel extends Model {
     constructor(state: any) {
         super();
         this.state = {
+            vertical: state.vertical,
             min:  state.min,
             max:  state.max,
             step: state.step,

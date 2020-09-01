@@ -17,11 +17,13 @@ class RangeSliderView extends View {
     mountApplication(props: TMessage): void {
         const sliderA = new Slider({
             position: props.positionA,
-            type: 'left'
+            type: 'left',
+            vertical: props.vertical
         });
         const sliderB = new Slider({
             position: props.positionB,
-            type: 'right'
+            type: 'right',
+            vertical: props.vertical
         });
         const progressBar = new ProgressBar({
             positionA: props.positionA,

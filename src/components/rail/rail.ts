@@ -10,7 +10,7 @@ class Rail extends Component {
     }
 
     protected setTemplate(): string {
-        return '<div class="rail"></div>';
+        return '<div class="rail rail_vertical"></div>';
     }
 
 }

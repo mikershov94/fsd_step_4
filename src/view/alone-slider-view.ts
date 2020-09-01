@@ -4,6 +4,7 @@ import ProgressBar from '../components/progress-bar';
 import Rail from '../components/rail';
 import OutputField from '../components/output-field';
 import Wrapper from '../components/wrapper';
+import Output from '../components/output';
 import Container from '../components/container';
 
 class AloneSliderView extends View {
@@ -15,7 +16,8 @@ class AloneSliderView extends View {
     mountApplication(props: TMessage): void {
         const slider = new Slider({
             position: props.position,
-            type: 'alone'
+            type: 'alone',
+            vertical: props.vertical
         });
         const progressBar = new ProgressBar({
             positionA: 0,
@@ -37,7 +39,7 @@ class AloneSliderView extends View {
         const wrapper = new Wrapper({}, [
             rail
         ]);
-        const output = new Wrapper({}, [
+        const output = new Output({}, [
             outputField
         ]);
 

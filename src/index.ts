@@ -33,6 +33,7 @@ import './main.sass';
 
             if (config.rangeSlider) {
                 let defaultState: TState = {
+                    vertical: config.verticalView,
                     min: config.min,
                     max: config.max,
                     step: config.step,
@@ -45,6 +46,7 @@ import './main.sass';
                 controller = new RangeSliderController(model, view);
             } else {
                 let defaultState: TState = {
+                    vertical: config.verticalView,
                     min: config.min,
                     max: config.max,
                     step: config.step,

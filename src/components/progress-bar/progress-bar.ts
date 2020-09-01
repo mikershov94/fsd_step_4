@@ -19,7 +19,7 @@ class ProgressBar extends Component {
     }
 
     protected setTemplate(): string {
-        return '<div class="progress-bar"></div>';
+        return '<div class="progress-bar progress-bar_vertical"></div>';
     }
 
     protected doingRender(): void {

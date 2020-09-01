@@ -13,7 +13,7 @@ class Wrapper extends Component {
     }
 
     protected setTemplate(): string {
-        return '<div class="wrapper"></div>';
+        return '<div class="wrapper wrapper_vertical"></div>';
     }
 
 }

@@ -3,6 +3,7 @@ import Component from '../index';
 interface TSliderState extends TState {
     position: number;
     type: string;
+    vertical: boolean;
 }
 
 interface TOldPosition extends TActionArgs {
@@ -21,8 +22,15 @@ class Slider extends Component {
         super(props, children);
 
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {
+            let posPointer: number;
+            if (this.state.vertical) {
+                posPointer = event.pageY
+            } else {
+                posPointer = event.pageX
+            }
+
             const oldPosition: TOldPosition = {
-                posPointer: event.pageX,
+                posPointer: posPointer,
                 posSlider: this.state.position,
                 outerWidth: this.jQueryElement.outerWidth()
             }
@@ -48,15 +56,21 @@ class Slider extends Component {
     protected initStateComponent(): TSliderState {
         return {
             position: this.props.position,
-            type: this.props.type
+            type: this.props.type,
+            vertical: this.props.vertical
         }
     }
 
     protected setTemplate(): string {
-        return '<div class="slider"></div>';
+        return '<div class="slider slider_vertical"></div>';
     }
 
     protected doingRender(): void {
+        if (this.state.vertical) {
+            this.jQueryElement.css('top', `${this.state.position}px`);
+            return;
+        }
+
         this.jQueryElement.css('left', `${this.state.position}px`);
     }
 
@@ -89,6 +103,11 @@ class Slider extends Component {
     }
 
     protected updateRender(): void {
+        if (this.state.vertical) {
+            this.jQueryElement.css('top', `${this.state.position}px`);
+            return;
+        }
+
         this.jQueryElement.css('left', `${this.state.position}px`)
     }
 
