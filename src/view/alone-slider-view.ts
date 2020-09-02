@@ -1,6 +1,6 @@
 import View from './view';
 import Slider from '../components/slider';
-import ProgressBar from '../components/progress-bar';
+import { ProgressBarWrapper, ProgressBarFill } from '../components/progress-bar';
 import Rail from '../components/rail';
 import OutputField from '../components/output-field';
 import Wrapper from '../components/wrapper';
@@ -19,11 +19,16 @@ class AloneSliderView extends View {
             type: 'alone',
             vertical: props.vertical
         });
-        const progressBar = new ProgressBar({
+        const progressBarFill = new ProgressBarFill({
             positionA: 0,
             positionB: props.position,
-            vertical: props.vertical
-        });
+            vertical: props.vertical,
+        })
+        const progressBar = new ProgressBarWrapper({
+            vertical: props.vertical,
+        }, [ 
+            progressBarFill
+         ]);
 
         const rail = new Rail({
             min: props.min,

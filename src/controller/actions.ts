@@ -7,7 +7,7 @@ const moveSlider = ({posPointer,
     newPosition = posPointer - sizeSlider / 2 - offsetRail;
     
     if (newPosition < minLimit) newPosition = minLimit;
-    if (newPosition > maxLimit) newPosition = maxLimit;
+    if (newPosition > (maxLimit - sizeSlider)) newPosition = (maxLimit - sizeSlider);
 
     return newPosition;
 }

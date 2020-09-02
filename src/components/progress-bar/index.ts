@@ -1,2 +1,3 @@
-import ProgressBar from './progress-bar';
-export default ProgressBar;
+import ProgressBarFill from './fill-line';
+import ProgressBarWrapper from './wrapper';
+export { ProgressBarWrapper, ProgressBarFill };
