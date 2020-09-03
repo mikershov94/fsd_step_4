@@ -1,6 +1,6 @@
 import Component from '../index';
 
-interface TFillLineState extends TState {
+interface TProgressBarState extends TState {
     positionA: number;
     positionB: number;
     type: string;
@@ -9,9 +9,9 @@ interface TFillLineState extends TState {
 
 class ProgressBar extends Component {
 
-    protected state: TFillLineState;
+    protected state: TProgressBarState;
 
-    protected initStateComponent(): TFillLineState {
+    protected initStateComponent(): TProgressBarState {
         return {
             positionA: this.props.positionA,
             positionB: this.props.positionB,

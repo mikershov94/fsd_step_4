@@ -4,8 +4,9 @@ import Container from '../components/container';
 import Wrapper from '../components/wrapper';
 import Output from '../components/output';
 import Rail from '../components/rail';
+import Scale from '../components/scale';
 import Slider from '../components/slider';
-import { ProgressBarWrapper, ProgressBarFill } from '../components/progress-bar';
+import ProgressBar from '../components/progress-bar';
 import OutputField from '../components/output-field';
 
 class RangeSliderView extends View {
@@ -25,16 +26,16 @@ class RangeSliderView extends View {
             type: 'right',
             vertical: props.vertical
         });
-        const progressBarFill = new ProgressBarFill({
+        const progressBar = new ProgressBar({
             positionA: props.positionA,
             positionB: props.positionB,
             type: 'range',
             vertical: props.vertical,
         });
-        const progressBar = new ProgressBarWrapper({
+        const scale = new Scale({
             vertical: props.vertical,
         }, [
-            progressBarFill
+            progressBar
         ])
 
         const outputFieldA = new OutputField({
