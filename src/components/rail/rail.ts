@@ -1,12 +1,17 @@
+/// <reference path="../../types/limits.d.ts" />
 import Component from '../index';
 
-interface TRailState extends TState {
-    min: number,
-    max: number,
-    vertical: boolean
-}
+class Rail extends Component implements IRailComponent {
 
-class Rail extends Component {
+    public getLimits(): TLimits {
+        const min = this.jQueryElement.offset().left;
+        const max = min + this.jQueryElement.width();
+
+        return {
+            min,
+            max
+        }
+    }
 
     protected initStateComponent(): TRailState {
         return {

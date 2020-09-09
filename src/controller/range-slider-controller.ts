@@ -23,13 +23,14 @@ class RangeSliderController extends Controller {
                 this.sendDataToModel({
                     offsetRail: args.offset,
                 });
-                console.log(this.model.getState())
                 return;
             
             case 'mouseDownA':
                 this.sendDataToModel({
                     clickSliderA: true,
-                    sizeSlider: args.outerSize
+                    sizeSlider: args.outerSize,
+                    limitRailMin: args.minLimit,
+                    limitRailMax: args.maxLimit
                 });
                 this.view.subscribePageOnMove(this.model.getState());
                 return;
@@ -37,7 +38,9 @@ class RangeSliderController extends Controller {
             case 'mouseDownB':
                 this.sendDataToModel({
                     clickSliderB: true,
-                    sizeSlider: args.outerSize
+                    sizeSlider: args.outerSize,
+                    limitRailMin: args.minLimit,
+                    limitRailMax: args.maxLimit
                 });
                 this.view.subscribePageOnMove(this.model.getState());
                 return;

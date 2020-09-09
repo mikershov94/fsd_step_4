@@ -28,20 +28,15 @@ class AloneSliderController extends Controller {
             
             case 'mouseDown':
                 this.sendDataToModel({
-                    sizeSlider: args.outerSize
+                    sizeSlider: args.outerSize,
+                    limitRailMin: args.minLimit,
+                    limitRailMax: args.maxLimit
                 })
                 
                 this.view.subscribePageOnMove(this.model.getState());
                 return;
                 
             case 'mouseMove':
-                const messageWithLimits: TMessage = this.model.getState();
-
-                Object.assign(args, {
-                    minLimit: messageWithLimits.min,
-                    maxLimit: messageWithLimits.max
-                });
-
                 this.sendDataToModel({
                     position: this.actions.moveSlider(args)
                 });
