@@ -6,8 +6,16 @@ const moveSlider = ({posPointer,
     let newPosition: number;
     newPosition = posPointer - sizeSlider / 2 - offsetRail;
     
-    console.log(minLimit)
-    if (newPosition < 0) newPosition = 0;
+    const values: any = {
+        posPointer,
+        offsetRail,
+        sizeSlider,
+        minLimit,
+        maxLimit
+    }
+    
+    console.log(values)
+    if (newPosition < minLimit) newPosition = minLimit;
     if (newPosition > (maxLimit - sizeSlider)) newPosition = (maxLimit - sizeSlider);
 
     return newPosition;

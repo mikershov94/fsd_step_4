@@ -1,7 +1,7 @@
 import View from './view';
 
 import Container from '../components/container';
-import Wrapper from '../components/wrapper';
+import Input from '../components/input';
 import Output from '../components/output';
 import Rail from '../components/rail';
 import Scale from '../components/scale';
@@ -55,7 +55,7 @@ class RangeSliderView extends View {
             sliderB
         ]);
 
-        const wrapper = new Wrapper({
+        const wrapper = new Input({
             vertical: props.vertical
         }, [
             rail

@@ -4,8 +4,8 @@ import Component from '../index';
 class Rail extends Component implements IRailComponent {
 
     public getLimits(): TLimits {
-        const min = this.jQueryElement.offset().left;
-        const max = min + this.jQueryElement.width();
+        const min = 0;
+        const max = this.jQueryElement.width();
 
         return {
             min,
@@ -15,8 +15,8 @@ class Rail extends Component implements IRailComponent {
 
     protected initStateComponent(): TRailState {
         return {
-            min: this.props.min,
-            max: this.props.max,
+            //min: this.props.min,
+            //max: this.props.max,
             vertical: this.props.vertical
         }
     }

@@ -4,7 +4,7 @@ import ProgressBar from '../components/progress-bar';
 import Scale from '../components/scale';
 import Rail from '../components/rail';
 import OutputField from '../components/output-field';
-import Wrapper from '../components/wrapper';
+import Input from '../components/input';
 import Output from '../components/output';
 import Container from '../components/container';
 
@@ -44,7 +44,7 @@ class AloneSliderView extends View {
             value: props.position,
         });
 
-        const wrapper = new Wrapper({
+        const wrapper = new Input({
             vertical: props.vertical
         }, [
             rail

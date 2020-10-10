@@ -34,6 +34,7 @@ class AloneSliderController extends Controller {
                 })
                 
                 this.view.subscribePageOnMove(this.model.getState());
+                console.log(this.model.getState())
                 return;
                 
             case 'mouseMove':
