@@ -1,10 +1,5 @@
 import Controller from './controller';
 
-import {
-    moveSlider
-
-} from './actions';
-
 class AloneSliderController extends Controller {
 
     protected actions: TActionList;
@@ -12,9 +7,6 @@ class AloneSliderController extends Controller {
     constructor(model: IModel, view: IView) {
         super(model, view);
 
-        this.actions = {
-            moveSlider
-        }
     }
 
     protected reduce(action: string, args: TActionArgs): void {
@@ -24,7 +16,6 @@ class AloneSliderController extends Controller {
                 this.sendDataToModel({
                     widthRail: args.width,
                 })
-                console.log(this.model.getState())
                 return;
 
             case 'calculatedOffset':
@@ -41,12 +32,11 @@ class AloneSliderController extends Controller {
                 })
                 
                 this.view.subscribePageOnMove(this.model.getState());
-                console.log(this.model.getState())
                 return;
                 
             case 'mouseMove':
                 this.sendDataToModel({
-                    position: this.actions.moveSlider(args)
+                    position: this.model.moveSlider(args)
                 });
                 return;
 

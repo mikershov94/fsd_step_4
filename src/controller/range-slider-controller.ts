@@ -1,9 +1,5 @@
 import Controller from './controller';
 
-import {
-    moveSlider,
-} from './actions';
-
 class RangeSliderController extends Controller {
 
     protected actions: TActionList;
@@ -11,9 +7,6 @@ class RangeSliderController extends Controller {
     constructor(model: IModel, view: IView) {
         super(model, view);
 
-        this.actions = {
-            moveSlider, 
-        }
     }
 
     protected reduce(action: string, args: TActionArgs): void {
@@ -56,7 +49,7 @@ class RangeSliderController extends Controller {
                     });
 
                     this.sendDataToModel({
-                        positionA: this.actions.moveSlider(args)
+                        positionA: this.model.moveSlider(args)
                     });
                 }
 
