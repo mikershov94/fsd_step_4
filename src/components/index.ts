@@ -30,7 +30,7 @@ abstract class Component implements IComponent {
         Object.assign(this.state, newState);
     }
 
-    protected calculateOffset(): void {
+    protected doingAfterRender(): void {
         return;
     }
 
@@ -90,10 +90,10 @@ abstract class Component implements IComponent {
         return this.jQueryElement;
     }
 
-    getOffset(): void {
-        this.calculateOffset();
+    runAfterRender(): void {
+        this.doingAfterRender();
         this.children.forEach((child: IComponent) => {
-            child.getOffset();
+            child.runAfterRender();
         })
     }
 

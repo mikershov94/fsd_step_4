@@ -38,8 +38,8 @@ abstract class View implements IView {
         this.rootComponent.update(props);
     }
     
-    getOffsetApplication(): void {
-        this.rootComponent.getOffset();
+    afterRender(): void {
+        this.rootComponent.runAfterRender();
     }
 
     render(): JQuery {

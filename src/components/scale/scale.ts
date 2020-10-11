@@ -1,6 +1,9 @@
 import Component from '../index';
 
 interface TScaleState extends TState {
+    min: number;
+    max: number;
+    step: number;
     vertical: boolean;
 }
 
@@ -16,6 +19,9 @@ class Scale extends Component {
 
     protected initStateComponent(): TScaleState {
         return {
+            min: this.props.min,
+            max: this.props.max,
+            step: this.props.step,
             vertical: this.props.vertical,
         }
     }
@@ -29,19 +35,18 @@ class Scale extends Component {
     
 
     protected doingRender(): void {
-        const lengthScale = 500
-        const steps = lengthScale / 10;
 
-        for (let i: number = 0; i <= steps; i++) {
+        const stripesCount: number = this.state.max / this.state.step;
+
+        //рисуем полоски через шаг step
+        for (let i: number = 0; i <= 8; i++) {
             let stripe: JQuery;
+
             if (i % 2 == 0) {
-                stripe = $('<div class="scale__value"></div>');
+                stripe = $('<div class="scale__stripe"></div>');
             } else {
-                stripe = $('<div class="scale__value_even"></div>');
-            }
-            //stripe = $('<div class="scale__value"></div>');
-            //stripe.text('|');
-            stripe.css('left', `${i * 10}px`) 
+                stripe = $('<div class="scale__stripe_even"></div>');
+            } 
 
             this.jQueryElement.append(stripe)
         }

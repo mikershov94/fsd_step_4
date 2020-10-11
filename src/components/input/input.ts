@@ -8,7 +8,7 @@ class Input extends Component {
 
     protected state: TInputState;
     
-    protected calculateOffset(): void {
+    protected doingAfterRender(): void {
         const offset: number = this.state.vertical ? this.jQueryElement.offset().top : 
                                 this.jQueryElement.offset().left;
 

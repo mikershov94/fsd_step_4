@@ -11,7 +11,8 @@ class AloneSliderModel extends Model {
             step: state.step,
             offsetRail: 0,
             sizeSlider: 0,
-            position: state.defaultPosition
+            position: state.defaultPosition,
+            scaleIndex: 1       //по умолчанию коэффициент масштаба шкалы 1
         }
     }
 

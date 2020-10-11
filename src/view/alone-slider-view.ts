@@ -27,9 +27,7 @@ class AloneSliderView extends View {
         })
         const scale = new Scale({
             vertical: props.vertical,
-        }, [ 
-            progressBar
-         ]);
+        }, []);
 
         const rail = new Rail({
             min: props.min,
@@ -37,17 +35,18 @@ class AloneSliderView extends View {
             vertical: props.vertical
         }, [
             slider,
-            scale
+            progressBar
         ]);
 
         const outputField = new OutputField({
             value: props.position,
         });
 
-        const wrapper = new Input({
+        const input = new Input({
             vertical: props.vertical
         }, [
-            rail
+            rail,
+            scale
         ]);
         const output = new Output({}, [
             outputField
@@ -56,7 +55,7 @@ class AloneSliderView extends View {
         const container = new Container({
             vertical: props.vertical
         }, [
-            wrapper,
+            input,
             output
         ]);
 

@@ -32,7 +32,7 @@ abstract class Controller implements IController, ISubscriber{
 
         this.view.render();
 
-        this.view.getOffsetApplication();
+        this.view.afterRender();
     }
 
     update(data: TMessage): void {
