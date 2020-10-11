@@ -20,6 +20,13 @@ class AloneSliderController extends Controller {
     protected reduce(action: string, args: TActionArgs): void {
         switch(action) {
 
+            case 'calculatedWidthRail':
+                this.sendDataToModel({
+                    widthRail: args.width,
+                })
+                console.log(this.model.getState())
+                return;
+
             case 'calculatedOffset':
                 this.sendDataToModel({
                     offsetRail: args.offset,

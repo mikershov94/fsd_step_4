@@ -13,6 +13,12 @@ class Rail extends Component implements IRailComponent {
         }
     }
 
+    protected doingAfterRender(): void {
+
+        const width: number = this.jQueryElement.width();
+        this.dispatcher.dispatch('calculatedWidthRail', { width })
+    }
+
     protected initStateComponent(): TRailState {
         return {
             //min: this.props.min,
