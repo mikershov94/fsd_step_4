@@ -7,12 +7,12 @@ class AloneSliderModel extends Model {
         this.state = {
             vertical: state.vertical,
             
-            value: 0,           //логическое значение
+            value: state.defaultValue,           //логическое значение
             min:  state.min,
             max:  state.max,
             step: state.step,
 
-            position: state.defaultPosition,    //позиция бегунка на странице (в пикселях)
+            position: 0,    //позиция бегунка на странице (в пикселях)
 
             offsetRail: 0,
             widthRail: 0,       //по-умолчанию (изначально) ширина рельсы 0

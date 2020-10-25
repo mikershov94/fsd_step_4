@@ -15,7 +15,7 @@ import './main.sass';
             min: 0,
             max: 500,
             step: 1,
-            defaultPosition: 250,
+            defaultValue: 250,
             defaultPositionA: 125,
             defaultPositionB: 375,
             rangeSlider: false,
@@ -50,7 +50,7 @@ import './main.sass';
                     min: config.min,
                     max: config.max,
                     step: config.step,
-                    defaultPosition: config.defaultPosition
+                    defaultValue: config.defaultValue
                 };
 
                 model = new AloneSliderModel(defaultState);
