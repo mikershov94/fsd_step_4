@@ -41,7 +41,7 @@ class OutputField extends Component {
 
             default:
                 this.setState({
-                    value: this.props.position
+                    value: this.props.value
                 });
                 return;
 

@@ -1,15 +1,9 @@
 interface TNewPosition extends TActionArgs {
     posPointer: number;
-    offsetRail: number;
-    sizeSlider: number;
 }
 
 interface TPageState extends TState {
     vertical: boolean;
-    offsetRail: number;
-    sizeSlider: number;
-    minLimit: number;
-    maxLimit: number;
 }
 
 class Page implements IDocument {
@@ -30,11 +24,8 @@ class Page implements IDocument {
 
             const newPosition: TNewPosition = {
                 posPointer: posPointer,
-                offsetRail: this.state.offsetRail,
-                sizeSlider: this.state.sizeSlider,
-                maxLimit: this.state.maxLimit,
-                minLimit: this.state.minLimit
             }
+
             this.dispatcher.dispatch('mouseMove', newPosition);
         };
 
@@ -50,10 +41,6 @@ class Page implements IDocument {
     subscribeOnMove(data: TMessage): void {
         this.state = {
             vertical: data.vertical,
-            offsetRail: data.offsetRail,
-            sizeSlider: data.sizeSlider,
-            minLimit: data.limitRailMin,
-            maxLimit: data.limitRailMax
         }
 
         this.page.on('mousemove', this.onMouseMove);

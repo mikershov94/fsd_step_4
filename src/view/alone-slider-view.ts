@@ -39,7 +39,7 @@ class AloneSliderView extends View {
         ]);
 
         const outputField = new OutputField({
-            value: props.position,
+            value: props.value,
         });
 
         const input = new Input({

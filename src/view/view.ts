@@ -39,7 +39,7 @@ abstract class View implements IView {
     }
     
     afterRender(): void {
-        this.rootComponent.runAfterRender();
+        this.rootComponent.afterRender();
     }
 
     render(): JQuery {

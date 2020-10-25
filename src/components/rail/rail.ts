@@ -1,22 +1,15 @@
 /// <reference path="../../types/limits.d.ts" />
 import Component from '../index';
 
-class Rail extends Component implements IRailComponent {
-
-    public getLimits(): TLimits {
-        const min = 0;
-        const max = this.jQueryElement.width();
-
-        return {
-            min,
-            max
-        }
-    }
+class Rail extends Component {
 
     protected doingAfterRender(): void {
-
         const width: number = this.jQueryElement.width();
+        const leftLimit: number = 0;
+        const rightLimit: number = width;
+        
         this.dispatcher.dispatch('calculatedWidthRail', { width })
+        this.dispatcher.dispatch('calculatedLimits', { leftLimit, rightLimit });
     }
 
     protected initStateComponent(): TRailState {

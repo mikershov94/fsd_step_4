@@ -6,17 +6,8 @@ interface TSliderState extends TState {
     vertical: boolean;
 }
 
-interface TOldPosition extends TActionArgs {
-    posPointer: number;
-    posSlider: number;
-    outerSize: number;
-    minLimit: number;
-    maxLimit: number;
-}
-
 class Slider extends Component {
 
-    protected parent: IRailComponent
     protected state: TSliderState;
 
     private onMouseDown: TDownHandler;
@@ -25,30 +16,18 @@ class Slider extends Component {
         super(props, children);
 
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {
-            const posPointer: number = this.state.vertical ? event.pageY : event.pageX; 
-            const outerSize: number = this.state.vertical ?
-                                      this.jQueryElement.outerHeight() :
-                                      this.jQueryElement.outerWidth();
-
-            const oldPosition: TOldPosition = {
-                posPointer,
-                posSlider: this.state.position,
-                outerSize,
-                minLimit: this.parent.getLimits().min,
-                maxLimit: this.parent.getLimits().max
-            }
 
             switch (this.state.type) {
                 case 'left':
-                    this.dispatcher.dispatch('mouseDownA', oldPosition);
+                    this.dispatcher.dispatch('mouseDownA', {});
                     return
 
                 case 'right':
-                    this.dispatcher.dispatch('mouseDownB', oldPosition);
+                    this.dispatcher.dispatch('mouseDownB', {});
                     return
 
                 default:
-                    this.dispatcher.dispatch('mouseDown', oldPosition);
+                    this.dispatcher.dispatch('mouseDown', {});
                     return
 
             }
@@ -77,6 +56,11 @@ class Slider extends Component {
         }
 
         this.jQueryElement.css('left', `${this.state.position}px`);
+    }
+
+    protected doingAfterRender(): void {
+        const outerSize: number = this.jQueryElement.outerWidth();
+        this.dispatcher.dispatch('calculatedOuterSizeSlider', { outerSize })
     }
 
     protected subscribeOnEvent(): void {

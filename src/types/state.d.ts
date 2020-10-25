@@ -1,5 +1,3 @@
-type ValueState = number | string | boolean | null;
-
 interface TState {
-    [index: string]: ValueState;
+    [index: string]: number | boolean | string;
 }

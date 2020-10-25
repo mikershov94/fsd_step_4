@@ -30,10 +30,6 @@ abstract class Component implements IComponent {
         Object.assign(this.state, newState);
     }
 
-    protected doingAfterRender(): void {
-        return;
-    }
-
     protected setStyle(className: string): string {
         let resClass: string = className;
         
@@ -54,6 +50,10 @@ abstract class Component implements IComponent {
 
     protected doingRender(): void {
         return
+    }
+
+    protected doingAfterRender(): void {
+        return;
     }
 
     protected subscribeOnEvent(): void {
@@ -90,10 +90,10 @@ abstract class Component implements IComponent {
         return this.jQueryElement;
     }
 
-    runAfterRender(): void {
+    afterRender(): void {
         this.doingAfterRender();
         this.children.forEach((child: IComponent) => {
-            child.runAfterRender();
+            child.afterRender();
         })
     }
 
