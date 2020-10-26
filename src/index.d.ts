@@ -6,7 +6,7 @@ interface IConfigPlugin {
     min: number,
     max: number,
     step: number,
-    defaultValue: number,
+    defaultPosition: number,
     defaultPositionA: number,
     defaultPositionB: number,
     rangeSlider: boolean,
