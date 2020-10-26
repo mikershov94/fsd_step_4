@@ -1,6 +1,6 @@
 import Model from './model';
 
-class AloneSliderModel extends Model {
+class AloneSliderModel extends Model implements ISliderModel {
 
     constructor(state: any) {
         super();

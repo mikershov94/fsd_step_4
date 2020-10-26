@@ -35,22 +35,6 @@ abstract class Model implements IModel {
         return this.subscribers;
     }
 
-    moveSlider(args: any): number {
-
-        let newPosition: number;
-        return newPosition;
-    
-    }
-
-    calculateScaleIndex(message: TMessage): number {
-        let scaleIndex: number;
-        return scaleIndex;
-    }
-
-    calculateValue(message: TMessage): number {
-        return
-    }
-
 }
 
 export default Model;
