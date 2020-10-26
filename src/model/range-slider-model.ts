@@ -1,6 +1,6 @@
 import Model from './model';
 
-class RangeSliderModel extends Model {
+class RangeSliderModel extends Model implements ISliderModel {
 
     constructor(state: any) {
         super();
@@ -16,6 +16,18 @@ class RangeSliderModel extends Model {
             clickSliderA: false,
             clickSliderB: false,
         }
+    }
+
+    moveSlider({}: TMessage): number {
+        return
+    }
+    
+    calculateScaleIndex({}: TMessage): number {
+        return
+    }
+
+    calculateValue({}: TMessage): number {
+        return
     }
 
 }

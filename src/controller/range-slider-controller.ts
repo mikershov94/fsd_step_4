@@ -4,7 +4,7 @@ class RangeSliderController extends Controller {
 
     protected actions: TActionList;
 
-    constructor(model: IModel, view: IView) {
+    constructor(model: ISliderModel, view: IView) {
         super(model, view);
 
     }
