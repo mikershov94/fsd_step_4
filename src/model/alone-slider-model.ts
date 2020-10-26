@@ -38,13 +38,6 @@ class AloneSliderModel extends Model {
     
         if (newPosition < leftLimit) newPosition = leftLimit;
         if (newPosition > (rightLimit - sizeSlider)) newPosition = (rightLimit - sizeSlider);
-
-        let value: number = Math.round(newPosition * scaleIndex);
-
-        this.setState({
-            position: newPosition,
-            value: value
-        })
     
         return newPosition;
     
@@ -56,7 +49,13 @@ class AloneSliderModel extends Model {
         this.setState({scaleIndex});
 
         return scaleIndex;
-    }    
+    }
+    
+    calculateValue({pos, index}: TMessage): number {
+        let value: number = Math.round(pos * index);
+        this.setState({value});
+        return value;
+    }
 
 };
 

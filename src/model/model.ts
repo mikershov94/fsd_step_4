@@ -47,6 +47,10 @@ abstract class Model implements IModel {
         return scaleIndex;
     }
 
+    calculateValue(message: TMessage): number {
+        return
+    }
+
 }
 
 export default Model;

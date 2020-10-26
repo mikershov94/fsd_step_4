@@ -15,7 +15,7 @@ import './main.sass';
             min: 0,
             max: 500,
             step: 1,
-            defaultValue: 250,
+            defaultPosition: 250,
             defaultPositionA: 125,
             defaultPositionB: 375,
             rangeSlider: false,

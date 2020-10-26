@@ -45,6 +45,15 @@ class AloneSliderController extends Controller {
                     offsetRail: args.offset,
                 });
                 return
+
+            case 'getValue':
+                this.model.calculateValue({
+                    pos: this.model.getState().position,
+                    index: this.model.getState().scaleIndex
+                })
+                  
+                this.sendDataToView(this.model.getState());
+                return
             
             case 'mouseDown':
                 /*
@@ -59,7 +68,17 @@ class AloneSliderController extends Controller {
                 return;
                 
             case 'mouseMove':
-                this.model.moveSlider(args.posPointer);
+                this.sendDataToModel({
+                    position: this.model.moveSlider(args.posPointer)
+                })
+
+                const paramsForCalculateValue: TMessage = {
+                    pos: this.model.getState().position,
+                    index: this.model.getState().scaleIndex
+                }
+                this.sendDataToModel({
+                    value: this.model.calculateValue(paramsForCalculateValue),
+                })
                 return;
 
             case 'mouseUp':

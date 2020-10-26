@@ -24,6 +24,10 @@ class OutputField extends Component {
         this.jQueryElement.val(this.state.value);
     }
 
+    protected doingAfterRender(): void {
+        this.dispatcher.dispatch('getValue', {});
+    }
+
     protected updateState(): void {
         switch (this.state.type) {
 
