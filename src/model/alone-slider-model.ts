@@ -20,7 +20,9 @@ class AloneSliderModel extends Model implements ISliderModel {
             rightLimitMove: 0,
             outerSizeSlider: 0,
             
-            scaleIndex: 1       //по умолчанию коэффициент масштаба шкалы 1
+            scaleIndex: 1,       //по умолчанию коэффициент масштаба шкалы 1
+
+            countStripes: 0
         }
     }
 

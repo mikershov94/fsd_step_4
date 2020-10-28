@@ -4,6 +4,7 @@ interface TScaleState extends TState {
     min: number;
     max: number;
     step: number;
+    countStripes: number;
     vertical: boolean;
 }
 
@@ -22,6 +23,7 @@ class Scale extends Component {
             min: this.props.min,
             max: this.props.max,
             step: this.props.step,
+            countStripes: this.props.countStripes,
             vertical: this.props.vertical,
         }
     }
@@ -36,10 +38,10 @@ class Scale extends Component {
 
     protected doingRender(): void {
 
-        const stripesCount: number = this.state.max / this.state.step;
+        const stripesCount: number = this.state.countStripes;
 
         //рисуем полоски через шаг step
-        for (let i: number = 0; i <= 8; i++) {
+        for (let i: number = 0; i <= stripesCount; i++) {
             let stripe: JQuery;
 
             if (i % 2 == 0) {
