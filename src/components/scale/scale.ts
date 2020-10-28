@@ -38,7 +38,7 @@ class Scale extends Component {
 
     protected doingRender(): void {
 
-        const stripesCount: number = this.state.countStripes;
+        const stripesCount: number = (this.state.max - this.state.min) / this.state.step;
 
         //рисуем полоски через шаг step
         for (let i: number = 0; i <= stripesCount; i++) {
@@ -48,7 +48,7 @@ class Scale extends Component {
                 stripe = $('<div class="scale__stripe"></div>');
             } else {
                 stripe = $('<div class="scale__stripe_even"></div>');
-            } 
+            }
 
             this.jQueryElement.append(stripe)
         }

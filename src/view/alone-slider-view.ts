@@ -27,6 +27,9 @@ class AloneSliderView extends View {
         })
         const scale = new Scale({
             vertical: props.vertical,
+            min: props.min,
+            max: props.max,
+            step: props.step
         }, []);
 
         const rail = new Rail({
