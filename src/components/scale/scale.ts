@@ -36,10 +36,10 @@ class Scale extends Component {
 
     protected doingRender(): void {
 
-        const stripesCount: number = this.state.max / this.state.step;
+        const stripesCount: number = (this.state.max - this.state.min) / this.state.step;
 
         //рисуем полоски через шаг step
-        for (let i: number = 0; i <= 8; i++) {
+        for (let i: number = 0; i <= stripesCount; i++) {
             let stripe: JQuery;
 
             if (i % 2 == 0) {
