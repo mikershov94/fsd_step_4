@@ -25,8 +25,6 @@ abstract class Controller implements IController, ISubscriber{
     }
 
     init(): void {
-        this.model.init();
-
         let message: TMessage = this.model.getState();
         this.view.mountApplication(message);
 

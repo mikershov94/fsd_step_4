@@ -29,19 +29,6 @@ abstract class Model implements IModel {
         return;
     }
 
-    init(): void {
-        //вычисление количества полосок
-        const range: TMessage = {
-            min: this.getState().min,
-            max: this.getState().max,
-            step: this.getState().step
-        }
-
-        const countStripes: number = (range.max - range.min) / range.step;
-
-        this.setState({countStripes});
-    }
-
     unsubscribe(subscriber: ISubscriber): ISubscriber[] {
         const idx = this.subscribers.indexOf(subscriber);
         this.subscribers.splice(idx, 1);

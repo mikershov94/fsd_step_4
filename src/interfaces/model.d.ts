@@ -3,8 +3,6 @@ interface IModel {
     setState(data: TMessage): void;
 
     subscribe(subscriber: ISubscriber): void;
-
-    init(): void;
 }
 
 interface ISliderModel extends IModel {
