@@ -7,12 +7,12 @@ class AloneSliderModel extends Model implements ISliderModel {
         this.state = {
             vertical: state.vertical,
             
-            value: 0,           //логическое значение
+            value: state.defaultValue,           //логическое значение
             min:  state.min,
             max:  state.max,
             step: state.step,
 
-            position: state.defaultPosition,    //позиция бегунка на странице (в пикселях)
+            position: 0,    //позиция бегунка на странице (в процентах)
 
             offsetRail: 0,
             widthRail: 0,       //по-умолчанию (изначально) ширина рельсы 0
@@ -22,6 +22,12 @@ class AloneSliderModel extends Model implements ISliderModel {
             
             scaleIndex: 1,       //по умолчанию коэффициент масштаба шкалы 1
         }
+    }
+
+    protected calculatePosition(min: number, max: number, value: number): number {
+        let position: number = (value * 100) / (max - min);
+
+        return position
     }
 
     moveSlider(posPointer: number): number {
@@ -37,6 +43,7 @@ class AloneSliderModel extends Model implements ISliderModel {
         newPosition = posPointer - sizeSlider / 2 - offsetRail;
     
         if (newPosition < leftLimit) newPosition = leftLimit;
+        console.log(sizeSlider)
         if (newPosition > (rightLimit - sizeSlider)) newPosition = (rightLimit - sizeSlider);
     
         return newPosition;

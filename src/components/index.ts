@@ -56,6 +56,10 @@ abstract class Component implements IComponent {
         return;
     }
 
+    protected beee(): void {
+        return;
+    }
+
     protected subscribeOnEvent(): void {
         return
     }
@@ -101,6 +105,7 @@ abstract class Component implements IComponent {
         this.props = data;
         this.updateState();
         this.updateRender();
+        //this.beee();
         this.children.forEach((child: IComponent) => {
             child.update(this.props)
         })

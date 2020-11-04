@@ -30,16 +30,17 @@ class ProgressBar extends Component {
         if (this.state.vertical) {
             const height: number = this.state.positionB - this.state.positionA;
 
-            this.jQueryElement.css('top', `${this.state.positionA}px`);
-            this.jQueryElement.css('height', `${height}px`);
+            this.jQueryElement.css('top', `${this.state.positionA}%`);
+            this.jQueryElement.css('height', `${height}%`);
             return
         }
 
         const width: number = this.state.positionB - this.state.positionA;
 
-        this.jQueryElement.css('left', `${this.state.positionA}px`);
-        this.jQueryElement.css('width', `${width}px`);
+        this.jQueryElement.css('left', `${this.state.positionA}%`);
+        this.jQueryElement.css('width', `${width}%`);
     }
+
 
     protected updateState(): void {
         switch (this.state.type) {
@@ -72,16 +73,16 @@ class ProgressBar extends Component {
         if (this.state.vertical) {
             const height: number = this.state.positionB - this.state.positionA;
 
-            this.jQueryElement.css('top', `${this.state.positionA}px`);
-            this.jQueryElement.css('height', `${height}px`);
+            this.jQueryElement.css('top', `${this.state.positionA}%`);
+            this.jQueryElement.css('height', `${height}%`);
             return
         }
 
 
         const width: number = this.state.positionB - this.state.positionA;
 
-        this.jQueryElement.css('left', `${this.state.positionA}px`);
-        this.jQueryElement.css('width', `${width}px`);
+        this.jQueryElement.css('left', `${this.state.positionA}%`);
+        this.jQueryElement.css('width', `${width}%`);
     }
 }
 

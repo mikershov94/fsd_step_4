@@ -1,6 +1,10 @@
+import { contains } from 'jquery';
 import Component from '../index';
 
 interface TSliderState extends TState {
+    min: number;
+    max: number;
+    value: number;
     position: number;
     type: string;
     vertical: boolean;
@@ -37,6 +41,9 @@ class Slider extends Component {
 
     protected initStateComponent(): TSliderState {
         return {
+            min: this.props.min,
+            max: this.props.max,
+            value: this.props.value,
             position: this.props.position,
             type: this.props.type,
             vertical: this.props.vertical
@@ -50,17 +57,30 @@ class Slider extends Component {
     }
 
     protected doingRender(): void {
+        const min: number = this.state.min;
+        const max: number = this.state.max;
+        const value: number = this.state.value;
+
+        let position: number = this.calculatePosition(min, max, value);
+        this.setState({position});
+        
         if (this.state.vertical) {
-            this.jQueryElement.css('top', `${this.state.position}px`);
+            this.jQueryElement.css('top', `${this.state.position}%`);
             return;
         }
 
-        this.jQueryElement.css('left', `${this.state.position}px`);
+        this.jQueryElement.css('left', `${this.state.position}%`);
     }
 
     protected doingAfterRender(): void {
+        this.dispatcher.dispatch('calculatedPosition', { position: this.state.position })
+
         const outerSize: number = this.jQueryElement.outerWidth();
         this.dispatcher.dispatch('calculatedOuterSizeSlider', { outerSize })
+    }
+
+    protected beee(): void {
+        this.dispatcher.dispatch('calculatedPosition', { position: this.state.position })
     }
 
     protected subscribeOnEvent(): void {
@@ -92,12 +112,26 @@ class Slider extends Component {
     }
 
     protected updateRender(): void {
+        const min: number = this.state.min;
+        const max: number = this.state.max;
+        const value: number = this.state.value;
+
+        let position: number = this.calculatePosition(min, max, value);
+        this.setState({position});
+
         if (this.state.vertical) {
-            this.jQueryElement.css('top', `${this.state.position}px`);
+            this.jQueryElement.css('top', `${this.state.position}%`);
             return;
         }
 
-        this.jQueryElement.css('left', `${this.state.position}px`)
+        this.jQueryElement.css('left', `${this.state.position}%`)
+
+    }
+
+    protected calculatePosition(min: number, max: number, value: number): number {
+        let position: number = (value * 100) / (max - min);
+
+        return position
     }
 
 }

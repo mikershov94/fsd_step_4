@@ -14,17 +14,25 @@ class AloneSliderView extends View {
         super(rootElement);
     }
 
+    
+
     mountApplication(props: TMessage): void {
         const slider = new Slider({
+            min: props.min,
+            max: props.max,
+            value: props.value,
             position: props.position,
             type: 'alone',
             vertical: props.vertical
         });
+        /*
         const progressBar = new ProgressBar({
             positionA: 0,
-            positionB: props.position,
+            positionB: 0,
+            type: 'alone',
             vertical: props.vertical,
         })
+        */
         const scale = new Scale({
             vertical: props.vertical,
             min: props.min,
@@ -38,7 +46,7 @@ class AloneSliderView extends View {
             vertical: props.vertical
         }, [
             slider,
-            progressBar
+            //progressBar
         ]);
 
         const outputField = new OutputField({

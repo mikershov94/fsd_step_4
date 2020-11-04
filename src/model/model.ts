@@ -12,6 +12,10 @@ abstract class Model implements IModel {
         const data: TMessage = this.getState();
         this.subscribers.forEach(subscriber => subscriber.update(data))
     }
+
+    initModel(): void {
+        return
+    }
     
     getState(): TMessage {
         let message: TMessage = {};
