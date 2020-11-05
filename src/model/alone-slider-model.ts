@@ -32,21 +32,20 @@ class AloneSliderModel extends Model implements ISliderModel {
 
     moveSlider(posPointer: number): number {
 
-        let newPosition: number;
-        const sizeSlider: number = this.getState().outerSizeSlider;
+        let newValue: number;
+
         const offsetRail: number = this.getState().offsetRail;
-        const leftLimit: number = this.getState().leftLimitMove;
-        const rightLimit: number = this.getState().rightLimitMove;
+        const max: number = this.getState().max;
+        const min: number = this.getState().min;
+        const widthRail: number = this.getState().widthRail;
+        const outerSizeSlider: number = this.getState().outerSizeSlider;
 
-        const scaleIndex: number = this.getState().scaleIndex;
+        newValue = (posPointer - offsetRail) * (max - min) / widthRail;
 
-        newPosition = posPointer - sizeSlider / 2 - offsetRail;
-    
-        if (newPosition < leftLimit) newPosition = leftLimit;
-        console.log(sizeSlider)
-        if (newPosition > (rightLimit - sizeSlider)) newPosition = (rightLimit - sizeSlider);
-    
-        return newPosition;
+        if (newValue >= max) newValue = max;
+        if (newValue <= min) newValue = min;
+
+        return newValue;
     
     }
 

@@ -73,14 +73,9 @@ class Slider extends Component {
     }
 
     protected doingAfterRender(): void {
-        this.dispatcher.dispatch('calculatedPosition', { position: this.state.position })
 
         const outerSize: number = this.jQueryElement.outerWidth();
         this.dispatcher.dispatch('calculatedOuterSizeSlider', { outerSize })
-    }
-
-    protected beee(): void {
-        this.dispatcher.dispatch('calculatedPosition', { position: this.state.position })
     }
 
     protected subscribeOnEvent(): void {
@@ -88,6 +83,7 @@ class Slider extends Component {
     }
 
     protected updateState(): void {
+        
         switch (this.state.type) {
             
             case 'left':
@@ -104,21 +100,16 @@ class Slider extends Component {
 
             default:
                 this.setState({
-                    position: this.props.position,
+                    value: this.props.value,
+                    position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
                 })
+                console.log(this.state.position)
                 return;
 
         }    
     }
 
     protected updateRender(): void {
-        const min: number = this.state.min;
-        const max: number = this.state.max;
-        const value: number = this.state.value;
-
-        let position: number = this.calculatePosition(min, max, value);
-        this.setState({position});
-
         if (this.state.vertical) {
             this.jQueryElement.css('top', `${this.state.position}%`);
             return;
@@ -130,7 +121,7 @@ class Slider extends Component {
 
     protected calculatePosition(min: number, max: number, value: number): number {
         let position: number = (value * 100) / (max - min);
-
+        
         return position
     }
 

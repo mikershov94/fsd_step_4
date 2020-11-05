@@ -77,16 +77,11 @@ class AloneSliderController extends Controller {
                 
             case 'mouseMove':
                 this.sendDataToModel({
-                    position: this.model.moveSlider(args.posPointer)
+                    value: this.model.moveSlider(args.posPointer)
                 })
 
-                const paramsForCalculateValue: TMessage = {
-                    pos: this.model.getState().position,
-                    index: this.model.getState().scaleIndex
-                }
-                this.sendDataToModel({
-                    value: this.model.calculateValue(paramsForCalculateValue),
-                })
+                //console.log(this.model.getState().value)
+                
                 return;
 
             case 'mouseUp':
