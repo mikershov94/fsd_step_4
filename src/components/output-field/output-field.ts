@@ -21,7 +21,9 @@ class OutputField extends Component {
     }
 
     protected doingRender(): void {
-        this.jQueryElement.val(this.state.value);
+        let value: number = Math.round(this.state.value);
+
+        this.jQueryElement.val(value);
     }
 
     protected doingAfterRender(): void {
@@ -53,7 +55,9 @@ class OutputField extends Component {
     }
 
     protected updateRender(): void {
-        this.jQueryElement.val(this.state.value);
+        let value: number = Math.round(this.state.value);
+
+        this.jQueryElement.val(value);
     }
 
 }

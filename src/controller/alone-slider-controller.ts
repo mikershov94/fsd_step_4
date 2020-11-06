@@ -24,7 +24,7 @@ class AloneSliderController extends Controller {
                 this.sendDataToModel({
                     widthRail: args.width,
                 })
-
+                
                 const paramsForScaleIndex: TMessage = {
                     min: this.model.getState().min,
                     max: this.model.getState().max,

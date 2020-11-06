@@ -6,6 +6,8 @@ interface TSliderState extends TState {
     max: number;
     value: number;
     position: number;
+    size: number;
+    railWidthPx: number;
     type: string;
     vertical: boolean;
 }
@@ -45,6 +47,8 @@ class Slider extends Component {
             max: this.props.max,
             value: this.props.value,
             position: this.props.position,
+            size: this.props.size,
+            railWidthPx: this.props.railWidthPx,
             type: this.props.type,
             vertical: this.props.vertical
         }
@@ -73,8 +77,11 @@ class Slider extends Component {
     }
 
     protected doingAfterRender(): void {
-
         const outerSize: number = this.jQueryElement.outerWidth();
+        this.setState({
+            size: outerSize
+        })
+
         this.dispatcher.dispatch('calculatedOuterSizeSlider', { outerSize })
     }
 
@@ -100,10 +107,14 @@ class Slider extends Component {
 
             default:
                 this.setState({
+                    railWidthPx: this.props.widthRail,
                     value: this.props.value,
+                });
+
+                this.setState({
                     position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
                 })
-                console.log(this.state.position)
+                
                 return;
 
         }    
@@ -122,6 +133,9 @@ class Slider extends Component {
     protected calculatePosition(min: number, max: number, value: number): number {
         let position: number = (value * 100) / (max - min);
         
+        const sizeSliderPercent: number = (this.state.size * 100) / this.state.railWidthPx;
+        if (position >= (100 - sizeSliderPercent)) position = 100 - sizeSliderPercent;
+
         return position
     }
 
