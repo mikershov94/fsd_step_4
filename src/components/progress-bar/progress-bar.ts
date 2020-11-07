@@ -1,8 +1,11 @@
 import Component from '../index';
 
 interface TProgressBarState extends TState {
-    positionA: number;
-    positionB: number;
+    max: number;
+    min: number;
+    value: number;
+    sizeSlider: number,
+    railWidthPx: number,
     type: string;
     vertical: boolean;
 }
@@ -13,8 +16,11 @@ class ProgressBar extends Component {
 
     protected initStateComponent(): TProgressBarState {
         return {
-            positionA: this.props.positionA,
-            positionB: this.props.positionB,
+            max: this.props.max,
+            min: this.props.min,
+            value: this.props.value,
+            sizeSlider: this.props.outerSizeSlider,
+            railWidthPx: this.props.widthRail,
             type: this.props.type,
             vertical: this.props.vertical,
         }
@@ -27,18 +33,16 @@ class ProgressBar extends Component {
     }
 
     protected doingRender(): void {
-        if (this.state.vertical) {
-            const height: number = this.state.positionB - this.state.positionA;
+        let fillPercent: number = this.fillIn(this.state.value, this.state.max, this.state.min);
 
-            this.jQueryElement.css('top', `${this.state.positionA}%`);
-            this.jQueryElement.css('height', `${height}%`);
-            return
+        if (this.state.vertical) {
+            this.jQueryElement.css('top', `${0}%`);
+            this.jQueryElement.css('height', `${fillPercent}%`);
+            return;
         }
 
-        const width: number = this.state.positionB - this.state.positionA;
-
-        this.jQueryElement.css('left', `${this.state.positionA}%`);
-        this.jQueryElement.css('width', `${width}%`);
+        this.jQueryElement.css('left', `${0}%`);
+        this.jQueryElement.css('width', `${fillPercent}%`);
     }
 
 
@@ -47,8 +51,9 @@ class ProgressBar extends Component {
             
             case 'alone':
                 this.setState({
-                    positionA: this.props.min,
-                    positionB: this.props.position
+                    value: this.props.value,
+                    sizeSlider: this.props.outerSizeSlider,
+                    railWidthPx: this.props.widthRail,
                 });
                 return;
 
@@ -61,8 +66,9 @@ class ProgressBar extends Component {
 
             default:
                 this.setState({
-                    positionA: this.props.min,
-                    positionB: this.props.position
+                    value: this.props.value,
+                    sizeSlider: this.props.outerSizeSlider,
+                    railWidthPx: this.props.widthRail,
                 });
                 return;
 
@@ -70,20 +76,31 @@ class ProgressBar extends Component {
     }
 
     protected updateRender(): void {
+        let fillPercent: number = this.fillIn(this.state.value, this.state.max, this.state.min);
+        
+        
         if (this.state.vertical) {
-            const height: number = this.state.positionB - this.state.positionA;
-
-            this.jQueryElement.css('top', `${this.state.positionA}%`);
-            this.jQueryElement.css('height', `${height}%`);
-            return
+            this.jQueryElement.css('top', `${0}%`);
+            this.jQueryElement.css('height', `${fillPercent}%`);
+            return;
         }
 
-
-        const width: number = this.state.positionB - this.state.positionA;
-
-        this.jQueryElement.css('left', `${this.state.positionA}%`);
-        this.jQueryElement.css('width', `${width}%`);
+        this.jQueryElement.css('left', `${0}%`);
+        this.jQueryElement.css('width', `${fillPercent}%`);
     }
+
+    protected fillIn(value: number, max: number, min: number): number {
+        const sizeSliderPercent: number = (this.state.sizeSlider * 100) / this.state.railWidthPx / 2;
+
+        let fill: number = (value * 100) / (max - min);
+        fill = fill + sizeSliderPercent;
+
+        if (fill <= sizeSliderPercent) fill = sizeSliderPercent;
+        if (fill >= 100) fill = 100;
+
+        return fill;
+    }
+
 }
 
 export default ProgressBar;

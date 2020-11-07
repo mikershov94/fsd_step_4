@@ -16,18 +16,8 @@ class AloneSliderModel extends Model implements ISliderModel {
 
             offsetRail: 0,
             widthRail: 0,       //по-умолчанию (изначально) ширина рельсы 0
-            //leftLimitMove: 0,
-            //rightLimitMove: 0,
             outerSizeSlider: 0,
-            
-            scaleIndex: 1,       //по умолчанию коэффициент масштаба шкалы 1
         }
-    }
-
-    protected calculatePosition(min: number, max: number, value: number): number {
-        let position: number = (value * 100) / (max - min);
-
-        return position
     }
 
     moveSlider(posPointer: number): number {
@@ -47,20 +37,6 @@ class AloneSliderModel extends Model implements ISliderModel {
 
         return newValue;
     
-    }
-
-    calculateScaleIndex({min, max, width}: TMessage): number {
-
-        let scaleIndex: number = (max - min) / width;
-        this.setState({scaleIndex});
-
-        return scaleIndex;
-    }
-    
-    calculateValue({pos, index}: TMessage): number {
-        let value: number = Math.round(pos * index);
-        this.setState({value});
-        return value;
     }
 
 };
