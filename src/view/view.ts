@@ -41,7 +41,11 @@ abstract class View implements IView {
     afterRender(): void {
         this.rootComponent.afterRender();
     }
-
+/*
+    afterUpdate(): void {
+        this.rootComponent.afterUpdate();
+    }
+*/
     render(): JQuery {
         let application = this.rootComponent.render();
         application.appendTo(this.rootContainer);

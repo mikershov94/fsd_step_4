@@ -16,8 +16,8 @@ class AloneSliderModel extends Model implements ISliderModel {
 
             offsetRail: 0,
             widthRail: 0,       //по-умолчанию (изначально) ширина рельсы 0
-            leftLimitMove: 0,
-            rightLimitMove: 0,
+            //leftLimitMove: 0,
+            //rightLimitMove: 0,
             outerSizeSlider: 0,
             
             scaleIndex: 1,       //по умолчанию коэффициент масштаба шкалы 1

@@ -13,3 +13,7 @@ interface TMoveHandler extends THandler {
 interface TUpHandler extends THandler {
     (e: JQuery.MouseUpEvent): void;
 }
+
+interface TResizeHandler extends THandler {
+    (e: JQuery.ResizeEvent): void;
+}

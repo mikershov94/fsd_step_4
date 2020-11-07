@@ -32,6 +32,8 @@ class Page implements IDocument {
         this.onMouseUp = (event: JQuery.MouseUpEvent) => {
             this.dispatcher.dispatch('mouseUp', {});
         }
+
+        
     }
 
     subscribeOnDispatcher(dispatcher: IDispatcher): void {

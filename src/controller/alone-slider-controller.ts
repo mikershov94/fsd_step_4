@@ -12,26 +12,11 @@ class AloneSliderController extends Controller {
     protected reduce(action: string, args: TActionArgs): void {
         switch(action) {
 
-            case 'calculatedPosition':
-                this.sendDataToModel({
-                    position: args.position
-                })
-
-                console.log(this.model.getState())
-                return
-
             case 'calculatedWidthRail':
                 this.sendDataToModel({
                     widthRail: args.width,
                 })
                 
-                const paramsForScaleIndex: TMessage = {
-                    min: this.model.getState().min,
-                    max: this.model.getState().max,
-                    width: this.model.getState().widthRail
-                }
-
-                this.model.calculateScaleIndex(paramsForScaleIndex);
                 return;
 
             case 'calculatedOuterSizeSlider':
@@ -41,26 +26,10 @@ class AloneSliderController extends Controller {
 
                 return;
 
-            case 'calculatedLimits':
-                this.sendDataToModel({
-                    leftLimitMove: args.leftLimit,
-                    rightLimitMove: args.rightLimit
-                })
-                return;
-
             case 'calculatedOffset':
                 this.sendDataToModel({
                     offsetRail: args.offset,
                 });
-                return
-
-            case 'getValue':
-                this.model.calculateValue({
-                    pos: this.model.getState().position,
-                    index: this.model.getState().scaleIndex
-                })
-                  
-                this.sendDataToView(this.model.getState());
                 return
             
             case 'mouseDown':

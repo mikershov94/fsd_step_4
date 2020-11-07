@@ -56,7 +56,6 @@ abstract class Component implements IComponent {
         return;
     }
 
-
     protected subscribeOnEvent(): void {
         return
     }
@@ -68,6 +67,13 @@ abstract class Component implements IComponent {
     protected updateRender(): void {
         return
     }
+
+    /*
+    protected doingAfterUpdate(): void {
+        console.log(this.jQueryElement);
+        return
+    }
+    */
 
     setParent(parent: IComponent): void {
         this.parent = parent;
@@ -106,6 +112,15 @@ abstract class Component implements IComponent {
             child.update(this.props)
         })
     }
+    
+    /*
+    afterUpdate(): void {
+        this.doingAfterUpdate();
+        this.children.forEach((child: IComponent) => {
+            child.afterUpdate();
+        })
+    }
+    */
 
 }
 
