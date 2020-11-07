@@ -33,6 +33,8 @@ class Slider extends Component {
                     return
 
                 default:
+                    this.parent.afterRender()
+
                     this.dispatcher.dispatch('mouseDown', {});
                     return
 
