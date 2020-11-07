@@ -1,11 +1,11 @@
 import View from './view';
-import Slider from '../components/slider';
+import ControlSlider from '../components/control__slider';
+import ProgressBarFill from '../components/progress-bar__fill';
 import ProgressBar from '../components/progress-bar';
-import ProgressBarRail from '../components/progress-bar-rail';
 import Scale from '../components/scale';
-import Rail from '../components/rail';
-import OutputField from '../components/output-field';
-import Input from '../components/input';
+import ControlRail from '../components/control__rail';
+import OutputField from '../components/output__field';
+import Control from '../components/control';
 import Output from '../components/output';
 import Container from '../components/container';
 
@@ -18,7 +18,7 @@ class AloneSliderView extends View {
     
 
     mountApplication(props: TMessage): void {
-        const slider = new Slider({
+        const controlSlider = new ControlSlider({
             min: props.min,
             max: props.max,
             value: props.value,
@@ -29,7 +29,7 @@ class AloneSliderView extends View {
             vertical: props.vertical
         });
         
-        const progressBar = new ProgressBar({
+        const progressBarFill = new ProgressBarFill({
             max: props.max,
             min: props.min,
             value: props.value,
@@ -39,10 +39,10 @@ class AloneSliderView extends View {
             vertical: props.vertical,
         });
 
-        const progressBarRail = new ProgressBarRail({
+        const progressBar = new ProgressBar({
             vertical: props.vertical
         }, [
-            progressBar,
+            progressBarFill,
         ])
     
         const scale = new Scale({
@@ -52,23 +52,23 @@ class AloneSliderView extends View {
             step: props.step
         }, []);
 
-        const rail = new Rail({
+        const controlRail = new ControlRail({
             min: props.min,
             max: props.max,
             vertical: props.vertical
         }, [
-            slider,
-            progressBarRail
+            controlSlider,
+            progressBar
         ]);
 
         const outputField = new OutputField({
             value: props.value,
         });
 
-        const input = new Input({
+        const control = new Control({
             vertical: props.vertical
         }, [
-            rail,
+            controlRail,
             scale
         ]);
         const output = new Output({}, [
@@ -78,7 +78,7 @@ class AloneSliderView extends View {
         const container = new Container({
             vertical: props.vertical
         }, [
-            input,
+            control,
             output
         ]);
 

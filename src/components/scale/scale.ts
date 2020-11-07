@@ -13,9 +13,7 @@ class Scale extends Component {
     protected state: TScaleState;
 
     constructor(props: TMessage, children: IComponent[]) {
-        super(props, children);
-        
-        
+        super(props, children);   
     }
 
     protected initStateComponent(): TScaleState {

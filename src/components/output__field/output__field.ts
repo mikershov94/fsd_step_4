@@ -17,7 +17,9 @@ class OutputField extends Component {
     }
 
     protected setTemplate(): string {
-        return `<input class="output-field" />`
+        const style: string = this.setStyle('output__field');
+
+        return `<input class="${style}" />`
     }
 
     protected doingRender(): void {

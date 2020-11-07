@@ -1,13 +1,13 @@
 import View from './view';
 
 import Container from '../components/container';
-import Input from '../components/input';
+import Control from '../components/control';
 import Output from '../components/output';
-import Rail from '../components/rail';
+import ControlRail from '../components/control__rail';
 import Scale from '../components/scale';
-import Slider from '../components/slider';
-import ProgressBar from '../components/progress-bar';
-import OutputField from '../components/output-field';
+import ControlSlider from '../components/control__slider';
+import ProgressBarFill from '../components/progress-bar__fill';
+import OutputField from '../components/output__field';
 
 class RangeSliderView extends View {
 
@@ -16,17 +16,17 @@ class RangeSliderView extends View {
     }
 
     mountApplication(props: TMessage): void {
-        const sliderA = new Slider({
+        const sliderA = new ControlSlider({
             position: props.positionA,
             type: 'left',
             vertical: props.vertical
         });
-        const sliderB = new Slider({
+        const sliderB = new ControlSlider({
             position: props.positionB,
             type: 'right',
             vertical: props.vertical
         });
-        const progressBar = new ProgressBar({
+        const progressBarFill = new ProgressBarFill({
             positionA: props.positionA,
             positionB: props.positionB,
             type: 'range',
@@ -35,7 +35,7 @@ class RangeSliderView extends View {
         const scale = new Scale({
             vertical: props.vertical,
         }, [
-            progressBar
+            progressBarFill
         ])
 
         const outputFieldA = new OutputField({
@@ -47,18 +47,18 @@ class RangeSliderView extends View {
             type: 'end'
         });
 
-        const rail = new Rail({
+        const controlRail = new ControlRail({
             vertical: props.vertical
         }, [
             sliderA,
-            progressBar,
+            progressBarFill,
             sliderB
         ]);
 
-        const wrapper = new Input({
+        const control = new Control({
             vertical: props.vertical
         }, [
-            rail
+            controlRail
         ]);
         const output = new Output({}, [
             outputFieldA,
@@ -68,7 +68,7 @@ class RangeSliderView extends View {
         const container = new Container({
             vertical: props.vertical
         }, [
-            wrapper,
+            control,
             output
         ]);
 

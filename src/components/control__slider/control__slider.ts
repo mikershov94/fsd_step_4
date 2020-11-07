@@ -1,7 +1,6 @@
-import { contains } from 'jquery';
 import Component from '../index';
 
-interface TSliderState extends TState {
+interface TControlSliderState extends TState {
     min: number;
     max: number;
     value: number;
@@ -12,9 +11,9 @@ interface TSliderState extends TState {
     vertical: boolean;
 }
 
-class Slider extends Component {
+class ControlSlider extends Component {
 
-    protected state: TSliderState;
+    protected state: TControlSliderState;
 
     private onMouseDown: TDownHandler;
 
@@ -43,7 +42,7 @@ class Slider extends Component {
 
     }
 
-    protected initStateComponent(): TSliderState {
+    protected initStateComponent(): TControlSliderState {
         return {
             min: this.props.min,
             max: this.props.max,
@@ -57,7 +56,7 @@ class Slider extends Component {
     }
 
     protected setTemplate(): string {
-        let style: string = this.setStyle('slider');
+        let style: string = this.setStyle('control__slider');
 
         return `<div class="${style}"></div>`;
     }
@@ -143,4 +142,4 @@ class Slider extends Component {
 
 }
 
-export default Slider;
+export default ControlSlider;

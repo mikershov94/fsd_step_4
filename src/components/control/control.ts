@@ -1,12 +1,12 @@
 import Component from '../index';
 
-interface TInputState extends TState {
+interface TControlState extends TState {
     vertical: number;
 }
 
 class Input extends Component {
 
-    protected state: TInputState;
+    protected state: TControlState;
     
     protected doingAfterRender(): void {
         const offset: number = this.state.vertical ? this.jQueryElement.offset().top : 
@@ -15,14 +15,16 @@ class Input extends Component {
         this.dispatcher.dispatch('calculatedOffset', { offset })
     }
 
-    protected initStateComponent(): TInputState {
+    protected initStateComponent(): TControlState {
         return {
             vertical: this.props.vertical
         }
     }
 
     protected setTemplate(): string {
-        return '<div class="input"></div>';
+        const style: string = this.setStyle('control')
+
+        return `<div class="${style}"></div>`;
     }
 
 }

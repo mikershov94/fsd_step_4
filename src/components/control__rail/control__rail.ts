@@ -1,9 +1,12 @@
-/// <reference path="../../types/limits.d.ts" />
 import Component from '../index';
 
-class Rail extends Component {
+interface TControlRailState extends TState {
+    vertical: boolean
+}
 
-    protected initStateComponent(): TRailState {
+class ControlRail extends Component {
+
+    protected initStateComponent(): TControlRailState {
         return {
             vertical: this.props.vertical
         }
@@ -15,11 +18,11 @@ class Rail extends Component {
     }
 
     protected setTemplate(): string {
-        let style: string = this.setStyle('rail');
+        let style: string = this.setStyle('control__rail');
 
         return `<div class="${style}"></div>`;
     }
 
 }
 
-export default Rail;
+export default ControlRail;
