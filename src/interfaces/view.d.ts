@@ -3,7 +3,7 @@ interface IView {
     mountApplication(props: TMessage): void;
     render(): JQuery;
     afterRender(): void;
-    //afterUpdate(): void;
+    
     updateComponents(data: TMessage): void;
     subscribeAppOnDispatcher(dispatcher: IDispatcher): void;
     subscribePageOnMove(data: TMessage): void;

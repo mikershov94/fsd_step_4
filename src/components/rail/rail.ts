@@ -5,8 +5,6 @@ class Rail extends Component {
 
     protected initStateComponent(): TRailState {
         return {
-            //min: this.props.min,
-            //max: this.props.max,
             vertical: this.props.vertical
         }
     }

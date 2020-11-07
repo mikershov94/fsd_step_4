@@ -33,14 +33,6 @@ class AloneSliderController extends Controller {
                 return
             
             case 'mouseDown':
-                /*
-                this.sendDataToModel({
-                    sizeSlider: args.outerSize,
-                    limitRailMin: args.minLimit,
-                    limitRailMax: args.maxLimit
-                })
-                */
-                
                 this.view.subscribePageOnMove(this.model.getState());
                 return;
                 
@@ -49,8 +41,6 @@ class AloneSliderController extends Controller {
                     value: this.model.moveSlider(args.posPointer)
                 })
 
-                //console.log(this.model.getState().value)
-                
                 return;
 
             case 'mouseUp':
