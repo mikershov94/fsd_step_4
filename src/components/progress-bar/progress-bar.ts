@@ -1,12 +1,18 @@
 import Component from "..";
 
-interface TProgressBar extends TState {
+interface TProgressBarState extends TState {
     vertical: boolean;
 }
 
 class ProgressBar extends Component {
 
-    protected initStateComponent(): TProgressBar {
+    protected state: TProgressBarState;
+
+    constructor(props: TMessage, children: IComponent[]) {
+        super(props, children);
+    }
+
+    protected initStateComponent(): TProgressBarState {
         return {
             vertical: this.props.vertical,
         }

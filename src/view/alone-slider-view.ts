@@ -37,15 +37,17 @@ class AloneSliderView extends View {
             railWidthPx: props.widthRail,
             type: 'alone',
             vertical: props.vertical,
-        });
+        }, []);
 
         const progressBar = new ProgressBar({
+            prefix: this.rootContainerClass,
             vertical: props.vertical
         }, [
             progressBarFill,
         ])
     
         const scale = new Scale({
+            prefix: this.rootContainerClass,
             vertical: props.vertical,
             min: props.min,
             max: props.max,
@@ -63,19 +65,23 @@ class AloneSliderView extends View {
 
         const outputField = new OutputField({
             value: props.value,
-        });
+        }, []);
 
         const control = new Control({
+            prefix: this.rootContainerClass,
             vertical: props.vertical
         }, [
             controlRail,
             scale
         ]);
-        const output = new Output({}, [
+        const output = new Output({
+            prefix: this.rootContainerClass
+        }, [
             outputField
         ]);
 
         const container = new Container({
+            prefix: this.rootContainerClass,
             vertical: props.vertical
         }, [
             control,

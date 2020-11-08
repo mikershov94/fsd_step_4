@@ -14,6 +14,10 @@ class ProgressBarFill extends Component {
 
     protected state: TProgressBarFillState;
 
+    constructor(props: TMessage, children: IComponent[]) {
+        super(props, children);
+    }
+
     protected initStateComponent(): TProgressBarFillState {
         return {
             max: this.props.max,

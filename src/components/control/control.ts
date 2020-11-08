@@ -7,6 +7,10 @@ interface TControlState extends TState {
 class Input extends Component {
 
     protected state: TControlState;
+
+    constructor(props: TMessage, children: IComponent[]) {
+        super(props, children);
+    }
     
     protected doingAfterRender(): void {
         const offset: number = this.state.vertical ? this.jQueryElement.offset().top : 

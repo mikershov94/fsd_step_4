@@ -6,6 +6,12 @@ interface TControlRailState extends TState {
 
 class ControlRail extends Component {
 
+    protected state: TControlRailState;
+
+    constructor(props: TMessage, children: IComponent[]) {
+        super(props, children);
+    }
+
     protected initStateComponent(): TControlRailState {
         return {
             vertical: this.props.vertical

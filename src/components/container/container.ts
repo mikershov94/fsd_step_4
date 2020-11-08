@@ -8,6 +8,10 @@ class Container extends Component {
 
     protected state: TContainerState;
 
+    constructor(props: TMessage, children: IComponent[]) {
+        super(props, children);
+    }
+
     protected initStateComponent(): TContainerState {
         return {
             vertical: this.props.vertical

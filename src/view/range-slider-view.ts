@@ -31,7 +31,7 @@ class RangeSliderView extends View {
             positionB: props.positionB,
             type: 'range',
             vertical: props.vertical,
-        });
+        }, []);
         const scale = new Scale({
             vertical: props.vertical,
         }, [
@@ -41,11 +41,11 @@ class RangeSliderView extends View {
         const outputFieldA = new OutputField({
             value: props.positionA,
             type: 'start'
-        });
+        }, []);
         const outputFieldB = new OutputField({
             value: props.positionB,
             type: 'end'
-        });
+        }, []);
 
         const controlRail = new ControlRail({
             vertical: props.vertical

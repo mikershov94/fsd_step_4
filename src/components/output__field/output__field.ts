@@ -9,6 +9,10 @@ class OutputField extends Component {
 
     protected state: TOutputFieldState;
 
+    constructor(props: TMessage, children: IComponent[]) {
+        super(props, children);
+    }
+
     protected initStateComponent(): TOutputFieldState {
         return {
             value: this.props.value,

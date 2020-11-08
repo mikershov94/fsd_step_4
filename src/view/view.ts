@@ -1,13 +1,15 @@
 import Page from '../components/document';
 
 abstract class View implements IView {
-    protected page:          IDocument;
-    protected rootContainer: JQuery;
-    protected rootComponent: IComponent;
+    protected page:                 IDocument;
+    protected rootContainer:        JQuery;
+    protected rootContainerClass:   string;
+    protected rootComponent:        IComponent;
 
     constructor(rootContainer: JQuery) {
         this.page = new Page();
         this.rootContainer = rootContainer
+        this.rootContainerClass = this.rootContainer.attr('class');
         
     }
 
