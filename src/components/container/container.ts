@@ -1,6 +1,7 @@
 import Component from '../index';
 
 interface TContainerState extends TState {
+    prefix: string;
     vertical: boolean;
 }
 
@@ -14,6 +15,7 @@ class Container extends Component {
 
     protected initStateComponent(): TContainerState {
         return {
+            prefix: this.props.prefix,
             vertical: this.props.vertical
         }
     }

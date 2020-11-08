@@ -8,6 +8,7 @@ interface TProgressBarFillState extends TState {
     railWidthPx: number,
     type: string;
     vertical: boolean;
+    prefix: string;
 }
 
 class ProgressBarFill extends Component {
@@ -27,6 +28,7 @@ class ProgressBarFill extends Component {
             railWidthPx: this.props.widthRail,
             type: this.props.type,
             vertical: this.props.vertical,
+            prefix: this.props.prefix,
         }
     }
 

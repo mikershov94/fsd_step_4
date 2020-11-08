@@ -6,6 +6,7 @@ interface TScaleState extends TState {
     step: number;
     countStripes: number;
     vertical: boolean;
+    prefix: string;
 }
 
 class Scale extends Component {
@@ -23,6 +24,7 @@ class Scale extends Component {
             step: this.props.step,
             countStripes: this.props.countStripes,
             vertical: this.props.vertical,
+            prefix: this.props.prefix,
         }
     }
 
