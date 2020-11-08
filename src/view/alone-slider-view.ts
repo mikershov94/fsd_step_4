@@ -1,13 +1,13 @@
 import View from './view';
 import ControlSlider from '../components/control__slider';
 import ProgressBarFill from '../components/progress-bar__fill';
-import ProgressBar from '../components/progress-bar';
-import Scale from '../components/scale';
+import ProgressBar from '../components/__progress-bar';
+import Scale from '../components/__scale';
 import ControlRail from '../components/control__rail';
 import OutputField from '../components/output__field';
-import Control from '../components/control';
-import Output from '../components/output';
-import Container from '../components/container';
+import Control from '../components/__control';
+import Output from '../components/__output';
+import Container from '../components/__container';
 
 class AloneSliderView extends View {
 

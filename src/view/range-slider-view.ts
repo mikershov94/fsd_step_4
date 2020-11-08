@@ -1,10 +1,10 @@
 import View from './view';
 
-import Container from '../components/container';
-import Control from '../components/control';
-import Output from '../components/output';
+import Container from '../components/__container';
+import Control from '../components/__control';
+import Output from '../components/__output';
 import ControlRail from '../components/control__rail';
-import Scale from '../components/scale';
+import Scale from '../components/__scale';
 import ControlSlider from '../components/control__slider';
 import ProgressBarFill from '../components/progress-bar__fill';
 import OutputField from '../components/output__field';
