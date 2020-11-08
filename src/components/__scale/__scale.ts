@@ -29,7 +29,8 @@ class Scale extends Component {
     }
 
     protected setTemplate(): string {
-        let style: string = this.setStyle('scale');
+        const prefix: string = this.state.prefix;
+        const style: string = this.setStyle(prefix + '__scale');
 
         return `<div class="${style}"></div>`;
     }

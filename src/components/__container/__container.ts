@@ -21,7 +21,8 @@ class Container extends Component {
     }
 
     protected setTemplate(): string {
-        let style: string = this.setStyle('container')
+        const prefix: string = this.state.prefix;
+        const style: string = this.setStyle(prefix + '__container')
 
         return `<div class="${style}"></div>`
     }

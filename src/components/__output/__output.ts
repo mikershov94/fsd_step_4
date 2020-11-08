@@ -19,7 +19,10 @@ class Output extends Component {
     }
 
     protected setTemplate(): string {
-        return '<div class="output"></div>';
+        const prefix: string = this.state.prefix;
+        const style: string = this.setStyle(prefix + '__output');
+
+        return `<div class="${style}"></div>`;
     }
 
 }

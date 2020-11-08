@@ -21,7 +21,8 @@ class Control extends Component {
     }
 
     protected setTemplate(): string {
-        const style: string = this.setStyle('control')
+        const prefix: string = this.state.prefix;
+        const style: string = this.setStyle(prefix + '__control')
 
         return `<div class="${style}"></div>`;
     }

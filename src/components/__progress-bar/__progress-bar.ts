@@ -21,7 +21,8 @@ class ProgressBar extends Component {
     }
 
     protected setTemplate(): string {
-        let style: string = this.setStyle('progress-bar');
+        const prefix: string = this.state.prefix;
+        const style: string = this.setStyle(prefix + '__progress-bar');
 
         return `<div class="${style}"></div>`;
     }
