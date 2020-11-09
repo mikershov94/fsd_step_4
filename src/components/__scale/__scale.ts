@@ -46,9 +46,17 @@ class Scale extends Component {
             let stripe: JQuery;
 
             if (i % 2 == 0) {
-                stripe = $('<div class="scale__stripe"></div>');
+                if (this.state.vertical) { 
+                    stripe = $('<div class="scale__stripe_vertical"></div>') 
+                } else {
+                    stripe = $('<div class="scale__stripe"></div>');
+                };
             } else {
-                stripe = $('<div class="scale__stripe_even"></div>');
+                if (this.state.vertical) { 
+                    stripe = $('<div class="scale__stripe_even_vertical"></div>'); 
+                } else {
+                    stripe = $('<div class="scale__stripe_even"></div>');
+                };
             }
 
             this.jQueryElement.append(stripe)

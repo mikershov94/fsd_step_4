@@ -56,11 +56,11 @@ module.exports = merge(commonWebpackConf, {
             template: `${PAGE_DIR}/${page}`,
             filename: `./${page.replace(/\.pug/, '.html')}`
         })),
-        //new CopyWebpackPlugin([
+        new CopyWebpackPlugin([
             //{ from: `${PATHS.public}/img`, to: `${PATHS.dist}/img` },
             //{ from: `${PATHS.public}/icons`, to: `${PATHS.dist}/icons` },
             //{ from: `${PATHS.public}/fonts`, to: `${PATHS.dist}/fonts` },
-        //])
+        ])
     ]
 
 });
