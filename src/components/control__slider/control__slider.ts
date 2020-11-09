@@ -70,7 +70,7 @@ class ControlSlider extends Component {
         this.setState({position});
         
         if (this.state.vertical) {
-            this.jQueryElement.css('bottom', `${this.state.position}%`);
+            this.jQueryElement.css('top', `${this.state.position}%`);
             return;
         }
 
@@ -78,7 +78,7 @@ class ControlSlider extends Component {
     }
 
     protected doingAfterRender(): void {
-        const outerSize: number = this.state.vertical ? this.jQueryElement.outerWidth() : this.jQueryElement.outerHeight();
+        const outerSize: number = this.jQueryElement.outerWidth();
         this.setState({
             size: outerSize
         })
@@ -107,7 +107,6 @@ class ControlSlider extends Component {
                 return;
 
             default:
-                console.log(this.state)
                 this.setState({
                     railWidthPx: this.props.widthRail,
                     value: this.props.value,
@@ -124,7 +123,7 @@ class ControlSlider extends Component {
 
     protected updateRender(): void {
         if (this.state.vertical) {
-            this.jQueryElement.css('bottom', `${this.state.position}%`);
+            this.jQueryElement.css('top', `${this.state.position}%`);
             return;
         }
 
@@ -132,20 +131,12 @@ class ControlSlider extends Component {
 
     }
 
-    private calculatePosition(min: number, max: number, value: number): number {
+    protected calculatePosition(min: number, max: number, value: number): number {
         let position: number = (value * 100) / (max - min);
         
         const sizeSliderPercent: number = (this.state.size * 100) / this.state.railWidthPx;
         if (position >= (100 - sizeSliderPercent)) position = 100 - sizeSliderPercent;
-        console.log({
-            max,
-            min,
-            value,
-            position,
-            size: this.state.size,
-            railWidth: this.state.railWidthPx,
-            sizeSliderPercent
-        })
+
         return position
     }
 

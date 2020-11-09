@@ -1,7 +1,5 @@
 import '../src/index';
 
-import './page.sass';
-
 $('#alone').fsdSlider({
     rangeSlider: false,
     defaultValue: 250,
