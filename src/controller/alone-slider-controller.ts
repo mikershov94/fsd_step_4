@@ -12,9 +12,9 @@ class AloneSliderController extends Controller {
     protected reduce(action: string, args: TActionArgs): void {
         switch(action) {
 
-            case 'calculatedWidthRail':
+            case 'calculatedLengthRail':
                 this.sendDataToModel({
-                    widthRail: args.width,
+                    lengthRail: args.length,
                 })
                 
                 return;

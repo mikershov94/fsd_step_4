@@ -6,7 +6,7 @@ interface TControlSliderState extends TState {
     value: number;
     position: number;
     size: number;
-    railWidthPx: number;
+    railLengthPx: number;
     type: string;
     vertical: boolean;
 }
@@ -49,7 +49,7 @@ class ControlSlider extends Component {
             value: this.props.value,
             position: this.props.position,
             size: this.props.size,
-            railWidthPx: this.props.railWidthPx,
+            railLengthPx: this.props.railLengthPx,
             type: this.props.type,
             vertical: this.props.vertical
         }
@@ -107,8 +107,9 @@ class ControlSlider extends Component {
                 return;
 
             default:
+                //console.log(this.props)
                 this.setState({
-                    railWidthPx: this.props.widthRail,
+                    railLengthPx: this.props.lengthRail,
                     value: this.props.value,
                 });
 
@@ -116,12 +117,14 @@ class ControlSlider extends Component {
                     position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
                 })
                 
+                
                 return;
 
         }    
     }
 
     protected updateRender(): void {
+
         if (this.state.vertical) {
             this.jQueryElement.css('top', `${this.state.position}%`);
             return;
@@ -134,9 +137,9 @@ class ControlSlider extends Component {
     protected calculatePosition(min: number, max: number, value: number): number {
         let position: number = (value * 100) / (max - min);
         
-        const sizeSliderPercent: number = (this.state.size * 100) / this.state.railWidthPx;
+        const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
         if (position >= (100 - sizeSliderPercent)) position = 100 - sizeSliderPercent;
-
+        //console.log(value)
         return position
     }
 

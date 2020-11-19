@@ -5,7 +5,7 @@ interface TProgressBarFillState extends TState {
     min: number;
     value: number;
     sizeSlider: number,
-    railWidthPx: number,
+    railLengthPx: number,
     type: string;
     vertical: boolean;
     prefix: string;
@@ -25,7 +25,7 @@ class ProgressBarFill extends Component {
             min: this.props.min,
             value: this.props.value,
             sizeSlider: this.props.outerSizeSlider,
-            railWidthPx: this.props.widthRail,
+            railLengthPx: this.props.railLengthPx,
             type: this.props.type,
             vertical: this.props.vertical,
             prefix: this.props.prefix,
@@ -42,7 +42,7 @@ class ProgressBarFill extends Component {
         let fillPercent: number = this.fillIn(this.state.value, this.state.max, this.state.min);
 
         if (this.state.vertical) {
-            this.jQueryElement.css('top', `${0}%`);
+            this.jQueryElement.css('bottom', `${0}%`);
             this.jQueryElement.css('height', `${fillPercent}%`);
             return;
         }
@@ -59,7 +59,7 @@ class ProgressBarFill extends Component {
                 this.setState({
                     value: this.props.value,
                     sizeSlider: this.props.outerSizeSlider,
-                    railWidthPx: this.props.widthRail,
+                    railLengthPx: this.props.lengthRail,
                 });
                 return;
 
@@ -74,8 +74,9 @@ class ProgressBarFill extends Component {
                 this.setState({
                     value: this.props.value,
                     sizeSlider: this.props.outerSizeSlider,
-                    railWidthPx: this.props.widthRail,
+                    railLengthPx: this.props.railLengthPx,
                 });
+                
                 return;
 
         }
@@ -83,7 +84,6 @@ class ProgressBarFill extends Component {
 
     protected updateRender(): void {
         let fillPercent: number = this.fillIn(this.state.value, this.state.max, this.state.min);
-        
         
         if (this.state.vertical) {
             this.jQueryElement.css('top', `${0}%`);
@@ -96,14 +96,15 @@ class ProgressBarFill extends Component {
     }
 
     protected fillIn(value: number, max: number, min: number): number {
-        const sizeSliderPercent: number = (this.state.sizeSlider * 100) / this.state.railWidthPx / 2;
+        const sizeSliderPercent: number = (this.state.sizeSlider * 100) / this.state.railLengthPx / 2;
 
         let fill: number = (value * 100) / (max - min);
+        
         fill = fill + sizeSliderPercent;
-
+        
         if (fill <= sizeSliderPercent) fill = sizeSliderPercent;
         if (fill >= 100) fill = 100;
-
+        
         return fill;
     }
 

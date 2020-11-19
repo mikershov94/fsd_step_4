@@ -6,16 +6,37 @@
     padding: 0
     margin: 0
 
-.scale__stripe
-    height: 16px
-    width: 1px
-    background-color: black
-    margin: auto 0
+    &_vertical
+        width: auto
+        height: auto
+        flex-direction: column
 
-    &_even
-        height: 8px
+.scale__stripe
+
+    &_width_full
+        width: 16px
+        background-color: black
+    
+    &_width_short
+        width: 8px
+        background-color: black
+        margin: 0 auto
+
+    &_width_null
         width: 1px
         background-color: black
+
+    &_height_full
+        height: 16px
+        background-color: black
+
+    &_height_short
+        height: 8px
+        background-color: black
         margin: auto 0
+
+    &_height_null
+        height: 1px
+        background-color: black
 
     

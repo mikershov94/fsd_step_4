@@ -24,7 +24,7 @@ class AloneSliderView extends View {
             value: props.value,
             position: props.position,
             size: props.outerSizeSlider,
-            railWidthPx: props.widthRail,
+            railLengthPx: props.lengthRail,
             type: 'alone',
             vertical: props.vertical
         });
@@ -34,7 +34,7 @@ class AloneSliderView extends View {
             min: props.min,
             value: props.value,
             sizeSlider: props.outerSizeSlider,
-            railWidthPx: props.widthRail,
+            railLengthPx: props.lengthRail,
             type: 'alone',
             vertical: props.vertical,
         }, []);

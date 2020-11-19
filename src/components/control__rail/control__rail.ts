@@ -19,8 +19,8 @@ class ControlRail extends Component {
     }
 
     protected doingAfterRender(): void {
-        const width: number = this.jQueryElement.width();
-        this.dispatcher.dispatch('calculatedWidthRail', { width })
+        const length: number = this.state.vertical ? this.jQueryElement.height() : this.jQueryElement.width();
+        this.dispatcher.dispatch('calculatedLengthRail', { length })
     }
 
     protected setTemplate(): string {

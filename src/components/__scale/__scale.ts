@@ -44,13 +44,18 @@ class Scale extends Component {
         //рисуем полоски через шаг step
         for (let i: number = 0; i <= stripesCount; i++) {
             let stripe: JQuery;
+            //let styleVertical: string = 'scale__stripe_vertical'
 
             if (i % 2 == 0) {
-                stripe = $('<div class="scale__stripe"></div>');
+                stripe = this.state.vertical ?
+                $(`<div class="scale__stripe_width_full scale__stripe_height_null"></div>`) :
+                $(`<div class="scale__stripe_width_null scale__stripe_height_full"></div>`);
             } else {
-                stripe = $('<div class="scale__stripe_even"></div>');
+                stripe = this.state.vertical ? 
+                $(`<div class="scale__stripe_width_short scale__stripe_height_null"></div>`) :
+                $(`<div class="scale__stripe_width_null scale__stripe_height_short"></div>`);
             }
-
+            
             this.jQueryElement.append(stripe)
         }
     }
