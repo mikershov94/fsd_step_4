@@ -39,6 +39,26 @@ class AloneSliderModel extends Model implements ISliderModel {
     
     }
 
+    moveVerticalSlider(posPointer: number): number {
+
+        let offset: number;
+        let newValue: number;
+
+        const offsetRail: number = this.getState().offsetRail;
+        const max: number = this.getState().max;
+        const min: number = this.getState().min;
+        const lengthRail: number = this.getState().lengthRail;
+        const outerSizeSlider: number = this.getState().outerSizeSlider;
+
+        offset = (posPointer - offsetRail) * (max - min) / lengthRail;
+        newValue = max - offset;
+
+        if (newValue >= max) newValue = max;
+        if (newValue <= min) newValue = min;
+
+        return newValue;
+    }
+
 };
 
 export default AloneSliderModel;

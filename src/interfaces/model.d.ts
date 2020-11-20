@@ -7,4 +7,5 @@ interface IModel {
 
 interface ISliderModel extends IModel {
     moveSlider(args: any): number;
+    moveVerticalSlider(args: any): number;
 }

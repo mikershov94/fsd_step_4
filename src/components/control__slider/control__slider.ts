@@ -136,10 +136,11 @@ class ControlSlider extends Component {
 
     protected calculatePosition(min: number, max: number, value: number): number {
         let position: number = (value * 100) / (max - min);
+        if (this.state.vertical) position = 100 - position;
         
         const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
         if (position >= (100 - sizeSliderPercent)) position = 100 - sizeSliderPercent;
-        //console.log(value)
+        
         return position
     }
 

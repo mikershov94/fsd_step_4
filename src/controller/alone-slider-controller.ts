@@ -37,6 +37,13 @@ class AloneSliderController extends Controller {
                 return;
                 
             case 'mouseMove':
+                if (args.vertical) {
+                    this.sendDataToModel({
+                        value: this.model.moveVerticalSlider(args.posPointer)
+                    });
+                    return;
+                }    
+
                 this.sendDataToModel({
                     value: this.model.moveSlider(args.posPointer)
                 })

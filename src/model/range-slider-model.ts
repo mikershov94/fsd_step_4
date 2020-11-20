@@ -21,6 +21,10 @@ class RangeSliderModel extends Model implements ISliderModel {
     moveSlider({}: TMessage): number {
         return
     }
+
+    moveVerticalSlider(): number {
+        return
+    }
     
     calculateScaleIndex({}: TMessage): number {
         return

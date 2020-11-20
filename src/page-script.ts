@@ -3,8 +3,8 @@ import '../src/index';
 $('#alone').fsdSlider({
     rangeSlider: false,
     defaultValue: 250,
-    verticalView: true,
-    step: 5
+    verticalView: false,
+    step: 20
 });
 
 $('#range').fsdSlider({
