@@ -21,23 +21,8 @@ class ControlSlider extends Component {
         super(props, children);
 
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {
-
-            switch (this.state.type) {
-                case 'left':
-                    this.dispatcher.dispatch('mouseDownA', {});
-                    return
-
-                case 'right':
-                    this.dispatcher.dispatch('mouseDownB', {});
-                    return
-
-                default:
-                    this.parent.afterRender()
-
-                    this.dispatcher.dispatch('mouseDown', {});
-                    return
-
-            }
+            this.parent.afterRender();
+            this.dispatcher.dispatch('mouseDown', {});             
         }
 
     }
@@ -134,7 +119,7 @@ class ControlSlider extends Component {
 
     }
 
-    protected calculatePosition(min: number, max: number, value: number): number {
+    private calculatePosition(min: number, max: number, value: number): number {
         let position: number = (value * 100) / (max - min);
         if (this.state.vertical) position = 100 - position;
         

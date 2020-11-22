@@ -1,13 +1,13 @@
 import View from './view';
-
-import Container from '../components/__container';
-import Control from '../components/__control';
-import Output from '../components/__output';
-import ControlRail from '../components/control__rail';
-import Scale from '../components/__scale';
 import ControlSlider from '../components/control__slider';
 import ProgressBarFill from '../components/progress-bar__fill';
+import ProgressBar from '../components/__progress-bar';
+import Scale from '../components/__scale';
+import ControlRail from '../components/control__rail';
 import OutputField from '../components/output__field';
+import Control from '../components/__control';
+import Output from '../components/__output';
+import Container from '../components/__container';
 
 class RangeSliderView extends View {
 
@@ -16,56 +16,83 @@ class RangeSliderView extends View {
     }
 
     mountApplication(props: TMessage): void {
-        const sliderA = new ControlSlider({
+        const controlSliderA = new ControlSlider({
+            min: props.min,
+            max: props.valueB,
+            value: props.valueA,
             position: props.positionA,
-            type: 'left',
+            size: props.outerSizeSlider,
+            railLengthPx: props.lengthRail,
+            type: 'sliderA',
             vertical: props.vertical
         });
-        const sliderB = new ControlSlider({
+
+        const controlSliderB = new ControlSlider({
+            min: props.valueA,
+            max: props.max,
+            value: props.valueB,
             position: props.positionB,
-            type: 'right',
+            size: props.outerSizeSlider,
+            railLengthPx: props.lengthRail,
+            type: 'sliderB',
             vertical: props.vertical
         });
+        
         const progressBarFill = new ProgressBarFill({
-            positionA: props.positionA,
-            positionB: props.positionB,
+            max: props.max,
+            min: props.min,
+            valueA: props.value,
+            valueB: props.valueB,
+            sizeSlider: props.outerSizeSlider,
+            railLengthPx: props.lengthRail,
             type: 'range',
             vertical: props.vertical,
         }, []);
-        const scale = new Scale({
-            vertical: props.vertical,
-        }, [
-            progressBarFill
-        ])
 
-        const outputFieldA = new OutputField({
-            value: props.positionA,
-            type: 'start'
-        }, []);
-        const outputFieldB = new OutputField({
-            value: props.positionB,
-            type: 'end'
+        const progressBar = new ProgressBar({
+            prefix: this.rootContainerClass,
+            vertical: props.vertical
+        }, [
+            progressBarFill,
+        ])
+    
+        const scale = new Scale({
+            prefix: this.rootContainerClass,
+            vertical: props.vertical,
+            min: props.min,
+            max: props.max,
+            step: props.step
         }, []);
 
         const controlRail = new ControlRail({
+            min: props.min,
+            max: props.max,
             vertical: props.vertical
         }, [
-            sliderA,
-            progressBarFill,
-            sliderB
+            controlSliderA,
+            controlSliderB,
+            progressBar
         ]);
 
+        const outputField = new OutputField({
+            value: props.value,
+        }, []);
+
         const control = new Control({
+            prefix: this.rootContainerClass,
             vertical: props.vertical
         }, [
-            controlRail
+            controlRail,
+            scale
         ]);
-        const output = new Output({}, [
-            outputFieldA,
-            outputFieldB
+        const output = new Output({
+            prefix: this.rootContainerClass
+        }, [
+            outputField
         ]);
-        
+
         const container = new Container({
+            prefix: this.rootContainerClass,
             vertical: props.vertical
         }, [
             control,
