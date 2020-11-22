@@ -16,8 +16,8 @@ import './main.sass';
             max: 500,
             step: 1,
             defaultValue: 250,
-            defaultPositionA: 125,
-            defaultPositionB: 375,
+            defaultValueA: 125,
+            defaultValueB: 375,
             rangeSlider: false,
             verticalView: false,
             discreteScale: false,
@@ -37,8 +37,8 @@ import './main.sass';
                     min: config.min,
                     max: config.max,
                     step: config.step,
-                    defaultPositionA: config.defaultPositionA,
-                    defaultPositionB: config.defaultPositionB,
+                    defaultValueA: config.defaultValueA,
+                    defaultValueB: config.defaultValueB,
                 };
 
                 model = new RangeSliderModel(defaultState);

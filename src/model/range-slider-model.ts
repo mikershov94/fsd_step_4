@@ -6,6 +6,7 @@ class RangeSliderModel extends Model implements ISliderModel {
         super();
         this.state = {
             vertical: state.vertical,
+
             min:  state.min,
             max:  state.max,
             step: state.step,
