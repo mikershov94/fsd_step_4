@@ -63,7 +63,9 @@ class ControlSlider extends Component {
     }
 
     protected doingAfterRender(): void {
-        const outerSize: number = this.jQueryElement.outerWidth();
+        const outerSize: number = this.state.vertical ?
+                                  this.jQueryElement.outerWidth() :
+                                  this.jQueryElement.outerHeight();
         this.setState({
             size: outerSize
         })
@@ -77,35 +79,14 @@ class ControlSlider extends Component {
 
     protected updateState(): void {
         
-        switch (this.state.type) {
-            
-            case 'left':
-                this.setState({
-                    position: this.props.positionA,
-                })
-                return;
+        this.setState({
+            railLengthPx: this.props.lengthRail,
+            value: this.props.value,
+        });
 
-            case 'right':
-                this.setState({
-                    position: this.props.positionB,
-                })
-                return;
-
-            default:
-                //console.log(this.props)
-                this.setState({
-                    railLengthPx: this.props.lengthRail,
-                    value: this.props.value,
-                });
-
-                this.setState({
-                    position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
-                })
-                
-                
-                return;
-
-        }    
+        this.setState({
+            position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
+        });  
     }
 
     protected updateRender(): void {
