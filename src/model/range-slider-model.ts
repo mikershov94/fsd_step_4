@@ -17,25 +17,51 @@ class RangeSliderModel extends Model implements ISliderModel {
             positionB: 0,
 
             offsetRail: 0,
+            lengthRail: 0,
             outerSizeSlider: 0,
         }
     }
 
     moveSlider(posPointer: number): number {
-        return
-    }
+        
+        let newValue: number;
 
-    moveVerticalSlider(): number {
-        return
-    }
+        const offsetRail: number = this.getState().offsetRail;
+        const max: number = this.getState().max;
+        const min: number = this.getState().min;
+        const lengthRail: number = this.getState().lengthRail;
+        const outerSizeSlider: number = this.getState().outerSizeSlider;
     
-    calculateScaleIndex({}: TMessage): number {
-        return
+        newValue = (posPointer - offsetRail) * (max - min) / lengthRail;
+
+        if (newValue >= max) newValue = max;
+        if (newValue <= min) newValue = min;
+
+        return newValue;
+    
     }
 
-    calculateValue({}: TMessage): number {
-        return
+    moveVerticalSlider(posPointer: number): number {
+
+        let offset: number;
+        let newValue: number;
+
+        const offsetRail: number = this.getState().offsetRail;
+        const max: number = this.getState().max;
+        const min: number = this.getState().min;
+        const lengthRail: number = this.getState().lengthRail;
+        const outerSizeSlider: number = this.getState().outerSizeSlider;
+
+        offset = (posPointer - offsetRail) * (max - min) / lengthRail;
+        newValue = max - offset;
+
+        if (newValue >= max) newValue = max;
+        if (newValue <= min) newValue = min;
+
+        return newValue;
     }
+
+    
 
 }
 
