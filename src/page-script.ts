@@ -4,7 +4,7 @@ $('#alone').fsdSlider({
     rangeSlider: false,
     defaultValue: 250,
     verticalView: false,
-    step: 20
+    step: 4
 });
 
 $('#range').fsdSlider({
