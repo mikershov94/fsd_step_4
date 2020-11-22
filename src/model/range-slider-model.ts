@@ -2,24 +2,26 @@ import Model from './model';
 
 class RangeSliderModel extends Model implements ISliderModel {
 
-    constructor(state: any) {
+    constructor(state: TState) {
         super();
         this.state = {
             vertical: state.vertical,
 
+            valueA: state.defaultValueA,
+            valueB: state.defaultValueB,
             min:  state.min,
             max:  state.max,
             step: state.step,
-            positionA: state.defaultPositionA,
-            positionB: state.defaultPositionB,
+
+            positionA: 0,
+            positionB: 0,
+
             offsetRail: 0,
-            sizeSlider: 0,
-            clickSliderA: false,
-            clickSliderB: false,
+            outerSizeSlider: 0,
         }
     }
 
-    moveSlider({}: TMessage): number {
+    moveSlider(posPointer: number): number {
         return
     }
 

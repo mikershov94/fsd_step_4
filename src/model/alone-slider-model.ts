@@ -1,8 +1,8 @@
 import Model from './model';
 
-class AloneSliderModel extends Model implements ISliderModel {
+class AloneSliderModel extends Model implements IAloneSliderModel {
 
-    constructor(state: any) {
+    constructor(state: TState) {
         super();
         this.state = {
             vertical: state.vertical,

@@ -5,7 +5,15 @@ interface IModel {
     subscribe(subscriber: ISubscriber): void;
 }
 
-interface ISliderModel extends IModel {
-    moveSlider(args: any): number;
-    moveVerticalSlider(args: any): number;
+interface IAloneSliderModel extends IModel {
+    moveSlider(posPointer: number): number;
+    moveVerticalSlider(posPointer: number): number;
+}
+
+interface IRangeSliderModel extends IModel {
+    moveSliderA(posPointer: number): number;
+    moveSliderB(posPointer: number): number;
+
+    moveVerticalSliderA(posPointer: number): number;
+    moveVerticalSliderB(posPointer: number): number;
 }
