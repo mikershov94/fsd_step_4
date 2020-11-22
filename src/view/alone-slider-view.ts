@@ -32,7 +32,8 @@ class AloneSliderView extends View {
         const progressBarFill = new ProgressBarFill({
             max: props.max,
             min: props.min,
-            value: props.value,
+            start: props.min,
+            end: props.value,
             sizeSlider: props.outerSizeSlider,
             railLengthPx: props.lengthRail,
             type: 'alone',

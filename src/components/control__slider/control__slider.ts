@@ -7,7 +7,6 @@ interface TControlSliderState extends TState {
     position: number;
     size: number;
     railLengthPx: number;
-    type: string;
     vertical: boolean;
 }
 
@@ -35,7 +34,6 @@ class ControlSlider extends Component {
             position: this.props.position,
             size: this.props.size,
             railLengthPx: this.props.railLengthPx,
-            type: this.props.type,
             vertical: this.props.vertical
         }
     }

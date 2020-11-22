@@ -23,7 +23,6 @@ class RangeSliderView extends View {
             position: props.positionA,
             size: props.outerSizeSlider,
             railLengthPx: props.lengthRail,
-            type: 'sliderA',
             vertical: props.vertical
         });
 
@@ -34,15 +33,14 @@ class RangeSliderView extends View {
             position: props.positionB,
             size: props.outerSizeSlider,
             railLengthPx: props.lengthRail,
-            type: 'sliderB',
             vertical: props.vertical
         });
         
         const progressBarFill = new ProgressBarFill({
             max: props.max,
             min: props.min,
-            valueA: props.value,
-            valueB: props.valueB,
+            start: props.valueA,
+            end: props.valueB,
             sizeSlider: props.outerSizeSlider,
             railLengthPx: props.lengthRail,
             type: 'range',
