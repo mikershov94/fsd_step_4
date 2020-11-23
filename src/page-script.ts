@@ -9,5 +9,5 @@ $('#alone').fsdSlider({
 
 $('#range').fsdSlider({
     rangeSlider: true,
-    verticalView: true
+    verticalView: false
 })

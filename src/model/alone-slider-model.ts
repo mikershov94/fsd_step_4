@@ -2,7 +2,7 @@ import Model from './model';
 
 class AloneSliderModel extends Model implements ISliderModel {
 
-    constructor(state: TState) {
+    constructor(state: any) {
         super();
         this.state = {
             vertical: state.vertical,

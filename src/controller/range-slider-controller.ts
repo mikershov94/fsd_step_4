@@ -12,18 +12,29 @@ class RangeSliderController extends Controller {
     protected reduce(action: string, args: TActionArgs): void {
         switch(action) {
 
+            case 'calculatedLengthRail':
+                this.sendDataToModel({
+                    lengthRail: args.length,
+                })
+                
+                return;
+
+            case 'calculatedOuterSizeSlider':
+                this.sendDataToModel({
+                    outerSizeSlider: args.outerSize
+                })
+
+                return;
+
             case 'calculatedOffset':
                 this.sendDataToModel({
                     offsetRail: args.offset,
                 });
-                return;
+                return
             
             case 'mouseDownA':
                 this.sendDataToModel({
                     clickSliderA: true,
-                    sizeSlider: args.outerSize,
-                    limitRailMin: args.minLimit,
-                    limitRailMax: args.maxLimit
                 });
                 this.view.subscribePageOnMove(this.model.getState());
                 return;
@@ -31,37 +42,30 @@ class RangeSliderController extends Controller {
             case 'mouseDownB':
                 this.sendDataToModel({
                     clickSliderB: true,
-                    sizeSlider: args.outerSize,
-                    limitRailMin: args.minLimit,
-                    limitRailMax: args.maxLimit
                 });
                 this.view.subscribePageOnMove(this.model.getState());
                 return;
 
             case 'mouseMove':
-                const messageWithLimits: TMessage = this.model.getState();
-
                 if (this.model.getState().clickSliderA) {
-                    //добавляем лимиты движения в аргументы
-                    Object.assign(args, {
-                        minLimit: messageWithLimits.min,
-                        maxLimit: messageWithLimits.positionB
-                    });
-
+                    if (args.vertical) {
+                        this.sendDataToModel({
+                            valueA: this.model.moveVerticalSlider(args.posPointer)
+                        })
+                    }
                     this.sendDataToModel({
-                        positionA: this.model.moveSlider(args)
+                        valueA: this.model.moveSlider(args.posPointer),
                     });
                 }
 
                 if (this.model.getState().clickSliderB) {
-                    //добавляем лимиты движения в аргументы
-                    Object.assign(args, {
-                        minLimit: messageWithLimits.positionA,
-                        maxLimit: messageWithLimits.max
-                    })
-
+                    if (args.vertical) {
+                        this.sendDataToModel({
+                            valueB: this.model.moveVerticalSlider(args.posPointer)
+                        })
+                    }
                     this.sendDataToModel({
-                        positionB: this.actions.moveSlider(args)
+                        valueB: this.actions.moveSlider(args.posPointer)
                     })
                 }
                 return;

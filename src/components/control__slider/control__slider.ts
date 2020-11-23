@@ -8,6 +8,7 @@ interface TControlSliderState extends TState {
     size: number;
     railLengthPx: number;
     vertical: boolean;
+    type: string;
 }
 
 class ControlSlider extends Component {
@@ -21,7 +22,21 @@ class ControlSlider extends Component {
 
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {
             this.parent.afterRender();
-            this.dispatcher.dispatch('mouseDown', {});             
+
+            switch (this.state.type) {
+                case 'sliderA':
+                    this.dispatcher.dispatch('mouseDownA', {});
+                    return;
+
+                case 'sliderB':
+                    this.dispatcher.dispatch('mouseDownB', {});
+                    return;
+
+                default:
+                    this.dispatcher.dispatch('mouseDown', {});
+                    return;
+            }
+             
         }
 
     }
@@ -34,7 +49,8 @@ class ControlSlider extends Component {
             position: this.props.position,
             size: this.props.size,
             railLengthPx: this.props.railLengthPx,
-            vertical: this.props.vertical
+            vertical: this.props.vertical,
+            type: this.props.type
         }
     }
 

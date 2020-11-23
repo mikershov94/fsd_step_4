@@ -2,7 +2,7 @@ import Model from './model';
 
 class RangeSliderModel extends Model implements ISliderModel {
 
-    constructor(state: TState) {
+    constructor(state: any) {
         super();
         this.state = {
             vertical: state.vertical,
@@ -15,6 +15,9 @@ class RangeSliderModel extends Model implements ISliderModel {
 
             positionA: 0,
             positionB: 0,
+            
+            clickedSliderA: false,
+            clickedSliderB: false,
 
             offsetRail: 0,
             lengthRail: 0,

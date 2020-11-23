@@ -6,6 +6,6 @@ interface IModel {
 }
 
 interface ISliderModel extends IModel {
-    moveSlider(posPointer: number): number;
-    moveVerticalSlider(posPointer: number): number;
+    moveSlider(posPointer: TActionArgsValues): number;
+    moveVerticalSlider(posPointer: TActionArgsValues): number;
 }

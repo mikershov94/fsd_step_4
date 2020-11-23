@@ -27,7 +27,7 @@ import './main.sass';
         
         return this.each(function() {
 
-            let model:      IModel;
+            let model:      ISliderModel;
             let view:       IView;
             let controller: IController;
 
