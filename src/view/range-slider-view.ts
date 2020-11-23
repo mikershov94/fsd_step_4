@@ -74,8 +74,12 @@ class RangeSliderView extends View {
             progressBar
         ]);
 
-        const outputField = new OutputField({
-            value: props.value,
+        const outputFieldA = new OutputField({
+            value: props.valueA,
+        }, []);
+
+        const outputFieldB = new OutputField({
+            value: props.valueB,
         }, []);
 
         const control = new Control({
@@ -88,7 +92,8 @@ class RangeSliderView extends View {
         const output = new Output({
             prefix: this.rootContainerClass
         }, [
-            outputField
+            outputFieldA,
+            outputFieldB
         ]);
 
         const container = new Container({

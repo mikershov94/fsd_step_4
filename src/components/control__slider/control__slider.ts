@@ -92,15 +92,37 @@ class ControlSlider extends Component {
     }
 
     protected updateState(): void {
-        
-        this.setState({
-            railLengthPx: this.props.lengthRail,
-            value: this.props.value,
-        });
+        switch (this.state.type) {
+            case 'sliderA':
+                this.setState({
+                    railLengthPx: this.props.lengthRail,
+                    value: this.props.valueA,
+                });
+                this.setState({
+                    position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
+                });
+                return;
 
-        this.setState({
-            position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
-        });  
+            case 'sliderB':
+                this.setState({
+                    railLengthPx: this.props.lengthRail,
+                    value: this.props.valueB,
+                });
+                this.setState({
+                    position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
+                });
+                return;
+
+            default:
+                this.setState({
+                    railLengthPx: this.props.lengthRail,
+                    value: this.props.value,
+                });
+                this.setState({
+                    position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
+                });
+                return;
+        } 
     }
 
     protected updateRender(): void {
