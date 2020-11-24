@@ -6,6 +6,8 @@ interface TControlSliderState extends TState {
     value: number;
     position: number;
     size: number;
+    limitA: number;
+    limitB: number;
     railLengthPx: number;
     vertical: boolean;
     type: string;
@@ -48,6 +50,8 @@ class ControlSlider extends Component {
             value: this.props.value,
             position: this.props.position,
             size: this.props.size,
+            limitA: 0,
+            limitB: 100,
             railLengthPx: this.props.railLengthPx,
             vertical: this.props.vertical,
             type: this.props.type
@@ -61,9 +65,9 @@ class ControlSlider extends Component {
     }
 
     protected doingRender(): void {
-        const min: number = this.state.min;
-        const max: number = this.state.max;
-        const value: number = this.state.value;
+        const min: number = this.state.limitA;  //минимальный предел движения
+        const max: number = this.state.limitB;  //максимальный предел двидения
+        const value: number = this.state.value; //значение, на которое указывает бегунок
 
         let position: number = this.calculatePosition(min, max, value);
         this.setState({position});
@@ -92,24 +96,34 @@ class ControlSlider extends Component {
     }
 
     protected updateState(): void {
+        const min: number = this.state.min;  //минимальное значение рельсы
+        const max: number = this.state.max;  //максимальное значение рельсы
+
         switch (this.state.type) {
             case 'sliderA':
                 this.setState({
                     railLengthPx: this.props.lengthRail,
                     value: this.props.valueA,
+                    limitB: this.calculatePosition(min, max, this.props.valueB)
                 });
+
+                const posA: number = this.calculatePosition(min, max, this.state.value);
                 this.setState({
-                    position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
+                    position: this.limitMoving(posA, min, this.state.limitB),
                 });
+                console.log(this.state)
                 return;
 
             case 'sliderB':
                 this.setState({
                     railLengthPx: this.props.lengthRail,
                     value: this.props.valueB,
+                    limitA: this.calculatePosition(min, max, this.props.valueA),
                 });
+
+                const posB: number = this.calculatePosition(min, max, this.state.value);
                 this.setState({
-                    position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
+                    position: this.limitMoving(posB, this.state.limitA, max),
                 });
                 return;
 
@@ -119,10 +133,11 @@ class ControlSlider extends Component {
                     value: this.props.value,
                 });
                 this.setState({
-                    position: this.calculatePosition(this.state.min, this.state.max, this.state.value),
+                    position: this.calculatePosition(min, max, this.state.value),
                 });
                 return;
         } 
+        
     }
 
     protected updateRender(): void {
@@ -145,6 +160,28 @@ class ControlSlider extends Component {
         
         return position
     }
+
+    private limitMoving(position: number, min: number, max: number): number {
+        const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
+        let result: number = position;
+
+        switch (this.state.type) {  //определяем пределы движения бегунка
+
+            case 'sliderA':
+                if (position >= (max - sizeSliderPercent)) result = max - sizeSliderPercent;
+                console.log(max)
+                return result;
+
+            case 'sliderB':
+                if (position <= (min + sizeSliderPercent)) result = min + sizeSliderPercent;
+                return result;
+
+            default:
+                result = position
+                return result;
+
+        }
+    } 
 
 }
 
