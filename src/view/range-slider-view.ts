@@ -18,7 +18,7 @@ class RangeSliderView extends View {
     mountApplication(props: TMessage): void {
         const controlSliderA = new ControlSlider({
             min: props.min,
-            max: props.valueB,
+            max: props.max,
             value: props.valueA,
             position: props.positionA,
             size: props.outerSizeSlider,
@@ -28,7 +28,7 @@ class RangeSliderView extends View {
         });
 
         const controlSliderB = new ControlSlider({
-            min: props.valueA,
+            min: props.min,
             max: props.max,
             value: props.valueB,
             position: props.positionB,
@@ -76,10 +76,12 @@ class RangeSliderView extends View {
 
         const outputFieldA = new OutputField({
             value: props.valueA,
+            type: 'start'
         }, []);
 
         const outputFieldB = new OutputField({
             value: props.valueB,
+            type: 'end'
         }, []);
 
         const control = new Control({

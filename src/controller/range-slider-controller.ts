@@ -65,7 +65,7 @@ class RangeSliderController extends Controller {
                         })
                     }
                     this.sendDataToModel({
-                        valueB: this.actions.moveSlider(args.posPointer)
+                        valueB: this.model.moveSlider(args.posPointer)
                     })
                 }
                 return;

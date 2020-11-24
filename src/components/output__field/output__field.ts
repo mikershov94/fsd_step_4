@@ -41,13 +41,13 @@ class OutputField extends Component {
 
             case 'start':
                 this.setState({
-                    value: this.props.positionA
+                    value: this.props.valueA
                 });
                 return;
 
             case 'end':
                 this.setState({
-                    value: this.props.positionB
+                    value: this.props.valueB
                 });
                 return;
 
