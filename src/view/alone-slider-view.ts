@@ -23,9 +23,9 @@ class AloneSliderView extends View {
             max: props.max,
             value: props.value,
             position: props.position,
-            size: props.outerSizeSlider,
             limitA: props.min,
             limitB: props.max,
+            size: props.outerSizeSlider,
             railLengthPx: props.lengthRail,
             type: 'alone',
             vertical: props.vertical

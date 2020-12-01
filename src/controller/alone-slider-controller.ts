@@ -3,9 +3,11 @@ import Controller from './controller';
 class AloneSliderController extends Controller {
 
     protected actions: TActionList;
+    protected model: IAloneSliderModel;
 
-    constructor(model: ISliderModel, view: IView) {
+    constructor(model: IAloneSliderModel, view: IView) {
         super(model, view);
+        this.model = model;
 
     }
 

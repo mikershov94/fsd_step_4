@@ -3,9 +3,11 @@ import Controller from './controller';
 class RangeSliderController extends Controller {
 
     protected actions: TActionList;
+    protected model: IRangeSliderModel;
 
-    constructor(model: ISliderModel, view: IView) {
+    constructor(model: IRangeSliderModel, view: IView) {
         super(model, view);
+        this.model = model;
 
     }
 
@@ -34,46 +36,49 @@ class RangeSliderController extends Controller {
             
             case 'mouseDownA':
                 this.sendDataToModel({
-                    clickSliderA: true,
+                    clickedSliderA: true,
                 });
                 this.view.subscribePageOnMove(this.model.getState());
                 return;
                 
             case 'mouseDownB':
                 this.sendDataToModel({
-                    clickSliderB: true,
+                    clickedSliderB: true,
                 });
                 this.view.subscribePageOnMove(this.model.getState());
                 return;
 
             case 'mouseMove':
-                if (this.model.getState().clickSliderA) {
+               // console.log({clickA: this.model.getState().cli})
+                if (this.model.getState().clickedSliderA) {
                     if (args.vertical) {
                         this.sendDataToModel({
-                            valueA: this.model.moveVerticalSlider(args.posPointer)
+                            valueA: this.model.moveVerticalSliderA(args.posPointer)
                         })
                     }
                     this.sendDataToModel({
-                        valueA: this.model.moveSlider(args.posPointer),
+                        valueA: this.model.moveSliderA(args.posPointer),
                     });
+                    return;
                 }
 
-                if (this.model.getState().clickSliderB) {
+                if (this.model.getState().clickedSliderB) {
                     if (args.vertical) {
                         this.sendDataToModel({
-                            valueB: this.model.moveVerticalSlider(args.posPointer)
+                            valueB: this.model.moveVerticalSliderB(args.posPointer)
                         })
                     }
                     this.sendDataToModel({
-                        valueB: this.model.moveSlider(args.posPointer)
-                    })
+                        valueB: this.model.moveSliderB(args.posPointer)
+                    });
+                    return;
                 }
-                return;
 
             case 'mouseUp':
+                
                 this.sendDataToModel({
-                    clickSliderA: false,
-                    clickSliderB: false
+                    clickedSliderA: false,
+                    clickedSliderB: false
                 });
                 this.view.unsubscribePageOffMove();
                 return;

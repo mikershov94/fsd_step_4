@@ -44,14 +44,17 @@ class ControlSlider extends Component {
     }
 
     protected initStateComponent(): TControlSliderState {
+        const min: number = this.props.min;  //минимальное значение
+        const max: number = this.props.max;  //максимальное значение
+
         return {
             min: this.props.min,
             max: this.props.max,
             value: this.props.value,
             position: this.props.position,
             size: this.props.size,
-            limitA: 0,
-            limitB: 100,
+            limitA: this.calculateLimit(min, max, this.props.limitA),
+            limitB: this.calculateLimit(min, max, this.props.limitB),
             railLengthPx: this.props.railLengthPx,
             vertical: this.props.vertical,
             type: this.props.type
@@ -100,40 +103,42 @@ class ControlSlider extends Component {
         const max: number = this.state.max;  //максимальное значение рельсы
 
         switch (this.state.type) {
+            
             case 'sliderA':
                 this.setState({
                     railLengthPx: this.props.lengthRail,
                     value: this.props.valueA,
-                    limitB: this.calculatePosition(min, max, this.props.valueB)
+                    limitA: this.calculateLimit(min, max, min),
+                    limitB: this.calculateLimit(min, max, this.props.valueB)
                 });
-
-                const posA: number = this.calculatePosition(min, max, this.state.value);
+                
                 this.setState({
-                    position: this.limitMoving(posA, min, this.state.limitB),
+                    position: this.calculatePosition(min, max, this.props.valueA),
                 });
-                console.log(this.state)
+                
                 return;
 
             case 'sliderB':
                 this.setState({
                     railLengthPx: this.props.lengthRail,
                     value: this.props.valueB,
-                    limitA: this.calculatePosition(min, max, this.props.valueA),
+                    limitA: this.calculateLimit(min, max, this.props.valueA),
+                    limitB: this.calculateLimit(min, max, max)
                 });
-
-                const posB: number = this.calculatePosition(min, max, this.state.value);
+                
                 this.setState({
-                    position: this.limitMoving(posB, this.state.limitA, max),
+                    position: this.calculatePosition(min, max, this.props.valueB),
                 });
                 return;
 
             default:
+                
                 this.setState({
                     railLengthPx: this.props.lengthRail,
                     value: this.props.value,
                 });
                 this.setState({
-                    position: this.calculatePosition(min, max, this.state.value),
+                    position: this.calculatePosition(min, max, this.props.value),
                 });
                 return;
         } 
@@ -141,7 +146,6 @@ class ControlSlider extends Component {
     }
 
     protected updateRender(): void {
-
         if (this.state.vertical) {
             this.jQueryElement.css('top', `${this.state.position}%`);
             return;
@@ -156,31 +160,17 @@ class ControlSlider extends Component {
         if (this.state.vertical) position = 100 - position;
         
         const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
-        if (position >= (100 - sizeSliderPercent)) position = 100 - sizeSliderPercent;
-        
+        if (position <= this.state.limitA) position = this.state.limitA;
+        if (position >= (this.state.limitB - sizeSliderPercent)) position = this.state.limitB - sizeSliderPercent;
+    
         return position
     }
 
-    private limitMoving(position: number, min: number, max: number): number {
-        const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
-        let result: number = position;
+    private calculateLimit(min: number, max: number, value: number): number {
+        let limit: number = (value * 100) / (max - min);
+        if (this.props.vertical) limit = 100 - value;
 
-        switch (this.state.type) {  //определяем пределы движения бегунка
-
-            case 'sliderA':
-                if (position >= (max - sizeSliderPercent)) result = max - sizeSliderPercent;
-                console.log(max)
-                return result;
-
-            case 'sliderB':
-                if (position <= (min + sizeSliderPercent)) result = min + sizeSliderPercent;
-                return result;
-
-            default:
-                result = position
-                return result;
-
-        }
+        return limit;
     } 
 
 }

@@ -1,9 +1,9 @@
 abstract class Controller implements IController, ISubscriber{
 
-    protected model: ISliderModel;
+    protected model: TSliderModel;
     protected view:  IView;
 
-    constructor(model: ISliderModel, view: IView) {
+    constructor(model: TSliderModel, view: IView) {
         this.model = model;
         this.view = view;
 

@@ -27,7 +27,6 @@ import './main.sass';
         
         return this.each(function() {
 
-            let model:      ISliderModel;
             let view:       IView;
             let controller: IController;
 
@@ -41,7 +40,7 @@ import './main.sass';
                     defaultValueB: config.defaultValueB,
                 };
 
-                model = new RangeSliderModel(defaultState);
+                let model: IRangeSliderModel = new RangeSliderModel(defaultState);
                 view = new RangeSliderView($(this));
                 controller = new RangeSliderController(model, view);
             } else {
@@ -53,7 +52,7 @@ import './main.sass';
                     defaultValue: config.defaultValue
                 };
 
-                model = new AloneSliderModel(defaultState);
+                let model: IAloneSliderModel = new AloneSliderModel(defaultState);
                 view = new AloneSliderView($(this));
                 controller = new AloneSliderController(model, view);
 
