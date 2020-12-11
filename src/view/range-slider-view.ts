@@ -96,7 +96,8 @@ class RangeSliderView extends View {
             scale
         ]);
         const output = new Output({
-            prefix: this.rootContainerClass
+            prefix: this.rootContainerClass,
+            vertical: props.vertical
         }, [
             outputFieldA,
             outputFieldB

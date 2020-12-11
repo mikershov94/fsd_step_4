@@ -2,7 +2,7 @@ import Component from '../index';
 
 interface TControlState extends TState {
     prefix: string;
-    vertical: number;
+    vertical: boolean;
 }
 
 class Control extends Component {

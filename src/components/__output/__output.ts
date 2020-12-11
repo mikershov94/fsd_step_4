@@ -2,6 +2,7 @@ import Component from '../index';
 
 interface TOutputState extends TState {
     prefix: string;
+    vertical: boolean
 }
 
 class Output extends Component {
@@ -15,6 +16,7 @@ class Output extends Component {
     protected initStateComponent(): TOutputState {
         return {
             prefix: this.props.prefix,
+            vertical: this.props.vertical
         }
     }
 

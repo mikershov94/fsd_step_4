@@ -67,7 +67,7 @@ class RangeSliderModel extends Model implements IRangeSliderModel {
     }
 
     moveVerticalSliderA(posPointer: number): number {
-
+        
         let offset: number;
         let newValue: number;
 
@@ -102,7 +102,7 @@ class RangeSliderModel extends Model implements IRangeSliderModel {
 
         if (newValue >= max) newValue = max;
         if (newValue <= min) newValue = min;
-
+        
         return newValue;
     }
 

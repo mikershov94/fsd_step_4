@@ -90,7 +90,7 @@ class ProgressBarFill extends Component {
     protected updateRender(): void {
         let startPercent: number = this.calcStart(this.state.start, this.state.max, this.state.min);
         let endPercent: number = this.calcEnd(startPercent, this.state.end, this.state.max, this.state.min);
-
+        
         if (this.state.vertical) {
             this.jQueryElement.css('bottom', `${startPercent}%`);
             this.jQueryElement.css('height', `${endPercent}%`);
@@ -102,15 +102,7 @@ class ProgressBarFill extends Component {
     }
 
     private calcStart(value: number, max: number, min: number): number {
-        const sizeSliderPercent: number = (this.state.sizeSlider * 100) / this.state.railLengthPx / 2;
-
         let fill: number = (value * 100) / (max - min);
-        
-        //fill = this.state.vertical ? fill - sizeSliderPercent : fill;
-        
-        //if (fill <= sizeSliderPercent) fill = sizeSliderPercent;
-        //if (fill >= 100) fill = 100;
-        
         return fill;
     }
 
@@ -118,13 +110,11 @@ class ProgressBarFill extends Component {
         const sizeSliderPercent: number = (this.state.sizeSlider * 100) / this.state.railLengthPx / 2;
 
         let fill: number = (end * 100) / (max - min) - startPercent;
-        console.log(fill)
-        
-        fill = this.state.vertical ? fill - sizeSliderPercent : fill + sizeSliderPercent;
-        
+        fill += sizeSliderPercent
+
         if (fill <= sizeSliderPercent) fill = sizeSliderPercent;
-        if (fill >= 100) fill = 100;
-        
+        if (fill >= 100 - startPercent - sizeSliderPercent) fill = 100 - startPercent - sizeSliderPercent;
+
         return fill;
     }
 

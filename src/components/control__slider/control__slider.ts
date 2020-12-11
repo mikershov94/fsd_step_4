@@ -132,11 +132,11 @@ class ControlSlider extends Component {
                 return;
 
             default:
-                
                 this.setState({
                     railLengthPx: this.props.lengthRail,
                     value: this.props.value,
                 });
+                
                 this.setState({
                     position: this.calculatePosition(min, max, this.props.value),
                 });
@@ -158,17 +158,18 @@ class ControlSlider extends Component {
     private calculatePosition(min: number, max: number, value: number): number {
         let position: number = (value * 100) / (max - min);
         if (this.state.vertical) position = 100 - position;
-        
+    
         const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
         if (position <= this.state.limitA) position = this.state.limitA;
         if (position >= (this.state.limitB - sizeSliderPercent)) position = this.state.limitB - sizeSliderPercent;
     
+
         return position
     }
 
     private calculateLimit(min: number, max: number, value: number): number {
         let limit: number = (value * 100) / (max - min);
-        if (this.props.vertical) limit = 100 - value;
+        //if (this.props.vertical) limit = 100 - limit;
 
         return limit;
     } 
