@@ -1,3 +1,3 @@
-import AloneSliderView from './alone-slider-view';
-import RangeSliderView from './range-slider-view';
-export { AloneSliderView, RangeSliderView };
+import AloneView from './alone-view';
+import RangeView from './range-view';
+export { AloneView, RangeView };

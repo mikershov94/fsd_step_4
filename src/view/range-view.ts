@@ -1,13 +1,13 @@
 import View from './view';
-import ControlSlider from '../components/control__slider';
-import ProgressBarFill from '../components/progress-bar__fill';
-import ProgressBar from '../components/__progress-bar';
-import Scale from '../components/__scale';
-import ControlRail from '../components/control__rail';
-import OutputField from '../components/output__field';
-import Control from '../components/__control';
-import Output from '../components/__output';
-import Container from '../components/__container';
+import {ControlSliderStart, ControlSliderEnd} from '../components/control__slider';
+import {ProgressBarFillRange} from '../components/progress-bar__fill';
+import {ProgressBar} from '../components/__progress-bar';
+import {Scale} from '../components/__scale';
+import {ControlRail} from '../components/control__rail';
+import {OutputFieldStart, OutputFieldEnd} from '../components/output__field';
+import {Control} from '../components/__control';
+import {Output} from '../components/__output';
+import {Container} from '../components/__container';
 
 class RangeSliderView extends View {
 
@@ -16,7 +16,7 @@ class RangeSliderView extends View {
     }
 
     mountApplication(props: TMessage): void {
-        const controlSliderA = new ControlSlider({
+        const controlSliderA = new ControlSliderStart({
             min: props.min,
             max: props.max,
             value: props.valueA,
@@ -25,11 +25,9 @@ class RangeSliderView extends View {
             limitB: props.valueB,
             size: props.outerSizeSlider,
             railLengthPx: props.lengthRail,
-            vertical: props.vertical,
-            type: 'sliderA'
-        });
+        }, []);
 
-        const controlSliderB = new ControlSlider({
+        const controlSliderB = new ControlSliderEnd({
             min: props.min,
             max: props.max,
             value: props.valueB,
@@ -38,31 +36,25 @@ class RangeSliderView extends View {
             limitB: props.max,
             size: props.outerSizeSlider,
             railLengthPx: props.lengthRail,
-            vertical: props.vertical,
-            type: 'sliderB'
-        });
+        }, []);
         
-        const progressBarFill = new ProgressBarFill({
+        const progressBarFill = new ProgressBarFillRange({
             max: props.max,
             min: props.min,
             start: props.valueA,
             end: props.valueB,
             sizeSlider: props.outerSizeSlider,
             railLengthPx: props.lengthRail,
-            type: 'range',
-            vertical: props.vertical,
         }, []);
 
         const progressBar = new ProgressBar({
             prefix: this.rootContainerClass,
-            vertical: props.vertical
         }, [
             progressBarFill,
         ])
     
         const scale = new Scale({
             prefix: this.rootContainerClass,
-            vertical: props.vertical,
             min: props.min,
             max: props.max,
             step: props.step
@@ -71,33 +63,28 @@ class RangeSliderView extends View {
         const controlRail = new ControlRail({
             min: props.min,
             max: props.max,
-            vertical: props.vertical
         }, [
             controlSliderA,
             controlSliderB,
             progressBar
         ]);
 
-        const outputFieldA = new OutputField({
+        const outputFieldA = new OutputFieldStart({
             value: props.valueA,
-            type: 'start'
         }, []);
 
-        const outputFieldB = new OutputField({
+        const outputFieldB = new OutputFieldEnd({
             value: props.valueB,
-            type: 'end'
         }, []);
 
         const control = new Control({
             prefix: this.rootContainerClass,
-            vertical: props.vertical
         }, [
             controlRail,
             scale
         ]);
         const output = new Output({
             prefix: this.rootContainerClass,
-            vertical: props.vertical
         }, [
             outputFieldA,
             outputFieldB
@@ -105,7 +92,6 @@ class RangeSliderView extends View {
 
         const container = new Container({
             prefix: this.rootContainerClass,
-            vertical: props.vertical
         }, [
             control,
             output
