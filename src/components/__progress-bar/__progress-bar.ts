@@ -2,7 +2,6 @@ import Component from "..";
 
 interface TProgressBarState extends TState {
     prefix: string;
-    vertical: boolean;
 }
 
 class ProgressBar extends Component {
@@ -16,15 +15,17 @@ class ProgressBar extends Component {
     protected initStateComponent(): TProgressBarState {
         return {
             prefix: this.props.prefix,
-            vertical: this.props.vertical,
         }
     }
 
     protected setTemplate(): string {
-        const prefix: string = this.state.prefix;
-        const style: string = this.setStyle(prefix + '__progress-bar');
-
+        const style: string = this.setStyle();
         return `<div class="${style}"></div>`;
+    }
+
+    protected setStyle(): string {
+        const prefix: string = this.state.prefix;
+        return prefix + '__progress-bar'
     }
 
 }

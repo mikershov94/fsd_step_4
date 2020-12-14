@@ -2,7 +2,6 @@ import Component from '../index';
 
 interface TContainerState extends TState {
     prefix: string;
-    vertical: boolean;
 }
 
 class Container extends Component {
@@ -16,15 +15,19 @@ class Container extends Component {
     protected initStateComponent(): TContainerState {
         return {
             prefix: this.props.prefix,
-            vertical: this.props.vertical
         }
     }
 
     protected setTemplate(): string {
-        const prefix: string = this.state.prefix;
-        const style: string = this.setStyle(prefix + '__container')
+        let style: string = this.setStyle();
 
         return `<div class="${style}"></div>`
+    }
+
+    protected setStyle(): string {
+        const prefix: string = this.state.prefix;
+        
+        return prefix + '__container';
     }
 
 }

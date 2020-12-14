@@ -1,21 +1,9 @@
 import Component from '../index';
 
-interface TControlRailState extends TState {
-    vertical: boolean
-}
-
 class ControlRail extends Component {
-
-    protected state: TControlRailState;
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
-    }
-
-    protected initStateComponent(): TControlRailState {
-        return {
-            vertical: this.props.vertical
-        }
     }
 
     protected doingAfterRender(): void {
@@ -24,9 +12,13 @@ class ControlRail extends Component {
     }
 
     protected setTemplate(): string {
-        let style: string = this.setStyle('control__rail');
+        let style: string = this.setStyle();
 
         return `<div class="${style}"></div>`;
+    }
+
+    protected setStyle(): string {
+        return 'control__rail';
     }
 
 }

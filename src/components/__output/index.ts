@@ -1,2 +1,6 @@
 import Output from './__output';
-export default Output;
+import OutputVertical from './__output_vertical';
+export {
+    Output,
+    OutputVertical
+};

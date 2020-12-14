@@ -2,10 +2,9 @@ import Component from '../index';
 
 interface TOutputFieldState extends TState {
     value: number;
-    type: string;
 }
 
-class OutputField extends Component {
+abstract class OutputField extends Component {
 
     protected state: TOutputFieldState;
 
@@ -16,14 +15,16 @@ class OutputField extends Component {
     protected initStateComponent(): TOutputFieldState {
         return {
             value: this.props.value,
-            type: this.props.type
         }
     }
 
     protected setTemplate(): string {
-        const style: string = this.setStyle('output__field');
-
+        const style: string = this.setStyle();
         return `<input class="${style}" />`
+    }
+
+    protected setStyle(): string {
+        return ''
     }
 
     protected doingRender(): void {
@@ -34,30 +35,6 @@ class OutputField extends Component {
 
     protected doingAfterRender(): void {
         this.dispatcher.dispatch('getValue', {});
-    }
-
-    protected updateState(): void {
-        switch (this.state.type) {
-
-            case 'start':
-                this.setState({
-                    value: this.props.valueA
-                });
-                return;
-
-            case 'end':
-                this.setState({
-                    value: this.props.valueB
-                });
-                return;
-
-            default:
-                this.setState({
-                    value: this.props.value
-                });
-                return;
-
-        }
     }
 
     protected updateRender(): void {

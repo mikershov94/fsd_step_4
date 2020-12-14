@@ -1,2 +1,6 @@
 import ProgressBar from './__progress-bar';
-export default ProgressBar;
+import ProgressBarVertical from './__progress-bar_vertical';
+export {
+    ProgressBar,
+    ProgressBarVertical
+};

@@ -2,7 +2,6 @@ import Component from '../index';
 
 interface TOutputState extends TState {
     prefix: string;
-    vertical: boolean
 }
 
 class Output extends Component {
@@ -16,15 +15,18 @@ class Output extends Component {
     protected initStateComponent(): TOutputState {
         return {
             prefix: this.props.prefix,
-            vertical: this.props.vertical
         }
     }
 
     protected setTemplate(): string {
-        const prefix: string = this.state.prefix;
-        const style: string = this.setStyle(prefix + '__output');
+        let style: string = this.setStyle();
 
         return `<div class="${style}"></div>`;
+    }
+
+    protected setStyle(): string {
+        const prefix: string = this.state.prefix;
+        return prefix + '__output';
     }
 
 }

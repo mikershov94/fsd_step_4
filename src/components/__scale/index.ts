@@ -1,2 +1,6 @@
 import Scale from './__scale';
-export default Scale;
+import ScaleVertical from './__scale_vertical';
+export {
+    Scale,
+    ScaleVertical
+}

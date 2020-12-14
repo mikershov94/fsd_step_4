@@ -1,2 +1,6 @@
 import Container from './__container';
-export default Container;
+import ContainerVertical from './__container_vertical';
+export {
+    Container,
+    ContainerVertical
+};

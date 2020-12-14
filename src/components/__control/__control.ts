@@ -2,7 +2,6 @@ import Component from '../index';
 
 interface TControlState extends TState {
     prefix: string;
-    vertical: boolean;
 }
 
 class Control extends Component {
@@ -16,13 +15,11 @@ class Control extends Component {
     protected initStateComponent(): TControlState {
         return {
             prefix: this.props.prefix,
-            vertical: this.props.vertical
         }
     }
 
     protected setTemplate(): string {
-        const prefix: string = this.state.prefix;
-        const style: string = this.setStyle(prefix + '__control')
+        let style: string = this.setStyle();
 
         return `<div class="${style}"></div>`;
     }
@@ -32,6 +29,11 @@ class Control extends Component {
                                 this.jQueryElement.offset().left;
 
         this.dispatcher.dispatch('calculatedOffset', { offset })
+    }
+
+    protected setStyle(): string {
+        const prefix: string = this.state.prefix;
+        return prefix + '__control';
     }
 
 }

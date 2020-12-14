@@ -1,2 +1,6 @@
 import ControlRail from './control__rail';
-export default ControlRail;
+import ControlRailVertical from './control__rail_vertical';
+export {
+    ControlRail,
+    ControlRailVertical
+};

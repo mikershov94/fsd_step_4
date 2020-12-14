@@ -31,13 +31,7 @@ abstract class Component implements IComponent {
     }
 
     protected setStyle(className: string): string {
-        let resClass: string = className;
-        
-        if (this.state.vertical) {
-            resClass += ` ${className}_vertical`;
-        }
-
-        return resClass;
+        return;
     }
 
     protected initStateComponent(): TState {
