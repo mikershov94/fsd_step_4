@@ -11,6 +11,6 @@ $('#range').fsdSlider({
     rangeSlider: true,
     defaultValueA: 100,
     defaultValueB: 400,
-    verticalView: true,
+    verticalView: false,
     step: 4
 })

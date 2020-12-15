@@ -20,9 +20,9 @@ class ScaleVertical extends Scale {
             let stripe: JQuery;
 
             if (i % 2 == 0) {
-                $(`<div class="scale__stripe_width_full scale__stripe_height_null"></div>`)
+                stripe = $(`<div class="scale__stripe_width_full scale__stripe_height_null"></div>`)
             } else {
-                $(`<div class="scale__stripe_width_short scale__stripe_height_null"></div>`);
+                stripe = $(`<div class="scale__stripe_width_short scale__stripe_height_null"></div>`);
             }
             
             this.jQueryElement.append(stripe)

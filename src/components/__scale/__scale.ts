@@ -44,9 +44,9 @@ class Scale extends Component {
             let stripe: JQuery;
 
             if (i % 2 == 0) {
-                $(`<div class="scale__stripe_width_null scale__stripe_height_full"></div>`);
+                stripe = $(`<div class="scale__stripe_width_null scale__stripe_height_full"></div>`);
             } else {
-                $(`<div class="scale__stripe_width_null scale__stripe_height_short"></div>`);
+                stripe = $(`<div class="scale__stripe_width_null scale__stripe_height_short"></div>`);
             }
             
             this.jQueryElement.append(stripe)

@@ -8,7 +8,7 @@ class ProgressBarFillRangeVertical extends ProgressBarFill {
     }
 
     protected setStyle(): string {
-        return 'progress-bar__fill_range_vertical';
+        return 'progress-bar__fill_vertical';
     }
 
     protected doingRender(): void {

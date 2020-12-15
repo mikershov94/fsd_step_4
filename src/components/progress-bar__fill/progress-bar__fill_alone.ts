@@ -7,7 +7,7 @@ class ProgressBarFillAlone extends ProgressBarFill {
     }
 
     protected setStyle(): string {
-        return 'progress-bar__fill_alone';
+        return 'progress-bar__fill';
     }
 
     protected doingRender(): void {
