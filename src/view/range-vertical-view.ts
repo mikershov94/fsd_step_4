@@ -1,22 +1,22 @@
 import View from './view';
-import {ControlSliderStart, ControlSliderEnd} from '../components/control__slider';
-import {ProgressBarFillRange} from '../components/progress-bar__fill';
-import {ProgressBar} from '../components/__progress-bar';
-import {Scale} from '../components/__scale';
-import {ControlRail} from '../components/control__rail';
-import {OutputFieldStart, OutputFieldEnd} from '../components/output__field';
-import {Control} from '../components/__control';
-import {Output} from '../components/__output';
-import {Container} from '../components/__container';
+import {ControlSliderStartVertical, ControlSliderEndVertical} from '../components/control__slider';
+import {ProgressBarFillRangeVertical} from '../components/progress-bar__fill';
+import {ProgressBarVertical} from '../components/__progress-bar';
+import {ScaleVertical} from '../components/__scale';
+import {ControlRailVertical} from '../components/control__rail';
+import {OutputFieldStartVertical, OutputFieldEndVertical} from '../components/output__field';
+import {ControlVertical} from '../components/__control';
+import {OutputVertical} from '../components/__output';
+import {ContainerVertical} from '../components/__container';
 
-class RangeView extends View {
+class RangeVerticalView extends View {
 
     constructor(rootElement: JQuery) {
         super(rootElement);
     }
 
     mountApplication(props: TMessage): void {
-        const controlSliderA = new ControlSliderStart({
+        const controlSliderA = new ControlSliderStartVertical({
             min: props.min,
             max: props.max,
             value: props.valueA,
@@ -27,7 +27,7 @@ class RangeView extends View {
             railLengthPx: props.lengthRail,
         }, []);
 
-        const controlSliderB = new ControlSliderEnd({
+        const controlSliderB = new ControlSliderEndVertical({
             min: props.min,
             max: props.max,
             value: props.valueB,
@@ -38,7 +38,7 @@ class RangeView extends View {
             railLengthPx: props.lengthRail,
         }, []);
         
-        const progressBarFill = new ProgressBarFillRange({
+        const progressBarFill = new ProgressBarFillRangeVertical({
             max: props.max,
             min: props.min,
             start: props.valueA,
@@ -47,20 +47,19 @@ class RangeView extends View {
             railLengthPx: props.lengthRail,
         }, []);
 
-        const progressBar = new ProgressBar({
+        const progressBar = new ProgressBarVertical({
             prefix: this.rootContainerClass,
         }, [
             progressBarFill,
         ])
     
-        const scale = new Scale({
-            prefix: this.rootContainerClass,
+        const scale = new ScaleVertical({
             min: props.min,
             max: props.max,
             step: props.step
         }, []);
 
-        const controlRail = new ControlRail({
+        const controlRail = new ControlRailVertical({
             min: props.min,
             max: props.max,
         }, [
@@ -69,28 +68,28 @@ class RangeView extends View {
             progressBar
         ]);
 
-        const outputFieldA = new OutputFieldStart({
+        const outputFieldA = new OutputFieldStartVertical({
             value: props.valueA,
         }, []);
 
-        const outputFieldB = new OutputFieldEnd({
+        const outputFieldB = new OutputFieldEndVertical({
             value: props.valueB,
         }, []);
 
-        const control = new Control({
+        const control = new ControlVertical({
             prefix: this.rootContainerClass,
         }, [
             controlRail,
             scale
         ]);
-        const output = new Output({
+        const output = new OutputVertical({
             prefix: this.rootContainerClass,
         }, [
             outputFieldA,
             outputFieldB
         ]);
 
-        const container = new Container({
+        const container = new ContainerVertical({
             prefix: this.rootContainerClass,
         }, [
             control,
@@ -101,4 +100,4 @@ class RangeView extends View {
     }
 }
 
-export default RangeView;
+export default RangeVerticalView;
