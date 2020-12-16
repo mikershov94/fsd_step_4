@@ -7,7 +7,7 @@ class OutputFieldStartVertical extends OutputFieldStart {
     }
 
     protected setStyle(): string {
-        return 'output__field_start_vertical'
+        return this.prefix + '__field_start_vertical'
     }
 
 }

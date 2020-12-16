@@ -7,7 +7,7 @@ class ControlRailVertical extends ControlRail {
     }
 
     protected setStyle(): string {
-        return 'control__rail_vertical';
+        return this.prefix + '__rail_vertical';
     }
 }
 

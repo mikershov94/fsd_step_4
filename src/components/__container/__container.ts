@@ -1,21 +1,9 @@
 import Component from '../index';
 
-interface TContainerState extends TState {
-    prefix: string;
-}
-
 class Container extends Component {
-
-    protected state: TContainerState;
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
-    }
-
-    protected initStateComponent(): TContainerState {
-        return {
-            prefix: this.props.prefix,
-        }
     }
 
     protected setTemplate(): string {
@@ -25,9 +13,7 @@ class Container extends Component {
     }
 
     protected setStyle(): string {
-        const prefix: string = this.state.prefix;
-        
-        return prefix + '__container';
+        return this.prefix + '__container';
     }
 
 }

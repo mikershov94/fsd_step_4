@@ -1,21 +1,9 @@
 import Component from '../index';
 
-interface TControlState extends TState {
-    prefix: string;
-}
-
 class Control extends Component {
-
-    protected state: TControlState;
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
-    }
-
-    protected initStateComponent(): TControlState {
-        return {
-            prefix: this.props.prefix,
-        }
     }
 
     protected setTemplate(): string {
@@ -32,8 +20,7 @@ class Control extends Component {
     }
 
     protected setStyle(): string {
-        const prefix: string = this.state.prefix;
-        return prefix + '__control';
+        return this.prefix + '__control';
     }
 
 }

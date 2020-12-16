@@ -7,7 +7,7 @@ class OutputFieldStart extends OutputField {
     }
 
     protected setStyle(): string {
-        return 'output__field_start'
+        return this.prefix + '__field_start'
     }
 
     protected updateState(): void {

@@ -5,7 +5,6 @@ interface TScaleState extends TState {
     max: number;
     step: number;
     countStripes: number;
-    prefix: string;
 }
 
 class Scale extends Component {
@@ -22,7 +21,6 @@ class Scale extends Component {
             max: this.props.max,
             step: this.props.step,
             countStripes: this.props.countStripes,
-            prefix: this.props.prefix,
         }
     }
 
@@ -32,8 +30,7 @@ class Scale extends Component {
     }
 
     protected setStyle(): string {
-        const prefix: string = this.state.prefix;
-        return prefix + '__scale';
+        return this.prefix + '__scale';
     }
 
     protected doingRender(): void {

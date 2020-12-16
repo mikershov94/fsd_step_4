@@ -7,7 +7,7 @@ class OutputFieldEndVertical extends OutputFieldEnd {
     }
 
     protected setStyle(): string {
-        return 'output__field_end_vertical';
+        return this.prefix + '__field_end_vertical';
     }
 
 }

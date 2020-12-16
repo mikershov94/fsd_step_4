@@ -1,22 +1,22 @@
 import OutputField from './output__field';
 
-class OutputFieldAlone extends OutputField {
+class OutputFieldEnd extends OutputField {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
     }
 
     protected setStyle(): string {
-        return 'output__field_alone'
+        return this.prefix + '__field_end'
     }
 
     protected updateState(): void {
         this.setState({
-            value: this.props.value
+            value: this.props.valueB
         });
 
     }
 
 }
 
-export default OutputFieldAlone;
+export default OutputFieldEnd;

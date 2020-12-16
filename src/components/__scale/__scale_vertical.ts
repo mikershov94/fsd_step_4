@@ -7,8 +7,7 @@ class ScaleVertical extends Scale {
     }
 
     protected setStyle(): string {
-        const prefix: string = this.state.prefix;
-        return prefix + '__scale_vertical';
+        return this.prefix + '__scale_vertical';
     }
 
     protected doingRender(): void {

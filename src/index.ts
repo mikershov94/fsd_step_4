@@ -2,7 +2,10 @@
 
 import { AloneSliderModel, RangeSliderModel } from './model';
 import { AloneSliderController, RangeSliderController } from './controller';
-import { AloneView, RangeView } from './view';
+import { AloneView,
+         AloneVerticalView,
+         RangeView,
+         RangeVerticalView } from './view';
 
 import './main.sass';
 
@@ -41,7 +44,7 @@ import './main.sass';
                 };
 
                 let model: IRangeSliderModel = new RangeSliderModel(defaultState);
-                view = new RangeView($(this));
+                view = config.verticalView ? new RangeVerticalView($(this)) : new RangeView($(this));
                 controller = new RangeSliderController(model, view);
             } else {
                 let defaultState: TState = {
@@ -53,7 +56,7 @@ import './main.sass';
                 };
 
                 let model: IAloneSliderModel = new AloneSliderModel(defaultState);
-                view = new AloneView($(this));
+                view = config.verticalView ? new AloneVerticalView($(this)) : new AloneView($(this));
                 controller = new AloneSliderController(model, view);
 
             }

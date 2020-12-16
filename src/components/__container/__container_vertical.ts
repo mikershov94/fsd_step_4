@@ -7,7 +7,7 @@ class ContainerVertical extends Container {
     }
 
     protected setStyle(): string {
-        const prefix: string = this.props.prefix;
+        const prefix: string = this.prefix;
         return prefix + '__container_vertical'
     }
 

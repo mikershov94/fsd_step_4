@@ -7,7 +7,6 @@ interface TProgressBarFillState extends TState {
     end: number;
     sizeSlider: number,
     railLengthPx: number,
-    prefix: string;
 }
 
 abstract class ProgressBarFill extends Component {
@@ -26,7 +25,6 @@ abstract class ProgressBarFill extends Component {
             end: this.props.end,
             sizeSlider: this.props.outerSizeSlider,
             railLengthPx: this.props.railLengthPx,
-            prefix: this.props.prefix,
         }
     }
 

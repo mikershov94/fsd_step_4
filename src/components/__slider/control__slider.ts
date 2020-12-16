@@ -46,7 +46,7 @@ abstract class ControlSlider extends Component {
     }
 
     protected setStyle(): string {
-        return 'control__slider';
+        return this.prefix + '__slider';
     }
 
     protected doingAfterRender(): void {

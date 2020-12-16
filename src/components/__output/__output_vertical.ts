@@ -7,8 +7,7 @@ class OutputVertical extends Output {
     }
 
     protected setStyle(): string {
-        const prefix: string = this.state.prefix;
-        return prefix + '__output_vertical';
+        return this.prefix + '__output_vertical';
     }
 
 }

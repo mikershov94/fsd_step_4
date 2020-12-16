@@ -7,7 +7,7 @@ class OutputFieldAloneVertical extends OutputFieldAlone {
     }
 
     protected setStyle(): string {
-        return 'output__field_alone_vertical'
+        return this.prefix + '__field_alone_vertical'
     }
 
 }

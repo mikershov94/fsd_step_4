@@ -1,10 +1,10 @@
 import View from './view';
-import {ControlSliderStartVertical, ControlSliderEndVertical} from '../components/control__slider';
-import {ProgressBarFillRangeVertical} from '../components/progress-bar__fill';
+import {ControlSliderStartVertical, ControlSliderEndVertical} from '../components/__slider';
+import {ProgressBarFillRangeVertical} from '../components/__fill';
 import {ProgressBarVertical} from '../components/__progress-bar';
 import {ScaleVertical} from '../components/__scale';
-import {ControlRailVertical} from '../components/control__rail';
-import {OutputFieldStartVertical, OutputFieldEndVertical} from '../components/output__field';
+import {ControlRailVertical} from '../components/__rail';
+import {OutputFieldStartVertical, OutputFieldEndVertical} from '../components/__field';
 import {ControlVertical} from '../components/__control';
 import {OutputVertical} from '../components/__output';
 import {ContainerVertical} from '../components/__container';

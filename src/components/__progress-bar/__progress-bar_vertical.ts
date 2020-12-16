@@ -7,8 +7,7 @@ class ProgressBarVertical extends ProgressBar {
     }
 
     protected setStyle(): string {
-        const prefix: string = this.state.prefix;
-        return prefix + '__progress-bar_vertical'
+        return this.prefix + '__progress-bar_vertical'
     }
 
 }

@@ -1,31 +1,41 @@
-import ProgressBarFill from './progress-bar__fill_alone';
+import ProgressBarFill from './progress-bar__fill';
 
-class ProgressBarFillAloneVertical extends ProgressBarFill {
+class ProgressBarFillRange extends ProgressBarFill {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
     }
 
     protected setStyle(): string {
-        return 'progress-bar__fill_vertical';
+        return this.prefix + '__fill';
     }
 
     protected doingRender(): void {
         let startPercent: number = this.calcStart(this.state.start, this.state.max, this.state.min);
         let endPercent: number = this.calcEnd(this.state.start, this.state.end, this.state.max, this.state.min);
 
-        this.jQueryElement.css('bottom', `${startPercent}%`);
-        this.jQueryElement.css('height', `${endPercent}%`);
+        this.jQueryElement.css('left', `${startPercent}%`);
+        this.jQueryElement.css('width', `${endPercent}%`);
+    }
+
+
+    protected updateState(): void {
+
+        this.setState({
+            start: this.props.valueA,
+            end: this.props.valueB,
+            sizeSlider: this.props.outerSizeSlider,
+            railLengthPx: this.props.lengthRail,
+        });
     
     }
 
     protected updateRender(): void {
         let startPercent: number = this.calcStart(this.state.start, this.state.max, this.state.min);
         let endPercent: number = this.calcEnd(startPercent, this.state.end, this.state.max, this.state.min);
-        
-        this.jQueryElement.css('bottom', `${startPercent}%`);
-        this.jQueryElement.css('height', `${endPercent}%`);
 
+        this.jQueryElement.css('left', `${startPercent}%`);
+        this.jQueryElement.css('width', `${endPercent}%`);
     }
 
     protected calcStart(value: number, max: number, min: number): number {
@@ -47,4 +57,4 @@ class ProgressBarFillAloneVertical extends ProgressBarFill {
 
 }
 
-export default ProgressBarFillAloneVertical;
+export default ProgressBarFillRange;

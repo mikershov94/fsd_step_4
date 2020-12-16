@@ -18,7 +18,7 @@ class ControlRail extends Component {
     }
 
     protected setStyle(): string {
-        return 'control__rail';
+        return this.prefix + '__rail';
     }
 
 }

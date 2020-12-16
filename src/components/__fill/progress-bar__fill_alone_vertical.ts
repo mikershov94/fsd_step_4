@@ -1,14 +1,13 @@
-import { ProgressBarFillRange } from '.';
 import ProgressBarFill from './progress-bar__fill_alone';
 
-class ProgressBarFillRangeVertical extends ProgressBarFill {
+class ProgressBarFillAloneVertical extends ProgressBarFill {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
     }
 
     protected setStyle(): string {
-        return 'progress-bar__fill_vertical';
+        return this.prefix + '__fill_vertical';
     }
 
     protected doingRender(): void {
@@ -48,4 +47,4 @@ class ProgressBarFillRangeVertical extends ProgressBarFill {
 
 }
 
-export default ProgressBarFillRangeVertical;
+export default ProgressBarFillAloneVertical;

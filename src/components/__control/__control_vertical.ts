@@ -7,8 +7,7 @@ class ControlVertical extends Control {
     }
 
     protected setStyle(): string {
-        const prefix: string = this.state.prefix;
-        return prefix + '__control_vertical';
+        return this.prefix + '__control_vertical';
     }
 
 }
