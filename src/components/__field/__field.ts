@@ -1,18 +1,18 @@
 import Component from '../index';
 
-interface TOutputFieldState extends TState {
+interface TFieldState extends TState {
     value: number;
 }
 
-abstract class OutputField extends Component {
+abstract class Field extends Component {
 
-    protected state: TOutputFieldState;
+    protected state: TFieldState;
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
     }
 
-    protected initStateComponent(): TOutputFieldState {
+    protected initStateComponent(): TFieldState {
         return {
             value: this.props.value,
         }
@@ -45,4 +45,4 @@ abstract class OutputField extends Component {
 
 }
 
-export default OutputField;
+export default Field;

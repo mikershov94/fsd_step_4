@@ -1,6 +1,6 @@
-import OutputField from './output__field';
+import Field from './__field';
 
-class OutputFieldAlone extends OutputField {
+class FieldAlone extends Field {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
@@ -19,4 +19,4 @@ class OutputFieldAlone extends OutputField {
 
 }
 
-export default OutputFieldAlone;
+export default FieldAlone;

@@ -1,6 +1,6 @@
 import Component from '../index';
 
-interface TProgressBarFillState extends TState {
+interface TFillState extends TState {
     max: number;
     min: number;
     start: number;
@@ -9,15 +9,15 @@ interface TProgressBarFillState extends TState {
     railLengthPx: number,
 }
 
-abstract class ProgressBarFill extends Component {
+abstract class Fill extends Component {
 
-    protected state: TProgressBarFillState;
+    protected state: TFillState;
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
     }
 
-    protected initStateComponent(): TProgressBarFillState {
+    protected initStateComponent(): TFillState {
         return {
             max: this.props.max,
             min: this.props.min,
@@ -40,4 +40,4 @@ abstract class ProgressBarFill extends Component {
 
 }
 
-export default ProgressBarFill;
+export default Fill;

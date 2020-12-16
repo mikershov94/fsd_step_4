@@ -1,6 +1,6 @@
-import ControlRail from './control__rail';
+import Rail from './__rail';
 
-class ControlRailVertical extends ControlRail {
+class RailVertical extends Rail {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
@@ -11,4 +11,4 @@ class ControlRailVertical extends ControlRail {
     }
 }
 
-export default ControlRailVertical;
+export default RailVertical;

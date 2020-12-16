@@ -1,10 +1,10 @@
-import ProgressBarFillAlone         from './progress-bar__fill_alone';
-import ProgressBarFillAloneVertical from './progress-bar__fill_alone_vertical';
-import ProgressBarFillRange         from './progress-bar__fill_range';
-import ProgressBarFillRangeVertical from './progress-bar__fill_range_vertical';
+import FillAlone         from './__fill_alone';
+import FillAloneVertical from './__fill_alone_vertical';
+import FillRange         from './__fill_range';
+import FillRangeVertical from './__fill_range_vertical';
 export { 
-    ProgressBarFillAlone,
-    ProgressBarFillAloneVertical,
-    ProgressBarFillRange,
-    ProgressBarFillRangeVertical
+    FillAlone,
+    FillAloneVertical,
+    FillRange,
+    FillRangeVertical
 };

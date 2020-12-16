@@ -1,6 +1,6 @@
 import Component from '../index';
 
-interface TControlSliderState extends TState {
+interface TSliderState extends TState {
     min: number;
     max: number;
     value: number;
@@ -11,9 +11,9 @@ interface TControlSliderState extends TState {
     railLengthPx: number;
 }
 
-abstract class ControlSlider extends Component {
+abstract class Slider extends Component {
 
-    protected state: TControlSliderState;
+    protected state: TSliderState;
 
     protected onMouseDown: TDownHandler;
 
@@ -23,7 +23,7 @@ abstract class ControlSlider extends Component {
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {}
     }
 
-    protected initStateComponent(): TControlSliderState {
+    protected initStateComponent(): TSliderState {
         const min: number = this.props.min;  //минимальное значение
         const max: number = this.props.max;  //максимальное значение
 
@@ -92,4 +92,4 @@ abstract class ControlSlider extends Component {
 
 }
 
-export default ControlSlider;
+export default Slider;

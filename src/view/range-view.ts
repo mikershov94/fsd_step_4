@@ -1,10 +1,10 @@
 import View from './view';
-import {ControlSliderStart, ControlSliderEnd} from '../components/__slider';
-import {ProgressBarFillRange} from '../components/__fill';
+import {SliderStart, SliderEnd} from '../components/__slider';
+import {FillRange} from '../components/__fill';
 import {ProgressBar} from '../components/__progress-bar';
 import {Scale} from '../components/__scale';
-import {ControlRail} from '../components/__rail';
-import {OutputFieldStart, OutputFieldEnd} from '../components/__field';
+import {Rail} from '../components/__rail';
+import {FieldStart, FieldEnd} from '../components/__field';
 import {Control} from '../components/__control';
 import {Output} from '../components/__output';
 import {Container} from '../components/__container';
@@ -16,7 +16,7 @@ class RangeView extends View {
     }
 
     mountApplication(props: TMessage): void {
-        const controlSliderA = new ControlSliderStart({
+        const controlSliderA = new SliderStart({
             min: props.min,
             max: props.max,
             value: props.valueA,
@@ -27,7 +27,7 @@ class RangeView extends View {
             railLengthPx: props.lengthRail,
         }, []);
 
-        const controlSliderB = new ControlSliderEnd({
+        const controlSliderB = new SliderEnd({
             min: props.min,
             max: props.max,
             value: props.valueB,
@@ -38,7 +38,7 @@ class RangeView extends View {
             railLengthPx: props.lengthRail,
         }, []);
         
-        const progressBarFill = new ProgressBarFillRange({
+        const progressBarFill = new FillRange({
             max: props.max,
             min: props.min,
             start: props.valueA,
@@ -60,7 +60,7 @@ class RangeView extends View {
             step: props.step
         }, []);
 
-        const controlRail = new ControlRail({
+        const controlRail = new Rail({
             min: props.min,
             max: props.max,
         }, [
@@ -69,11 +69,11 @@ class RangeView extends View {
             progressBar
         ]);
 
-        const outputFieldA = new OutputFieldStart({
+        const outputFieldA = new FieldStart({
             value: props.valueA,
         }, []);
 
-        const outputFieldB = new OutputFieldEnd({
+        const outputFieldB = new FieldEnd({
             value: props.valueB,
         }, []);
 

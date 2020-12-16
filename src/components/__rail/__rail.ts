@@ -1,6 +1,6 @@
 import Component from '../index';
 
-class ControlRail extends Component {
+class Rail extends Component {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
@@ -23,4 +23,4 @@ class ControlRail extends Component {
 
 }
 
-export default ControlRail;
+export default Rail;

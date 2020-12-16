@@ -1,6 +1,6 @@
-import ControlSliderAlone from './control__slider_alone';
+import SliderAlone from './__slider_alone';
 
-class ControlSliderAloneVertical extends ControlSliderAlone {
+class SliderAloneVertical extends SliderAlone {
 
     constructor(props: TMessage, children: IComponent[] = []) {
         super(props, children);
@@ -39,4 +39,4 @@ class ControlSliderAloneVertical extends ControlSliderAlone {
 
 }
 
-export default ControlSliderAloneVertical;
+export default SliderAloneVertical;

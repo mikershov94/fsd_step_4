@@ -1,6 +1,6 @@
-import OutputFieldAlone from './output__field_alone';
+import FieldAlone from './__field_alone';
 
-class OutputFieldAloneVertical extends OutputFieldAlone {
+class FieldAloneVertical extends FieldAlone {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
@@ -12,4 +12,4 @@ class OutputFieldAloneVertical extends OutputFieldAlone {
 
 }
 
-export default OutputFieldAloneVertical;
+export default FieldAloneVertical;

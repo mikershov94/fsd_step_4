@@ -1,10 +1,10 @@
 import View from './view';
-import {ControlSliderAlone} from '../components/__slider';
-import {ProgressBarFillAlone} from '../components/__fill';
+import {SliderAlone} from '../components/__slider';
+import {FillAlone} from '../components/__fill';
 import {ProgressBar} from '../components/__progress-bar';
 import {Scale} from '../components/__scale';
-import {ControlRail} from '../components/__rail';
-import {OutputFieldAlone} from '../components/__field';
+import {Rail} from '../components/__rail';
+import {FieldAlone} from '../components/__field';
 import {Control} from '../components/__control';
 import {Output} from '../components/__output';
 import {Container} from '../components/__container';
@@ -18,7 +18,7 @@ class AloneView extends View {
     
 
     mountApplication(props: TMessage): void {
-        const controlSlider = new ControlSliderAlone({
+        const controlSlider = new SliderAlone({
             min: props.min,
             max: props.max,
             value: props.value,
@@ -29,7 +29,7 @@ class AloneView extends View {
             railLengthPx: props.lengthRail,
         });
         
-        const progressBarFill = new ProgressBarFillAlone({
+        const progressBarFill = new FillAlone({
             max: props.max,
             min: props.min,
             start: props.min,
@@ -51,7 +51,7 @@ class AloneView extends View {
             step: props.step
         }, []);
 
-        const controlRail = new ControlRail({
+        const controlRail = new Rail({
             min: props.min,
             max: props.max,
         }, [
@@ -59,7 +59,7 @@ class AloneView extends View {
             progressBar
         ]);
 
-        const outputField = new OutputFieldAlone({
+        const outputField = new FieldAlone({
             value: props.value,
         }, []);
 

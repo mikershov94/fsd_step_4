@@ -1,10 +1,10 @@
 import View from './view';
-import {ControlSliderStartVertical, ControlSliderEndVertical} from '../components/__slider';
-import {ProgressBarFillRangeVertical} from '../components/__fill';
+import {SliderStartVertical, SliderEndVertical} from '../components/__slider';
+import {FillRangeVertical} from '../components/__fill';
 import {ProgressBarVertical} from '../components/__progress-bar';
 import {ScaleVertical} from '../components/__scale';
-import {ControlRailVertical} from '../components/__rail';
-import {OutputFieldStartVertical, OutputFieldEndVertical} from '../components/__field';
+import {RailVertical} from '../components/__rail';
+import {FieldStartVertical, FieldEndVertical} from '../components/__field';
 import {ControlVertical} from '../components/__control';
 import {OutputVertical} from '../components/__output';
 import {ContainerVertical} from '../components/__container';
@@ -16,7 +16,7 @@ class RangeVerticalView extends View {
     }
 
     mountApplication(props: TMessage): void {
-        const controlSliderA = new ControlSliderStartVertical({
+        const controlSliderA = new SliderStartVertical({
             min: props.min,
             max: props.max,
             value: props.valueA,
@@ -27,7 +27,7 @@ class RangeVerticalView extends View {
             railLengthPx: props.lengthRail,
         }, []);
 
-        const controlSliderB = new ControlSliderEndVertical({
+        const controlSliderB = new SliderEndVertical({
             min: props.min,
             max: props.max,
             value: props.valueB,
@@ -38,7 +38,7 @@ class RangeVerticalView extends View {
             railLengthPx: props.lengthRail,
         }, []);
         
-        const progressBarFill = new ProgressBarFillRangeVertical({
+        const progressBarFill = new FillRangeVertical({
             max: props.max,
             min: props.min,
             start: props.valueA,
@@ -59,7 +59,7 @@ class RangeVerticalView extends View {
             step: props.step
         }, []);
 
-        const controlRail = new ControlRailVertical({
+        const controlRail = new RailVertical({
             min: props.min,
             max: props.max,
         }, [
@@ -68,11 +68,11 @@ class RangeVerticalView extends View {
             progressBar
         ]);
 
-        const outputFieldA = new OutputFieldStartVertical({
+        const outputFieldA = new FieldStartVertical({
             value: props.valueA,
         }, []);
 
-        const outputFieldB = new OutputFieldEndVertical({
+        const outputFieldB = new FieldEndVertical({
             value: props.valueB,
         }, []);
 

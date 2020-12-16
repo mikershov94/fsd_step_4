@@ -1,6 +1,6 @@
-import ProgressBarFill from './progress-bar__fill';
+import Fill from './__fill';
 
-class ProgressBarFillAlone extends ProgressBarFill {
+class FillAlone extends Fill {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
@@ -57,4 +57,4 @@ class ProgressBarFillAlone extends ProgressBarFill {
 
 }
 
-export default ProgressBarFillAlone;
+export default FillAlone;

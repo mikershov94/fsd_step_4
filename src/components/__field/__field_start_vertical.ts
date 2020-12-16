@@ -1,6 +1,6 @@
-import OutputFieldStart from './output__field_start';
+import FieldStart from './__field_start';
 
-class OutputFieldStartVertical extends OutputFieldStart {
+class FieldStartVertical extends FieldStart {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
@@ -12,4 +12,4 @@ class OutputFieldStartVertical extends OutputFieldStart {
 
 }
 
-export default OutputFieldStartVertical;
+export default FieldStartVertical;

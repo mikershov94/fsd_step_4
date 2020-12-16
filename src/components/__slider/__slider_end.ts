@@ -1,6 +1,6 @@
-import ControlSlider from './control__slider';
+import Slider from './__slider';
 
-class ControlSliderEnd extends ControlSlider {
+class SliderEnd extends Slider {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
@@ -43,4 +43,4 @@ class ControlSliderEnd extends ControlSlider {
 
 }
 
-export default ControlSliderEnd;
+export default SliderEnd;

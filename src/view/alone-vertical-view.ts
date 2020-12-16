@@ -1,10 +1,10 @@
 import View from './view';
-import {ControlSliderAloneVertical} from '../components/__slider';
-import {ProgressBarFillAloneVertical} from '../components/__fill';
+import {SliderAloneVertical} from '../components/__slider';
+import {FillAloneVertical} from '../components/__fill';
 import {ProgressBarVertical} from '../components/__progress-bar';
 import {ScaleVertical} from '../components/__scale';
-import {ControlRailVertical} from '../components/__rail';
-import {OutputFieldAloneVertical} from '../components/__field';
+import {RailVertical} from '../components/__rail';
+import {FieldAloneVertical} from '../components/__field';
 import {ControlVertical} from '../components/__control';
 import {OutputVertical} from '../components/__output';
 import {ContainerVertical} from '../components/__container';
@@ -18,7 +18,7 @@ class AloneVerticalView extends View {
     
 
     mountApplication(props: TMessage): void {
-        const controlSlider = new ControlSliderAloneVertical({
+        const controlSlider = new SliderAloneVertical({
             min: props.min,
             max: props.max,
             value: props.value,
@@ -29,7 +29,7 @@ class AloneVerticalView extends View {
             railLengthPx: props.lengthRail,
         });
         
-        const progressBarFill = new ProgressBarFillAloneVertical({
+        const progressBarFill = new FillAloneVertical({
             max: props.max,
             min: props.min,
             start: props.min,
@@ -51,7 +51,7 @@ class AloneVerticalView extends View {
             step: props.step
         }, []);
 
-        const controlRail = new ControlRailVertical({
+        const controlRail = new RailVertical({
             min: props.min,
             max: props.max,
         }, [
@@ -59,7 +59,7 @@ class AloneVerticalView extends View {
             progressBar
         ]);
 
-        const outputField = new OutputFieldAloneVertical({
+        const outputField = new FieldAloneVertical({
             value: props.value,
         }, []);
 

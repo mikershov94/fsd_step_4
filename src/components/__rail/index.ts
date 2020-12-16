@@ -1,6 +1,6 @@
-import ControlRail from './control__rail';
-import ControlRailVertical from './control__rail_vertical';
+import Rail from './__rail';
+import RailVertical from './__rail_vertical';
 export {
-    ControlRail,
-    ControlRailVertical
+    Rail,
+    RailVertical
 };
