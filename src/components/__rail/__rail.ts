@@ -18,7 +18,7 @@ class Rail extends Component {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__rail';
+        return 'fsd-slider__rail';
     }
 
 }

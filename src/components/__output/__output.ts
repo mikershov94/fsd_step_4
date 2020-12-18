@@ -13,7 +13,7 @@ class Output extends Component {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__output';
+        return 'fsd-slider__output';
     }
 
 }

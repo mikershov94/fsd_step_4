@@ -13,7 +13,7 @@ class ProgressBar extends Component {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__progress-bar'
+        return 'fsd-slider__progress-bar'
     }
 
 }

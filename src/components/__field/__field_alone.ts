@@ -7,7 +7,7 @@ class FieldAlone extends Field {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__field_alone'
+        return 'fsd-slider__field_alone'
     }
 
     protected updateState(): void {

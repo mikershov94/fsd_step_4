@@ -20,7 +20,7 @@ class Control extends Component {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__control';
+        return 'fsd-slider__control';
     }
 
 }

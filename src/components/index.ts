@@ -8,7 +8,6 @@ abstract class Component implements IComponent {
 
     protected state:         TState;
     protected template:      string;
-    protected prefix:        string;
     protected jQueryElement: JQuery;
 
     protected dispatcher:    IDispatcher;
@@ -18,7 +17,6 @@ abstract class Component implements IComponent {
         
         this.state = this.initStateComponent();
         this.template = this.setTemplate();
-        this.prefix = this.props.prefix;
 
         this.children = children;
         this.children.forEach((child: IComponent) => {

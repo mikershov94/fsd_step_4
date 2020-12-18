@@ -7,7 +7,7 @@ class FieldEndVertical extends FieldEnd {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__field_end_vertical';
+        return 'fsd-slider__field_end_vertical';
     }
 
 }

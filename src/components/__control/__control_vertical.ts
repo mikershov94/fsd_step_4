@@ -7,7 +7,7 @@ class ControlVertical extends Control {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__control_vertical';
+        return 'fsd-slider__control_vertical';
     }
 
 }

@@ -7,7 +7,7 @@ class FieldStart extends Field {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__field_start'
+        return 'fsd-slider__field_start'
     }
 
     protected updateState(): void {

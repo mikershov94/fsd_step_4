@@ -7,7 +7,7 @@ class ProgressBarVertical extends ProgressBar {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__progress-bar_vertical'
+        return 'fsd-slider__progress-bar_vertical'
     }
 
 }

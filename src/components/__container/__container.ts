@@ -4,6 +4,7 @@ class Container extends Component {
 
     constructor(props: TMessage, children: IComponent[]) {
         super(props, children);
+        
     }
 
     protected setTemplate(): string {
@@ -13,7 +14,7 @@ class Container extends Component {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__container';
+        return 'fsd-slider__container';
     }
 
 }

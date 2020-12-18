@@ -7,7 +7,7 @@ class RailVertical extends Rail {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__rail_vertical';
+        return 'fsd-slider__rail_vertical';
     }
 }
 

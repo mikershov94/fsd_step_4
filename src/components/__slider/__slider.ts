@@ -46,7 +46,7 @@ abstract class Slider extends Component {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__slider';
+        return 'fsd-slider__slider';
     }
 
     protected doingAfterRender(): void {

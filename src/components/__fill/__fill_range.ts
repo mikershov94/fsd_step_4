@@ -7,7 +7,7 @@ class FillRange extends Fill {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__fill';
+        return 'fsd-slider__fill';
     }
 
     protected doingRender(): void {

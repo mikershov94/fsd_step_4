@@ -7,8 +7,7 @@ class ContainerVertical extends Container {
     }
 
     protected setStyle(): string {
-        const prefix: string = this.prefix;
-        return prefix + '__container_vertical'
+        return 'fsd-slider__container_vertical'
     }
 
 }

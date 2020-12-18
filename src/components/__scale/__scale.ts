@@ -30,7 +30,7 @@ class Scale extends Component {
     }
 
     protected setStyle(): string {
-        return this.prefix + '__scale';
+        return 'fsd-slider__scale';
     }
 
     protected doingRender(): void {
