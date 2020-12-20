@@ -6,8 +6,13 @@ class RailVertical extends Rail {
         super(props, children);
     }
 
+    protected doingAfterRender(): void {
+        const length: number = this.jQueryElement.height();
+        this.dispatcher.dispatch('calculatedLengthRail', { length })
+    }
+
     protected setStyle(): string {
-        return 'fsd-slider__rail_vertical';
+        return 'fsd-slider__rail fsd-slider__rail_vertical';
     }
 }
 

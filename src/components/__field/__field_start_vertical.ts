@@ -7,7 +7,7 @@ class FieldStartVertical extends FieldStart {
     }
 
     protected setStyle(): string {
-        return 'fsd-slider__field_start_vertical'
+        return 'fsd-slider__field fsd-slider__field_start fsd-slider__field_vertical'
     }
 
 }

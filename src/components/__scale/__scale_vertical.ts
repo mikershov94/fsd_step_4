@@ -7,7 +7,7 @@ class ScaleVertical extends Scale {
     }
 
     protected setStyle(): string {
-        return 'fsd-slider__scale_vertical';
+        return 'fsd-slider__scale fsd-slider__scale_vertical';
     }
 
     protected doingRender(): void {

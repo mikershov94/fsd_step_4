@@ -24,12 +24,12 @@ class SliderAlone extends Slider {
     protected updateState(): void {
         const min: number = this.state.min;  //минимальное значение рельсы
         const max: number = this.state.max;  //максимальное значение рельсы
-
+        
         this.setState({
             railLengthPx: this.props.lengthRail,
             value: this.props.value,
         });
-                
+        
         this.setState({
             position: this.calculatePosition(min, max, this.props.value),
         }); 

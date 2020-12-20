@@ -7,7 +7,7 @@ class FillAloneVertical extends FillAlone {
     }
 
     protected setStyle(): string {
-        return 'fsd-slider__fill_vertical';
+        return 'fsd-slider__fill fsd-slider__fill_vertical';
     }
 
     protected doingRender(): void {

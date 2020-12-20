@@ -7,7 +7,7 @@ class OutputVertical extends Output {
     }
 
     protected setStyle(): string {
-        return 'fsd-slider__output_vertical';
+        return 'fsd-slider__output fsd-slider__output_vertical';
     }
 
 }

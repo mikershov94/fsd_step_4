@@ -17,7 +17,7 @@ abstract class Slider extends Component {
 
     protected onMouseDown: TDownHandler;
 
-    constructor(props: TMessage, children: IComponent[] = []) {
+    protected constructor(props: TMessage, children: IComponent[] = []) {
         super(props, children);
 
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {}
@@ -71,8 +71,9 @@ abstract class Slider extends Component {
     }
 
     protected calculatePosition(min: number, max: number, value: number): number {
+        console.log('исполнился')
         let position: number = (value * 100) / (max - min);
-    
+        
         const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
         if (position <= this.state.limitA) position = this.state.limitA;
         if (position >= (this.state.limitB - sizeSliderPercent)) position = this.state.limitB - sizeSliderPercent;

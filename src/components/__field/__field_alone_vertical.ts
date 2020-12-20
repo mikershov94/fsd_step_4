@@ -7,7 +7,7 @@ class FieldAloneVertical extends FieldAlone {
     }
 
     protected setStyle(): string {
-        return 'fsd-slider__field_alone_vertical'
+        return 'fsd-slider__field fsd-slider__field_alone fsd-slider__field_vertical'
     }
 
 }

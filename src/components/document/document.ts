@@ -48,7 +48,7 @@ class Page implements IDocument {
         this.state = {
             vertical: data.vertical,
         }
-
+        
         this.page.on('mousemove', this.onMouseMove);
         this.page.on('mouseup', this.onMouseUp);
     }

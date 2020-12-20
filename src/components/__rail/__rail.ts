@@ -7,7 +7,7 @@ class Rail extends Component {
     }
 
     protected doingAfterRender(): void {
-        const length: number = this.state.vertical ? this.jQueryElement.height() : this.jQueryElement.width();
+        const length: number = this.jQueryElement.width();
         this.dispatcher.dispatch('calculatedLengthRail', { length })
     }
 

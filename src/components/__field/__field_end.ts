@@ -7,7 +7,7 @@ class FieldEnd extends Field {
     }
 
     protected setStyle(): string {
-        return 'fsd-slider__field_end'
+        return 'fsd-slider__field fsd-slider__field_end'
     }
 
     protected updateState(): void {

@@ -7,7 +7,7 @@ class SliderAloneVertical extends SliderAlone {
 
         this.onMouseDown = (event: JQuery.MouseDownEvent) => {
             this.parent.afterRender();
-            this.dispatcher.dispatch('mouseDownA', {});
+            this.dispatcher.dispatch('mouseDown', {});
         }
 
     }
@@ -28,12 +28,12 @@ class SliderAloneVertical extends SliderAlone {
 
     protected calculatePosition(min: number, max: number, value: number): number {
         let position: number = 100 - (value * 100) / (max - min);
-    
+        
         const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
+        position -= sizeSliderPercent
         if (position <= this.state.limitA) position = this.state.limitA;
         if (position >= (this.state.limitB - sizeSliderPercent)) position = this.state.limitB - sizeSliderPercent;
-    
-
+        
         return position
     }
 

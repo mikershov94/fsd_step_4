@@ -7,7 +7,7 @@ class ContainerVertical extends Container {
     }
 
     protected setStyle(): string {
-        return 'fsd-slider__container_vertical'
+        return 'fsd-slider__container fsd-slider__container_vertical'
     }
 
 }
