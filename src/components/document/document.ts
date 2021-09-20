@@ -24,6 +24,7 @@ class Page implements IDocument {
 
         this.onMouseMove = (event: JQuery.MouseMoveEvent) => {
             const posPointer: number = this.state.vertical ? event.pageY : event.pageX;
+            console.log(posPointer)
 
             const newPosition: TNewPosition = {
                 vertical: this.state.vertical,

@@ -30,7 +30,7 @@ class SliderStart extends Slider {
             railLengthPx: this.props.lengthRail,
             value: this.props.value,
         });
-                
+             
         this.setState({
             position: this.calculatePosition(min, max, this.props.valueA),
         }); 

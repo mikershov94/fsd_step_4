@@ -8,7 +8,7 @@ class SliderEndVertical extends SliderEnd {
 
     protected doingRender(): void {
         this.setPosition();
-        this.jQueryElement.css('top', `${this.state.position}%`);
+        this.jQueryElement.css('top', `${this.state.position}px`);
     }
 
     protected getOuter(): number {
@@ -16,17 +16,12 @@ class SliderEndVertical extends SliderEnd {
     }
 
     protected updateRender(): void {
-        this.jQueryElement.css('top', `${this.state.position}%`);
+        this.jQueryElement.css('top', `${this.state.position}px`);
     }
 
-    protected calculatePosition(min: number, max: number, value: number): number {
-        let position: number = 100 - (value * 100) / (max - min);
-    
-        const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
-        if (position <= this.state.limitA) position = this.state.limitA;
-        if (position >= (this.state.limitB - sizeSliderPercent)) position = this.state.limitB - sizeSliderPercent;
-    
 
+    protected calculatePosition(min: number, max: number, pointer: number): number {
+        let position: number = pointer;
         return position
     }
 

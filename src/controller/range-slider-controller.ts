@@ -37,12 +37,14 @@ class RangeSliderController extends Controller {
             case 'mouseDownA':
                 this.sendDataToModel({
                     clickedSliderA: true,
+                    clickedSliderB: false
                 });
                 this.view.subscribePageOnMove(this.model.getState());
                 return;
                 
             case 'mouseDownB':
                 this.sendDataToModel({
+                    clickedSliderA: false,
                     clickedSliderB: true,
                 });
                 this.view.subscribePageOnMove(this.model.getState());
@@ -55,10 +57,14 @@ class RangeSliderController extends Controller {
                         this.sendDataToModel({
                             valueA: this.model.moveVerticalSliderA(args.posPointer)
                         })
+                        this.sendDataToView(Object.assign(args, {}));
+        
+                        return
                     }
                     this.sendDataToModel({
                         valueA: this.model.moveSliderA(args.posPointer),
                     });
+                    this.sendDataToView(Object.assign(args, {}));
                     return;
                 }
 
@@ -66,11 +72,14 @@ class RangeSliderController extends Controller {
                     if (args.vertical) {
                         this.sendDataToModel({
                             valueB: this.model.moveVerticalSliderB(args.posPointer)
-                        })
+                        });
+                        this.sendDataToView(Object.assign(args, {}));
+                        return
                     }
                     this.sendDataToModel({
                         valueB: this.model.moveSliderB(args.posPointer)
                     });
+                    this.sendDataToView(Object.assign(args, {}));
                     return;
                 }
 

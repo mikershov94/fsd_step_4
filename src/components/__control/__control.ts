@@ -13,8 +13,7 @@ class Control extends Component {
     }
 
     protected doingAfterRender(): void {
-        const offset: number = this.state.vertical ? this.jQueryElement.offset().top : 
-                                this.jQueryElement.offset().left;
+        const offset: number = this.jQueryElement.offset().left;
 
         this.dispatcher.dispatch('calculatedOffset', { offset })
     }

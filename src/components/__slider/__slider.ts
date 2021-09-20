@@ -32,6 +32,7 @@ abstract class Slider extends Component {
             max: this.props.max,
             value: this.props.value,
             position: this.props.position,
+            posPointer: this.props.posPointer,
             size: this.props.size,
             limitA: this.calculateLimit(min, max, this.props.limitA),
             limitB: this.calculateLimit(min, max, this.props.limitB),
@@ -71,23 +72,23 @@ abstract class Slider extends Component {
     }
 
     protected calculatePosition(min: number, max: number, value: number): number {
-        console.log('исполнился')
+        /*
         let position: number = (value * 100) / (max - min);
         
         const sizeSliderPercent: number = (this.state.size * 100) / this.state.railLengthPx;
         if (position <= this.state.limitA) position = this.state.limitA;
         if (position >= (this.state.limitB - sizeSliderPercent)) position = this.state.limitB - sizeSliderPercent;
-    
+    */
 
-        return position
+        return
     }
 
     protected setPosition(): void {
         const min: number = this.state.limitA;  //минимальный предел движения
         const max: number = this.state.limitB;  //максимальный предел двидения
-        const value: number = this.state.value; //значение, на которое указывает бегунок
+        const pointer: number = this.props.posPointer; 
 
-        let position: number = this.calculatePosition(min, max, value);
+        let position: number = this.calculatePosition(min, max, pointer);
         this.setState({position});
     }
 

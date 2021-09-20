@@ -50,7 +50,7 @@ class RangeVerticalView extends View {
         const progressBar = new ProgressBarVertical({
             prefix: this.rootContainerClass,
         }, [
-            progressBarFill,
+            //progressBarFill,
         ])
     
         const scale = new ScaleVertical({

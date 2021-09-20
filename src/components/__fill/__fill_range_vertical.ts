@@ -37,10 +37,9 @@ class FillRangeVertical extends FillRange {
         const sizeSliderPercent: number = (this.state.sizeSlider * 100) / this.state.railLengthPx / 2;
 
         let fill: number = (end * 100) / (max - min) - startPercent;
-        fill += sizeSliderPercent
 
-        if (fill <= sizeSliderPercent) fill = sizeSliderPercent;
-        if (fill >= 100 - startPercent - sizeSliderPercent) fill = 100 - startPercent - sizeSliderPercent;
+        //if (fill <= sizeSliderPercent) fill = sizeSliderPercent;
+        //if (fill >= 100 - startPercent + sizeSliderPercent) fill = 100 - startPercent + sizeSliderPercent;
 
         return fill;
     }
