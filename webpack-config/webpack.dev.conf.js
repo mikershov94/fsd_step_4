@@ -29,11 +29,16 @@ module.exports = merge(commonWebpackConf, {
 
     devtool: 'inline-cheap-module-source-map',
 
+    stats: 'errors-only',
+
     devServer: {
-        contentBase: path.join(__dirname, '../'),
         open: true,
-        overlay: true,
-        stats: 'errors-only',
+        static: {
+            directory: path.join(__dirname, '../'),
+        },
+        client: {
+            overlay: true,
+        },
         port: 3000
     },
 

@@ -35,7 +35,11 @@ module.exports = {
                         loader: 'postcss-loader',
                         options: {
                             sourceMap: true,
-                            config: { path: __dirname }
+                            postcssOptions: {
+                                plugins: [
+                                    'autoprefixer'
+                                ]
+                            }
                         }
                     }
                 ]
@@ -52,7 +56,11 @@ module.exports = {
                         loader: 'postcss-loader',
                         options: { 
                             sourceMap: true,
-                            config: { path: __dirname }
+                            postcssOptions: {
+                                plugins: [
+                                    'autoprefixer'
+                                ]
+                            }
                         }
                     },
                     {

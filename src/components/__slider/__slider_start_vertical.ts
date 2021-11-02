@@ -1,4 +1,4 @@
-import { compilation } from 'webpack';
+//import { Compilation } from 'webpack';
 import SliderStart from './__slider_start';
 
 class SliderStartVertical extends SliderStart {
