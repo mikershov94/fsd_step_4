@@ -15,6 +15,9 @@ class Control extends Component {
     protected doingAfterRender(): void {
         const offset: number = this.jQueryElement.offset().left;
 
+        //после рендеринга компонент обращается к диспатчеру
+        //для запуска действия по вычислению 
+        //ОТСТУПА ОТ ЛЕВОГО КРАЯ страницы
         this.dispatcher.dispatch('calculatedOffset', { offset })
     }
 
